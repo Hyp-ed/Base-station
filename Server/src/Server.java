@@ -1,7 +1,11 @@
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.ByteBuffer;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +25,7 @@ public class Server {
 
     // Our server is a TCP server that listens on port 5659
     private static final int portNo = 5695;
-//    private static final int spaceXPortNo = 3000;
+    private static final int spaceXPortNo = 3000;
 //    private static final String spaceXIP = "placeholder";
     private static ServerSocket serverSocket;
     private static Socket podSocket;
@@ -65,7 +69,29 @@ public class Server {
 
     public static void sendToSpaceX(byte status, byte team_id,
                                     int acceleration, int position, int velocity) {
-        // TODO: To be implemented
+        try {
+            // TODO: To be implemented
+            DatagramSocket spaceXSocket = new DatagramSocket(_spaceXPort);
+            ByteBuffer buf = ByteBuffer.allocate(34); // BigEndian by default
+            buf.put(team_id);
+            buf.put(status);
+            buf.putInt(acceleration);
+            buf.putInt(position);
+            buf.putInt(velocity);
+            buf.putInt(0);
+            buf.putInt(0);
+            buf.putInt(0);
+            buf.putInt(0);
+            buf.putInt(0);
+            InetAddress IP =  InetAddress.getByName(/*_spaceXIP*/"192.168.1.163");
+            DatagramPacket packet = new DatagramPacket
+               (
+                       buf.array(), buf.limit(), IP, spaceXPortNo
+               );
+            spaceXSocket.send(packet);
+        } catch (IOException ex) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
