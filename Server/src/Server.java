@@ -40,17 +40,19 @@ public class Server {
             // TODO: Initialise front end
 
             serverSocket = new ServerSocket(portNo);
-            // Awaits ping from pod
+            System.out.println("Awaiting connection from pod...");
 
             // Initialise connection with pod's microcontroller
             while (true) {
-                // Waits for connection request from pod
                 podSocket = serverSocket.accept();
-                // Connection established
+                System.out.println("Connection request received.");
 
-                sendToPod(podSocket, "Ping"); // pings pod
+                sendConfirmationToPod(podSocket);
+                System.out.println("Send confirmation message to pod.");
+
                 PodThread pod = new PodThread(podSocket);
                 pod.start();
+                System.out.println("PodThread started");
             }
 
         } catch (Exception e) {
@@ -59,12 +61,16 @@ public class Server {
 
     }
 
-    public static void sendToPod(Socket socket, String message) {
+    public static void sendToPod(Socket podSocket, String message) throws IOException {
         // TODO: To be implemented
     }
 
-    public static void sendConfirmationToPod(Socket socket) {
-        // TODO: To be implemented
+    public static void sendConfirmationToPod(Socket podSocket) throws IOException {
+        Socket temp = podSocket;
+        PrintWriter tempOut = new PrintWriter(temp.getOutputStream());
+
+        tempOut.println(1); // message received
+        tempOut.flush();
     }
 
     public static void sendToSpaceX(byte status, byte team_id,
