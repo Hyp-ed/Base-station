@@ -1,3 +1,4 @@
 # IntelliJ configs
 .idea/
 *.iml
+/Server/nbproject/private/
