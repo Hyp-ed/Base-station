@@ -1,3 +1,4 @@
 # IntelliJ configurations
 .idea/
 *.iml
+out/
