@@ -77,7 +77,7 @@ public class Server {
                                     int acceleration, int position, int velocity) {
         try {
             // TODO: To be implemented
-            DatagramSocket spaceXSocket = new DatagramSocket(_spaceXPort);
+            DatagramSocket spaceXSocket = new DatagramSocket(spaceXPortNo);
             ByteBuffer buf = ByteBuffer.allocate(34); // BigEndian by default
             buf.put(team_id);
             buf.put(status);
