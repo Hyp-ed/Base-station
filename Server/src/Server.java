@@ -14,7 +14,7 @@ import java.net.Socket;
  */
 public class Server {
 
-    // Our server is a TCP server that runs on port 5659
+    // Our server is a TCP server that listens on port 5659
     private static final int portNo = 5695;
 //    private static final int spaceXPortNo = 3000;
 //    private static final String spaceXIP = "placeholder";
@@ -30,9 +30,19 @@ public class Server {
 
             // TODO: Initialise front end
 
-            serverSocket =
+            serverSocket = new ServerSocket(portNo);
+            // Awaits ping from pod
 
+            // Initialise connection with pod's microcontroller
+            while (true) {
+                // Waits for connection request from pod
+                podSocket = serverSocket.accept();
+                // Connection established
 
+                sendToPod(podSocket, "Ping"); // pings pod
+                PodThread pod = new PodThread(podSocket);
+                pod.start();
+            }
 
         } catch (Exception e) {
             // do something
@@ -53,7 +63,16 @@ public class Server {
         // TODO: To be implemented
     }
 
-    // PodThread
+    /**
+     * Private PodThread class
+     */
+    private static class PodThread extends Thread {
 
+        Socket podSocket;
+
+        public PodThread(Socket podSocket) {
+            this.podSocket = podSocket;
+        }
+    }
 
 }
