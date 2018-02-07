@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
@@ -20,9 +21,25 @@ public class DummyClient {
         while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
             String confirmation = input.readLine();
+            PrintWriter dummydata = new PrintWriter(podSocket.getOutputStream());
 
             if (confirmation.equals("1")) {
                 System.out.println("Confirmation received.");
+                
+                dummydata.println("CMD0160");
+                dummydata.println("CMD0260");
+                dummydata.println("CMD0360");
+                dummydata.println("CMD0460");
+                dummydata.println("CMD0560");
+                dummydata.println("CMD0660");
+                dummydata.println("CMD0760");
+                dummydata.println("CMD0860");
+                dummydata.println("CMD0960");
+                dummydata.println("CMD1060");
+                dummydata.println("CMD1160");
+                dummydata.println("CMD1260");
+                dummydata.println("CMD1360");
+                
                 break;
             }
         }
