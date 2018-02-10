@@ -2,4 +2,5 @@
 .idea/
 *.iml
 /Server/nbproject/private/
+Server/out
 /JavaFXApplication3/nbproject/private/

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" fx:controller="view.main.Controller" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@/view/css/stylesheet.css"/>
+    </stylesheets>
+    <left>
+        <VBox alignment="CENTER_LEFT" prefWidth="120.0" spacing="4.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button maxWidth="120.0" mnemonicParsing="false" text="Stop" fx:id="btnStop"/>
+                <Button maxWidth="120.0" mnemonicParsing="false" text="Reverse" fx:id="btnReverse"/>
+                <Button maxWidth="120.0" mnemonicParsing="false" text="Kill Power" fx:id="btnKillPower"/>
+                <Button maxWidth="120.0" mnemonicParsing="false" text="Forward" fx:id="btnForward"/>
+                <Button maxWidth="120.0" mnemonicParsing="false" text="Launch" fx:id="btnLaunch"/>
+            </children>
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+        </VBox>
+    </left>
+    <top>
+        <HBox alignment="CENTER" prefHeight="40.0" spacing="4.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" text="Launch Console"/>
+                <Button mnemonicParsing="false" text="Network Settings"/>
+                <Button mnemonicParsing="false" text="Save to File"/>
+            </children>
+        </HBox>
+    </top>
+    <bottom>
+        <VBox>
+            <children>
+                <Label text="Progress" BorderPane.alignment="TOP_LEFT"/>
+                <Slider disable="true" BorderPane.alignment="CENTER" fx:id="progressBar"/>
+            </children>
+        </VBox>
+    </bottom>
+    <center>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="32" maxHeight="48" vgrow="SOMETIMES"/>
+                <RowConstraints vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="32" maxHeight="48" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="48" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <HBox alignment="BOTTOM_RIGHT" spacing="116.0" GridPane.rowIndex="0">
+                    <children>
+                        <AnchorPane>
+                            <Label text="Accumulator 1" AnchorPane.bottomAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <Label text="Accumulator 2" AnchorPane.bottomAnchor="0.0"/>
+                        </AnchorPane>
+                    </children>
+                    <padding>
+                        <Insets right="24.0"/>
+                    </padding>
+                </HBox>
+                <HBox alignment="CENTER_RIGHT" GridPane.rowIndex="1">
+                    <children>
+                        <VBox>
+                            <children>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                </AnchorPane>
+                                <Separator prefWidth="200.0"/>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0"/>
+                            </children>
+                        </VBox>
+                        <AnchorPane>
+                        </AnchorPane>
+                        <VBox>
+                        </VBox>
+                        <VBox>
+                            <children>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                </AnchorPane>
+                                <Separator prefWidth="200.0"/>
+                                <AnchorPane prefHeight="200.0" prefWidth="200.0"/>
+                            </children>
+                        </VBox>
+                        <AnchorPane>
+                        </AnchorPane>
+                        <VBox>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox alignment="TOP_RIGHT" spacing="160.0" GridPane.rowIndex="2">
+                    <children>
+                        <AnchorPane>
+                            <Label text="Pump 1" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <Label text="Pump 2" AnchorPane.topAnchor="0.0"/>
+                        </AnchorPane>
+                    </children>
+                    <padding>
+                        <Insets right="24.0"/>
+                    </padding>
+                </HBox>
+                <HBox alignment="TOP_RIGHT" spacing="24.0" GridPane.rowIndex="3">
+                    <children>
+                        <AnchorPane>
+                            <Label text="Velocty" AnchorPane.topAnchor="0.0"/>
+                            <Label text="80" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <Label text="Acceleration" AnchorPane.topAnchor="0.0"/>
+                            <Label text="--" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+                        </AnchorPane>
+                        <AnchorPane>
+                            <Label text="Stripe Count" AnchorPane.topAnchor="0.0"/>
+                            <Label text="11" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+                        </AnchorPane>
+                    </children>
+                    <padding>
+                        <Insets right="24.0"/>
+                    </padding>
+                </HBox>
+            </children>
+        </GridPane>
+    </center>
+    <right>
+    </right>
+    <padding>
+        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>
+    </padding>
+</BorderPane>
