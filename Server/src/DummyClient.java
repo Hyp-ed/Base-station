@@ -21,7 +21,7 @@ public class DummyClient {
         while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
             String confirmation = input.readLine();
-            PrintWriter dummydata = new PrintWriter(podSocket.getOutputStream());
+            PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
 
             if (confirmation.equals("1")) {
                 System.out.println("Confirmation received.");
