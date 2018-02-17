@@ -61,14 +61,6 @@ public class Server {
 
     }
 
-    public static void sendToPod(Socket podSocket, String message) throws IOException {
-        Socket temporary = podSocket;
-        PrintWriter temporaryOut = new PrintWriter(temporary.getOutputStream());
-
-        temporaryOut.println(message); 
-        temporaryOut.flush();
-    }
-
     public static void sendConfirmationToPod(Socket podSocket) throws IOException {
         Socket temp = podSocket;
         PrintWriter tempOut = new PrintWriter(temp.getOutputStream());
@@ -117,7 +109,15 @@ public class Server {
         public PodThread(Socket podSocket) {
             this.podSocket = podSocket;
         }
-        
+
+        public void sendToPod(String message) throws IOException {
+            Socket temporary = podSocket;
+            PrintWriter temporaryOut = new PrintWriter(temporary.getOutputStream());
+
+            temporaryOut.println(message);
+            temporaryOut.flush();
+        }
+
         public void run(){
         
             try {
