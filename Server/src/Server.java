@@ -62,7 +62,11 @@ public class Server {
     }
 
     public static void sendToPod(Socket podSocket, String message) throws IOException {
-        // TODO: To be implemented
+        Socket temporary = podSocket;
+        PrintWriter temporaryOut = new PrintWriter(temporary.getOutputStream());
+
+        temporaryOut.println(message); 
+        temporaryOut.flush();
     }
 
     public static void sendConfirmationToPod(Socket podSocket) throws IOException {
