@@ -174,7 +174,7 @@ public class Server {
                         case "CMD08":
                             sendConfirmationToPod(podSocket);
                             rail_proximity = (int) Math.round(Double.parseDouble(data.substring(5)));
-                            System.out.println("rail proxmity: "+rail_proximity);
+                            System.out.println("rail proximity: "+rail_proximity);
                             break;
                         case "CMD09":
                             sendConfirmationToPod(podSocket);
