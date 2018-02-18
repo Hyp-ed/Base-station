@@ -44,14 +44,11 @@ public class Server {
             // Initialise connection with pod's microcontroller
             while (true) {
                 podSocket = serverSocket.accept();
-                System.out.println("Connection request received.");
 
                 sendConfirmationToPod(podSocket);
-                System.out.println("Send confirmation message to pod.");
 
                 PodThread pod = new PodThread(podSocket);
                 pod.start();
-                System.out.println("PodThread started");
             }
 
         } catch (Exception e) {
