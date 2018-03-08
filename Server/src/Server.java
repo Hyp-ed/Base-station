@@ -1,3 +1,7 @@
+package view;
+
+import view.main.Main;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.DatagramPacket;
@@ -36,7 +40,9 @@ public class Server {
     public static void main(String[] args) {
 
         try {
-            // TODO: Initialise front end
+            //Initialise front end
+            Main frontend = new Main();
+            frontend.main(null);
 
             serverSocket = new ServerSocket(portNo);
             System.out.println("Awaiting connection from pod...");
@@ -62,6 +68,14 @@ public class Server {
 
         tempOut.println(1); // message received
         tempOut.flush();
+    }
+
+    public void sendToPod(String message) throws IOException {
+        Socket temporary = podSocket;
+        PrintWriter temporaryOut = new PrintWriter(temporary.getOutputStream());
+
+        temporaryOut.println(message);
+        temporaryOut.flush();
     }
 
     public static void sendToSpaceX(byte status, byte team_id,
@@ -104,13 +118,7 @@ public class Server {
         }
 
 
-        public void sendToPod(String message) throws IOException {
-            Socket temporary = podSocket;
-            PrintWriter temporaryOut = new PrintWriter(temporary.getOutputStream());
 
-            temporaryOut.println(message);
-            temporaryOut.flush();
-        }
 
         public void run(){
         
@@ -209,6 +217,7 @@ public class Server {
                             System.out.println("pump2: "+pump2);
                             break;
                     }
+                    //sendToSpaceX();
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
