@@ -17,13 +17,13 @@ public class DummyClient {
 
         while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
-            String confirmation = input.readLine();
-            PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
+            //String confirmation = input.readLine();
+            //PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
 
-            if (confirmation.equals("1")) {
-                System.out.println("Confirmation received.");
+            //if (confirmation.equals("1")) {
+                //System.out.println("Confirmation received.");
                 
-                dummydata.println("CMD0160");
+                /*dummydata.println("CMD0160");
                 dummydata.println("CMD0260");
                 dummydata.println("CMD0360");
                 dummydata.println("CMD0460");
@@ -35,7 +35,15 @@ public class DummyClient {
                 dummydata.println("CMD1060");
                 dummydata.println("CMD1160");
                 dummydata.println("CMD1260");
-                dummydata.println("CMD1360");
+                dummydata.println("CMD1360");*/
+
+
+                String confirmation;
+                while ((confirmation = input.readLine()) != null) {
+                    System.out.println(confirmation);
+                    if (confirmation.indexOf("Ok") != -1) {
+                        break;
+                    }
                 
                 break;
             }

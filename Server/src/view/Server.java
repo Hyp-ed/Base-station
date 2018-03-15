@@ -1,5 +1,7 @@
 package view;
 
+import javafx.application.Application;
+import view.main.Controller;
 import view.main.Main;
 
 import java.io.IOException;
@@ -33,16 +35,16 @@ public class Server {
 //    private static final String spaceXIP = "placeholder";
     private static ServerSocket serverSocket;
     private static Socket podSocket;
+   //connect to gui
+    private static final Controller GUI = new Controller(/*pointer*/);
 
     /**
      * Runs the server.
      */
     public static void main(String[] args) {
 
+
         try {
-            //Initialise front end
-            Main frontend = new Main();
-            frontend.main(null);
 
             serverSocket = new ServerSocket(portNo);
             System.out.println("Awaiting connection from pod...");
@@ -51,8 +53,10 @@ public class Server {
             while (true) {
                 podSocket = serverSocket.accept();
 
-                sendConfirmationToPod(podSocket);
+                //give socket info to gui so it can send messages
+                GUI.setMasterSock(podSocket);
 
+                sendConfirmationToPod(podSocket);
                 PodThread pod = new PodThread(podSocket);
                 pod.start();
             }
