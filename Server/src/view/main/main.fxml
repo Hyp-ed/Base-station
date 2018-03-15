@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.URL?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-            prefWidth="600.0" fx:controller="view.main.Controller" xmlns="http://javafx.com/javafx/8.0.121"
+            prefWidth="600.0" fx:controller="view.main.MainController" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@/view/css/stylesheet.css"/>
