@@ -1,1 +1,140 @@
 
+{
+    -fx-primary : #2A2E37;
+    -fx-secondary : #FFFF8D;
+    -fx-primarytext : #B2B2B2;
+    -fx-blue: #1976D2;
+    -fx-red: #FF0000;
+    -fx-green:#2E7D32;
+}
+
+.root{
+    -fx-background-color: -fx-primary;
+}
+
+.button{
+    -fx-text-fill: -fx-primarytext;
+    -fx-background-color: -fx-primary;
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 13pt;
+}
+
+.button:hover{
+    -fx-border-color: -fx-secondary;
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.text-field
+{
+    -fx-text-fill: -fx-primarytext;
+    -fx-font-size : 13pt;
+    -jfx-focus-color: -fx-secondary;
+    -fx-text-fill: derive(-fx-secondary, 20%);
+}
+
+
+/*Main Screen CSS Styling starts here*/
+
+/*TablPane styling*/
+.tab{
+    -fx-background-color: -fx-primary;
+    -fx-pref-width : 350;
+    -fx-pref-height : 60;
+
+}
+
+.tab-header-background{
+    -fx-background-color: -fx-primary;
+}
+
+.tab-label {
+    -fx-text-fill: #FFFFFF ;
+}
+
+/* Slider style*/
+.slider .track {
+    -fx-control-inner-background: -fx-secondary;
+}
+
+/*Menu bar Styling*/
+.menu-bar{
+    -fx-base : -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+
+.context-menu
+{
+    -fx-background-color:  derive(-fx-primary, 20%);
+}
+
+/*Hamburger Styling*/
+.jfx-hamburger-icon{
+    -fx-spacing: 7;
+}
+
+.jfx-hamburger-icon StackPane
+{
+    -fx-background-color: -fx-secondary;
+    -fx-background-radius: 5px;
+}
+
+/*Toolbar buttons*/
+.toolbar-button
+{
+    -fx-border-color: transparent;
+    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+.toolbar-button:hover
+{
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-primary;
+}
+
+.toolbar-button:hover .glyph-icon
+{
+    -fx-fill: -fx-primary;
+}
+
+/*Text styling*/
+.main-text
+{
+    -fx-fill: -fx-secondary;
+    -fx-font-size: 14pt;
+    -fx-text-alignment: center;
+}
+
+.submission-container{
+    -fx-background-color: derive(-fx-primary, 10%);
+}
+
+/*Dialog styling*/
+.dialog-button{
+    -fx-border-color: -fx-green;
+    -fx-text-fill: white;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 3px;
+}
+
+.dialog-button:hover{
+    -fx-background-color: -fx-green;
+    -fx-border-color: derive(-fx-green, -20%);
+    -fx-text-fill: white;
+}
+
+.jfx-layout-actions
+{
+    -fx-hgap:8;
+}
+
+/*Dashboard label*/
+.not-available
+{
+    -fx-background-radius: 5px;
+    -fx-fill: derive(blue, 80%);
+    -fx-cursor: hand;
+}
