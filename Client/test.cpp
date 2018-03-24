@@ -4,10 +4,10 @@ int main()
 {
     // std :: thread (receiverThread);
 
-    BaseCommunicator baseStation;
+    BaseCommunicator baseCommunicator;
 
-    baseStation.sendVelocity(300000000);
-    baseStation.sendAccum1(0);
+    baseCommunicator.sendVelocity(300000000);
+    baseCommunicator.sendAccum1(0);
 
     return 0;
 }
