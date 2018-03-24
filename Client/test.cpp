@@ -6,8 +6,10 @@ int main()
 
     BaseCommunicator baseCommunicator;
 
-    baseCommunicator.sendVelocity(300000000);
-    baseCommunicator.sendAccum1(0);
+    baseCommunicator.sendVelocity(6546);
+    baseCommunicator.sendDistance(564);
+    baseCommunicator.sendAcceleration(584);
+    baseCommunicator.sendStripeCount(964);
 
     return 0;
 }

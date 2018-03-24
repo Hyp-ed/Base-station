@@ -17,6 +17,27 @@ public class DummyClient {
         System.out.println("Client request connection with server with server address: " + serverAddress + " at port number: " + PORT);
         Socket podSocket = new Socket(serverAddress, PORT);
 
+        /*while (true) {
+            BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
+            String confirmation = input.readLine();
+            PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
+
+            if (confirmation.equals("1")) {
+                System.out.println("Confirmation received.");
+
+                dummydata.println("CMD0160");
+                dummydata.println("CMD0260");
+                dummydata.println("CMD0360");
+                dummydata.println("CMD0460");
+                dummydata.println("CMD0560");
+                dummydata.println("CMD0660");
+                dummydata.println("CMD0760");
+                dummydata.println("CMD0860");
+
+                break;
+            }
+        }*/
+
         BufferedReader serverBuffer = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
         while (true) {
             String confirmation = serverBuffer.readLine();

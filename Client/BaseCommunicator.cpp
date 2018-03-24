@@ -81,7 +81,7 @@ int BaseCommunicator :: sendStripeCount(int stripes)
 int BaseCommunicator :: sendRpmFl(float rpmfl)
 {
     stringstream ss (stringstream::in | stringstream::out);
-    ss << stripes;
+    ss << rpmfl;
 
     return sendData("CMD05" + ss.str() + "\n");
 }
@@ -89,7 +89,7 @@ int BaseCommunicator :: sendRpmFl(float rpmfl)
 int BaseCommunicator :: sendRpmFr(float rpmfr)
 {
     stringstream ss (stringstream::in | stringstream::out);
-    ss << stripes;
+    ss << rpmfr;
 
     return sendData("CMD06" + ss.str() + "\n");
 }
@@ -97,7 +97,7 @@ int BaseCommunicator :: sendRpmFr(float rpmfr)
 int BaseCommunicator :: sendRpmBl(float rpmbl)
 {
     stringstream ss (stringstream::in | stringstream::out);
-    ss << stripes;
+    ss << rpmbl;
 
     return sendData("CMD07" + ss.str() + "\n");
 }
@@ -105,7 +105,7 @@ int BaseCommunicator :: sendRpmBl(float rpmbl)
 int BaseCommunicator :: sendRpmBr(float rpmbr)
 {
     stringstream ss (stringstream::in | stringstream::out);
-    ss << stripes;
+    ss << rpmbr;
 
     return sendData("CMD08" + ss.str() + "\n");
 }
