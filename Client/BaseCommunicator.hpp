@@ -21,21 +21,25 @@ class BaseCommunicator
     public:
         BaseCommunicator();
         ~BaseCommunicator();
-        int sendAcceleration(float accel);
-        int sendVelocity(float speed);
-        int sendPosition(float position);
-        int sendPodTemperature(float temp);
-        int sendStripeCount(int stripes);
-        int sendDistance(float distance);
-        int sendGroundProximity(float prox);
-        int sendRailProximity(float prox);
-        int batteryTemperature(float temp);
-        int sendBatteryCurrent(float current);
-        int sendBatteryVoltage(float volt);
-        int sendAccum1(int status);
-        int sendAccum2(int status);
-        int sendPump1(int status);
-        int sendPump2(int status);
+        int sendDistance(float distance); // CMD01
+        int sendVelocity(float speed); // CMD02
+        int sendAcceleration(float accel); // CMD03
+        int sendStripeCount(int stripes); // CMD04
+        int sendRpmFl(float rpmfl); // CMD05
+        int sendRpmFr(float rpmfr); // CMD06
+        int sendRpmBl(float rpmBl); // CMD07
+        int sendRpmBr(float rpmBr); // CMD08
         int sendData(string message);
+        // int sendPosition(float position);
+        // int sendPodTemperature(float temp);
+        // int sendGroundProximity(float prox);
+        // int sendRailProximity(float prox);
+        // int batteryTemperature(float temp);
+        // int sendBatteryCurrent(float current);
+        // int sendBatteryVoltage(float volt);
+        // int sendAccum1(int status);
+        // int sendAccum2(int status);
+        // int sendPump1(int status);
+        // int sendPump2(int status);
         // void receiverThread();
 };

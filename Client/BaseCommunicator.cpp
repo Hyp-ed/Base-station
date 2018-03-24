@@ -46,10 +46,10 @@ BaseCommunicator :: ~BaseCommunicator()
 	close(sockfd);
 }
 
-int BaseCommunicator :: sendAcceleration(float accel)
+int BaseCommunicator :: sendDistance(float distance)
 {
     stringstream ss (stringstream::in | stringstream::out);
-    ss << accel;
+    ss << distance;
 
     return sendData("CMD01" + ss.str() + "\n");
 }
@@ -62,6 +62,55 @@ int BaseCommunicator :: sendVelocity(float speed)
     return sendData("CMD02" + ss.str() + "\n");
 }
 
+int BaseCommunicator :: sendAcceleration(float accel)
+{
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << accel;
+
+    return sendData("CMD03" + ss.str() + "\n");
+}
+
+int BaseCommunicator :: sendStripeCount(int stripes)
+{
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << stripes;
+
+    return sendData("CMD04" + ss.str() + "\n");
+}
+
+int BaseCommunicator :: sendRpmFl(float rpmfl)
+{
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << stripes;
+
+    return sendData("CMD05" + ss.str() + "\n");
+}
+
+int BaseCommunicator :: sendRpmFr(float rpmfr)
+{
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << stripes;
+
+    return sendData("CMD06" + ss.str() + "\n");
+}
+
+int BaseCommunicator :: sendRpmBl(float rpmbl)
+{
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << stripes;
+
+    return sendData("CMD07" + ss.str() + "\n");
+}
+
+int BaseCommunicator :: sendRpmBr(float rpmbr)
+{
+    stringstream ss (stringstream::in | stringstream::out);
+    ss << stripes;
+
+    return sendData("CMD08" + ss.str() + "\n");
+}
+
+/*
 int BaseCommunicator :: sendPosition(float position)
 {
     stringstream ss (stringstream::in | stringstream::out);
@@ -76,22 +125,6 @@ int BaseCommunicator :: sendPodTemperature(float temp)
     ss << temp;
 
     return sendData("CMD04" + ss.str() + "\n");
-}
-
-int BaseCommunicator :: sendStripeCount(int stripes)
-{
-    stringstream ss (stringstream::in | stringstream::out);
-    ss << stripes;
-
-    return sendData("CMD05" + ss.str() + "\n");
-}
-
-int BaseCommunicator :: sendDistance(float distance)
-{
-    stringstream ss (stringstream::in | stringstream::out);
-    ss << distance;
-
-    return sendData("CMD06" + ss.str() + "\n");
 }
 
 int BaseCommunicator :: sendGroundProximity(float prox)
@@ -165,6 +198,7 @@ int BaseCommunicator :: sendPump2(int status)
 
     return sendData("CMD15" + ss.str() + "\n");
 }
+*/
 
 int BaseCommunicator :: sendData(string message)
 {
@@ -179,22 +213,24 @@ int BaseCommunicator :: sendData(string message)
     return atoi(buffer);
 }
 
-// // Thread must be declared and joined within calling code.
-// void BaseCommunicator :: receiverThread()
-// {
-// 	while (true)
-// 	{
-// 		n = read(sockfd, buffer, 255);
-// 		int command = atoi(buffer);
-//
-// 		switch (command)
-// 		{
-// 			case 1:
-//                 printf("ECHO message (1) received.\n");
-// 				// Do nothing, 1 represents echo message
-// 				break;
-// 			case 2:
-// 				printf("READY TO LAUNCH\n");
-// 		}
-// 	}
-// }
+/*
+// Thread must be declared and joined within calling code.
+void BaseCommunicator :: receiverThread()
+{
+	while (true)
+	{
+		n = read(sockfd, buffer, 255);
+		int command = atoi(buffer);
+
+		switch (command)
+		{
+			case 1:
+                printf("ECHO message (1) received.\n");
+				// Do nothing, 1 represents echo message
+				break;
+			case 2:
+				printf("READY TO LAUNCH\n");
+		}
+	}
+}
+*/
