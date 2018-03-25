@@ -1,0 +1,43 @@
+Main.java - launches the GUI and the Server
+BaseCommunicator.cpp and BaseCommunicator.hpp - contains all the Client code
+test.cpp - uses BaseCommunicator functions to send some dummy data to the Server
+DummyClient.java - class I wrote in java to test the send and receive functionality of the Server
+
+/*
+How to test the Server with the C++ Client 
+*/
+
+1.Run the Main.java located in Base-station\Server\src\view\main = javac Main.java
+2.Compile and run the test.cpp in Base-station\Client
+
+Expected output: 
+The ff values are printed to logs
+distance: 6546
+velocity: 564
+acceleration: 584
+stripe count: 964
+
+/*
+How to test the Server with the Dummy client Client 
+*/
+
+1.Execute the Main.java located in Base-station\Server\src\view\main = javac Main.java
+2.Run the DummyClient.java located in Base-station\Server\src = javac DummyClient.java
+Note - Dummy Client has code for two tests A and B. To use either you can comment out one and run the class. 
+The relevant sections are commented clearly
+
+Expected output(A): 
+The ff values are printed to logs
+distance: 60
+velocity: 60
+acceleration: 60
+stripe count: 60
+rpm fl: 60
+rpm fr: 60
+rpm bl: 60
+rpm br: 60
+
+Expected output(B):
+When a button is pressed on the GUI the ff output is produced in the logs of the DummyClient
+Received [x] from Server
+

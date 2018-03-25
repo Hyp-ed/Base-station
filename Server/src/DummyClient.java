@@ -17,7 +17,8 @@ public class DummyClient {
         System.out.println("Client request connection with server with server address: " + serverAddress + " at port number: " + PORT);
         Socket podSocket = new Socket(serverAddress, PORT);
 
-        /*while (true) {
+        //A: Receive test
+        while (true) {
             BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
             String confirmation = input.readLine();
             PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
@@ -36,9 +37,11 @@ public class DummyClient {
 
                 break;
             }
-        }*/
+        }
+        //End of A
 
-        BufferedReader serverBuffer = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
+        //B: Send test
+        /*BufferedReader serverBuffer = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
         while (true) {
             String confirmation = serverBuffer.readLine();
             if (confirmation.equals(Server.ACK_FROM_SERVER)) {
@@ -50,6 +53,7 @@ public class DummyClient {
                     }
                 }
             }
-        }
+        }*/
+        //End of B
     }
 }
