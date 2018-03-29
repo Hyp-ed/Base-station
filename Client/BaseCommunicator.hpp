@@ -20,6 +20,8 @@ class BaseCommunicator
 
     public:
         BaseCommunicator();
+        BaseCommunicator(char* ip);
+        bool setUp();
         ~BaseCommunicator();
         int sendDistance(float distance); // CMD01
         int sendVelocity(float speed); // CMD02
