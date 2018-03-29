@@ -36,8 +36,8 @@
           <left>
             <AnchorPane prefHeight="431.0" prefWidth="797.0">
                <children>
-                  <JFXTabPane prefHeight="431.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <tabs>
+                  <TabPane prefHeight="431.0" prefWidth="792.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <tabs>
                         <Tab text="Dashboard">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -150,8 +150,8 @@
                                  </children></AnchorPane>
                           </content>
                         </Tab>
-                     </tabs>
-                  </JFXTabPane>
+                    </tabs>
+                  </TabPane>
                </children>
             </AnchorPane>
           </left>
