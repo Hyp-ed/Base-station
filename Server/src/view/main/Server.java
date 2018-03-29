@@ -12,7 +12,7 @@ public class Server extends Thread {
 
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 3000;
-    public static final String ACK_FROM_SERVER = "1";
+    public static final int ACK_FROM_SERVER = 4;
 
     private ServerSocket serverSocket;
     private Socket podSocket;
@@ -99,7 +99,7 @@ public class Server extends Thread {
             }
     }
 
-    public void sendToPod(String message) {
+    public void sendToPod(int message) {
         if (podSocket == null) {
             System.out.println("ERROR: no pod found");
             return;

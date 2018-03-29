@@ -39,19 +39,19 @@ public class MainController {
     }
 
     private void handleBtnStop() {
-        server.sendToPod("STOP");
+        server.sendToPod(1);
     }
 
 
 
     private void handleBtnKillPower() {
-        server.sendToPod("KILL POWER");
+        server.sendToPod(2);
     }
 
 
 
     private void handleBtnLaunch() {
-        server.sendToPod("LAUNCH");
+        server.sendToPod(3);
     }
 
 }
