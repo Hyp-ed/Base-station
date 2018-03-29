@@ -40,7 +40,7 @@
 
 /*TablPane styling*/
 .tab{
-    -fx-background-color: -fx-primary;
+
     -fx-pref-width : 350;
     -fx-pref-height : 60;
 
@@ -58,6 +58,12 @@
 .slider .track {
     -fx-control-inner-background: -fx-secondary;
 }
+
+/* Textfield style*/
+
+.text-input {
+    -fx-text-fill: -fx-secondary;
+    }
 
 /*Menu bar Styling*/
 .menu-bar{

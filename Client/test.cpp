@@ -4,6 +4,7 @@ int main()
 {
     // std :: thread (receiverThread);
 
+
     BaseCommunicator baseCommunicator; // eg. baseCommunicator((char *) "127.0.0.1");
     baseCommunicator.setUp();
 
