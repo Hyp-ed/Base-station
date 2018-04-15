@@ -2,6 +2,7 @@ package view.main;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 import java.util.logging.Logger;
 
@@ -18,7 +19,8 @@ public class MainController {
     @FXML
     private Button btnLaunch;
 
-  
+    @FXML
+    private Label velocityLabel;
 
     @FXML
     public void initialize() {
@@ -52,6 +54,10 @@ public class MainController {
 
     private void handleBtnLaunch() {
         server.sendToPod(3);
+    }
+
+    private void printVelocity(int a) {
+        velocityLabel.setText(Integer.toString(a));
     }
 
 }
