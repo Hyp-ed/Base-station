@@ -1,5 +1,6 @@
 package view.main;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,32 +33,36 @@ public class MainController {
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
     }
 
-    private final Server server;
-
-    public MainController() {
-        System.out.println("Called MainController.MainController");
-        server = new Server();
-        server.start();
-    }
-
+//    private final Server server;
+//
+//    public MainController() {
+//        System.out.println("Called MainController.MainController");
+//        server = new Server();
+//        server.start();
+//        Platform.runLater(() -> printVelocity(server.distance));
+//
+//    }
+//
     private void handleBtnStop() {
-        server.sendToPod(1);
+        System.out.println("STOP");
     }
 
 
 
     private void handleBtnKillPower() {
-        server.sendToPod(2);
+        //server.sendToPod(2);
+        System.out.println("KILL");
     }
 
 
 
     private void handleBtnLaunch() {
-        server.sendToPod(3);
+        //server.sendToPod(3);
+        System.out.println("LAUNCH");
     }
 
-    private void printVelocity(int a) {
-        velocityLabel.setText(Integer.toString(a));
+    public void printVelocity(double a) {
+        velocityLabel.setText(Double.toString(a));
     }
 
 }
