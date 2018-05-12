@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -17,7 +10,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -27,14 +19,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="464.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
+<?import eu.hansolo.medusa.Gauge?>
+<StackPane prefHeight="502.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="464.0" prefWidth="792.0">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
           <stylesheets>
               <URL value="@/view/css/stylesheet.css" />
           </stylesheets>
           <left>
-            <AnchorPane prefHeight="431.0" prefWidth="797.0">
+            <AnchorPane prefHeight="469.0" prefWidth="792.0">
                <children>
                   <JFXTabPane prefHeight="431.0" prefWidth="792.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <tabs>
@@ -44,19 +37,93 @@
                                  <children>
                                       <VBox alignment="CENTER_LEFT" prefHeight="396.0" prefWidth="791.0" spacing="4.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                           <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
+                                                    <children>
+                                                        <Gauge fx:id="gaugeVelocity"
+                                                               alert="true"
+                                                               alertMessage="Almost full"
+                                                               animated="true"
+                                                               areaTextVisible="true"
+                                                               lcdFont="ELEKTRA"
+                                                               skinType="SPACE_X"
+                                                               decimals="0"
+                                                               maxValue="10000"
+                                                               unit="m/s"
+                                                               title="Velocity"
+                                                               barColor="#FFFF8D"
+                                                               thresholdColor="#B2B2B2"
+                                                               value="3000" />
+
+                                                    </children>
+                                                    <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="80.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </VBox>
+                                                <VBox prefHeight="100.0" prefWidth="133.0">
+                                                    <children>
+                                                        <Gauge fx:id="gaugeAccel"
+                                                               alert="true"
+                                                               alertMessage="Almost full"
+                                                               animated="true"
+                                                               areaTextVisible="true"
+                                                               lcdFont="ELEKTRA"
+                                                               skinType="SPACE_X"
+                                                               decimals="0"
+                                                               maxValue="10000"
+                                                               unit="m/s2"
+                                                               title="Acceleration"
+                                                               barColor="#FFFF8D"
+                                                               thresholdColor="#B2B2B2"
+                                                               value="3000" />
+
+                                                    </children>
+                                                </VBox>
+                                                <VBox prefHeight="100.0" prefWidth="133.0">
+                                                    <children>
+                                                        <Gauge fx:id="gaugeDistance"
+                                                               alert="true"
+                                                               alertMessage="Almost full"
+                                                               animated="true"
+                                                               areaTextVisible="true"
+                                                               lcdFont="ELEKTRA"
+                                                               skinType="SPACE_X"
+                                                               decimals="0"
+                                                               maxValue="10000"
+                                                               unit="m"
+                                                               title="Distance"
+                                                               barColor="#FFFF8D"
+                                                               thresholdColor="#B2B2B2"
+                                                               value="3000" />
+                                                    </children>
+                                                    <padding>
+                                                      <Insets left="80.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding></HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
                                              <children>
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="50.0" startX="-80.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-80.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="VELOCITY">
                                                          <font>
-                                                            <Font name="Open Sans" size="15.0" />
+                                                            <Font size="10.0" />
                                                          </font>
                                                       </Label>
                                                       <Label fx:id="velocityLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
-                                                            <Font name="Open Sans" size="42.0" />
+                                                            <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
                                                             <Insets left="80.0" />
@@ -72,15 +139,15 @@
                                                 </VBox>
                                                 <VBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="50.0" startX="-80.0" stroke="WHITE" />
+                                                      <Line endX="20.0" startX="-80.0" stroke="WHITE" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="ACCEL">
                                                          <font>
-                                                            <Font name="Open Sans" size="15.0" />
+                                                            <Font size="10.0" />
                                                          </font>
                                                       </Label>
                                                       <Label alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
-                                                            <Font name="Open Sans" size="42.0" />
+                                                            <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
                                                             <Insets left="80.0" />
@@ -90,15 +157,36 @@
                                                 </VBox>
                                                 <VBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="50.0" startX="-80.0" stroke="WHITE" />
+                                                      <Line endX="20.0" startX="-80.0" stroke="WHITE" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="DISTANCE">
                                                          <font>
-                                                            <Font name="Open Sans" size="15.0" />
+                                                            <Font size="10.0" />
                                                          </font>
                                                       </Label>
                                                       <Label alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
-                                                            <Font name="Open Sans" size="42.0" />
+                                                            <Font size="24.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets left="80.0" />
+                                                         </VBox.margin>
+                                                      </Label>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets left="80.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox layoutX="473.0" layoutY="30.0" prefHeight="100.0" prefWidth="133.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-80.0" stroke="WHITE" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STRIPE">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                         <font>
+                                                            <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
                                                             <Insets left="80.0" />
@@ -117,7 +205,6 @@
                                                 <Insets top="20.0" />
                                              </padding>
                                           </HBox>
-                                          <HBox prefHeight="100.0" prefWidth="200.0" />
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
                                                 <Slider prefHeight="18.0" prefWidth="749.0" />
@@ -134,6 +221,15 @@
                                                    <HBox.margin>
                                                       <Insets left="80.0" />
                                                    </HBox.margin></Button>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                                             <children>
+                                                <AnchorPane fx:id="batteryPane" prefHeight="50.0" prefWidth="200.0">
+                                                    <children>
+
+                                                    </children>
+                                                </AnchorPane>
                                              </children>
                                           </HBox>
                                           </children>
