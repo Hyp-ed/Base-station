@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import java.io.InputStreamReader;
 
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 
 import java.net.Socket;
@@ -42,8 +43,10 @@ public class Server {
 
     private final Logger logger ;
 
+    private Socket socket;
 
 
+    //declar speed property
     private final DoubleProperty speed = new SimpleDoubleProperty(this,
 
             "speed", 0);
@@ -121,7 +124,7 @@ public class Server {
     }
 
 
-
+    //listen for connection attempt and accept. Send handshake.
     public void startListening() throws IOException {
 
         Callable<Void> connectionListener = () -> {
@@ -138,7 +141,8 @@ public class Server {
 
                     logger.info( "Waiting for connection from pod:");
 
-                    Socket socket = serverSocket.accept();
+                    socket = serverSocket.accept();
+                    sendHandshakeToPod();
 
                     logger.info( "Connection accepted from " + socket.getInetAddress());
 
@@ -169,7 +173,7 @@ public class Server {
     }
 
 
-
+    //read over the socket and process data
     private void handleConnection(Socket socket) {
 
         Callable<Void> connectionHandler = () -> {
@@ -201,7 +205,7 @@ public class Server {
     }
 
 
-
+    //if velocity has been received then speed property is set to this value
     private void processLine(String line) {
 
         if (line.substring(0, 5) == "CMD01") {
@@ -219,7 +223,21 @@ public class Server {
         }
 
     }
+    public void sendHandshakeToPod() {
+        if (socket == null) {
+           System.out.println("ERROR: no pod found");
+            return;
+        }
 
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(socket.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        printWriter.println(1);
+        printWriter.flush();
+    }
 
 
 }

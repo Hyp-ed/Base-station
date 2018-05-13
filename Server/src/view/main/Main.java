@@ -21,6 +21,7 @@ public class Main extends Application {
 
         servr = new Server();
 
+        //listen for changes to speed property and updates velocity label
         servr.speedProperty().addListener((obs, oldSpeed, newSpeed) -> {
 
             // update controller on FX Application Thread:
