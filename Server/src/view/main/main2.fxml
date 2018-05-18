@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import eu.hansolo.medusa.Gauge?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -19,7 +20,6 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<?import eu.hansolo.medusa.Gauge?>
 <StackPane prefHeight="502.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
@@ -41,76 +41,34 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeVelocity"
-                                                               alert="true"
-                                                               alertMessage="Almost full"
-                                                               animated="true"
-                                                               areaTextVisible="true"
-                                                               lcdFont="ELEKTRA"
-                                                               skinType="SPACE_X"
-                                                               decimals="0"
-                                                               maxValue="10000"
-                                                               unit="m/s"
-                                                               title="Velocity"
-                                                               barColor="#FFFF8D"
-                                                               thresholdColor="#B2B2B2"
-                                                               value="3000" />
+                                                        <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="10000" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Velocity" unit="m/s" value="3000">
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin></Gauge>
 
                                                     </children>
                                                     <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
-                                                   <padding>
-                                                      <Insets right="80.0" />
-                                                   </padding>
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
                                                 </VBox>
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeAccel"
-                                                               alert="true"
-                                                               alertMessage="Almost full"
-                                                               animated="true"
-                                                               areaTextVisible="true"
-                                                               lcdFont="ELEKTRA"
-                                                               skinType="SPACE_X"
-                                                               decimals="0"
-                                                               maxValue="10000"
-                                                               unit="m/s2"
-                                                               title="Acceleration"
-                                                               barColor="#FFFF8D"
-                                                               thresholdColor="#B2B2B2"
-                                                               value="3000" />
+                                                        <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="10000" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Acceleration" unit="m/s2" value="3000" />
 
                                                     </children>
                                                 </VBox>
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeDistance"
-                                                               alert="true"
-                                                               alertMessage="Almost full"
-                                                               animated="true"
-                                                               areaTextVisible="true"
-                                                               lcdFont="ELEKTRA"
-                                                               skinType="SPACE_X"
-                                                               decimals="0"
-                                                               maxValue="10000"
-                                                               unit="m"
-                                                               title="Distance"
-                                                               barColor="#FFFF8D"
-                                                               thresholdColor="#B2B2B2"
-                                                               value="3000" />
+                                                        <Gauge fx:id="gaugeDistance" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="10000" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Distance" unit="m" value="3000" />
                                                     </children>
-                                                    <padding>
-                                                      <Insets left="80.0" />
-                                                   </padding>
                                                 </VBox>
                                              </children>
-                                             <padding>
-                                                <Insets top="20.0" />
-                                             </padding></HBox>
+                                             <VBox.margin>
+                                                <Insets top="40.0" />
+                                             </VBox.margin></HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
                                              <children>
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
@@ -121,12 +79,12 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="velocityLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="velocityLabel" alignment="CENTER_RIGHT" prefWidth="40.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
-                                                            <Insets left="80.0" />
+                                                            <Insets left="70.0" />
                                                          </VBox.margin>
                                                       </Label>
                                                    </children>
@@ -150,7 +108,7 @@
                                                             <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
-                                                            <Insets left="80.0" />
+                                                            <Insets left="70.0" />
                                                          </VBox.margin>
                                                       </Label>
                                                    </children>
@@ -168,7 +126,7 @@
                                                             <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
-                                                            <Insets left="80.0" />
+                                                            <Insets left="70.0" />
                                                          </VBox.margin>
                                                       </Label>
                                                    </children>
@@ -189,7 +147,7 @@
                                                             <Font size="24.0" />
                                                          </font>
                                                          <VBox.margin>
-                                                            <Insets left="80.0" />
+                                                            <Insets left="70.0" />
                                                          </VBox.margin>
                                                       </Label>
                                                    </children>
@@ -202,7 +160,7 @@
                                                 <Insets />
                                              </VBox.margin>
                                              <padding>
-                                                <Insets top="20.0" />
+                                                <Insets top="40.0" />
                                              </padding>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -225,7 +183,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                                              <children>
-                                                <AnchorPane fx:id="batteryPane" prefHeight="50.0" prefWidth="200.0">
+                                                <AnchorPane fx:id="sensorPane" prefHeight="50.0" prefWidth="200.0">
                                                     <children>
 
                                                     </children>
@@ -240,9 +198,14 @@
                         </Tab>
                         <Tab text="Logs">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
                                  <children>
-                                    <TextField layoutX="41.0" layoutY="116.0" prefHeight="364.0" prefWidth="792.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <AnchorPane fx:id="batteryPane" prefHeight="50.0" prefWidth="200.0">
+                                        <children>
+                                            <Gauge fx:id="battery" barColor="#FFFF8D" maxValue="10000" prefHeight="90.0" prefWidth="200.0" skinType="BATTERY" value="3000" AnchorPane.bottomAnchor="-40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        </children>
+                                     </AnchorPane>
+                                    <TextField layoutX="41.0" layoutY="81.0" prefHeight="353.0" prefWidth="792.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0" />
                                  </children></AnchorPane>
                           </content>
                         </Tab>

@@ -56,51 +56,51 @@ public class Server extends Thread {
             switch(data.substring(0, 5)) {
                 case "CMD01":
 
-                    distance = (int) Math.round(Double.parseDouble(data.substring(5)));
+                    distance = (int) Double.parseDouble(data.substring(5));
                     System.out.println("distance: " + distance);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD02":
 
                     velocity = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("velocity: " + velocity);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD03":
 
                     acceleration = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("acceleration: " + acceleration);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD04":
 
                     stripe_count = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("stripe count: " + stripe_count);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD05":
 
                     rpm_fl = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm fl: " + rpm_fl);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD06":
 
                     rpm_fr = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm fr: " + rpm_fr);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD07":
 
                     rpm_bl = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm bl: " + rpm_bl);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
                 case "CMD08":
 
                     rpm_br = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm br: " + rpm_br);
-                    sendHandshakeToPod();
+                    //sendHandshakeToPod();
                     break;
             }
                 //sendToSpaceX();
@@ -124,21 +124,22 @@ public class Server extends Thread {
         printWriter.flush();
     }
 
-    public void sendHandshakeToPod() {
-        if (podSocket == null) {
-            System.out.println("ERROR: no pod found");
-            return;
-        }
-
-        PrintWriter printWriter = null;
-        try {
-            printWriter = new PrintWriter(podSocket.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        printWriter.println(1);
-        printWriter.flush();
-    }
+//    public void sendHandshakeToPod() {
+//        if (podSocket == null) {
+//            System.out.println("ERROR: no pod found");
+//            return;
+//        }
+//
+//        PrintWriter printWriter = null;
+//        try {
+//            printWriter = new PrintWriter(podSocket.getOutputStream());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        printWriter.println(1);
+//        printWriter.flush();
+//        System.out.println("hand");
+//    }
 
     public static void sendToSpaceX(byte status, byte team_id,
                                     int acceleration, int position, int velocity) {
