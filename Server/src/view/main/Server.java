@@ -16,6 +16,8 @@ public class Server extends Thread {
 
     private ServerSocket serverSocket;
     private Socket podSocket;
+    private PrintWriter printWriter;
+    private Scanner scanner;
 
     public Server() {
         try {
@@ -28,98 +30,87 @@ public class Server extends Thread {
     @Override
     public void run() {
         System.out.println("Awaiting connection from pod...");
+
         try {
             podSocket = serverSocket.accept();
+            scanner = new Scanner(podSocket.getInputStream());
+            printWriter = new PrintWriter(podSocket.getOutputStream());
             sendToPod(ACK_FROM_SERVER);
             startCommunication();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            scanner.close();
+            printWriter.close();
         }
-
     }
 
-    private void startCommunication() throws IOException {
-        Scanner is = new Scanner(podSocket.getInputStream());
-        PrintWriter os = new PrintWriter(podSocket.getOutputStream());
+    private void startCommunication() {
+        if (podSocket == null) {
+            System.err.println("ERROR: NO POD SOCKET");
+            // TODO: exit system
+        }
 
-        int distance = 0, velocity = 0, acceleration = 0,
-                stripe_count = 0, rpm_fl = 0,
-                rpm_fr = 0, rpm_br = 0, rpm_bl;
+        int distance, velocity, acceleration, stripe_count,
+                rpm_fl, rpm_fr, rpm_br, rpm_bl;
+        String data;
 
-        while (true) {
-            if (!is.hasNext()) {
-                continue;
-            }
-
-            String data = is.nextLine();
+        while (scanner.hasNext()) {
+            data = scanner.nextLine();
 
             switch(data.substring(0, 5)) {
                 case "CMD01":
-
                     distance = (int) Double.parseDouble(data.substring(5));
                     System.out.println("distance: " + distance);
                     //sendHandshakeToPod();
                     break;
                 case "CMD02":
-
                     velocity = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("velocity: " + velocity);
                     //sendHandshakeToPod();
                     break;
                 case "CMD03":
-
                     acceleration = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("acceleration: " + acceleration);
                     //sendHandshakeToPod();
                     break;
                 case "CMD04":
-
                     stripe_count = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("stripe count: " + stripe_count);
                     //sendHandshakeToPod();
                     break;
                 case "CMD05":
-
                     rpm_fl = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm fl: " + rpm_fl);
                     //sendHandshakeToPod();
                     break;
                 case "CMD06":
-
                     rpm_fr = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm fr: " + rpm_fr);
                     //sendHandshakeToPod();
                     break;
                 case "CMD07":
-
                     rpm_bl = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm bl: " + rpm_bl);
                     //sendHandshakeToPod();
                     break;
                 case "CMD08":
-
                     rpm_br = (int) Math.round(Double.parseDouble(data.substring(5)));
                     System.out.println("rpm br: " + rpm_br);
                     //sendHandshakeToPod();
                     break;
             }
-                //sendToSpaceX();
-            }
+            //sendToSpaceX();
+        }
     }
 
     public void sendToPod(int message) {
         if (podSocket == null) {
-            System.out.println("ERROR: no pod found");
-            return;
+            System.err.println("ERROR: NO POD SOCKET");
+            // TODO: exit system
         }
 
         System.out.println(String.format("Sending %s to pod", message));
-        PrintWriter printWriter = null;
-        try {
-            printWriter = new PrintWriter(podSocket.getOutputStream());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         printWriter.println(message);
         printWriter.flush();
     }
