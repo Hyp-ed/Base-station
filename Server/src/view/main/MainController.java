@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.awt.desktop.SystemEventListener;
 import java.util.logging.Logger;
 
 public class MainController {
@@ -41,22 +42,20 @@ public class MainController {
     }
 
     private void handleBtnStop() {
+
+        System.out.println("Stop command sent");
         server.sendToPod(1);
     }
-
-
 
     private void handleBtnKillPower() {
         server.sendToPod(2);
     }
 
-
-
     private void handleBtnLaunch() {
         server.sendToPod(3);
     }
 
-    private void printVelocity(int a) {
+    void printVelocity(int a) {
         velocityLabel.setText(Integer.toString(a));
     }
 
