@@ -1,5 +1,8 @@
 package view.main;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.*;
@@ -18,6 +21,11 @@ public class Server extends Thread {
     private Socket podSocket;
     private PrintWriter printWriter;
     private Scanner scanner;
+
+
+    int distance, velocity, acceleration, stripe_count,
+            rpm_fl, rpm_fr, rpm_br, rpm_bl;
+    String data;
 
     public Server() {
         try {
@@ -51,52 +59,93 @@ public class Server extends Thread {
             // TODO: exit system
         }
 
-        int distance, velocity, acceleration, stripe_count,
-                rpm_fl, rpm_fr, rpm_br, rpm_bl;
-        String data;
+//        int distance, velocity, acceleration, stripe_count,
+//                rpm_fl, rpm_fr, rpm_br, rpm_bl;
+//        String data;
 
         while (scanner.hasNext()) {
             data = scanner.nextLine();
 
             switch(data.substring(0, 5)) {
                 case "CMD01":
-                    distance = (int) Double.parseDouble(data.substring(5));
-                    System.out.println("distance: " + distance);
+                    if(data.substring(5).equals("-nan")){
+                        distance = 0;
+                        System.out.println("distance: nan");
+                    }else {
+                        distance = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("distance: " + distance);
+                    }
 
                     break;
                 case "CMD02":
-                    velocity = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("velocity: " + velocity);
+                    if(data.substring(5).equals("-nan")){
+                        velocity = 0;
+                        System.out.println("velocity: nan");
+                    }else {
+                        velocity = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("velocity: " + velocity);
+                    }
 
                     break;
                 case "CMD03":
-                    acceleration = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("acceleration: " + acceleration);
+                    if(data.substring(5).equals("-nan")){
+                        acceleration = 0;
+                        System.out.println("acceleration: nan");
+                    }else {
+                        acceleration = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("acceleration: " + acceleration);
+                    }
 
                     break;
                 case "CMD04":
-                    stripe_count = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("stripe count: " + stripe_count);
+                    if(data.substring(5).equals("-nan")){
+                        stripe_count = 0;
+                        System.out.println("stripe count: nan");
+                    }else {
+                        stripe_count = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("stripe count: " + stripe_count);
+                    }
 
                     break;
                 case "CMD05":
-                    rpm_fl = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("rpm fl: " + rpm_fl);
+                    if(data.substring(5).equals("-nan")){
+                        rpm_fl = 0;
+                        System.out.println("rpm fl: nan");
+                    }else {
+                        rpm_fl = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("rpm fl: " + rpm_fl);
+                    }
 
                     break;
                 case "CMD06":
-                    rpm_fr = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("rpm fr: " + rpm_fr);
+                    if(data.substring(5).equals("-nan")){
+                        rpm_fr = 0;
+                        System.out.println("rpm fr: nan");
+                    }else {
+                        rpm_fr = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("rpm fr: " + rpm_fr);
+                    }
 
                     break;
                 case "CMD07":
-                    rpm_bl = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("rpm bl: " + rpm_bl);
+                    if(data.substring(5).equals("-nan")){
+                        rpm_bl = 0;
+                        System.out.println("rpm bl: nan");
+                    }else {
+                        rpm_bl = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("rpm bl: " + rpm_bl);
+                    }
+
 
                     break;
                 case "CMD08":
-                    rpm_br = (int) Math.round(Double.parseDouble(data.substring(5)));
-                    System.out.println("rpm br: " + rpm_br);
+                    if(data.substring(5).equals("-nan")){
+                        rpm_br = 0;
+                        System.out.println("rpm br: nan");
+                    }else {
+                        rpm_br = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("rpm br: " + rpm_br);
+                    }
 
                     break;
             }

@@ -205,7 +205,7 @@
                                             <Gauge fx:id="battery" barColor="#FFFF8D" maxValue="10000" prefHeight="90.0" prefWidth="200.0" skinType="BATTERY" value="3000" AnchorPane.bottomAnchor="-40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                      </AnchorPane>
-                                    <TextField layoutX="41.0" layoutY="81.0" prefHeight="353.0" prefWidth="792.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0" />
+                                    <TextField fx:id="logField" layoutX="41.0" layoutY="81.0" prefHeight="353.0" prefWidth="792.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0" />
                                  </children></AnchorPane>
                           </content>
                         </Tab>
