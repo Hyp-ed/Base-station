@@ -21,15 +21,17 @@ public class Server extends Thread {
     private Socket podSocket;
     private PrintWriter printWriter;
     private Scanner scanner;
+    private MainController mainController;
 
 
     int distance, velocity, acceleration, stripe_count,
             rpm_fl, rpm_fr, rpm_br, rpm_bl;
     String data;
 
-    public Server() {
+    public Server(MainController controller) {
         try {
             serverSocket = new ServerSocket(PORT);
+            this.mainController = controller;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,10 +61,6 @@ public class Server extends Thread {
             // TODO: exit system
         }
 
-//        int distance, velocity, acceleration, stripe_count,
-//                rpm_fl, rpm_fr, rpm_br, rpm_bl;
-//        String data;
-
         while (scanner.hasNext()) {
             data = scanner.nextLine();
 
@@ -75,6 +73,7 @@ public class Server extends Thread {
                         distance = (int) Double.parseDouble(data.substring(5));
                         System.out.println("distance: " + distance);
                     }
+                    mainController.setDistanceLabel(distance);
 
                     break;
                 case "CMD02":
@@ -85,6 +84,7 @@ public class Server extends Thread {
                         velocity = (int) Double.parseDouble(data.substring(5));
                         System.out.println("velocity: " + velocity);
                     }
+                    mainController.setVelocityLabel(velocity);
 
                     break;
                 case "CMD03":
@@ -95,6 +95,7 @@ public class Server extends Thread {
                         acceleration = (int) Double.parseDouble(data.substring(5));
                         System.out.println("acceleration: " + acceleration);
                     }
+                    mainController.setAccelerationLabel(acceleration);
 
                     break;
                 case "CMD04":
@@ -105,6 +106,7 @@ public class Server extends Thread {
                         stripe_count = (int) Double.parseDouble(data.substring(5));
                         System.out.println("stripe count: " + stripe_count);
                     }
+                    mainController.setStripeLabel(Integer.toString(stripe_count));
 
                     break;
                 case "CMD05":

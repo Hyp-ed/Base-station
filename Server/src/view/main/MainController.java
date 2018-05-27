@@ -1,5 +1,6 @@
 package view.main;
 
+import eu.hansolo.medusa.Gauge;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,8 +10,6 @@ import java.awt.desktop.SystemEventListener;
 import java.util.logging.Logger;
 
 public class MainController {
-
-    private static final Logger LOGGER = Logger.getLogger(MainController.class.getSimpleName());
 
     @FXML
     private Button btnStop;
@@ -22,8 +21,16 @@ public class MainController {
     private Button btnLaunch;
 
     @FXML
-    private Label velocityLabel;
+    private Label stripeLabel;
 
+    @FXML
+    private Gauge gaugeDistance;
+
+    @FXML
+    private Gauge gaugeAccel;
+
+    @FXML
+    Gauge gaugeVelocity;
 
     @FXML
     public void initialize() {
@@ -39,7 +46,7 @@ public class MainController {
 
     public MainController() {
         System.out.println("Called MainController.MainController");
-        server = new Server();
+        server = new Server(this);
         server.start();
     }
 
@@ -58,8 +65,20 @@ public class MainController {
         server.sendToPod(3);
     }
 
-    void printVelocity(int a) {
-        velocityLabel.setText(Integer.toString(a));
+    public void setVelocityLabel(double velocity){
+        gaugeVelocity.setValue(velocity);
+    }
+
+    public void setDistanceLabel(double  distance){
+        gaugeDistance.setValue(distance);
+    }
+
+    public void setAccelerationLabel(double  accel){
+        gaugeAccel.setValue(accel);
+    }
+
+    public void setStripeLabel(String stripe){
+        stripeLabel.setText(stripe);
     }
 
 }

@@ -41,7 +41,7 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="10000" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Velocity" unit="m/s" value="3000">
+                                                        <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="250" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Velocity" unit="m/s" value="50">
                                                          <VBox.margin>
                                                             <Insets />
                                                          </VBox.margin></Gauge>
@@ -56,13 +56,13 @@
                                                 </VBox>
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="10000" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Acceleration" unit="m/s2" value="3000" />
+                                                        <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="250" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Acceleration" unit="m/s2" value="50" />
 
                                                     </children>
                                                 </VBox>
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeDistance" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="10000" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Distance" unit="m" value="3000" />
+                                                        <Gauge fx:id="gaugeDistance" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="250" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Distance" unit="m" value="50" />
                                                     </children>
                                                 </VBox>
                                              </children>
@@ -74,12 +74,12 @@
                                                 <VBox prefHeight="100.0" prefWidth="133.0">
                                                    <children>
                                                       <Line endX="20.0" startX="-80.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="VELOCITY">
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STRIPE">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="velocityLabel" alignment="CENTER_RIGHT" prefWidth="40.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="stripeLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -98,12 +98,12 @@
                                                 <VBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
                                                       <Line endX="20.0" startX="-80.0" stroke="WHITE" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="ACCEL">
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RPM FL">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="rpmflLabel" alignment="CENTER_RIGHT" prefHeight="35.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -116,12 +116,12 @@
                                                 <VBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
                                                       <Line endX="20.0" startX="-80.0" stroke="WHITE" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="DISTANCE">
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RPM FR">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="rpmfrLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -137,12 +137,12 @@
                                                 <VBox layoutX="473.0" layoutY="30.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
                                                       <Line endX="20.0" startX="-80.0" stroke="WHITE" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STRIPE">
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RPM BL">
                                                          <font>
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="rpmblLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>

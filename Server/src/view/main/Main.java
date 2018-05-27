@@ -17,7 +17,6 @@ import java.awt.event.ActionEvent;
 
 public class Main extends Application {
 
-    // Server servr;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
