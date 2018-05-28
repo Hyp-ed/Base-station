@@ -1,6 +1,7 @@
 package view.main;
 
 import eu.hansolo.medusa.Gauge;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -78,7 +79,13 @@ public class MainController {
     }
 
     public void setStripeLabel(String stripe){
-        stripeLabel.setText(stripe);
+
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                stripeLabel.setText(stripe);
+            }
+        });
+
     }
 
 }

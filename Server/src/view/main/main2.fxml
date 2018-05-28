@@ -79,7 +79,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="stripeLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="stripeLabel" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="35.0" prefWidth="53.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
