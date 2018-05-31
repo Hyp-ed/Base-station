@@ -13,6 +13,9 @@ import java.util.logging.Logger;
 public class MainController {
 
     @FXML
+    private TextField clock;
+
+    @FXML
     private Button btnStop;
 
     @FXML
@@ -23,6 +26,15 @@ public class MainController {
 
     @FXML
     private Label stripeLabel;
+
+    @FXML
+    private Label rpmflLabel;
+
+    @FXML
+    private Label rpmfrLabel;
+
+    @FXML
+    private Label rpmblLabel;
 
     @FXML
     private Gauge gaugeDistance;
@@ -83,6 +95,36 @@ public class MainController {
         Platform.runLater(new Runnable() {
             @Override public void run() {
                 stripeLabel.setText(stripe);
+            }
+        });
+
+    }
+
+    public void setRpmflLabel(String rpmfl){
+
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                rpmflLabel.setText(rpmfl);
+            }
+        });
+
+    }
+
+    public void setRpmfrLabel(String rpmfr){
+
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                rpmfrLabel.setText(rpmfr);
+            }
+        });
+
+    }
+
+    public void setRpmblLabel(String rpmbl){
+
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                rpmblLabel.setText(rpmbl);
             }
         });
 

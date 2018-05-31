@@ -1,5 +1,6 @@
 package view.main;
 
+import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 public class Server extends Thread {
 
     private static final int PORT = 5695;
-    private static final int SPACE_X_PORT = 3000;
+    private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 4;
 
     private ServerSocket serverSocket;
@@ -22,8 +23,9 @@ public class Server extends Thread {
     private PrintWriter printWriter;
     private Scanner scanner;
     private MainController mainController;
+    //private Timeline timeline = new Timeline();
 
-
+    int status = 1, team_id = 0;
     int distance, velocity, acceleration, stripe_count,
             rpm_fl, rpm_fr, rpm_br, rpm_bl;
     String data;
@@ -117,6 +119,7 @@ public class Server extends Thread {
                         rpm_fl = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm fl: " + rpm_fl);
                     }
+                    mainController.setRpmflLabel(Integer.toString(rpm_fl));
 
                     break;
                 case "CMD06":
@@ -127,6 +130,7 @@ public class Server extends Thread {
                         rpm_fr = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm fr: " + rpm_fr);
                     }
+                    mainController.setRpmfrLabel(Integer.toString(rpm_fr));
 
                     break;
                 case "CMD07":
@@ -137,7 +141,7 @@ public class Server extends Thread {
                         rpm_bl = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm bl: " + rpm_bl);
                     }
-
+                    mainController.setRpmblLabel(Integer.toString(rpm_bl));
 
                     break;
                 case "CMD08":
@@ -151,7 +155,7 @@ public class Server extends Thread {
 
                     break;
             }
-            //sendToSpaceX();
+            //sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
     }
 
@@ -166,23 +170,23 @@ public class Server extends Thread {
         printWriter.flush();
     }
 
-    public static void sendToSpaceX(byte status, byte team_id,
-                                    int acceleration, int position, int velocity) {
+    public static void sendToSpaceX(int status, int team_id,
+                                    int acceleration, int distance, int velocity) {
         try {
 
-            DatagramSocket spaceXSocket = new DatagramSocket(SPACE_X_PORT);
-            ByteBuffer buf = ByteBuffer.allocate(34); // BigEndian by default
-            buf.put(team_id);
-            buf.put(status);
+            DatagramSocket spaceXSocket = new DatagramSocket();
+            ByteBuffer buf = ByteBuffer.allocate(256); // BigEndian by default
+            buf.putInt(team_id);
+            buf.putInt(status);
             buf.putInt(acceleration);
-            buf.putInt(position);
+            buf.putInt(distance);
             buf.putInt(velocity);
             buf.putInt(0);
             buf.putInt(0);
             buf.putInt(0);
             buf.putInt(0);
             buf.putInt(0);
-            InetAddress IP =  InetAddress.getByName(/*_spaceXIP*/"192.168.1.163");
+            InetAddress IP =  InetAddress.getByName(/*_spaceXIP*/"localhost");
             DatagramPacket packet = new DatagramPacket(buf.array(), buf.limit(),
                     IP, SPACE_X_PORT);
             spaceXSocket.send(packet);

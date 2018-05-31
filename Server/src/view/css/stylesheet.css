@@ -55,8 +55,23 @@
 }
 
 /* Slider style*/
-.slider .track {
-    -fx-control-inner-background: -fx-secondary;
+.jfx-slider .thumb{
+ -fx-background-image :url('file:C:/Users/Kofi/Documents/Base-station/Server/src/view/buttons.png');
+}
+
+.jfx-slider > .colored-track {
+     -fx-background-color: #FFFF8D;
+}
+
+.slider .axis { -fx-tick-label-fill: #B2B2B2; }
+
+.jfx-slider > .animated-thumb {
+     -fx-background-color: #B2B2B2;
+}
+
+.jfx-slider .slider-value {
+     -fx-fill: #FFFF8D;
+     -fx-stroke: #FFFF8D;
 }
 
 /* Textfield style*/

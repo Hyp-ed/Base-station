@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import eu.hansolo.medusa.Gauge?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="666.0" prefWidth="1236.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="666.0" prefWidth="1241.0">
+          <stylesheets>
+              <URL value="@/view/css/stylesheet.css" />
+          </stylesheets>
+          <left>
+            <AnchorPane prefHeight="633.0" prefWidth="1241.0">
+               <children>
+                  <HBox alignment="TOP_RIGHT" prefHeight="68.0" prefWidth="1242.0" style="-fx-background-color: #2A2E37;">
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Circle fill="#2a2e37" layoutX="77.0" layoutY="29.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Label layoutX="51.0" layoutY="46.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="TELEMETRY">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="batteryPane" prefHeight="50.0" prefWidth="200.0">
+                            <children>
+                                <Gauge fx:id="battery" barColor="#FFFF8D" layoutY="-8.0" maxValue="10000" prefHeight="71.0" prefWidth="200.0" skinType="BATTERY" value="3000" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-8.0" />
+                              <Label layoutX="81.0" layoutY="46.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="CHARGE">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                            </children>
+                         </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="73.0" layoutY="14.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE" underline="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="79.0" layoutY="44.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STATE">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+                  <JFXTabPane layoutX="-1.0" layoutY="68.0" prefHeight="559.0" prefWidth="890.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="68.0">
+                     <tabs>
+                        <Tab text="Dashboard">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                      <VBox alignment="CENTER_LEFT" prefHeight="396.0" prefWidth="791.0" spacing="4.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
+                                                    <children>
+                                                      <Line endX="20.0" startX="-350.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="POD">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                         <children>
+                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Acceleration" unit="m/s2" value="50" />
+                                                              <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="-24.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Velocity" unit="m/s" value="50" />
+                                                         </children>
+                                                      </AnchorPane>
+      
+                                                    </children>
+                                                    <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout1" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-350.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="BATTERY 1">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                         <children>
+                                                            <Gauge fx:id="gaugeAccel1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Temperature" unit="m/s2" value="50.0" />
+                                                            <Gauge fx:id="gaugeVelocity1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="-24.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Voltage" unit="m/s" value="50" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout11" layoutX="632.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-350.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="BATTERY 2">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                         <children>
+                                                            <Gauge fx:id="gaugeAccel12" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Temperature" unit="m/s2" value="50.0" />
+                                                            <Gauge fx:id="gaugeVelocity11" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="-24.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Voltage" unit="m/s" value="50" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="40.0" />
+                                             </VBox.margin></HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <VBox fx:id="vgaugeLayout1" prefHeight="142.0" prefWidth="790.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-750.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MOTORS">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                         <children>
+                                                            <Gauge fx:id="gaugeAccel1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="RPM FR" value="50" />
+                                                            <Gauge fx:id="gaugeVelocity1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="-24.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="RPM FL" value="50" />
+                                                            <Gauge fx:id="gaugeAccel11" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="423.0" layoutY="-2.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="RPM BL" value="50" />
+                                                            <Gauge fx:id="gaugeAccel111" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="613.0" layoutY="-2.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" thresholdColor="#B2B2B2" title="RPM BR" value="50" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout111" layoutX="641.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-350.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="EMERGENCY BRAKES">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                         <children>
+                                                            <Circle fill="#2a2e37" layoutX="94.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fill="#2a2e37" layoutX="233.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label layoutX="68.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                               <font>
+                                                                  <Font size="10.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="207.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                               <font>
+                                                                  <Font size="10.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </VBox>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="20.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="140.0" prefWidth="1242.0">
+                                             <children>
+                                                <JFXSlider prefHeight="14.0" prefWidth="1162.0" showTickLabels="true" showTickMarks="true" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                    <Button fx:id="btnLaunch" maxWidth="120.0" mnemonicParsing="false" text="Launch">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button fx:id="btnStop" mnemonicParsing="false" text="Stop">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                    <Button fx:id="btnKillPower" maxWidth="120.0" mnemonicParsing="false" text="Kill Power">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="Forward">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="Reverse" />
+                                             </children>
+                                          </HBox>
+                                          </children>
+                                      </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Test">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
+                                 <children>
+                                    <VBox prefHeight="529.6" prefWidth="1242.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" text="Button">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="Button">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="Button">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" text="Button" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </AnchorPane>
+          </left>
+          <right>
+    </right>
+         <top>
+            <MenuBar prefHeight="33.0" prefWidth="584.0" BorderPane.alignment="TOP_CENTER">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </top>
+      </BorderPane>
+   </children>
+</StackPane>

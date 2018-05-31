@@ -41,7 +41,7 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                        <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="250" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Velocity" unit="m/s" value="50">
+                                                        <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="DANGER" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" lcdFont="ELEKTRA" maxValue="250" skinType="SPACE_X" thresholdColor="#B2B2B2" title="Velocity" unit="m/s" value="50">
                                                          <VBox.margin>
                                                             <Insets />
                                                          </VBox.margin></Gauge>
@@ -79,7 +79,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="stripeLabel" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="35.0" prefWidth="53.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="stripeLabel" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -103,7 +103,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="rpmflLabel" alignment="CENTER_RIGHT" prefHeight="35.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="rpmflLabel" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -121,7 +121,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="rpmfrLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="rpmfrLabel" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -142,7 +142,7 @@
                                                             <Font size="10.0" />
                                                          </font>
                                                       </Label>
-                                                      <Label fx:id="rpmblLabel" alignment="CENTER_RIGHT" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
+                                                      <Label fx:id="rpmblLabel" alignment="CENTER_RIGHT" minWidth="-Infinity" prefHeight="35.0" prefWidth="40.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="50" textAlignment="RIGHT">
                                                          <font>
                                                             <Font size="24.0" />
                                                          </font>
@@ -165,7 +165,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Slider prefHeight="18.0" prefWidth="749.0" />
+                                                <Slider prefHeight="18.0" prefWidth="749.0" showTickLabels="true" showTickMarks="true" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -184,9 +184,9 @@
                                           <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                                              <children>
                                                 <AnchorPane fx:id="sensorPane" prefHeight="50.0" prefWidth="200.0">
-                                                    <children>
-
-                                                    </children>
+                                                   <children>
+                                                      <TextField fx:id="clock" layoutX="25.0" layoutY="1.0" />
+                                                   </children>
                                                 </AnchorPane>
                                              </children>
                                           </HBox>
