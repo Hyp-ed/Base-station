@@ -1,14 +1,5 @@
 package view.main;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.util.Duration;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.*;
@@ -72,91 +63,96 @@ public class Server extends Thread {
 
             switch(data.substring(0, 5)) {
                 case "CMD01":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         distance = 0;
                         System.out.println("distance: nan");
-                    }else {
+                    } else {
                         distance = (int) Double.parseDouble(data.substring(5));
                         System.out.println("distance: " + distance);
                     }
-                    mainController.setDistanceLabel(distance);
 
+                    mainController.setDistanceLabel(distance);
                     break;
                 case "CMD02":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         velocity = 0;
                         System.out.println("velocity: nan");
-                    }else {
+                    } else {
                         velocity = (int) Double.parseDouble(data.substring(5));
                         System.out.println("velocity: " + velocity);
                     }
-                    mainController.setVelocityLabel(velocity);
 
+                    mainController.setVelocityLabel(velocity);
                     break;
                 case "CMD03":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         acceleration = 0;
                         System.out.println("acceleration: nan");
-                    }else {
+                    } else {
                         acceleration = (int) Double.parseDouble(data.substring(5));
                         System.out.println("acceleration: " + acceleration);
                     }
-                    mainController.setAccelerationLabel(acceleration);
 
+                    mainController.setAccelerationLabel(acceleration);
                     break;
                 case "CMD04":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         stripe_count = 0;
                         System.out.println("stripe count: nan");
-                    }else {
+                    } else {
                         stripe_count = (int) Double.parseDouble(data.substring(5));
                         System.out.println("stripe count: " + stripe_count);
                     }
-                    mainController.setStripeLabel(Integer.toString(stripe_count));
 
+                    mainController.setStripeLabel(Integer.toString(stripe_count));
                     break;
                 case "CMD05":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         rpm_fl = 0;
                         System.out.println("rpm fl: nan");
-                    }else {
+                    } else {
                         rpm_fl = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm fl: " + rpm_fl);
                     }
-                    mainController.setRpmflLabel(Integer.toString(rpm_fl));
 
+                    mainController.setRpmflLabel(Integer.toString(rpm_fl));
                     break;
                 case "CMD06":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         rpm_fr = 0;
                         System.out.println("rpm fr: nan");
-                    }else {
+                    } else {
                         rpm_fr = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm fr: " + rpm_fr);
                     }
-                    mainController.setRpmfrLabel(Integer.toString(rpm_fr));
 
+                    mainController.setRpmfrLabel(Integer.toString(rpm_fr));
                     break;
                 case "CMD07":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         rpm_bl = 0;
                         System.out.println("rpm bl: nan");
-                    }else {
+                    } else {
                         rpm_bl = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm bl: " + rpm_bl);
                     }
-                    mainController.setRpmblLabel(Integer.toString(rpm_bl));
 
+                    mainController.setRpmblLabel(Integer.toString(rpm_bl));
                     break;
                 case "CMD08":
-                    if(data.substring(5).equals("-nan")){
+                    if (!data.substring(5).matches("^[0-9]+$")) {
                         rpm_br = 0;
                         System.out.println("rpm br: nan");
-                    }else {
+                    } else {
                         rpm_br = (int) Double.parseDouble(data.substring(5));
                         System.out.println("rpm br: " + rpm_br);
                     }
 
+//                  TODO(Kofi): implement rpm_br
+//                    mainController.setRpmbrLabel(Integer.toString(rpm_br));
+                    break;
+                default:
+                    System.out.println("Should never reach here.");
                     break;
             }
             //sendToSpaceX(status, team_id, acceleration, distance, velocity);
@@ -177,7 +173,6 @@ public class Server extends Thread {
     public static void sendToSpaceX(int status, int team_id,
                                     int acceleration, int distance, int velocity) {
         try {
-
             DatagramSocket spaceXSocket = new DatagramSocket();
             ByteBuffer buf = ByteBuffer.allocate(256); // BigEndian by default
             buf.putInt(team_id);
@@ -191,15 +186,14 @@ public class Server extends Thread {
             buf.putInt(0);
             buf.putInt(0);
             InetAddress IP =  InetAddress.getByName(/*_spaceXIP*/"localhost");
-            DatagramPacket packet = new DatagramPacket(buf.array(), buf.limit(),
-                    IP, SPACE_X_PORT);
+            DatagramPacket packet = new DatagramPacket(buf.array(), buf.limit(), IP, SPACE_X_PORT);
             spaceXSocket.send(packet);
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-//    public void startTimer(){
+//    public void startTimer(){g
 //        Timeline timeline = new Timeline();
 //        Integer timeSeconds = 0;
 //        timeline.setCycleCount(Timeline.INDEFINITE);
@@ -214,6 +208,4 @@ public class Server extends Thread {
 //                            }
 //                        }));
 //    }
-
-
 }

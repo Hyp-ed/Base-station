@@ -6,10 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.awt.*;
-import java.awt.desktop.SystemEventListener;
-import java.util.logging.Logger;
-
 public class MainController {
 
 //    @FXML
@@ -36,6 +32,10 @@ public class MainController {
     @FXML
     private Label rpmblLabel;
 
+    // TODO(Kofi): implement rpm_br
+//    @FXML
+//    private Label rpmbrLabel;
+
     @FXML
     private Gauge gaugeDistance;
 
@@ -49,9 +49,7 @@ public class MainController {
     public void initialize() {
         System.out.println("Called MainController.initialize");
         btnStop.setOnAction(event -> this.handleBtnStop());
-
         btnKillPower.setOnAction(event -> this.handleBtnKillPower());
-
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
     }
 
@@ -64,17 +62,14 @@ public class MainController {
     }
 
     private void handleBtnStop() {
-
         server.sendToPod(1);
     }
 
     private void handleBtnKillPower() {
-
         server.sendToPod(2);
     }
 
     private void handleBtnLaunch() {
-
         server.sendToPod(3);
     }
 
@@ -93,43 +88,60 @@ public class MainController {
     public void setStripeLabel(String stripe){
 
         Platform.runLater(new Runnable() {
-            @Override public void run() {
+
+            @Override
+            public void run() {
                 stripeLabel.setText(stripe);
             }
         });
-
     }
 
     public void setRpmflLabel(String rpmfl){
 
         Platform.runLater(new Runnable() {
-            @Override public void run() {
+
+            @Override
+            public void run() {
                 rpmflLabel.setText(rpmfl);
             }
         });
-
     }
 
     public void setRpmfrLabel(String rpmfr){
 
         Platform.runLater(new Runnable() {
-            @Override public void run() {
+
+            @Override
+            public void run() {
                 rpmfrLabel.setText(rpmfr);
             }
         });
-
     }
 
     public void setRpmblLabel(String rpmbl){
 
         Platform.runLater(new Runnable() {
-            @Override public void run() {
+
+            @Override
+            public void run() {
                 rpmblLabel.setText(rpmbl);
             }
         });
-
     }
 
+    // TODO(Kofi): Implement rpm_br
+//    public void setRpmbrLabel(String rpmbr) {
+//
+//        Platform.runLater(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//                rpmbrLabel.setText(rpmbr);
+//            }
+//        });
+//    }
+
+    // TODO(Isa): Implement clock
 //    public void setClock(String time){
 //
 //        Platform.runLater(new Runnable() {
