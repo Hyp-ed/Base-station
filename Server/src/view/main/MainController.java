@@ -12,8 +12,8 @@ import java.util.logging.Logger;
 
 public class MainController {
 
-    @FXML
-    private TextField clock;
+//    @FXML
+//    private TextField clock;
 
     @FXML
     private Button btnStop;
@@ -129,5 +129,15 @@ public class MainController {
         });
 
     }
+
+//    public void setClock(String time){
+//
+//        Platform.runLater(new Runnable() {
+//            @Override public void run() {
+//                clock.setText(time);
+//            }
+//        });
+//
+//    }
 
 }

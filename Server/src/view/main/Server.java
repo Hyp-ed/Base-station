@@ -1,9 +1,14 @@
 package view.main;
 
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.*;
@@ -23,7 +28,6 @@ public class Server extends Thread {
     private PrintWriter printWriter;
     private Scanner scanner;
     private MainController mainController;
-    //private Timeline timeline = new Timeline();
 
     int status = 1, team_id = 0;
     int distance, velocity, acceleration, stripe_count,
@@ -194,6 +198,22 @@ public class Server extends Thread {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+//    public void startTimer(){
+//        Timeline timeline = new Timeline();
+//        Integer timeSeconds = 0;
+//        timeline.setCycleCount(Timeline.INDEFINITE);
+//        timeline.getKeyFrames().add(
+//                new KeyFrame(Duration.seconds(1),
+//                        new EventHandler() {
+//                            @Override
+//                            public void handle(Event event) {
+//                                timeSeconds++;
+//                                // update timerLabel
+//                                mainController.setClock(timeSeconds.toString() + "s");
+//                            }
+//                        }));
+//    }
 
 
 }
