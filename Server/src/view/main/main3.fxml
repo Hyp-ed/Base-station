@@ -38,7 +38,7 @@
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets right="390.0" />
+                              <Insets right="300.0" />
                            </HBox.margin>
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="38.0" layoutX="14.0" layoutY="8.0">
@@ -47,6 +47,11 @@
                                  </image>
                               </ImageView>
                            </children></AnchorPane>
+                        <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label fx:id="clock" layoutX="22.0" layoutY="25.0" prefHeight="18.0" prefWidth="143.0" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
                               <Circle fill="#2a2e37" layoutX="77.0" layoutY="29.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />

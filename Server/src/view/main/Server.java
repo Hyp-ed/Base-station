@@ -190,19 +190,4 @@ public class Server extends Thread {
         }
     }
 
-//    public void startTimer(){g
-//        Timeline timeline = new Timeline();
-//        Integer timeSeconds = 0;
-//        timeline.setCycleCount(Timeline.INDEFINITE);
-//        timeline.getKeyFrames().add(
-//                new KeyFrame(Duration.seconds(1),
-//                        new EventHandler() {
-//                            @Override
-//                            public void handle(Event event) {
-//                                timeSeconds++;
-//                                // update timerLabel
-//                                mainController.setClock(timeSeconds.toString() + "s");
-//                            }
-//                        }));
-//    }
 }

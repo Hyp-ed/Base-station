@@ -8,8 +8,8 @@ import javafx.scene.control.Label;
 
 public class MainController {
 
-//    @FXML
-//    private TextField clock;
+    @FXML
+    private Label clock;
 
     @FXML
     private Button btnStop;
@@ -28,10 +28,6 @@ public class MainController {
 
     @FXML
     private Gauge gaugeRpmfr;
-
-    // TODO(Kofi): implement rpm_br
-//    @FXML
-//    private Label rpmbrLabel;
 
     @FXML
     private Gauge gaugeRpmbl;
@@ -56,10 +52,6 @@ public class MainController {
 
     private void handleBtnStop() {
         server.sendToPod(1);
-    }
-
-    private void handleBtnKillPower() {
-        server.sendToPod(2);
     }
 
     private void handleBtnLaunch() {
@@ -91,15 +83,13 @@ public class MainController {
     }
 
 
+    public void setClock(String time){
 
-    // TODO(Isa): Implement clock
-//    public void setClock(String time){
-//
-//        Platform.runLater(new Runnable() {
-//            @Override public void run() {
-//                clock.setText(time);
-//            }
-//        });
-//
-//    }
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                clock.setText(time);
+            }
+        });
+
+    }
 }
