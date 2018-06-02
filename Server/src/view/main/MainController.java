@@ -55,7 +55,7 @@ public class MainController {
     }
 
     private void handleBtnLaunch() {
-        server.sendToPod(3);
+        server.sendToPod(2);
     }
 
     public void setGaugeVelocity(int velocity){
