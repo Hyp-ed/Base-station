@@ -15,29 +15,7 @@ public class MainController {
     private Button btnStop;
 
     @FXML
-    private Button btnKillPower;
-
-    @FXML
     private Button btnLaunch;
-
-    @FXML
-    private Label stripeLabel;
-
-    @FXML
-    private Label rpmflLabel;
-
-    @FXML
-    private Label rpmfrLabel;
-
-    @FXML
-    private Label rpmblLabel;
-
-    // TODO(Kofi): implement rpm_br
-//    @FXML
-//    private Label rpmbrLabel;
-
-    @FXML
-    private Gauge gaugeDistance;
 
     @FXML
     private Gauge gaugeAccel;
@@ -46,10 +24,25 @@ public class MainController {
     Gauge gaugeVelocity;
 
     @FXML
+    private Gauge gaugeRpmfl;
+
+    @FXML
+    private Gauge gaugeRpmfr;
+
+    // TODO(Kofi): implement rpm_br
+//    @FXML
+//    private Label rpmbrLabel;
+
+    @FXML
+    private Gauge gaugeRpmbl;
+
+    @FXML
+    private Gauge gaugeRpmbr;
+
+    @FXML
     public void initialize() {
         System.out.println("Called MainController.initialize");
         btnStop.setOnAction(event -> this.handleBtnStop());
-        btnKillPower.setOnAction(event -> this.handleBtnKillPower());
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
     }
 
@@ -73,73 +66,31 @@ public class MainController {
         server.sendToPod(3);
     }
 
-    public void setVelocityLabel(double velocity){
+    public void setGaugeVelocity(int velocity){
         gaugeVelocity.setValue(velocity);
     }
 
-    public void setDistanceLabel(double  distance){
-        gaugeDistance.setValue(distance);
-    }
-
-    public void setAccelerationLabel(double  accel){
+    public void setGaugeAcceleration(int accel){
         gaugeAccel.setValue(accel);
     }
 
-    public void setStripeLabel(String stripe){
-
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                stripeLabel.setText(stripe);
-            }
-        });
+    public void setGaugeRpmfl(int rpmfl){
+        gaugeRpmfl.setValue(rpmfl);
     }
 
-    public void setRpmflLabel(String rpmfl){
-
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                rpmflLabel.setText(rpmfl);
-            }
-        });
+    public void setGaugeRpmfr(int rpmfr){
+        gaugeRpmfr.setValue(rpmfr);
     }
 
-    public void setRpmfrLabel(String rpmfr){
-
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                rpmfrLabel.setText(rpmfr);
-            }
-        });
+    public void setGaugeRpmbl(int rpmbl){
+        gaugeRpmbl.setValue(rpmbl);
     }
 
-    public void setRpmblLabel(String rpmbl){
-
-        Platform.runLater(new Runnable() {
-
-            @Override
-            public void run() {
-                rpmblLabel.setText(rpmbl);
-            }
-        });
+    public void setGaugeRpmbr(int rpmbr){
+        gaugeRpmbr.setValue(rpmbr);
     }
 
-    // TODO(Kofi): Implement rpm_br
-//    public void setRpmbrLabel(String rpmbr) {
-//
-//        Platform.runLater(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                rpmbrLabel.setText(rpmbr);
-//            }
-//        });
-//    }
+
 
     // TODO(Isa): Implement clock
 //    public void setClock(String time){
@@ -151,5 +102,4 @@ public class MainController {
 //        });
 //
 //    }
-
 }

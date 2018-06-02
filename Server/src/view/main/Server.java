@@ -20,7 +20,7 @@ public class Server extends Thread {
     private Scanner scanner;
     private MainController mainController;
 
-    int status = 1, team_id = 0;
+    byte status = 1, team_id = 2;
     int distance, velocity, acceleration, stripe_count,
             rpm_fl, rpm_fr, rpm_br, rpm_bl;
     String data;
@@ -71,7 +71,6 @@ public class Server extends Thread {
                         System.out.println("distance: " + distance);
                     }
 
-                    mainController.setDistanceLabel(distance);
                     break;
                 case "CMD02":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -82,7 +81,7 @@ public class Server extends Thread {
                         System.out.println("velocity: " + velocity);
                     }
 
-                    mainController.setVelocityLabel(velocity);
+                     mainController.setGaugeVelocity(velocity);
                     break;
                 case "CMD03":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -93,7 +92,7 @@ public class Server extends Thread {
                         System.out.println("acceleration: " + acceleration);
                     }
 
-                    mainController.setAccelerationLabel(acceleration);
+                    mainController.setGaugeAcceleration(acceleration);
                     break;
                 case "CMD04":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -104,7 +103,6 @@ public class Server extends Thread {
                         System.out.println("stripe count: " + stripe_count);
                     }
 
-                    mainController.setStripeLabel(Integer.toString(stripe_count));
                     break;
                 case "CMD05":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -115,7 +113,7 @@ public class Server extends Thread {
                         System.out.println("rpm fl: " + rpm_fl);
                     }
 
-                    mainController.setRpmflLabel(Integer.toString(rpm_fl));
+                    mainController.setGaugeRpmfl(rpm_fl);
                     break;
                 case "CMD06":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -126,7 +124,7 @@ public class Server extends Thread {
                         System.out.println("rpm fr: " + rpm_fr);
                     }
 
-                    mainController.setRpmfrLabel(Integer.toString(rpm_fr));
+                    mainController.setGaugeRpmfr(rpm_fr);
                     break;
                 case "CMD07":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -137,7 +135,7 @@ public class Server extends Thread {
                         System.out.println("rpm bl: " + rpm_bl);
                     }
 
-                    mainController.setRpmblLabel(Integer.toString(rpm_bl));
+                     mainController.setGaugeRpmbl(rpm_bl);
                     break;
                 case "CMD08":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -148,8 +146,7 @@ public class Server extends Thread {
                         System.out.println("rpm br: " + rpm_br);
                     }
 
-//                  TODO(Kofi): implement rpm_br
-//                    mainController.setRpmbrLabel(Integer.toString(rpm_br));
+                    mainController.setGaugeRpmbr(rpm_br);
                     break;
                 default:
                     System.out.println("Should never reach here.");
@@ -170,13 +167,13 @@ public class Server extends Thread {
         printWriter.flush();
     }
 
-    public static void sendToSpaceX(int status, int team_id,
+    public static void sendToSpaceX(byte status, byte team_id,
                                     int acceleration, int distance, int velocity) {
         try {
             DatagramSocket spaceXSocket = new DatagramSocket();
-            ByteBuffer buf = ByteBuffer.allocate(256); // BigEndian by default
-            buf.putInt(team_id);
-            buf.putInt(status);
+            ByteBuffer buf = ByteBuffer.allocate(34); // BigEndian by default
+            buf.put(team_id);
+            buf.put(status);
             buf.putInt(acceleration);
             buf.putInt(distance);
             buf.putInt(velocity);

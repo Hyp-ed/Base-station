@@ -109,7 +109,7 @@
                                                       </Label>
                                                       <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
                                                          <children>
-                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="Acceleration" unit="m/s2" value="230" valueColor="#b40000" />
+                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="Acceleration" unit="m/s2" value="170" />
                                                               <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="-24.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" threshold="200" thresholdVisible="true" title="Velocity" unit="m/s" value="150" />
                                                          </children>
                                                       </AnchorPane>
@@ -273,11 +273,6 @@
                                                    </HBox.margin>
                                                 </Button>
                                                 <Button fx:id="btnStop" mnemonicParsing="false" text="Stop">
-                                                   <HBox.margin>
-                                                      <Insets right="60.0" />
-                                                   </HBox.margin>
-                                                </Button>
-                                                    <Button fx:id="btnKillPower" maxWidth="120.0" mnemonicParsing="false" text="Kill Power">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
