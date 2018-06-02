@@ -24,6 +24,7 @@ public class Server extends Thread {
     int distance, velocity, acceleration, stripe_count,
             rpm_fl, rpm_fr, rpm_br, rpm_bl;
     String data;
+    boolean isTimerStarted = false;
 
     public Server(MainController controller) {
         try {
@@ -47,9 +48,25 @@ public class Server extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+            System.out.println("Closes scanner and printwriter");
             scanner.close();
             printWriter.close();
         }
+    }
+
+    private void startTimer(long startTime) {
+        Thread timerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                // TODO(Isa): implement escape condition
+                while (true) {
+                    mainController.setClock((int) ((System.currentTimeMillis() - startTime) / 1000.0));
+                }
+            }
+        });
+
+        timerThread.start();
     }
 
     private void startCommunication() {
@@ -79,9 +96,15 @@ public class Server extends Thread {
                     } else {
                         velocity = (int) Double.parseDouble(data.substring(5));
                         System.out.println("velocity: " + velocity);
+
                     }
 
-                     mainController.setGaugeVelocity(velocity);
+                    if (!isTimerStarted && velocity == 0) {
+                        startTimer(System.currentTimeMillis());
+                        isTimerStarted = true;
+                    }
+
+                    mainController.setGaugeVelocity(velocity);
                     break;
                 case "CMD03":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -146,12 +169,13 @@ public class Server extends Thread {
                         System.out.println("rpm br: " + rpm_br);
                     }
 
-                    mainController.setGaugeRpmbr(rpm_br);
+//                    mainController.setGaugeRpmbr(rpm_br);
                     break;
                 default:
                     System.out.println("Should never reach here.");
                     break;
             }
+
             //sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
     }

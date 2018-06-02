@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 public class MainController {
 
     @FXML
-    private Label clock;
+    private Gauge clock;
 
     @FXML
     private Button btnStop;
@@ -21,7 +21,7 @@ public class MainController {
     private Gauge gaugeAccel;
 
     @FXML
-    Gauge gaugeVelocity;
+    private Gauge gaugeVelocity;
 
     @FXML
     private Gauge gaugeRpmfl;
@@ -82,14 +82,5 @@ public class MainController {
         gaugeRpmbr.setValue(rpmbr);
     }
 
-
-    public void setClock(String time){
-
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                clock.setText(time);
-            }
-        });
-
-    }
+    public void setClock(int time){ clock.setValue(time); }
 }

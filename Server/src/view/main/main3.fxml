@@ -49,7 +49,8 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label fx:id="clock" layoutX="22.0" layoutY="25.0" prefHeight="18.0" prefWidth="143.0" textFill="WHITE" />
+                               <Gauge fx:id="clock" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" layoutY="25.0" lcdFont="ELEKTRA" maxValue="1000" prefHeight="18.0" prefWidth="143.0" skinType="MODERN" threshold="800" title="Time" unit="s" value="0" />
+                               <!--<Label fx:id="clock" layoutX="22.0" layoutY="25.0" prefHeight="18.0" prefWidth="143.0" textFill="WHITE" />-->
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
