@@ -49,7 +49,7 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                               <Gauge fx:id="clock" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" valueColor="white" layoutX="22.0" layoutY="12.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="18.0" prefWidth="143.0" skinType="DASHBOARD" titleColor="white" threshold="90" unit="s" value="0" />
+                               <Gauge fx:id="clock" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" layoutY="12.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="18.0" prefWidth="143.0" skinType="DASHBOARD" threshold="90" titleColor="white" unit="s" value="0" valueColor="white" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -267,7 +267,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="140.0" prefWidth="1242.0">
                                              <children>
-                                                <JFXSlider prefHeight="14.0" prefWidth="1162.0" showTickLabels="true" showTickMarks="true" />
+                                                <JFXSlider fx:id="distanceMeter" prefHeight="14.0" prefWidth="1162.0" showTickLabels="true" showTickMarks="true" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

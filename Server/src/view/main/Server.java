@@ -88,6 +88,7 @@ public class Server extends Thread {
                         System.out.println("distance: " + distance);
                     }
 
+                    mainController.setDistanceMeter(distance);
                     break;
                 case "CMD02":
                     if (!data.substring(5).matches("^[0-9]+$")) {
@@ -169,7 +170,7 @@ public class Server extends Thread {
                         System.out.println("rpm br: " + rpm_br);
                     }
 
-//                    mainController.setGaugeRpmbr(rpm_br);
+                    mainController.setGaugeRpmbr(rpm_br);
                     break;
                 default:
                     System.out.println("Should never reach here.");

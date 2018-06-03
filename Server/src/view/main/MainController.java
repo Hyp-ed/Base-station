@@ -1,5 +1,6 @@
 package view.main;
 
+import com.jfoenix.controls.JFXSlider;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -34,6 +35,9 @@ public class MainController {
 
     @FXML
     private Gauge gaugeRpmbr;
+
+    @FXML
+    private JFXSlider distanceMeter;
 
     @FXML
     public void initialize() {
@@ -83,4 +87,6 @@ public class MainController {
     }
 
     public void setClock(int time){ clock.setValue(time); }
+
+    public void setDistanceMeter(int distance){ distanceMeter.setValue(distance); }
 }
