@@ -22,9 +22,9 @@ public class Server extends Thread {
 
     byte status = 1, team_id = 2;
     int distance, velocity, acceleration, stripe_count,
-            rpm_fl, rpm_fr, rpm_br, rpm_bl;
+            rpm_fl, rpm_fr, rpm_br, rpm_bl, state;
     String data;
-    boolean isTimerStarted = false;
+    boolean isTimerRunning = false;
 
     public Server(MainController controller) {
         try {
@@ -60,7 +60,7 @@ public class Server extends Thread {
             public void run() {
 
                 // TODO(Isa): implement escape condition
-                while (true) {
+                while (isTimerRunning) {
                     mainController.setClock((int) ((System.currentTimeMillis() - startTime) / 1000.0));
                 }
             }
@@ -100,9 +100,11 @@ public class Server extends Thread {
 
                     }
 
-                    if (!isTimerStarted && velocity == 0) {
+                    if (!isTimerRunning && velocity == 0) {
                         startTimer(System.currentTimeMillis());
-                        isTimerStarted = true;
+                        isTimerRunning = true;
+                    } else if (velocity >= 100) {
+                        isTimerRunning = false;
                     }
 
                     mainController.setGaugeVelocity(velocity);
@@ -171,6 +173,16 @@ public class Server extends Thread {
                     }
 
                     mainController.setGaugeRpmbr(rpm_br);
+                    break;
+                case "CMD09":
+                    if (!data.substring(5).matches("^[0-9]+$")) {
+                        System.out.println("Should never reach here");
+                    } else {
+                        state = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("state: " + state);
+                    }
+
+//                    mainController.setGaugeState(state);
                     break;
                 default:
                     System.out.println("Should never reach here.");
