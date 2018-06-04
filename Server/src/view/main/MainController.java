@@ -19,6 +19,9 @@ public class MainController {
     private Button btnLaunch;
 
     @FXML
+    private Button btnReset;
+
+    @FXML
     private Gauge gaugeAccel;
 
     @FXML
@@ -44,6 +47,7 @@ public class MainController {
         System.out.println("Called MainController.initialize");
         btnStop.setOnAction(event -> this.handleBtnStop());
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
+        btnReset.setOnAction(event -> this.handleBtnReset());
     }
 
     private final Server server;
@@ -60,6 +64,10 @@ public class MainController {
 
     private void handleBtnLaunch() {
         server.sendToPod(2);
+    }
+
+    private void handleBtnReset() {
+        server.sendToPod(3);
     }
 
     public void setGaugeVelocity(int velocity){

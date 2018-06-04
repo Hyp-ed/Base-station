@@ -287,7 +287,11 @@
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Reverse" />
+                                                <Button mnemonicParsing="false" text="Reverse">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin></Button>
+                                                <Button fx:id="btnReset" mnemonicParsing="false" text="Reset" />
                                              </children>
                                              <VBox.margin>
                                                 <Insets bottom="20.0" />
