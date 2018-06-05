@@ -1,6 +1,7 @@
 package view.main;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.*;
 import java.nio.ByteBuffer;
@@ -10,21 +11,22 @@ import java.util.logging.Logger;
 
 public class Server extends Thread {
 
+//    private final static Logger LOGGER = Logger.getLogger(Server.class.getName());
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 4;
+    private static final String DATA_REGEX = "^[0-9]+$";
 
     private ServerSocket serverSocket;
     private Socket podSocket;
     private PrintWriter printWriter;
     private Scanner scanner;
+    private PrintStream loggerStream;
+
     private MainController mainController;
 
-    byte status = 1, team_id = 2;
-    int distance, velocity, acceleration, stripe_count,
-            rpm_fl, rpm_fr, rpm_br, rpm_bl, state;
-    String data;
-    boolean isTimerRunning = false;
+    private byte status = 1, team_id = 2;
+    private boolean isTimerRunning = false;
 
     public Server(MainController controller) {
         try {
@@ -43,14 +45,18 @@ public class Server extends Thread {
             podSocket = serverSocket.accept();
             scanner = new Scanner(podSocket.getInputStream());
             printWriter = new PrintWriter(podSocket.getOutputStream());
+            loggerStream = new PrintStream("logger.txt");
+            System.setOut(loggerStream);
             sendToPod(ACK_FROM_SERVER);
             startCommunication();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("Closes scanner and printwriter");
+            System.out.println("Closes scanner, printwriter and printstreamer.");
+            isTimerRunning = false;
             scanner.close();
             printWriter.close();
+            loggerStream.close();
         }
     }
 
@@ -75,12 +81,17 @@ public class Server extends Thread {
             // TODO: exit system
         }
 
+        int distance, velocity, acceleration, stripe_count,
+            rpm_fl, rpm_fr, rpm_br, rpm_bl, state,
+            hp_volt, hp_temp, hp_volt1, hp_temp1;
+        String data;
+
         while (scanner.hasNext()) {
             data = scanner.nextLine();
 
-            switch(data.substring(0, 5)) {
+            switch (data.substring(0, 5)) {
                 case "CMD01":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         distance = 0;
                         System.out.println("distance: nan");
                     } else {
@@ -91,13 +102,12 @@ public class Server extends Thread {
                     mainController.setDistanceMeter(distance);
                     break;
                 case "CMD02":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         velocity = 0;
                         System.out.println("velocity: nan");
                     } else {
                         velocity = (int) Double.parseDouble(data.substring(5));
                         System.out.println("velocity: " + velocity);
-
                     }
 
                     if (!isTimerRunning && velocity == 0) {
@@ -110,7 +120,7 @@ public class Server extends Thread {
                     mainController.setGaugeVelocity(velocity);
                     break;
                 case "CMD03":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         acceleration = 0;
                         System.out.println("acceleration: nan");
                     } else {
@@ -121,7 +131,7 @@ public class Server extends Thread {
                     mainController.setGaugeAcceleration(acceleration);
                     break;
                 case "CMD04":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         stripe_count = 0;
                         System.out.println("stripe count: nan");
                     } else {
@@ -131,7 +141,7 @@ public class Server extends Thread {
 
                     break;
                 case "CMD05":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         rpm_fl = 0;
                         System.out.println("rpm fl: nan");
                     } else {
@@ -142,7 +152,7 @@ public class Server extends Thread {
                     mainController.setGaugeRpmfl(rpm_fl);
                     break;
                 case "CMD06":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         rpm_fr = 0;
                         System.out.println("rpm fr: nan");
                     } else {
@@ -153,7 +163,7 @@ public class Server extends Thread {
                     mainController.setGaugeRpmfr(rpm_fr);
                     break;
                 case "CMD07":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         rpm_bl = 0;
                         System.out.println("rpm bl: nan");
                     } else {
@@ -161,10 +171,10 @@ public class Server extends Thread {
                         System.out.println("rpm bl: " + rpm_bl);
                     }
 
-                     mainController.setGaugeRpmbl(rpm_bl);
+                    mainController.setGaugeRpmbl(rpm_bl);
                     break;
                 case "CMD08":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         rpm_br = 0;
                         System.out.println("rpm br: nan");
                     } else {
@@ -175,17 +185,62 @@ public class Server extends Thread {
                     mainController.setGaugeRpmbr(rpm_br);
                     break;
                 case "CMD09":
-                    if (!data.substring(5).matches("^[0-9]+$")) {
+                    if (!data.substring(5).matches(DATA_REGEX)) {
                         System.out.println("Should never reach here");
                     } else {
                         state = (int) Double.parseDouble(data.substring(5));
                         System.out.println("state: " + state);
                     }
 
-//                    mainController.setGaugeState(state);
+//                    mainController.setGaugeState(state);  // TODO(Kofi): implement state gadget
+                    break;
+                case "CMD10":
+                    if (!data.substring(5).matches(DATA_REGEX)) {
+                        hp_volt = 0;
+                        System.out.println("hp volt: nan");
+                    } else {
+                        hp_volt = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("hp volt: " + hp_volt);
+                    }
+
+                    mainController.setGaugeVoltage(hp_volt);
+                    break;
+                case "CMD11":
+                    if (!data.substring(5).matches(DATA_REGEX)) {
+                        hp_temp = 0;
+                        System.out.println("hp temp: nan");
+                    } else {
+                        hp_temp = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("hp temp: " + hp_temp);
+                    }
+
+                    mainController.setGaugeTemp(hp_temp);
+                    break;
+                case "CMD12":
+                    if (!data.substring(5).matches(DATA_REGEX)) {
+                        hp_volt1 = 0;
+                        System.out.println("hp volt1: nan");
+                    } else {
+                        hp_volt1 = (int) Double.parseDouble(data.substring(5));
+                        System.out.println("hp volt1: " + hp_volt1);
+                    }
+
+                    mainController.setGaugeVoltage1(hp_volt1);
+                    break;
+                case "CMD13":
+                    if (!data.substring(5).matches(DATA_REGEX)) {
+                        hp_temp1 = 0;
+                        System.out.println("hp temp1: nan");
+                    } else {
+                        hp_temp1 = (int) Double.parseDouble(data.substring(5));
+                        System.out.print("hp temp1: " + hp_temp1);
+                    }
+
+                    mainController.setGaugeTemp1(hp_temp1);
                     break;
                 default:
                     System.out.println("Should never reach here.");
+
                     break;
             }
 

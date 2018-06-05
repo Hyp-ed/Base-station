@@ -6,6 +6,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 public class MainController {
 
@@ -28,6 +29,18 @@ public class MainController {
     private Gauge gaugeVelocity;
 
     @FXML
+    private Gauge gaugeTemp;
+
+    @FXML
+    private Gauge gaugeVoltage;
+
+    @FXML
+    private Gauge gaugeTemp1;
+
+    @FXML
+    private Gauge gaugeVoltage1;
+
+    @FXML
     private Gauge gaugeRpmfl;
 
     @FXML
@@ -41,6 +54,9 @@ public class MainController {
 
     @FXML
     private JFXSlider distanceMeter;
+
+    @FXML
+    private TextArea logger;
 
     @FXML
     public void initialize() {
@@ -70,31 +86,60 @@ public class MainController {
         server.sendToPod(3);
     }
 
-    public void setGaugeVelocity(int velocity){
+    public void setGaugeVelocity(int velocity) {
         gaugeVelocity.setValue(velocity);
     }
 
-    public void setGaugeAcceleration(int accel){
+    public void setGaugeAcceleration(int accel) {
         gaugeAccel.setValue(accel);
     }
 
-    public void setGaugeRpmfl(int rpmfl){
+    public void setGaugeTemp(int temp) {
+        gaugeTemp.setValue(temp);
+    }
+
+    public void setGaugeVoltage(int voltage) {
+        gaugeVoltage.setValue(voltage);
+    }
+
+    public void setGaugeTemp1(int temp) {
+        gaugeTemp1.setValue(temp);
+    }
+
+    public void setGaugeVoltage1(int voltage) {
+        gaugeVoltage1.setValue(voltage);
+    }
+
+    public void setGaugeRpmfl(int rpmfl) {
         gaugeRpmfl.setValue(rpmfl);
     }
 
-    public void setGaugeRpmfr(int rpmfr){
+    public void setGaugeRpmfr(int rpmfr) {
         gaugeRpmfr.setValue(rpmfr);
     }
 
-    public void setGaugeRpmbl(int rpmbl){
+    public void setGaugeRpmbl(int rpmbl) {
         gaugeRpmbl.setValue(rpmbl);
     }
 
-    public void setGaugeRpmbr(int rpmbr){
+    public void setGaugeRpmbr(int rpmbr) {
         gaugeRpmbr.setValue(rpmbr);
     }
 
-    public void setClock(int time){ clock.setValue(time); }
+    public void setClock(int time) {
+        clock.setValue(time);
+    }
 
-    public void setDistanceMeter(int distance){ distanceMeter.setValue(distance); }
+    public void setDistanceMeter(int distance) {
+        distanceMeter.setValue(distance);
+    }
+
+    public void setLogger(String logMessage) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                logger.setText(logMessage);
+            }
+        });
+    }
 }

@@ -11,6 +11,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -65,11 +66,11 @@
                         <AnchorPane fx:id="batteryPane" prefHeight="50.0" prefWidth="200.0">
                             <children>
                                 <Gauge fx:id="battery" barColor="#FFFF8D" layoutY="-8.0" maxValue="10000" prefHeight="71.0" prefWidth="200.0" skinType="BATTERY" value="3000" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-8.0" />
-                              <Label layoutX="81.0" layoutY="46.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="CHARGE">
-                                 <font>
-                                    <Font size="10.0" />
-                                 </font>
-                              </Label>
+                                <Label layoutX="81.0" layoutY="46.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="CHARGE">
+                                   <font>
+                                      <Font size="10.0" />
+                                   </font>
+                                </Label>
                             </children>
                          </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -311,24 +312,30 @@
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Button mnemonicParsing="false" text="Button">
+                                                <Button mnemonicParsing="false" text="Button 1">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Button">
+                                                <Button mnemonicParsing="false" text="Button 2">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Button">
+                                                <Button mnemonicParsing="false" text="Button 3">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Button" />
+                                                <Button mnemonicParsing="false" text="Button 4" />
                                              </children>
                                           </HBox>
+                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                               <children>
+                                                   <TextArea fx:id="logger" style="-fx-background-color: #2A2E37; -fx-text-fill: #000000;" text="System logger">
+                                                   </TextArea>
+                                               </children>
+                                           </HBox>
                                        </children>
                                     </VBox>
                                  </children></AnchorPane>
