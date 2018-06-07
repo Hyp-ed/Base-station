@@ -52,7 +52,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Circle fill="#2a2e37" layoutX="100.0" layoutY="41.0" radius="17.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                              <Circle fx:id="telemetryIndicator" fill="#2a2e37" layoutX="100.0" layoutY="41.0" radius="17.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                               <Label layoutX="74.0" layoutY="64.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="TELEMETRY">
                                  <font>
                                     <Font size="10.0" />
@@ -270,8 +270,8 @@
                                                       </Label>
                                                       <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
                                                          <children>
-                                                            <Circle fill="#ffff8d" layoutX="94.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fill="#2a2e37" layoutX="233.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="leftBrakeIndicator" fill="#ffff8d" layoutX="94.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rightBrakeIndicator" fill="#2a2e37" layoutX="233.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                             <Label layoutX="68.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />

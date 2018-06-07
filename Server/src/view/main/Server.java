@@ -43,6 +43,7 @@ public class Server extends Thread {
 
         try {
             podSocket = serverSocket.accept();
+            System.out.println("Connection established");
             scanner = new Scanner(podSocket.getInputStream());
             printWriter = new PrintWriter(podSocket.getOutputStream());
             loggerStream = new PrintStream("logger.txt");
@@ -82,9 +83,12 @@ public class Server extends Thread {
         }
 
         int distance, velocity, acceleration, stripe_count,
-            rpm_fl, rpm_fr, rpm_br, rpm_bl, state,
+            rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_volt1, hp_temp1;
         String data;
+        int state =0;
+
+        mainController.setTelemetryIndicator();
 
         while (scanner.hasNext()) {
             data = scanner.nextLine();
@@ -192,6 +196,9 @@ public class Server extends Thread {
                         System.out.println("state: " + state);
                     }
 
+                    if(state == 3){
+                        mainController.setBrakeIndicator();
+                    }
 //                    mainController.setGaugeState(state);  // TODO(Kofi): implement state gadget
                     break;
                 case "CMD10":

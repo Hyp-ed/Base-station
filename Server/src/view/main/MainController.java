@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 public class MainController {
 
@@ -56,7 +58,16 @@ public class MainController {
     private JFXSlider distanceMeter;
 
     @FXML
-    private TextArea logger;
+    private Circle telemetryIndicator;
+
+    @FXML
+    private Circle rightBrakeIndicator;
+
+    @FXML
+    private Circle leftBrakeIndicator;
+
+//    @FXML
+//    private TextArea logger;
 
     @FXML
     public void initialize() {
@@ -134,12 +145,21 @@ public class MainController {
         distanceMeter.setValue(distance);
     }
 
-    public void setLogger(String logMessage) {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                logger.setText(logMessage);
-            }
-        });
+    public void setTelemetryIndicator() {
+        telemetryIndicator.setFill(javafx.scene.paint.Color.YELLOW);
     }
+
+    public void setBrakeIndicator() {
+        leftBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+        rightBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+    }
+
+//    public void setLogger(String logMessage) {
+//        Platform.runLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                logger.setText(logMessage);
+//            }
+//        });
+//    }
 }
