@@ -270,7 +270,7 @@
                                                       </Label>
                                                       <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
                                                          <children>
-                                                            <Circle fx:id="leftBrakeIndicator" fill="#ffff8d" layoutX="94.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="leftBrakeIndicator" fill="#2a2e37" layoutX="94.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                             <Circle fx:id="rightBrakeIndicator" fill="#2a2e37" layoutX="233.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                             <Label layoutX="68.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
@@ -282,12 +282,12 @@
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="83.0" layoutY="82.0" prefHeight="15.0" prefWidth="21.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LEFT" textAlignment="CENTER">
+                                                            <Label layoutX="83.0" layoutY="82.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LEFT" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="218.0" layoutY="83.0" prefHeight="15.0" prefWidth="29.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RIGHT" textAlignment="CENTER">
+                                                            <Label layoutX="218.0" layoutY="83.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RIGHT" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
