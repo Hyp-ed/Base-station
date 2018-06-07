@@ -5,13 +5,12 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.*;
 import java.nio.ByteBuffer;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 public class Server extends Thread {
 
-//    private final static Logger LOGGER = Logger.getLogger(Server.class.getName());
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 4;
@@ -24,49 +23,94 @@ public class Server extends Thread {
     private PrintStream loggerStream;
 
     private MainController mainController;
-
     private byte status = 1, team_id = 2;
     private boolean isTimerRunning = false;
+
+    private static Logger LOGGER;
+    private static Handler loggerHandler = null;
+    private static HashMap cmdHashMap;
+
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
+        LOGGER = Logger.getLogger(Server.class.getName());
+
+        try {
+            loggerHandler = new FileHandler("logger.log");
+            SimpleFormatter simple = new SimpleFormatter();
+            loggerHandler.setFormatter(simple);
+            LOGGER.addHandler(loggerHandler);
+        } catch (IOException e) {
+            LOGGER.log(Level.WARNING, "Failed to set up logger.");
+            e.printStackTrace();
+        }
+
+        cmdHashMap = new HashMap();
+        cmdHashMap.put("CMD01", "distance");
+        cmdHashMap.put("CMD02", "velocity");
+        cmdHashMap.put("CMD03", "acceleration");
+        cmdHashMap.put("CMD04", "stripe count");
+        cmdHashMap.put("CMD05", "rpm fl");
+        cmdHashMap.put("CMD06", "rpm fr");
+        cmdHashMap.put("CMD07", "rpm bl");
+        cmdHashMap.put("CMD08", "rpm br");
+        cmdHashMap.put("CMD09", "state");
+        cmdHashMap.put("CMD10", "hp volt");
+        cmdHashMap.put("CMD11", "hp temp");
+        cmdHashMap.put("CMD12", "hp volt1");
+        cmdHashMap.put("CMD13", "hp temp1");
+    }
 
     public Server(MainController controller) {
         try {
             serverSocket = new ServerSocket(PORT);
             this.mainController = controller;
+            LOGGER.log(Level.INFO, "Server initialised; Controller assigned.");
         } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Initialisation of Server failed.");
             e.printStackTrace();
         }
     }
 
     @Override
     public void run() {
-        System.out.println("Awaiting connection from pod...");
+        LOGGER.log(Level.INFO, "Awaiting connection from pod...");
 
         try {
             podSocket = serverSocket.accept();
-            System.out.println("Connection established");
             scanner = new Scanner(podSocket.getInputStream());
             printWriter = new PrintWriter(podSocket.getOutputStream());
-            loggerStream = new PrintStream("logger.txt");
-            System.setOut(loggerStream);
             sendToPod(ACK_FROM_SERVER);
+            LOGGER.log(Level.INFO, "Accepted connection from client.");
             startCommunication();
         } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "run() failed. Closing scanner and printwriter.");
             e.printStackTrace();
         } finally {
-            System.out.println("Closes scanner, printwriter and printstreamer.");
+            System.out.println("Hello");
             isTimerRunning = false;
             scanner.close();
             printWriter.close();
-            loggerStream.close();
         }
+    }
+
+    private int parseData(String cmdString, String readingString) {
+        int result = 0;
+
+        if (!readingString.matches(DATA_REGEX)) {
+            LOGGER.log(Level.INFO, String.format("%s: nan", cmdHashMap.get(cmdString)));
+        } else {
+            result = (int) Double.parseDouble(readingString);
+            LOGGER.log(Level.INFO, String.format("%s: %d", cmdHashMap.get(cmdString), result));
+        }
+
+        return result;
     }
 
     private void startTimer(long startTime) {
         Thread timerThread = new Thread(new Runnable() {
             @Override
             public void run() {
-
-                // TODO(Isa): implement escape condition
+                LOGGER.log(Level.INFO, "Timer started.");
                 while (isTimerRunning) {
                     mainController.setClock((int) ((System.currentTimeMillis() - startTime) / 1000.0));
                 }
@@ -77,42 +121,32 @@ public class Server extends Thread {
     }
 
     private void startCommunication() {
+        LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
+
         if (podSocket == null) {
-            System.err.println("ERROR: NO POD SOCKET");
-            // TODO: exit system
+            LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
         }
 
         int distance, velocity, acceleration, stripe_count,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_volt1, hp_temp1;
-        String data;
-        int state =0;
+        int state = 0;
+        String data, cmdString, readingString;
 
         mainController.setTelemetryIndicator();
 
         while (scanner.hasNext()) {
             data = scanner.nextLine();
+            cmdString = data.substring(0, 5);
+            readingString = data.substring(5);
 
             switch (data.substring(0, 5)) {
                 case "CMD01":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        distance = 0;
-                        System.out.println("distance: nan");
-                    } else {
-                        distance = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("distance: " + distance);
-                    }
-
+                    distance = parseData(cmdString, readingString);
                     mainController.setDistanceMeter(distance);
                     break;
                 case "CMD02":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        velocity = 0;
-                        System.out.println("velocity: nan");
-                    } else {
-                        velocity = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("velocity: " + velocity);
-                    }
+                    velocity = parseData(cmdString, readingString);
 
                     if (!isTimerRunning && velocity == 0) {
                         startTimer(System.currentTimeMillis());
@@ -124,77 +158,29 @@ public class Server extends Thread {
                     mainController.setGaugeVelocity(velocity);
                     break;
                 case "CMD03":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        acceleration = 0;
-                        System.out.println("acceleration: nan");
-                    } else {
-                        acceleration = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("acceleration: " + acceleration);
-                    }
-
+                    acceleration = parseData(cmdString, readingString);
                     mainController.setGaugeAcceleration(acceleration);
                     break;
                 case "CMD04":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        stripe_count = 0;
-                        System.out.println("stripe count: nan");
-                    } else {
-                        stripe_count = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("stripe count: " + stripe_count);
-                    }
-
                     break;
                 case "CMD05":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        rpm_fl = 0;
-                        System.out.println("rpm fl: nan");
-                    } else {
-                        rpm_fl = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("rpm fl: " + rpm_fl);
-                    }
-
+                    rpm_fl = parseData(cmdString, readingString);
                     mainController.setGaugeRpmfl(rpm_fl);
                     break;
                 case "CMD06":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        rpm_fr = 0;
-                        System.out.println("rpm fr: nan");
-                    } else {
-                        rpm_fr = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("rpm fr: " + rpm_fr);
-                    }
-
+                    rpm_fr = parseData(cmdString, readingString);
                     mainController.setGaugeRpmfr(rpm_fr);
                     break;
                 case "CMD07":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        rpm_bl = 0;
-                        System.out.println("rpm bl: nan");
-                    } else {
-                        rpm_bl = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("rpm bl: " + rpm_bl);
-                    }
-
+                    rpm_bl = parseData(cmdString, readingString);
                     mainController.setGaugeRpmbl(rpm_bl);
                     break;
                 case "CMD08":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        rpm_br = 0;
-                        System.out.println("rpm br: nan");
-                    } else {
-                        rpm_br = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("rpm br: " + rpm_br);
-                    }
-
+                    rpm_br = parseData(cmdString, readingString);
                     mainController.setGaugeRpmbr(rpm_br);
                     break;
                 case "CMD09":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        System.out.println("Should never reach here");
-                    } else {
-                        state = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("state: " + state);
-                    }
+                    state = parseData(cmdString, readingString);
 
                     if(state == 3){
                         mainController.setBrakeIndicator();
@@ -202,52 +188,23 @@ public class Server extends Thread {
 //                    mainController.setGaugeState(state);  // TODO(Kofi): implement state gadget
                     break;
                 case "CMD10":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        hp_volt = 0;
-                        System.out.println("hp volt: nan");
-                    } else {
-                        hp_volt = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("hp volt: " + hp_volt);
-                    }
-
+                    hp_volt = parseData(cmdString, readingString);
                     mainController.setGaugeVoltage(hp_volt);
                     break;
                 case "CMD11":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        hp_temp = 0;
-                        System.out.println("hp temp: nan");
-                    } else {
-                        hp_temp = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("hp temp: " + hp_temp);
-                    }
-
+                    hp_temp = parseData(cmdString, readingString);
                     mainController.setGaugeTemp(hp_temp);
                     break;
                 case "CMD12":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        hp_volt1 = 0;
-                        System.out.println("hp volt1: nan");
-                    } else {
-                        hp_volt1 = (int) Double.parseDouble(data.substring(5));
-                        System.out.println("hp volt1: " + hp_volt1);
-                    }
-
+                    hp_volt1 = parseData(cmdString, readingString);
                     mainController.setGaugeVoltage1(hp_volt1);
                     break;
                 case "CMD13":
-                    if (!data.substring(5).matches(DATA_REGEX)) {
-                        hp_temp1 = 0;
-                        System.out.println("hp temp1: nan");
-                    } else {
-                        hp_temp1 = (int) Double.parseDouble(data.substring(5));
-                        System.out.print("hp temp1: " + hp_temp1);
-                    }
-
+                    hp_temp1 = parseData(cmdString, readingString);
                     mainController.setGaugeTemp1(hp_temp1);
                     break;
                 default:
-                    System.out.println("Should never reach here.");
-
+                    LOGGER.log(Level.WARNING, "Should never reach here.");
                     break;
             }
 
@@ -257,11 +214,10 @@ public class Server extends Thread {
 
     public void sendToPod(int message) {
         if (podSocket == null) {
-            System.err.println("ERROR: NO POD SOCKET");
-            // TODO: exit system
+            LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
         }
 
-        System.out.println(String.format("Sending %s to pod", message));
+        LOGGER.log(Level.INFO, String.format("Sending %s to pod", message));
         printWriter.println(message);
         printWriter.flush();
     }

@@ -2,12 +2,8 @@ package view.main;
 
 import com.jfoenix.controls.JFXSlider;
 import eu.hansolo.medusa.Gauge;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class MainController {
@@ -65,9 +61,6 @@ public class MainController {
 
     @FXML
     private Circle leftBrakeIndicator;
-
-//    @FXML
-//    private TextArea logger;
 
     @FXML
     public void initialize() {
@@ -153,13 +146,4 @@ public class MainController {
         leftBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
         rightBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
     }
-
-//    public void setLogger(String logMessage) {
-//        Platform.runLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                logger.setText(logMessage);
-//            }
-//        });
-//    }
 }
