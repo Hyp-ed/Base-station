@@ -27,20 +27,20 @@ public class DummyClient {
                 System.out.println("Confirmation received.");
 
                 while(true) {
-                    dummydata.println("CMD0160");
-                    dummydata.println("CMD0260");
-                    dummydata.println("CMD0360");
-                    dummydata.println("CMD0460");
-                    dummydata.println("CMD0560");
-                    dummydata.println("CMD0660");
-                    dummydata.println("CMD0760");
-                    dummydata.println("CMD0860");
-                    dummydata.println("CMD0960");
-                    dummydata.println("CMD1060");
-                    dummydata.println("CMD1160");
-                    dummydata.println("CMD1260");
-                    dummydata.println("CMD1360");
-                    dummydata.println("CMD0860");
+                    for(int x=0; x<150; x++){
+                        dummydata.println("CMD01"+Integer.toString(x));
+                        dummydata.println("CMD02"+Integer.toString(x));
+                        dummydata.println("CMD03"+Integer.toString(x));
+                        dummydata.println("CMD04"+Integer.toString(x));
+                        dummydata.println("CMD05"+Integer.toString(x));
+                        dummydata.println("CMD06"+Integer.toString(x));
+                        dummydata.println("CMD07"+Integer.toString(x));
+                        dummydata.println("CMD08"+Integer.toString(x));
+                        dummydata.println("CMD10"+Integer.toString(x));
+                        dummydata.println("CMD11"+Integer.toString(x));
+                        dummydata.println("CMD12"+Integer.toString(x));
+                        dummydata.println("CMD13"+Integer.toString(x));
+                    }
                 }
 
             }

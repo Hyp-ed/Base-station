@@ -1,5 +1,11 @@
 package view.main;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
@@ -15,6 +21,12 @@ public class Server extends Thread {
     private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 4;
     private static final String DATA_REGEX = "^[0-9]+$";
+
+    int distance, velocity, acceleration, stripe_count,
+            rpm_fl, rpm_fr, rpm_br, rpm_bl,
+            hp_volt, hp_temp, hp_volt1, hp_temp1;
+    int state = 0;
+    String data, cmdString, readingString;
 
     private ServerSocket serverSocket;
     private Socket podSocket;
@@ -86,7 +98,6 @@ public class Server extends Thread {
             LOGGER.log(Level.SEVERE, "run() failed. Closing scanner and printwriter.");
             e.printStackTrace();
         } finally {
-            System.out.println("Hello");
             isTimerRunning = false;
             scanner.close();
             printWriter.close();
@@ -120,6 +131,35 @@ public class Server extends Thread {
         timerThread.start();
     }
 
+    private void updateGauges() {
+        Thread gaugeThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Timeline gaugeLag = new Timeline(new KeyFrame(Duration.seconds(0.2), new EventHandler<ActionEvent>() {
+
+                    @Override
+                    public void handle(ActionEvent event) {
+                        mainController.setDistanceMeter(distance);
+                        mainController.setGaugeVelocity(velocity);
+                        mainController.setGaugeAcceleration(acceleration);
+                        mainController.setGaugeRpmfl(rpm_fl);
+                        mainController.setGaugeRpmfr(rpm_fr);
+                        mainController.setGaugeRpmbl(rpm_bl);
+                        mainController.setGaugeRpmbr(rpm_br);
+                        mainController.setGaugeVoltage(hp_volt);
+                        mainController.setGaugeTemp(hp_temp);
+                        mainController.setGaugeVoltage1(hp_volt1);
+                        mainController.setGaugeTemp1(hp_temp1);
+                    }
+                }));
+                gaugeLag.setCycleCount(Timeline.INDEFINITE);
+                gaugeLag.play();
+            }
+        });
+
+        gaugeThread.start();
+    }
+
     private void startCommunication() {
         LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
 
@@ -127,13 +167,8 @@ public class Server extends Thread {
             LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
         }
 
-        int distance, velocity, acceleration, stripe_count,
-            rpm_fl, rpm_fr, rpm_br, rpm_bl,
-            hp_volt, hp_temp, hp_volt1, hp_temp1;
-        int state = 0;
-        String data, cmdString, readingString;
-
         mainController.setTelemetryIndicator();
+        updateGauges();
 
         while (scanner.hasNext()) {
             data = scanner.nextLine();
@@ -143,7 +178,6 @@ public class Server extends Thread {
             switch (data.substring(0, 5)) {
                 case "CMD01":
                     distance = parseData(cmdString, readingString);
-                    mainController.setDistanceMeter(distance);
                     break;
                 case "CMD02":
                     velocity = parseData(cmdString, readingString);
@@ -154,30 +188,23 @@ public class Server extends Thread {
                     } else if (velocity >= 100) {
                         isTimerRunning = false;
                     }
-
-                    mainController.setGaugeVelocity(velocity);
                     break;
                 case "CMD03":
                     acceleration = parseData(cmdString, readingString);
-                    mainController.setGaugeAcceleration(acceleration);
                     break;
                 case "CMD04":
                     break;
                 case "CMD05":
                     rpm_fl = parseData(cmdString, readingString);
-                    mainController.setGaugeRpmfl(rpm_fl);
                     break;
                 case "CMD06":
                     rpm_fr = parseData(cmdString, readingString);
-                    mainController.setGaugeRpmfr(rpm_fr);
                     break;
                 case "CMD07":
                     rpm_bl = parseData(cmdString, readingString);
-                    mainController.setGaugeRpmbl(rpm_bl);
                     break;
                 case "CMD08":
                     rpm_br = parseData(cmdString, readingString);
-                    mainController.setGaugeRpmbr(rpm_br);
                     break;
                 case "CMD09":
                     state = parseData(cmdString, readingString);
@@ -189,19 +216,15 @@ public class Server extends Thread {
                     break;
                 case "CMD10":
                     hp_volt = parseData(cmdString, readingString);
-                    mainController.setGaugeVoltage(hp_volt);
                     break;
                 case "CMD11":
                     hp_temp = parseData(cmdString, readingString);
-                    mainController.setGaugeTemp(hp_temp);
                     break;
                 case "CMD12":
                     hp_volt1 = parseData(cmdString, readingString);
-                    mainController.setGaugeVoltage1(hp_volt1);
                     break;
                 case "CMD13":
                     hp_temp1 = parseData(cmdString, readingString);
-                    mainController.setGaugeTemp1(hp_temp1);
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
