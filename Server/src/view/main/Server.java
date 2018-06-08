@@ -209,8 +209,16 @@ public class Server extends Thread {
                 case "CMD09":
                     state = parseData(cmdString, readingString);
 
-                    if(state == 3){
-                        mainController.setBrakeIndicator();
+                    switch(state){
+                        case 1:
+                            if (!isTimerRunning) {
+                                startTimer(System.currentTimeMillis());
+                                isTimerRunning = true;
+                            }
+                        case 3:
+                            mainController.setBrakeIndicator();
+                        case 4:
+                            isTimerRunning = false;
                     }
 //                    mainController.setGaugeState(state);  // TODO(Kofi): implement state gadget
                     break;
