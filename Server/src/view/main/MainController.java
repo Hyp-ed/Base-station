@@ -1,9 +1,12 @@
 package view.main;
 
 import com.jfoenix.controls.JFXSlider;
+import eu.hansolo.enzo.lcd.LcdClock;
 import eu.hansolo.medusa.Gauge;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
 
 public class MainController {
@@ -61,6 +64,9 @@ public class MainController {
 
     @FXML
     private Circle leftBrakeIndicator;
+
+    @FXML
+    private Label stateLabel;
 
     @FXML
     public void initialize() {
@@ -145,5 +151,14 @@ public class MainController {
     public void setBrakeIndicator() {
         leftBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
         rightBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+    }
+
+    public void setStateLabel(String state) {
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                stateLabel.setText(state);
+            }
+        });
+
     }
 }

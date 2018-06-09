@@ -103,9 +103,9 @@
                          </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Label layoutX="80.0" layoutY="26.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
+                              <Label fx:id="stateLabel" alignment="CENTER" layoutX="33.0" layoutY="31.0" prefHeight="22.0" prefWidth="134.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
                                  <font>
-                                    <Font size="20.0" />
+                                    <Font size="15.0" />
                                  </font>
                               </Label>
                               <Label layoutX="86.0" layoutY="56.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STATE">

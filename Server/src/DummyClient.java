@@ -36,6 +36,7 @@ public class DummyClient {
                         dummydata.println("CMD06"+Integer.toString(x));
                         dummydata.println("CMD07"+Integer.toString(x));
                         dummydata.println("CMD08"+Integer.toString(x));
+                        dummydata.println("CMD0900");
                         dummydata.println("CMD10"+Integer.toString(x));
                         dummydata.println("CMD11"+Integer.toString(x));
                         dummydata.println("CMD12"+Integer.toString(x));

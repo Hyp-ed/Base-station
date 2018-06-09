@@ -210,15 +210,40 @@ public class Server extends Thread {
                     state = parseData(cmdString, readingString);
 
                     switch(state){
+                        case 0:
+                            mainController.setStateLabel("IDLE");
+                            break;
                         case 1:
                             if (!isTimerRunning) {
                                 startTimer(System.currentTimeMillis());
                                 isTimerRunning = true;
                             }
+                            mainController.setStateLabel("ACCELERATING");
+                            break;
+                        case 2:
+                            mainController.setStateLabel("DECELERATING");
+                            break;
                         case 3:
                             mainController.setBrakeIndicator();
+                            mainController.setStateLabel("EMERGENCY BRAKING");
+                            break;
                         case 4:
                             isTimerRunning = false;
+                            mainController.setStateLabel("RUN COMPLETE");
+                            break;
+                        case 5:
+                            mainController.setStateLabel("FAILURE STOPPED");
+                            break;
+                        case 6:
+                            mainController.setStateLabel("EXITING");
+                            break;
+                        case 7:
+                            mainController.setStateLabel("FINISHED");
+                            break;
+                        default:
+                            LOGGER.log(Level.WARNING, "Should never reach here.");
+                            break;
+
                     }
 //                    mainController.setGaugeState(state);  // TODO(Kofi): implement state gadget
                     break;
