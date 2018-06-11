@@ -19,10 +19,10 @@ public class Server extends Thread {
 
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 4445;
-    public static final int ACK_FROM_SERVER = 4;
+    public static final int ACK_FROM_SERVER = 0;
     private static final String DATA_REGEX = "^[0-9]+$";
 
-    int distance, velocity, acceleration, stripe_count,
+    int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_volt1, hp_temp1;
     int state = 0;
@@ -214,30 +214,33 @@ public class Server extends Thread {
                             mainController.setStateLabel("IDLE");
                             break;
                         case 1:
+                            mainController.setStateLabel("READY");
+                            break;
+                        case 2:
                             if (!isTimerRunning) {
                                 startTimer(System.currentTimeMillis());
                                 isTimerRunning = true;
                             }
                             mainController.setStateLabel("ACCELERATING");
                             break;
-                        case 2:
+                        case 3:
                             mainController.setStateLabel("DECELERATING");
                             break;
-                        case 3:
+                        case 4:
                             mainController.setBrakeIndicator();
                             mainController.setStateLabel("EMERGENCY BRAKING");
                             break;
-                        case 4:
+                        case 5:
                             isTimerRunning = false;
                             mainController.setStateLabel("RUN COMPLETE");
                             break;
-                        case 5:
+                        case 6:
                             mainController.setStateLabel("FAILURE STOPPED");
                             break;
-                        case 6:
+                        case 7:
                             mainController.setStateLabel("EXITING");
                             break;
-                        case 7:
+                        case 8:
                             mainController.setStateLabel("FINISHED");
                             break;
                         default:
@@ -245,7 +248,6 @@ public class Server extends Thread {
                             break;
 
                     }
-//                    mainController.setGaugeState(state);  // TODO(Kofi): implement state gadget
                     break;
                 case "CMD10":
                     hp_volt = parseData(cmdString, readingString);

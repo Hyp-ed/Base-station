@@ -2,13 +2,13 @@
 
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import eu.hansolo.medusa.Gauge?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -369,10 +369,19 @@
                                              </children>
                                           </HBox>
                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                               <children>
-                                                   <TextArea fx:id="logger" style="-fx-background-color: #2A2E37; -fx-text-fill: #000000;" text="System logger">
-                                                   </TextArea>
-                                               </children>
+                                             <children>
+                                                <Label text="Enter test track length:" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <JFXTextField />
+                                                <Button fx:id="trackLengthBtn" mnemonicParsing="false" text="SEND TRACK LENGTH">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
                                            </HBox>
                                        </children>
                                     </VBox>

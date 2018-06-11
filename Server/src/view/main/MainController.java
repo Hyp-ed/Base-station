@@ -1,7 +1,6 @@
 package view.main;
 
 import com.jfoenix.controls.JFXSlider;
-import eu.hansolo.enzo.lcd.LcdClock;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -69,11 +68,15 @@ public class MainController {
     private Label stateLabel;
 
     @FXML
+    private Button trackLengthBtn;
+
+    @FXML
     public void initialize() {
         System.out.println("Called MainController.initialize");
         btnStop.setOnAction(event -> this.handleBtnStop());
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
         btnReset.setOnAction(event -> this.handleBtnReset());
+        trackLengthBtn.setOnAction(event -> this.handleTrackLengthBtn());
     }
 
     private final Server server;
@@ -94,6 +97,12 @@ public class MainController {
 
     private void handleBtnReset() {
         server.sendToPod(3);
+    }
+
+    private void handleTrackLengthBtn() {
+        //TODO: get value from text area
+        server.sendToPod(4);
+        server.sendToPod(10000); //change to entered value
     }
 
     public void setGaugeVelocity(int velocity) {
