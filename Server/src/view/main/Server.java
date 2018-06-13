@@ -160,6 +160,47 @@ public class Server extends Thread {
         gaugeThread.start();
     }
 
+    private void setState(int state) {
+        switch(state){
+            case 0:
+                mainController.setStateLabel("IDLE");
+                break;
+            case 1:
+                mainController.setStateLabel("READY");
+                break;
+            case 2:
+                if (!isTimerRunning) {
+                    startTimer(System.currentTimeMillis());
+                    isTimerRunning = true;
+                }
+                mainController.setStateLabel("ACCELERATING");
+                break;
+            case 3:
+                mainController.setStateLabel("DECELERATING");
+                break;
+            case 4:
+                mainController.setBrakeIndicator();
+                mainController.setStateLabel("EMERGENCY BRAKING");
+                break;
+            case 5:
+                isTimerRunning = false;
+                mainController.setStateLabel("RUN COMPLETE");
+                break;
+            case 6:
+                mainController.setStateLabel("FAILURE STOPPED");
+                break;
+            case 7:
+                mainController.setStateLabel("EXITING");
+                break;
+            case 8:
+                mainController.setStateLabel("FINISHED");
+                break;
+            default:
+                LOGGER.log(Level.WARNING, "Should never reach here.");
+                break;
+        }
+    }
+
     private void startCommunication() {
         LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
 
@@ -181,13 +222,6 @@ public class Server extends Thread {
                     break;
                 case "CMD02":
                     velocity = parseData(cmdString, readingString);
-
-                    if (!isTimerRunning && velocity == 0) {
-                        startTimer(System.currentTimeMillis());
-                        isTimerRunning = true;
-                    } else if (velocity >= 100) {
-                        isTimerRunning = false;
-                    }
                     break;
                 case "CMD03":
                     acceleration = parseData(cmdString, readingString);
@@ -208,46 +242,7 @@ public class Server extends Thread {
                     break;
                 case "CMD09":
                     state = parseData(cmdString, readingString);
-
-                    switch(state){
-                        case 0:
-                            mainController.setStateLabel("IDLE");
-                            break;
-                        case 1:
-                            mainController.setStateLabel("READY");
-                            break;
-                        case 2:
-                            if (!isTimerRunning) {
-                                startTimer(System.currentTimeMillis());
-                                isTimerRunning = true;
-                            }
-                            mainController.setStateLabel("ACCELERATING");
-                            break;
-                        case 3:
-                            mainController.setStateLabel("DECELERATING");
-                            break;
-                        case 4:
-                            mainController.setBrakeIndicator();
-                            mainController.setStateLabel("EMERGENCY BRAKING");
-                            break;
-                        case 5:
-                            isTimerRunning = false;
-                            mainController.setStateLabel("RUN COMPLETE");
-                            break;
-                        case 6:
-                            mainController.setStateLabel("FAILURE STOPPED");
-                            break;
-                        case 7:
-                            mainController.setStateLabel("EXITING");
-                            break;
-                        case 8:
-                            mainController.setStateLabel("FINISHED");
-                            break;
-                        default:
-                            LOGGER.log(Level.WARNING, "Should never reach here.");
-                            break;
-
-                    }
+                    setState(state);
                     break;
                 case "CMD10":
                     hp_volt = parseData(cmdString, readingString);
