@@ -20,7 +20,10 @@ public class MainController {
     private Button btnLaunch;
 
     @FXML
-    private Button btnReset;
+    private Button btnServicePropulsionStop;
+
+    @FXML
+    private Button btnServicePropulsionGo;
 
     @FXML
     private Gauge gaugeAccel;
@@ -53,6 +56,18 @@ public class MainController {
     private Gauge gaugeRpmbr;
 
     @FXML
+    private Gauge gaugeTorquefr;
+
+    @FXML
+    private Gauge gaugeTorquefl;
+
+    @FXML
+    private Gauge gaugeTorquebr;
+
+    @FXML
+    private Gauge gaugeTorquebl;
+
+    @FXML
     private JFXSlider distanceMeter;
 
     @FXML
@@ -75,7 +90,6 @@ public class MainController {
         System.out.println("Called MainController.initialize");
         btnStop.setOnAction(event -> this.handleBtnStop());
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
-        btnReset.setOnAction(event -> this.handleBtnReset());
         trackLengthBtn.setOnAction(event -> this.handleTrackLengthBtn());
     }
 
@@ -93,10 +107,6 @@ public class MainController {
 
     private void handleBtnLaunch() {
         server.sendToPod(2);
-    }
-
-    private void handleBtnReset() {
-        server.sendToPod(3);
     }
 
     private void handleTrackLengthBtn() {
@@ -144,6 +154,18 @@ public class MainController {
     public void setGaugeRpmbr(int rpmbr) {
         gaugeRpmbr.setValue(rpmbr);
     }
+
+    public void setGaugeTorquefr(int torquefr) { gaugeTorquefr.setValue(torquefr); }
+
+    public void setGaugeTorquebl(int torquebl) {
+        gaugeTorquefl.setValue(torquebl);
+    }
+
+    public void setGaugeTorquebr(int torquebr) {
+        gaugeTorquebr.setValue(torquebr);
+    }
+
+    public void setGaugeTorquefl(int torquefl) { gaugeTorquebl.setValue(torquefl); }
 
     public void setClock(int time) {
         clock.setValue(time);

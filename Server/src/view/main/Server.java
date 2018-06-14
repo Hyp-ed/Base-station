@@ -24,7 +24,8 @@ public class Server extends Thread {
 
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
-            hp_volt, hp_temp, hp_volt1, hp_temp1;
+            hp_volt, hp_temp, hp_volt1, hp_temp1,
+            torque_fr, torque_fl, torque_br, torque_bl;
     int state = 0;
     String data, cmdString, readingString;
 
@@ -70,6 +71,10 @@ public class Server extends Thread {
         cmdHashMap.put("CMD11", "hp temp");
         cmdHashMap.put("CMD12", "hp volt1");
         cmdHashMap.put("CMD13", "hp temp1");
+        cmdHashMap.put("CMD14", "torque fr");
+        cmdHashMap.put("CMD15", "torque fl");
+        cmdHashMap.put("CMD16", "torque br");
+        cmdHashMap.put("CMD17", "torque bl");
     }
 
     public Server(MainController controller) {
@@ -150,6 +155,10 @@ public class Server extends Thread {
                         mainController.setGaugeTemp(hp_temp);
                         mainController.setGaugeVoltage1(hp_volt1);
                         mainController.setGaugeTemp1(hp_temp1);
+                        mainController.setGaugeTorquefr(torque_fr);
+                        mainController.setGaugeTorquefl(torque_fl);
+                        mainController.setGaugeTorquebr(torque_br);
+                        mainController.setGaugeTorquebl(torque_bl);
                     }
                 }));
                 gaugeLag.setCycleCount(Timeline.INDEFINITE);
@@ -255,6 +264,18 @@ public class Server extends Thread {
                     break;
                 case "CMD13":
                     hp_temp1 = parseData(cmdString, readingString);
+                    break;
+                case "CMD14":
+                    torque_fr = parseData(cmdString, readingString);
+                    break;
+                case "CMD15":
+                    torque_fl = parseData(cmdString, readingString);
+                    break;
+                case "CMD16":
+                    torque_bl = parseData(cmdString, readingString);
+                    break;
+                case "CMD17":
+                    torque_br = parseData(cmdString, readingString);
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
