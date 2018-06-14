@@ -91,6 +91,8 @@ public class MainController {
         btnStop.setOnAction(event -> this.handleBtnStop());
         btnLaunch.setOnAction(event -> this.handleBtnLaunch());
         trackLengthBtn.setOnAction(event -> this.handleTrackLengthBtn());
+        btnServicePropulsionGo.setOnAction(event -> this.handleBtnServicePropulsionGo());
+        btnServicePropulsionStop.setOnAction(event -> this.handleBtnServicePropulsionStop());
     }
 
     private final Server server;
@@ -107,6 +109,14 @@ public class MainController {
 
     private void handleBtnLaunch() {
         server.sendToPod(2);
+    }
+
+    private void handleBtnServicePropulsionGo() {
+        server.sendToPod(5);
+    }
+
+    private void handleBtnServicePropulsionStop() {
+        server.sendToPod(6);
     }
 
     private void handleTrackLengthBtn() {
