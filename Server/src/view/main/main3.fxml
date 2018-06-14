@@ -117,7 +117,7 @@
                         </AnchorPane>
                      </children>
                   </HBox>
-                  <JFXTabPane layoutX="-1.0" layoutY="85.0" prefHeight="581.0" prefWidth="1242.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="85.0">
+                  <JFXTabPane layoutY="85.0" prefHeight="683.0" prefWidth="1242.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
                      <tabs>
                         <Tab text="DASHBOARD">
                           <content>
@@ -344,8 +344,8 @@
                                                       </Label>
                                                       <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
                                                          <children>
-                                                            <Button layoutX="79.0" layoutY="24.0" mnemonicParsing="false" text="GO" />
-                                                            <Button layoutX="214.0" layoutY="24.0" mnemonicParsing="false" text="STOP" />
+                                                            <Button fx:id="btnServicePropulsionGo" layoutX="79.0" layoutY="24.0" mnemonicParsing="false" text="GO" />
+                                                            <Button fx:id="btnServicePropulsionStop" layoutX="214.0" layoutY="24.0" mnemonicParsing="false" text="STOP" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>

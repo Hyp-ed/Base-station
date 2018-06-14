@@ -103,9 +103,7 @@ public class MainController {
         server.start();
     }
 
-    private void handleBtnStop() {
-        server.sendToPod(1);
-    }
+    private void handleBtnStop() { server.sendToPod(1); }
 
     private void handleBtnLaunch() {
         server.sendToPod(2);
