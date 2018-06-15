@@ -272,10 +272,10 @@ public class Server extends Thread {
                     torque_fl = parseData(cmdString, readingString);
                     break;
                 case "CMD16":
-                    torque_bl = parseData(cmdString, readingString);
+                    torque_br = parseData(cmdString, readingString);
                     break;
                 case "CMD17":
-                    torque_br = parseData(cmdString, readingString);
+                    torque_bl = parseData(cmdString, readingString);
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
