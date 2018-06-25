@@ -56,7 +56,10 @@
 
 /* Slider style*/
 .jfx-slider .thumb{
- -fx-background-color: #FFFF8D;
+ -fx-background-color: #2A2E37;
+ -fx-background-image :url('file:C:/Users/Kofi/Documents/Base-station/Server/src/view/buttons1.png');
+ -fx-pref-height: 25;
+ -fx-pref-width: 60;
 }
 
 .jfx-slider > .colored-track {

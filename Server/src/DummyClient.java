@@ -23,7 +23,7 @@ public class DummyClient {
             String confirmation = input.readLine();
             PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
 
-            if (confirmation.equals("4")) {
+            if (confirmation.equals("0")) {
                 System.out.println("Confirmation received.");
 
                 while(true) {
@@ -41,6 +41,10 @@ public class DummyClient {
                         dummydata.println("CMD11"+Integer.toString(x));
                         dummydata.println("CMD12"+Integer.toString(x));
                         dummydata.println("CMD13"+Integer.toString(x));
+                        dummydata.println("CMD14"+Integer.toString(x));
+                        dummydata.println("CMD15"+Integer.toString(x));
+                        dummydata.println("CMD16"+Integer.toString(x));
+                        dummydata.println("CMD17"+Integer.toString(x));
                     }
                 }
 

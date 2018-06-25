@@ -360,7 +360,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="140.0" prefWidth="1242.0">
                                              <children>
-                                                <JFXSlider fx:id="distanceMeter" prefHeight="14.0" prefWidth="1162.0" showTickLabels="true" showTickMarks="true" />
+                                                <JFXSlider fx:id="distanceMeter" disable="true" max="1250.0" prefHeight="14.0" prefWidth="1162.0" showTickMarks="true" value="0" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
