@@ -175,34 +175,40 @@ public class Server extends Thread {
                 mainController.setStateLabel("IDLE");
                 break;
             case 1:
-                mainController.setStateLabel("READY");
+                mainController.setStateLabel("CALIBRATING");
                 break;
             case 2:
+                mainController.setStateLabel("READY");
+                break;
+            case 3:
                 if (!isTimerRunning) {
                     startTimer(System.currentTimeMillis());
                     isTimerRunning = true;
                 }
                 mainController.setStateLabel("ACCELERATING");
                 break;
-            case 3:
+            case 4:
                 mainController.setStateLabel("DECELERATING");
                 break;
-            case 4:
+            case 5:
                 mainController.setBrakeIndicator();
                 mainController.setStateLabel("EMERGENCY BRAKING");
                 break;
-            case 5:
+            case 6:
                 isTimerRunning = false;
                 mainController.setStateLabel("RUN COMPLETE");
                 break;
-            case 6:
+            case 7:
                 mainController.setStateLabel("FAILURE STOPPED");
                 break;
-            case 7:
+            case 8:
                 mainController.setStateLabel("EXITING");
                 break;
-            case 8:
+            case 9:
                 mainController.setStateLabel("FINISHED");
+                break;
+            case 10:
+                mainController.setStateLabel("INVALID");
                 break;
             default:
                 LOGGER.log(Level.WARNING, "Should never reach here.");
