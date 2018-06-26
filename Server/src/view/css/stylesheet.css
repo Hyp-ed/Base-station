@@ -62,6 +62,10 @@
  -fx-pref-width: 60;
 }
 
+.jfx-slider:disabled {
+     -fx-opacity: 1.0;
+}
+
 .jfx-slider > .colored-track {
      -fx-background-color: #FFFF8D;
 }
