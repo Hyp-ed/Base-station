@@ -25,7 +25,7 @@ public class Server extends Thread {
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_volt1, hp_temp1,
-            torque_fr, torque_fl, torque_br, torque_bl;
+            torque_fr, torque_fl, torque_br, torque_bl, imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8;
     int state = 0;
     String data, cmdString, readingString;
 
@@ -75,6 +75,14 @@ public class Server extends Thread {
         cmdHashMap.put("CMD15", "torque fl");
         cmdHashMap.put("CMD16", "torque br");
         cmdHashMap.put("CMD17", "torque bl");
+        cmdHashMap.put("CMD18", "imu1");
+        cmdHashMap.put("CMD19", "imu2");
+        cmdHashMap.put("CMD20", "imu3");
+        cmdHashMap.put("CMD21", "imu4");
+        cmdHashMap.put("CMD22", "imu5");
+        cmdHashMap.put("CMD23", "imu6");
+        cmdHashMap.put("CMD24", "imu7");
+        cmdHashMap.put("CMD25", "imu8");
     }
 
     public Server(MainController controller) {
@@ -282,6 +290,30 @@ public class Server extends Thread {
                     break;
                 case "CMD17":
                     torque_bl = parseData(cmdString, readingString);
+                    break;
+                case "CMD18":
+                    imu1 = parseData(cmdString, readingString);
+                    break;
+                case "CMD19":
+                    imu2 = parseData(cmdString, readingString);
+                    break;
+                case "CMD20":
+                    imu3 = parseData(cmdString, readingString);
+                    break;
+                case "CMD21":
+                    imu4 = parseData(cmdString, readingString);
+                    break;
+                case "CMD22":
+                    imu5 = parseData(cmdString, readingString);
+                    break;
+                case "CMD23":
+                    imu6 = parseData(cmdString, readingString);
+                    break;
+                case "CMD24":
+                    imu7 = parseData(cmdString, readingString);
+                    break;
+                case "CMD25":
+                    imu8 = parseData(cmdString, readingString);
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
