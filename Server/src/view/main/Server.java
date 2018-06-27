@@ -24,7 +24,7 @@ public class Server extends Thread {
 
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
-            hp_volt, hp_temp, hp_volt1, hp_temp1,
+            hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1,
             torque_fr, torque_fl, torque_br, torque_bl,
             imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8,
             proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
@@ -72,36 +72,38 @@ public class Server extends Thread {
         cmdHashMap.put("CMD09", "state");
         cmdHashMap.put("CMD10", "hp volt");
         cmdHashMap.put("CMD11", "hp temp");
-        cmdHashMap.put("CMD12", "hp volt1");
-        cmdHashMap.put("CMD13", "hp temp1");
-        cmdHashMap.put("CMD14", "torque fr");
-        cmdHashMap.put("CMD15", "torque fl");
-        cmdHashMap.put("CMD16", "torque br");
-        cmdHashMap.put("CMD17", "torque bl");
-        cmdHashMap.put("CMD18", "imu1");
-        cmdHashMap.put("CMD19", "imu2");
-        cmdHashMap.put("CMD20", "imu3");
-        cmdHashMap.put("CMD21", "imu4");
-        cmdHashMap.put("CMD22", "imu5");
-        cmdHashMap.put("CMD23", "imu6");
-        cmdHashMap.put("CMD24", "imu7");
-        cmdHashMap.put("CMD25", "imu8");
-        cmdHashMap.put("CMD26", "proxi front1");
-        cmdHashMap.put("CMD27", "proxi front2");
-        cmdHashMap.put("CMD28", "proxi front3");
-        cmdHashMap.put("CMD29", "proxi front4");
-        cmdHashMap.put("CMD30", "proxi front5");
-        cmdHashMap.put("CMD31", "proxi front6");
-        cmdHashMap.put("CMD32", "proxi front7");
-        cmdHashMap.put("CMD33", "proxi front8");
-        cmdHashMap.put("CMD34", "proxi rear1");
-        cmdHashMap.put("CMD35", "proxi rear2");
-        cmdHashMap.put("CMD36", "proxi rear3");
-        cmdHashMap.put("CMD37", "proxi rear4");
-        cmdHashMap.put("CMD38", "proxi rear5");
-        cmdHashMap.put("CMD39", "proxi rear6");
-        cmdHashMap.put("CMD40", "proxi rear7");
-        cmdHashMap.put("CMD41", "proxi rear8");
+        cmdHashMap.put("CMD12", "hp charge");
+        cmdHashMap.put("CMD13", "hp volt1");
+        cmdHashMap.put("CMD14", "hp temp1");
+        cmdHashMap.put("CMD15", "hp charge1");
+        cmdHashMap.put("CMD16", "torque fr");
+        cmdHashMap.put("CMD17", "torque fl");
+        cmdHashMap.put("CMD18", "torque br");
+        cmdHashMap.put("CMD19", "torque bl");
+        cmdHashMap.put("CMD20", "imu1");
+        cmdHashMap.put("CMD21", "imu2");
+        cmdHashMap.put("CMD22", "imu3");
+        cmdHashMap.put("CMD23", "imu4");
+        cmdHashMap.put("CMD24", "imu5");
+        cmdHashMap.put("CMD25", "imu6");
+        cmdHashMap.put("CMD26", "imu7");
+        cmdHashMap.put("CMD27", "imu8");
+        cmdHashMap.put("CMD28", "proxi front1");
+        cmdHashMap.put("CMD29", "proxi front2");
+        cmdHashMap.put("CMD30", "proxi front3");
+        cmdHashMap.put("CMD31", "proxi front4");
+        cmdHashMap.put("CMD32", "proxi front5");
+        cmdHashMap.put("CMD33", "proxi front6");
+        cmdHashMap.put("CMD34", "proxi front7");
+        cmdHashMap.put("CMD35", "proxi front8");
+        cmdHashMap.put("CMD36", "proxi rear1");
+        cmdHashMap.put("CMD37", "proxi rear2");
+        cmdHashMap.put("CMD38", "proxi rear3");
+        cmdHashMap.put("CMD39", "proxi rear4");
+        cmdHashMap.put("CMD40", "proxi rear5");
+        cmdHashMap.put("CMD41", "proxi rear6");
+        cmdHashMap.put("CMD42", "proxi rear7");
+        cmdHashMap.put("CMD43", "proxi rear8");
 
     }
 
@@ -297,93 +299,99 @@ public class Server extends Thread {
                     hp_temp = parseData(cmdString, readingString);
                     break;
                 case "CMD12":
-                    hp_volt1 = parseData(cmdString, readingString);
+                    hp_charge = parseData(cmdString, readingString);
                     break;
                 case "CMD13":
-                    hp_temp1 = parseData(cmdString, readingString);
+                    hp_volt1 = parseData(cmdString, readingString);
                     break;
                 case "CMD14":
-                    torque_fr = parseData(cmdString, readingString);
+                    hp_temp1 = parseData(cmdString, readingString);
                     break;
                 case "CMD15":
-                    torque_fl = parseData(cmdString, readingString);
+                    hp_charge1 = parseData(cmdString, readingString);
                     break;
                 case "CMD16":
-                    torque_br = parseData(cmdString, readingString);
+                    torque_fr = parseData(cmdString, readingString);
                     break;
                 case "CMD17":
-                    torque_bl = parseData(cmdString, readingString);
+                    torque_fl = parseData(cmdString, readingString);
                     break;
                 case "CMD18":
-                    imu1 = parseData(cmdString, readingString);
+                    torque_br = parseData(cmdString, readingString);
                     break;
                 case "CMD19":
-                    imu2 = parseData(cmdString, readingString);
+                    torque_bl = parseData(cmdString, readingString);
                     break;
                 case "CMD20":
-                    imu3 = parseData(cmdString, readingString);
+                    imu1 = parseData(cmdString, readingString);
                     break;
                 case "CMD21":
-                    imu4 = parseData(cmdString, readingString);
+                    imu2 = parseData(cmdString, readingString);
                     break;
                 case "CMD22":
-                    imu5 = parseData(cmdString, readingString);
+                    imu3 = parseData(cmdString, readingString);
                     break;
                 case "CMD23":
-                    imu6 = parseData(cmdString, readingString);
+                    imu4 = parseData(cmdString, readingString);
                     break;
                 case "CMD24":
-                    imu7 = parseData(cmdString, readingString);
+                    imu5 = parseData(cmdString, readingString);
                     break;
                 case "CMD25":
-                    imu8 = parseData(cmdString, readingString);
+                    imu6 = parseData(cmdString, readingString);
                     break;
                 case "CMD26":
-                    proxi_front1 = parseData(cmdString, readingString);
+                    imu7 = parseData(cmdString, readingString);
                     break;
                 case "CMD27":
-                    proxi_front2 = parseData(cmdString, readingString);
+                    imu8 = parseData(cmdString, readingString);
                     break;
                 case "CMD28":
-                    proxi_front3 = parseData(cmdString, readingString);
+                    proxi_front1 = parseData(cmdString, readingString);
                     break;
                 case "CMD29":
-                    proxi_front4 = parseData(cmdString, readingString);
+                    proxi_front2 = parseData(cmdString, readingString);
                     break;
                 case "CMD30":
-                    proxi_front5 = parseData(cmdString, readingString);
+                    proxi_front3 = parseData(cmdString, readingString);
                     break;
                 case "CMD31":
-                    proxi_front6 = parseData(cmdString, readingString);
+                    proxi_front4 = parseData(cmdString, readingString);
                     break;
                 case "CMD32":
-                    proxi_front7 = parseData(cmdString, readingString);
+                    proxi_front5 = parseData(cmdString, readingString);
                     break;
                 case "CMD33":
-                    proxi_front8 = parseData(cmdString, readingString);
+                    proxi_front6 = parseData(cmdString, readingString);
                     break;
                 case "CMD34":
-                    proxi_rear1 = parseData(cmdString, readingString);
+                    proxi_front7 = parseData(cmdString, readingString);
                     break;
                 case "CMD35":
-                    proxi_rear2 = parseData(cmdString, readingString);
+                    proxi_front8 = parseData(cmdString, readingString);
                     break;
                 case "CMD36":
-                    proxi_rear3 = parseData(cmdString, readingString);
+                    proxi_rear1 = parseData(cmdString, readingString);
                     break;
                 case "CMD37":
-                    proxi_rear4 = parseData(cmdString, readingString);
+                    proxi_rear2 = parseData(cmdString, readingString);
                     break;
                 case "CMD38":
-                    proxi_rear5 = parseData(cmdString, readingString);
+                    proxi_rear3 = parseData(cmdString, readingString);
                     break;
                 case "CMD39":
-                    proxi_rear6 = parseData(cmdString, readingString);
+                    proxi_rear4 = parseData(cmdString, readingString);
                     break;
                 case "CMD40":
-                    proxi_rear7 = parseData(cmdString, readingString);
+                    proxi_rear5 = parseData(cmdString, readingString);
                     break;
                 case "CMD41":
+                    proxi_rear6 = parseData(cmdString, readingString);
+                    break;
+                case "CMD42":
+                    proxi_rear7 = parseData(cmdString, readingString);
+                    break;
+                case "CMD43":
                     proxi_rear8 = parseData(cmdString, readingString);
                     break;
                 default:
