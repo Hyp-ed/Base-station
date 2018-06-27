@@ -68,6 +68,18 @@ public class MainController {
     private Gauge gaugeTorquebl;
 
     @FXML
+    private Gauge lpBattery;
+
+    @FXML
+    private Gauge lpBattery1;
+
+    @FXML
+    private Gauge hpBattery;
+
+    @FXML
+    private Gauge hpBattery1;
+
+    @FXML
     private JFXSlider distanceMeter;
 
     @FXML
@@ -174,6 +186,22 @@ public class MainController {
     }
 
     public void setGaugeTorquefl(int torquefl) { gaugeTorquebl.setValue(torquefl); }
+
+    public void setGaugeLpbattery(int lpcharge) {
+        lpBattery.setValue(lpcharge);
+    }
+
+    public void setGaugeLpbattery1(int lpcharge1) {
+        lpBattery1.setValue(lpcharge1);
+    }
+
+    public void setGaugeHpbattery(int hpcharge) {
+        hpBattery.setValue(hpcharge);
+    }
+
+    public void setGaugeHpbattery1(int hpcharge1) {
+        hpBattery1.setValue(hpcharge1);
+    }
 
     public void setClock(int time) {
         clock.setValue(time);

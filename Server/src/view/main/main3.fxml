@@ -36,7 +36,7 @@
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets right="500.0" />
+                              <Insets right="400.0" />
                            </HBox.margin>
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="173.0" layoutX="14.0" layoutY="16.0">
@@ -60,39 +60,61 @@
                               </Label>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="batteryPane" prefHeight="58.0" prefWidth="243.0">
+                        <AnchorPane fx:id="batteryPane" prefHeight="76.0" prefWidth="346.0">
                             <children>
-                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="306.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <HBox alignment="CENTER" layoutX="-23.0" prefHeight="76.0" prefWidth="266.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                            <Gauge fx:id="battery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                            <Gauge fx:id="lpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
                                     </VBox>
-                                    <VBox alignment="CENTER" layoutX="82.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                                    <VBox alignment="CENTER" layoutX="9.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Gauge fx:id="battery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
-                                          <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
+                                          <Gauge fx:id="lpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="82.0" layoutY="10.0" prefHeight="76.0" prefWidth="76.0">
+                                       <children>
+                                          <Gauge fx:id="hpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Label prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
+                                             <font>
+                                                <Font size="10.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="132.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Gauge fx:id="battery11" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="hpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
                                              </font>
                                           </Label>
                                        </children>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
                                     </VBox>
                                  </children>
                               </HBox>
