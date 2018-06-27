@@ -25,7 +25,10 @@ public class Server extends Thread {
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_volt1, hp_temp1,
-            torque_fr, torque_fl, torque_br, torque_bl, imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8;
+            torque_fr, torque_fl, torque_br, torque_bl,
+            imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8,
+            proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
+            proxi_rear1, proxi_rear2, proxi_rear3, proxi_rear4, proxi_rear5, proxi_rear6, proxi_rear7, proxi_rear8;
     int state = 0;
     String data, cmdString, readingString;
 
@@ -83,6 +86,23 @@ public class Server extends Thread {
         cmdHashMap.put("CMD23", "imu6");
         cmdHashMap.put("CMD24", "imu7");
         cmdHashMap.put("CMD25", "imu8");
+        cmdHashMap.put("CMD26", "proxi front1");
+        cmdHashMap.put("CMD27", "proxi front2");
+        cmdHashMap.put("CMD28", "proxi front3");
+        cmdHashMap.put("CMD29", "proxi front4");
+        cmdHashMap.put("CMD30", "proxi front5");
+        cmdHashMap.put("CMD31", "proxi front6");
+        cmdHashMap.put("CMD32", "proxi front7");
+        cmdHashMap.put("CMD33", "proxi front8");
+        cmdHashMap.put("CMD34", "proxi rear1");
+        cmdHashMap.put("CMD35", "proxi rear2");
+        cmdHashMap.put("CMD36", "proxi rear3");
+        cmdHashMap.put("CMD37", "proxi rear4");
+        cmdHashMap.put("CMD38", "proxi rear5");
+        cmdHashMap.put("CMD39", "proxi rear6");
+        cmdHashMap.put("CMD40", "proxi rear7");
+        cmdHashMap.put("CMD41", "proxi rear8");
+
     }
 
     public Server(MainController controller) {
@@ -314,6 +334,54 @@ public class Server extends Thread {
                     break;
                 case "CMD25":
                     imu8 = parseData(cmdString, readingString);
+                    break;
+                case "CMD26":
+                    proxi_front1 = parseData(cmdString, readingString);
+                    break;
+                case "CMD27":
+                    proxi_front2 = parseData(cmdString, readingString);
+                    break;
+                case "CMD28":
+                    proxi_front3 = parseData(cmdString, readingString);
+                    break;
+                case "CMD29":
+                    proxi_front4 = parseData(cmdString, readingString);
+                    break;
+                case "CMD30":
+                    proxi_front5 = parseData(cmdString, readingString);
+                    break;
+                case "CMD31":
+                    proxi_front6 = parseData(cmdString, readingString);
+                    break;
+                case "CMD32":
+                    proxi_front7 = parseData(cmdString, readingString);
+                    break;
+                case "CMD33":
+                    proxi_front8 = parseData(cmdString, readingString);
+                    break;
+                case "CMD34":
+                    proxi_rear1 = parseData(cmdString, readingString);
+                    break;
+                case "CMD35":
+                    proxi_rear2 = parseData(cmdString, readingString);
+                    break;
+                case "CMD36":
+                    proxi_rear3 = parseData(cmdString, readingString);
+                    break;
+                case "CMD37":
+                    proxi_rear4 = parseData(cmdString, readingString);
+                    break;
+                case "CMD38":
+                    proxi_rear5 = parseData(cmdString, readingString);
+                    break;
+                case "CMD39":
+                    proxi_rear6 = parseData(cmdString, readingString);
+                    break;
+                case "CMD40":
+                    proxi_rear7 = parseData(cmdString, readingString);
+                    break;
+                case "CMD41":
+                    proxi_rear8 = parseData(cmdString, readingString);
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
