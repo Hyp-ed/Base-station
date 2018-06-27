@@ -344,8 +344,8 @@
                                                       </Label>
                                                       <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
                                                          <children>
-                                                            <Button fx:id="btnServicePropulsionGo" layoutX="79.0" layoutY="24.0" mnemonicParsing="false" text="GO" />
-                                                            <Button fx:id="btnServicePropulsionStop" layoutX="214.0" layoutY="24.0" mnemonicParsing="false" text="STOP" />
+                                                            <Button fx:id="btnServicePropulsionGo" disable="true" layoutX="79.0" layoutY="24.0" mnemonicParsing="false" text="GO" />
+                                                            <Button fx:id="btnServicePropulsionStop" disable="true" layoutX="214.0" layoutY="24.0" mnemonicParsing="false" text="STOP" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -365,12 +365,12 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                    <Button fx:id="btnLaunch" maxWidth="120.0" mnemonicParsing="false" text="LAUNCH">
+                                                    <Button fx:id="btnLaunch" disable="true" maxWidth="120.0" mnemonicParsing="false" text="LAUNCH">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="btnStop" mnemonicParsing="false" text="STOP">
+                                                <Button fx:id="btnStop" disable="true" mnemonicParsing="false" text="STOP">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>

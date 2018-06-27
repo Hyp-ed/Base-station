@@ -206,6 +206,8 @@ public class Server extends Thread {
                 mainController.setStateLabel("CALIBRATING");
                 break;
             case 2:
+                mainController.enableBtnLaunch();
+                mainController.enableBtnStop();
                 mainController.setStateLabel("READY");
                 break;
             case 3:
@@ -224,6 +226,7 @@ public class Server extends Thread {
                 break;
             case 6:
                 isTimerRunning = false;
+                mainController.enableServicePropulsion();
                 mainController.setStateLabel("RUN COMPLETE");
                 break;
             case 7:

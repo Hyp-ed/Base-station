@@ -200,4 +200,17 @@ public class MainController {
         });
 
     }
+
+    public void enableBtnLaunch(){
+        btnLaunch.setDisable(false);
+    }
+
+    public void enableBtnStop(){
+        btnStop.setDisable(false);
+    }
+
+    public void enableServicePropulsion(){
+        btnServicePropulsionGo.setDisable(false);
+        btnServicePropulsionStop.setDisable(false);
+    }
 }
