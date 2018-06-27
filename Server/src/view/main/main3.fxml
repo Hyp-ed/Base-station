@@ -20,16 +20,16 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="763.0" prefWidth="1242.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
+<StackPane prefHeight="767.0" prefWidth="1555.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1242.0">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="767.0" prefWidth="1555.0">
           <stylesheets>
               <URL value="@/view/css/stylesheet.css" />
           </stylesheets>
           <left>
-            <AnchorPane prefHeight="633.0" prefWidth="1241.0">
+            <AnchorPane prefHeight="767.0" prefWidth="1556.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="85.0" prefWidth="1242.0" style="-fx-background-color: #2A2E37;">
+                  <HBox alignment="TOP_RIGHT" prefHeight="86.0" prefWidth="1555.0" style="-fx-background-color: #2A2E37;">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <opaqueInsets>
@@ -156,7 +156,7 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets right="20.0" />
+                                                      <Insets left="20.0" right="20.0" />
                                                    </padding>
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout1" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
@@ -215,6 +215,29 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
+                                                <VBox fx:id="vgaugeLayout111" layoutX="984.0" layoutY="10.0" prefHeight="100.0" prefWidth="358.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-320.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IMU">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="332.0" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
                                              </children>
                                              <VBox.margin>
                                                 <Insets top="40.0" />
@@ -236,10 +259,10 @@
                                                             </Label>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="777.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="209.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="RPM FRONT RIGHT" value="100" />
-                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="-24.0" layoutY="-1.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" threshold="200" title="RPM FRONT LEFT" value="87" />
+                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="214.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="RPM FRONT RIGHT" value="100" />
+                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="-18.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="109.0" prefWidth="215.0" skinType="SPACE_X" threshold="200" title="RPM FRONT LEFT" value="87" />
                                                             <Gauge fx:id="gaugeTorquefl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="423.0" layoutY="-2.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="TORQUE FRONT LEFT" value="50" />
                                                             <Gauge fx:id="gaugeTorquefr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="613.0" layoutY="-2.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="TORQUE FRONT RIGHT" value="76" />
                                                          </children>
@@ -249,11 +272,8 @@
                                                       <Insets />
                                                    </opaqueInsets>
                                                    <HBox.margin>
-                                                      <Insets />
+                                                      <Insets left="20.0" />
                                                    </HBox.margin>
-                                                   <padding>
-                                                      <Insets right="20.0" />
-                                                   </padding>
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout3" layoutX="641.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
@@ -299,6 +319,32 @@
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout1111" prefHeight="100.0" prefWidth="358.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-320.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT PROXI">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="332.0" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
                                                 </VBox>
                                              </children>
                                              <VBox.margin>
@@ -309,12 +355,12 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout21" prefHeight="142.0" prefWidth="790.0">
                                                    <children>
-                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="357.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="777.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="23.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="RPM REAR LEFT" value="50" />
-                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="218.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="RPM REAR RIGHT" value="76" />
-                                                            <Gauge fx:id="gaugeTorquebl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="430.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="TORIQUE REAR LEFT" value="76" />
-                                                            <Gauge fx:id="gaugeTorquebr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="621.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="TORQUE REAR RIGHT" value="76" />
+                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="44.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="RPM REAR LEFT" value="50" />
+                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="236.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="RPM REAR RIGHT" value="76" />
+                                                            <Gauge fx:id="gaugeTorquebl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="445.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="TORIQUE REAR LEFT" value="76" />
+                                                            <Gauge fx:id="gaugeTorquebr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="634.0" lcdFont="ELEKTRA" maxValue="250" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="200" title="TORQUE REAR RIGHT" value="76" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -325,7 +371,7 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets right="20.0" />
+                                                      <Insets right="25.0" />
                                                    </padding>
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout31" layoutX="641.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
@@ -352,6 +398,32 @@
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout11111" prefHeight="100.0" prefWidth="358.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-320.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR PROXI">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane minWidth="-Infinity" prefHeight="110.0" prefWidth="332.0" />
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
                                                 </VBox>
                                              </children>
                                              <VBox.margin>
@@ -360,7 +432,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="140.0" prefWidth="1242.0">
                                              <children>
-                                                <JFXSlider fx:id="distanceMeter" disable="true" max="1250.0" prefHeight="14.0" prefWidth="1162.0" showTickMarks="true" value="0" />
+                                                <JFXSlider fx:id="distanceMeter" disable="true" max="1250.0" prefHeight="24.0" prefWidth="1482.0" showTickMarks="true" value="0" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
