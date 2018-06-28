@@ -30,6 +30,16 @@ public class Server extends Thread {
             proxi_front, proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
             proxi_rear, proxi_rear1, proxi_rear2, proxi_rear3, proxi_rear4, proxi_rear5, proxi_rear6, proxi_rear7, proxi_rear8;
     int state = 0;
+    // Danger flags
+    boolean dDistance, dVelocity, dAcceleration,
+            dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
+            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1,
+            dTorque_fr, dTorque_fl, dTorque_br, dTorque_bl;
+//            dImu, dImu1, dImu2, dImu3, dImu4, dImu5, dImu6, dImu7, dImu8,
+//            dProxi_front, dProxi_front1, dProxi_front2, dProxi_front3, dProxi_front4, dProxi_front5, dProxi_front6, dProxi_front7, dProxi_front8,
+//            dProxi_rear, dProxi_rear1, dProxi_rear2, dProxi_rear3, dProxi_rear4, dProxi_rear5, dProxi_rear6, dProxi_rear7, dProxi_rear8;
+//    boolean dState = false;
+
     String data, cmdString, readingString;
 
     private ServerSocket serverSocket;
@@ -44,7 +54,8 @@ public class Server extends Thread {
 
     private static Logger LOGGER;
     private static Handler loggerHandler = null;
-    private static HashMap cmdHashMap;
+    private static HashMap<String, String> cmdHashMap;
+    private static HashMap<String, Integer> thresHashMap;
 
     static {
         // Set up Logger
@@ -61,6 +72,7 @@ public class Server extends Thread {
             e.printStackTrace();
         }
 
+        // TODO(Isa): optimise the hashmaps
         // Maps command codes to data names
         cmdHashMap = new HashMap();
         cmdHashMap.put("CMD01", "distance");
@@ -86,6 +98,32 @@ public class Server extends Thread {
         cmdHashMap.put("CMD21", "imu");
         cmdHashMap.put("CMD22", "proxi front");
         cmdHashMap.put("CMD23", "proxi rear");
+
+        // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
+        thresHashMap = new HashMap();
+        thresHashMap.put("CMD01", 100);
+        thresHashMap.put("CMD02", 100);
+        thresHashMap.put("CMD03", 100);
+        thresHashMap.put("CMD04", 100);
+        thresHashMap.put("CMD05", 100);
+        thresHashMap.put("CMD06", 100);
+        thresHashMap.put("CMD07", 100);
+//        thresHashMap.put("CMD08", 100); // no threshold for state (?)
+        thresHashMap.put("CMD09", 100);
+        thresHashMap.put("CMD10", 100);
+        thresHashMap.put("CMD11", 100);
+        thresHashMap.put("CMD12", 100);
+        thresHashMap.put("CMD13", 100);
+        thresHashMap.put("CMD14", 100);
+        thresHashMap.put("CMD15", 100);
+        thresHashMap.put("CMD16", 100);
+        thresHashMap.put("CMD17", 100);
+        thresHashMap.put("CMD18", 100);
+        thresHashMap.put("CMD19", 100);
+        thresHashMap.put("CMD20", 100);
+        thresHashMap.put("CMD21", 100);
+        thresHashMap.put("CMD22", 100);
+        thresHashMap.put("CMD23", 100);
     }
 
     public Server(MainController controller) {
@@ -133,6 +171,14 @@ public class Server extends Thread {
         return result;
     }
 
+    private boolean isDanger(String cmdString, int data) {
+        if (data > thresHashMap.get(cmdString)) {
+            return true;
+        }
+
+        return false;
+    }
+
     private void startTimer(long startTime) {
         Thread timerThread = new Thread(new Runnable() {
             @Override
@@ -156,24 +202,24 @@ public class Server extends Thread {
                     @Override
                     public void handle(ActionEvent event) {
                         mainController.setDistanceMeter(distance);
-                        mainController.setGaugeVelocity(velocity);
-                        mainController.setGaugeAcceleration(acceleration);
-                        mainController.setGaugeRpmfl(rpm_fl);
-                        mainController.setGaugeRpmfr(rpm_fr);
-                        mainController.setGaugeRpmbl(rpm_bl);
-                        mainController.setGaugeRpmbr(rpm_br);
-                        mainController.setGaugeVoltage(hp_volt);
-                        mainController.setGaugeTemp(hp_temp);
-                        mainController.setGaugeVoltage1(hp_volt1);
-                        mainController.setGaugeTemp1(hp_temp1);
-                        mainController.setGaugeTorquefr(torque_fr);
-                        mainController.setGaugeTorquefl(torque_fl);
-                        mainController.setGaugeTorquebr(torque_br);
-                        mainController.setGaugeTorquebl(torque_bl);
-                        mainController.setGaugeLpbattery(lp_charge);
-                        mainController.setGaugeLpbattery1(lp_charge1);
-                        mainController.setGaugeHpBattery(hp_charge);
-                        mainController.setGaugeHpBattery1(hp_charge1);
+                        mainController.setGaugeVelocity(velocity, dVelocity);
+                        mainController.setGaugeAcceleration(acceleration, dAcceleration);
+                        mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
+                        mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
+                        mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
+                        mainController.setGaugeRpmbr(rpm_br, dRpm_br);
+                        mainController.setGaugeVoltage(hp_volt, dHp_volt);
+                        mainController.setGaugeTemp(hp_temp, dHp_temp);
+                        mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
+                        mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
+                        mainController.setGaugeTorquefr(torque_fr, dTorque_fr);
+                        mainController.setGaugeTorquefl(torque_fl, dTorque_fl);
+                        mainController.setGaugeTorquebr(torque_br, dTorque_br);
+                        mainController.setGaugeTorquebl(torque_bl, dTorque_bl);
+                        mainController.setGaugeLpbattery(lp_charge, dLp_charge);
+                        mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
+                        mainController.setGaugeHpBattery(hp_charge, dHp_charge);
+                        mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
                     }
                 }));
                 gaugeLag.setCycleCount(Timeline.INDEFINITE);
@@ -252,64 +298,84 @@ public class Server extends Thread {
             switch (cmdString) {
                 case "CMD01":
                     distance = parseData(cmdString, readingString);
+                    dDistance = isDanger(cmdString, distance);
                     break;
                 case "CMD02":
                     velocity = parseData(cmdString, readingString);
+                    dVelocity = isDanger(cmdString, velocity);
                     break;
                 case "CMD03":
                     acceleration = parseData(cmdString, readingString);
+                    dAcceleration = isDanger(cmdString, acceleration);
                     break;
                 case "CMD04":
                     rpm_fl = parseData(cmdString, readingString);
+                    dRpm_fl = isDanger(cmdString, rpm_fl);
                     break;
                 case "CMD05":
                     rpm_fr = parseData(cmdString, readingString);
+                    dRpm_fr = isDanger(cmdString, rpm_fr);
                     break;
                 case "CMD06":
                     rpm_bl = parseData(cmdString, readingString);
+                    dRpm_bl = isDanger(cmdString, rpm_bl);
                     break;
                 case "CMD07":
                     rpm_br = parseData(cmdString, readingString);
+                    dRpm_br = isDanger(cmdString, rpm_br);
                     break;
                 case "CMD08":
                     state = parseData(cmdString, readingString);
+//                    dState = isDanger(cmdString, state);
                     setState(state);
                     break;
                 case "CMD09":
                     hp_volt = parseData(cmdString, readingString);
+                    dHp_volt = isDanger(cmdString, hp_volt);
                     break;
                 case "CMD10":
                     hp_temp = parseData(cmdString, readingString);
+                    dHp_temp = isDanger(cmdString, hp_temp);
                     break;
                 case "CMD11":
                     hp_charge = parseData(cmdString, readingString);
+                    dHp_charge = isDanger(cmdString, hp_charge);
                     break;
                 case "CMD12":
                     hp_volt1 = parseData(cmdString, readingString);
+                    dHp_volt1 = isDanger(cmdString, hp_volt1);
                     break;
                 case "CMD13":
                     hp_temp1 = parseData(cmdString, readingString);
+                    dHp_temp1 = isDanger(cmdString, hp_temp1);
                     break;
                 case "CMD14":
                     hp_charge1 = parseData(cmdString, readingString);
+                    dHp_charge1 = isDanger(cmdString, hp_charge1);
                     break;
                 case "CMD15":
                     lp_charge = parseData(cmdString, readingString);
+                    dLp_charge = isDanger(cmdString, lp_charge);
                     break;
                 case "CMD16":
                     lp_charge1 = parseData(cmdString, readingString);
+                    dLp_charge1 = isDanger(cmdString, lp_charge1);
                     break;
                 case "CMD17":
                     torque_fr = parseData(cmdString, readingString);
+                    dTorque_fr = isDanger(cmdString, torque_fr);
                     break;
                 case "CMD18":
                     torque_fl = parseData(cmdString, readingString);
+                    dTorque_fl = isDanger(cmdString, torque_fl);
                     break;
                 case "CMD19":
                     torque_br = parseData(cmdString, readingString);
+                    dTorque_br = isDanger(cmdString, torque_br);
                     break;
                 case "CMD20":
                     torque_bl = parseData(cmdString, readingString);
+                    dTorque_bl = isDanger(cmdString, torque_br);
                     break;
                 case "CMD21":
                     imu = parseData(cmdString, readingString);
