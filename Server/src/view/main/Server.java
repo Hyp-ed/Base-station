@@ -20,7 +20,7 @@ public class Server extends Thread {
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 0;
-    private static final String DATA_REGEX = "^[0-9]+$";
+    private static final String DATA_REGEX = "^\\d*\\.\\d+|\\d+\\.\\d*$"; // "^[0-9]+$"
 
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
