@@ -26,9 +26,9 @@ public class Server extends Thread {
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
             torque_fr, torque_fl, torque_br, torque_bl,
-            imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8,
-            proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
-            proxi_rear1, proxi_rear2, proxi_rear3, proxi_rear4, proxi_rear5, proxi_rear6, proxi_rear7, proxi_rear8;
+            imu, imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8,
+            proxi_front, proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
+            proxi_rear, proxi_rear1, proxi_rear2, proxi_rear3, proxi_rear4, proxi_rear5, proxi_rear6, proxi_rear7, proxi_rear8;
     int state = 0;
     String data, cmdString, readingString;
 
@@ -81,30 +81,9 @@ public class Server extends Thread {
         cmdHashMap.put("CMD18", "torque fl");
         cmdHashMap.put("CMD19", "torque br");
         cmdHashMap.put("CMD20", "torque bl");
-        cmdHashMap.put("CMD21", "imu1");
-        cmdHashMap.put("CMD22", "imu2");
-        cmdHashMap.put("CMD23", "imu3");
-        cmdHashMap.put("CMD24", "imu4");
-        cmdHashMap.put("CMD25", "imu5");
-        cmdHashMap.put("CMD26", "imu6");
-        cmdHashMap.put("CMD27", "imu7");
-        cmdHashMap.put("CMD28", "imu8");
-        cmdHashMap.put("CMD29", "proxi front1");
-        cmdHashMap.put("CMD30", "proxi front2");
-        cmdHashMap.put("CMD31", "proxi front3");
-        cmdHashMap.put("CMD32", "proxi front4");
-        cmdHashMap.put("CMD33", "proxi front5");
-        cmdHashMap.put("CMD34", "proxi front6");
-        cmdHashMap.put("CMD35", "proxi front7");
-        cmdHashMap.put("CMD36", "proxi front8");
-        cmdHashMap.put("CMD37", "proxi rear1");
-        cmdHashMap.put("CMD38", "proxi rear2");
-        cmdHashMap.put("CMD39", "proxi rear3");
-        cmdHashMap.put("CMD40", "proxi rear4");
-        cmdHashMap.put("CMD41", "proxi rear5");
-        cmdHashMap.put("CMD42", "proxi rear6");
-        cmdHashMap.put("CMD43", "proxi rear7");
-        cmdHashMap.put("CMD44", "proxi rear8");
+        cmdHashMap.put("CMD21", "imu");
+        cmdHashMap.put("CMD22", "proxi front");
+        cmdHashMap.put("CMD23", "proxi rear");
 
     }
 
@@ -193,7 +172,7 @@ public class Server extends Thread {
                         mainController.setGaugeLpbattery(lp_charge);
                         mainController.setGaugeLpbattery1(lp_charge1);
                         mainController.setGaugeHpbattery(hp_charge);
-                        mainController.setGaugeHpbattery(hp_charge1);
+                        mainController.setGaugeHpbattery1(hp_charge1);
                     }
                 }));
                 gaugeLag.setCycleCount(Timeline.INDEFINITE);
@@ -332,76 +311,34 @@ public class Server extends Thread {
                     torque_bl = parseData(cmdString, readingString);
                     break;
                 case "CMD21":
-                    imu1 = parseData(cmdString, readingString);
+                    imu = parseData(cmdString, readingString);
+                    imu1 = Integer.parseInt(Integer.toString(imu).substring(0, 1));
+                    imu2 = Integer.parseInt(Integer.toString(imu).substring(1, 2));
+                    imu3 = Integer.parseInt(Integer.toString(imu).substring(2, 3));
+                    imu4 = Integer.parseInt(Integer.toString(imu).substring(3, 4));
+                    imu5 = Integer.parseInt(Integer.toString(imu).substring(5, 6));
+                    imu6 = Integer.parseInt(Integer.toString(imu).substring(6, 7));
+                    imu7 = Integer.parseInt(Integer.toString(imu).substring(7));
                     break;
                 case "CMD22":
-                    imu2 = parseData(cmdString, readingString);
+                    proxi_front = parseData(cmdString, readingString);
+                    proxi_front1 = Integer.parseInt(Integer.toString(proxi_front).substring(0, 1));
+                    proxi_front2 = Integer.parseInt(Integer.toString(proxi_front).substring(1, 2));
+                    proxi_front3 = Integer.parseInt(Integer.toString(proxi_front).substring(2, 3));
+                    proxi_front4 = Integer.parseInt(Integer.toString(proxi_front).substring(3, 4));
+                    proxi_front5 = Integer.parseInt(Integer.toString(proxi_front).substring(5, 6));
+                    proxi_front6 = Integer.parseInt(Integer.toString(proxi_front).substring(6, 7));
+                    proxi_front7 = Integer.parseInt(Integer.toString(proxi_front).substring(7));
                     break;
                 case "CMD23":
-                    imu3 = parseData(cmdString, readingString);
-                    break;
-                case "CMD24":
-                    imu4 = parseData(cmdString, readingString);
-                    break;
-                case "CMD25":
-                    imu5 = parseData(cmdString, readingString);
-                    break;
-                case "CMD26":
-                    imu6 = parseData(cmdString, readingString);
-                    break;
-                case "CMD27":
-                    imu7 = parseData(cmdString, readingString);
-                    break;
-                case "CMD28":
-                    imu8 = parseData(cmdString, readingString);
-                    break;
-                case "CMD29":
-                    proxi_front1 = parseData(cmdString, readingString);
-                    break;
-                case "CMD30":
-                    proxi_front2 = parseData(cmdString, readingString);
-                    break;
-                case "CMD31":
-                    proxi_front3 = parseData(cmdString, readingString);
-                    break;
-                case "CMD32":
-                    proxi_front4 = parseData(cmdString, readingString);
-                    break;
-                case "CMD33":
-                    proxi_front5 = parseData(cmdString, readingString);
-                    break;
-                case "CMD34":
-                    proxi_front6 = parseData(cmdString, readingString);
-                    break;
-                case "CMD35":
-                    proxi_front7 = parseData(cmdString, readingString);
-                    break;
-                case "CMD36":
-                    proxi_front8 = parseData(cmdString, readingString);
-                    break;
-                case "CMD37":
-                    proxi_rear1 = parseData(cmdString, readingString);
-                    break;
-                case "CMD38":
-                    proxi_rear2 = parseData(cmdString, readingString);
-                    break;
-                case "CMD39":
-                    proxi_rear3 = parseData(cmdString, readingString);
-                    break;
-                case "CMD40":
-                    proxi_rear4 = parseData(cmdString, readingString);
-                    break;
-                case "CMD41":
-                    proxi_rear5 = parseData(cmdString, readingString);
-                    break;
-                case "CMD42":
-                    proxi_rear6 = parseData(cmdString, readingString);
-                    break;
-                case "CMD43":
-                    proxi_rear7 = parseData(cmdString, readingString);
-                    break;
-                case "CMD44":
-                    proxi_rear8 = parseData(cmdString, readingString);
+                    proxi_rear = parseData(cmdString, readingString);
+                    proxi_rear1 = Integer.parseInt(Integer.toString(proxi_rear).substring(0, 1));
+                    proxi_rear2 = Integer.parseInt(Integer.toString(proxi_rear).substring(1, 2));
+                    proxi_rear3 = Integer.parseInt(Integer.toString(proxi_rear).substring(2, 3));
+                    proxi_rear4 = Integer.parseInt(Integer.toString(proxi_rear).substring(3, 4));
+                    proxi_rear5 = Integer.parseInt(Integer.toString(proxi_rear).substring(5, 6));
+                    proxi_rear6 = Integer.parseInt(Integer.toString(proxi_rear).substring(6, 7));
+                    proxi_rear7 = Integer.parseInt(Integer.toString(proxi_rear).substring(7));
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
