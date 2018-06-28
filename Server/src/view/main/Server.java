@@ -312,33 +312,39 @@ public class Server extends Thread {
                     break;
                 case "CMD21":
                     imu = parseData(cmdString, readingString);
-                    imu1 = Integer.parseInt(Integer.toString(imu).substring(0, 1));
-                    imu2 = Integer.parseInt(Integer.toString(imu).substring(1, 2));
-                    imu3 = Integer.parseInt(Integer.toString(imu).substring(2, 3));
-                    imu4 = Integer.parseInt(Integer.toString(imu).substring(3, 4));
-                    imu5 = Integer.parseInt(Integer.toString(imu).substring(5, 6));
-                    imu6 = Integer.parseInt(Integer.toString(imu).substring(6, 7));
-                    imu7 = Integer.parseInt(Integer.toString(imu).substring(7));
+                    if(imu!=0) {
+                        imu1 = Integer.parseInt(Integer.toString(imu).substring(0, 1));
+                        imu2 = Integer.parseInt(Integer.toString(imu).substring(1, 2));
+                        imu3 = Integer.parseInt(Integer.toString(imu).substring(2, 3));
+                        imu4 = Integer.parseInt(Integer.toString(imu).substring(3, 4));
+                        imu5 = Integer.parseInt(Integer.toString(imu).substring(5, 6));
+                        imu6 = Integer.parseInt(Integer.toString(imu).substring(6, 7));
+                        imu7 = Integer.parseInt(Integer.toString(imu).substring(7));
+                    }
                     break;
                 case "CMD22":
                     proxi_front = parseData(cmdString, readingString);
-                    proxi_front1 = Integer.parseInt(Integer.toString(proxi_front).substring(0, 1));
-                    proxi_front2 = Integer.parseInt(Integer.toString(proxi_front).substring(1, 2));
-                    proxi_front3 = Integer.parseInt(Integer.toString(proxi_front).substring(2, 3));
-                    proxi_front4 = Integer.parseInt(Integer.toString(proxi_front).substring(3, 4));
-                    proxi_front5 = Integer.parseInt(Integer.toString(proxi_front).substring(5, 6));
-                    proxi_front6 = Integer.parseInt(Integer.toString(proxi_front).substring(6, 7));
-                    proxi_front7 = Integer.parseInt(Integer.toString(proxi_front).substring(7));
+                    if(proxi_front!=0) {
+                        proxi_front1 = Integer.parseInt(Integer.toString(proxi_front).substring(0, 1));
+                        proxi_front2 = Integer.parseInt(Integer.toString(proxi_front).substring(1, 2));
+                        proxi_front3 = Integer.parseInt(Integer.toString(proxi_front).substring(2, 3));
+                        proxi_front4 = Integer.parseInt(Integer.toString(proxi_front).substring(3, 4));
+                        proxi_front5 = Integer.parseInt(Integer.toString(proxi_front).substring(5, 6));
+                        proxi_front6 = Integer.parseInt(Integer.toString(proxi_front).substring(6, 7));
+                        proxi_front7 = Integer.parseInt(Integer.toString(proxi_front).substring(7));
+                    }
                     break;
                 case "CMD23":
                     proxi_rear = parseData(cmdString, readingString);
-                    proxi_rear1 = Integer.parseInt(Integer.toString(proxi_rear).substring(0, 1));
-                    proxi_rear2 = Integer.parseInt(Integer.toString(proxi_rear).substring(1, 2));
-                    proxi_rear3 = Integer.parseInt(Integer.toString(proxi_rear).substring(2, 3));
-                    proxi_rear4 = Integer.parseInt(Integer.toString(proxi_rear).substring(3, 4));
-                    proxi_rear5 = Integer.parseInt(Integer.toString(proxi_rear).substring(5, 6));
-                    proxi_rear6 = Integer.parseInt(Integer.toString(proxi_rear).substring(6, 7));
-                    proxi_rear7 = Integer.parseInt(Integer.toString(proxi_rear).substring(7));
+                    if(proxi_rear!=0) {
+                        proxi_rear1 = Integer.parseInt(Integer.toString(proxi_rear).substring(0, 1));
+                        proxi_rear2 = Integer.parseInt(Integer.toString(proxi_rear).substring(1, 2));
+                        proxi_rear3 = Integer.parseInt(Integer.toString(proxi_rear).substring(2, 3));
+                        proxi_rear4 = Integer.parseInt(Integer.toString(proxi_rear).substring(3, 4));
+                        proxi_rear5 = Integer.parseInt(Integer.toString(proxi_rear).substring(5, 6));
+                        proxi_rear6 = Integer.parseInt(Integer.toString(proxi_rear).substring(6, 7));
+                        proxi_rear7 = Integer.parseInt(Integer.toString(proxi_rear).substring(7));
+                    }
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
