@@ -47,6 +47,7 @@ public class Server extends Thread {
     private static HashMap cmdHashMap;
 
     static {
+        // Set up Logger
         System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
         LOGGER = Logger.getLogger(Server.class.getName());
 
@@ -60,6 +61,7 @@ public class Server extends Thread {
             e.printStackTrace();
         }
 
+        // Maps command codes to data names
         cmdHashMap = new HashMap();
         cmdHashMap.put("CMD01", "distance");
         cmdHashMap.put("CMD02", "velocity");
@@ -84,7 +86,6 @@ public class Server extends Thread {
         cmdHashMap.put("CMD21", "imu");
         cmdHashMap.put("CMD22", "proxi front");
         cmdHashMap.put("CMD23", "proxi rear");
-
     }
 
     public Server(MainController controller) {
@@ -248,7 +249,7 @@ public class Server extends Thread {
             cmdString = data.substring(0, 5);
             readingString = data.substring(5);
 
-            switch (data.substring(0, 5)) {
+            switch (cmdString) {
                 case "CMD01":
                     distance = parseData(cmdString, readingString);
                     break;
@@ -312,7 +313,7 @@ public class Server extends Thread {
                     break;
                 case "CMD21":
                     imu = parseData(cmdString, readingString);
-                    if(imu!=0) {
+                    if (imu != 0) {
                         imu1 = Integer.parseInt(Integer.toString(imu).substring(0, 1));
                         imu2 = Integer.parseInt(Integer.toString(imu).substring(1, 2));
                         imu3 = Integer.parseInt(Integer.toString(imu).substring(2, 3));
@@ -324,7 +325,7 @@ public class Server extends Thread {
                     break;
                 case "CMD22":
                     proxi_front = parseData(cmdString, readingString);
-                    if(proxi_front!=0) {
+                    if (proxi_front != 0) {
                         proxi_front1 = Integer.parseInt(Integer.toString(proxi_front).substring(0, 1));
                         proxi_front2 = Integer.parseInt(Integer.toString(proxi_front).substring(1, 2));
                         proxi_front3 = Integer.parseInt(Integer.toString(proxi_front).substring(2, 3));
@@ -336,7 +337,7 @@ public class Server extends Thread {
                     break;
                 case "CMD23":
                     proxi_rear = parseData(cmdString, readingString);
-                    if(proxi_rear!=0) {
+                    if (proxi_rear != 0) {
                         proxi_rear1 = Integer.parseInt(Integer.toString(proxi_rear).substring(0, 1));
                         proxi_rear2 = Integer.parseInt(Integer.toString(proxi_rear).substring(1, 2));
                         proxi_rear3 = Integer.parseInt(Integer.toString(proxi_rear).substring(2, 3));
