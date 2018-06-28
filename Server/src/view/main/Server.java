@@ -171,8 +171,8 @@ public class Server extends Thread {
                         mainController.setGaugeTorquebl(torque_bl);
                         mainController.setGaugeLpbattery(lp_charge);
                         mainController.setGaugeLpbattery1(lp_charge1);
-                        mainController.setGaugeHpbattery(hp_charge);
-                        mainController.setGaugeHpbattery1(hp_charge1);
+                        mainController.setGaugeHpBattery(hp_charge);
+                        mainController.setGaugeHpBattery1(hp_charge1);
                     }
                 }));
                 gaugeLag.setCycleCount(Timeline.INDEFINITE);

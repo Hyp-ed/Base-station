@@ -68,16 +68,16 @@ public class MainController {
     private Gauge gaugeTorquebl;
 
     @FXML
-    private Gauge lpBattery;
+    private Gauge gaugeLpBattery;
 
     @FXML
-    private Gauge lpBattery1;
+    private Gauge gaugeLpBattery1;
 
     @FXML
-    private Gauge hpBattery;
+    private Gauge gaugeHpBattery;
 
     @FXML
-    private Gauge hpBattery1;
+    private Gauge gaugeHpBattery1;
 
     @FXML
     private JFXSlider distanceMeter;
@@ -135,6 +135,10 @@ public class MainController {
         server.sendToPod(10000); //change to entered value
     }
 
+    public void setDistanceMeter(int distance) {
+        distanceMeter.setValue(distance);
+    }
+
     public void setGaugeVelocity(int velocity) {
         gaugeVelocity.setValue(velocity);
     }
@@ -151,64 +155,64 @@ public class MainController {
         gaugeVoltage.setValue(voltage);
     }
 
-    public void setGaugeTemp1(int temp) {
-        gaugeTemp1.setValue(temp);
+    public void setGaugeTemp1(int temp1) {
+        gaugeTemp1.setValue(temp1);
     }
 
-    public void setGaugeVoltage1(int voltage) {
-        gaugeVoltage1.setValue(voltage);
+    public void setGaugeVoltage1(int voltage1) {
+        gaugeVoltage1.setValue(voltage1);
     }
 
-    public void setGaugeRpmfl(int rpmfl) {
-        gaugeRpmfl.setValue(rpmfl);
+    public void setGaugeRpmfl(int rpm_fl) {
+        gaugeRpmfl.setValue(rpm_fl);
     }
 
-    public void setGaugeRpmfr(int rpmfr) {
-        gaugeRpmfr.setValue(rpmfr);
+    public void setGaugeRpmfr(int rpm_fr) {
+        gaugeRpmfr.setValue(rpm_fr);
     }
 
-    public void setGaugeRpmbl(int rpmbl) {
-        gaugeRpmbl.setValue(rpmbl);
+    public void setGaugeRpmbl(int rpm_bl) {
+        gaugeRpmbl.setValue(rpm_bl);
     }
 
-    public void setGaugeRpmbr(int rpmbr) {
-        gaugeRpmbr.setValue(rpmbr);
+    public void setGaugeRpmbr(int rpm_br) {
+        gaugeRpmbr.setValue(rpm_br);
     }
 
-    public void setGaugeTorquefr(int torquefr) { gaugeTorquefr.setValue(torquefr); }
-
-    public void setGaugeTorquebl(int torquebl) {
-        gaugeTorquefl.setValue(torquebl);
+    public void setGaugeTorquefr(int torque_fr) {
+        gaugeTorquefr.setValue(torque_fr);
     }
 
-    public void setGaugeTorquebr(int torquebr) {
-        gaugeTorquebr.setValue(torquebr);
+    public void setGaugeTorquebl(int torque_bl) {
+        gaugeTorquefl.setValue(torque_bl);
     }
 
-    public void setGaugeTorquefl(int torquefl) { gaugeTorquebl.setValue(torquefl); }
-
-    public void setGaugeLpbattery(int lpcharge) {
-        lpBattery.setValue(lpcharge);
+    public void setGaugeTorquebr(int torque_br) {
+        gaugeTorquebr.setValue(torque_br);
     }
 
-    public void setGaugeLpbattery1(int lpcharge1) {
-        lpBattery1.setValue(lpcharge1);
+    public void setGaugeTorquefl(int torque_fl) {
+        gaugeTorquebl.setValue(torque_fl);
     }
 
-    public void setGaugeHpbattery(int hpcharge) {
-        hpBattery.setValue(hpcharge);
+    public void setGaugeLpbattery(int lpCharge) {
+        gaugeLpBattery.setValue(lpCharge);
     }
 
-    public void setGaugeHpbattery1(int hpcharge1) {
-        hpBattery1.setValue(hpcharge1);
+    public void setGaugeLpbattery1(int lpCharge1) {
+        gaugeLpBattery1.setValue(lpCharge1);
+    }
+
+    public void setGaugeHpBattery(int hpCharge) {
+        gaugeHpBattery.setValue(hpCharge);
+    }
+
+    public void setGaugeHpBattery1(int hpCharge1) {
+        gaugeHpBattery1.setValue(hpCharge1);
     }
 
     public void setClock(int time) {
         clock.setValue(time);
-    }
-
-    public void setDistanceMeter(int distance) {
-        distanceMeter.setValue(distance);
     }
 
     public void setTelemetryIndicator() {
@@ -226,7 +230,6 @@ public class MainController {
                 stateLabel.setText(state);
             }
         });
-
     }
 
     public void enableBtnLaunch(){
