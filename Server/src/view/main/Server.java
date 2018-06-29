@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class Server extends Thread {
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 0;
-    private static final String DATA_REGEX = "^\\d*\\.\\d+|\\d+\\.\\d*$"; // "^[0-9]+$"
+    private static final String DATA_REGEX = "^\\d*\\.\\d+|\\d+\\.\\d*$"; // "^[0-9]+$" for integer
 
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
@@ -30,7 +31,8 @@ public class Server extends Thread {
             proxi_front, proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
             proxi_rear, proxi_rear1, proxi_rear2, proxi_rear3, proxi_rear4, proxi_rear5, proxi_rear6, proxi_rear7, proxi_rear8;
     int state = 0;
-    // Danger flags
+
+    // Danger flags, true if value exceeds threshold
     boolean dDistance, dVelocity, dAcceleration,
             dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
             dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1,
@@ -46,7 +48,6 @@ public class Server extends Thread {
     private Socket podSocket;
     private PrintWriter printWriter;
     private Scanner scanner;
-    private PrintStream loggerStream;
 
     private MainController mainController;
     private byte status = 1, team_id = 2;
@@ -54,8 +55,6 @@ public class Server extends Thread {
 
     private static Logger LOGGER;
     private static Handler loggerHandler = null;
-    private static HashMap<String, String> cmdHashMap;
-    private static HashMap<String, Integer> thresHashMap;
 
     static {
         // Set up Logger
@@ -71,59 +70,6 @@ public class Server extends Thread {
             LOGGER.log(Level.WARNING, "Failed to set up logger.");
             e.printStackTrace();
         }
-
-        // TODO(Isa): optimise the hashmaps
-        // Maps command codes to data names
-        cmdHashMap = new HashMap();
-        cmdHashMap.put("CMD01", "distance");
-        cmdHashMap.put("CMD02", "velocity");
-        cmdHashMap.put("CMD03", "acceleration");
-        cmdHashMap.put("CMD04", "rpm fl");
-        cmdHashMap.put("CMD05", "rpm fr");
-        cmdHashMap.put("CMD06", "rpm bl");
-        cmdHashMap.put("CMD07", "rpm br");
-        cmdHashMap.put("CMD08", "state");
-        cmdHashMap.put("CMD09", "hp volt");
-        cmdHashMap.put("CMD10", "hp temp");
-        cmdHashMap.put("CMD11", "hp charge");
-        cmdHashMap.put("CMD12", "hp volt1");
-        cmdHashMap.put("CMD13", "hp temp1");
-        cmdHashMap.put("CMD14", "hp charge1");
-        cmdHashMap.put("CMD15", "lp charge");
-        cmdHashMap.put("CMD16", "lp charge1");
-        cmdHashMap.put("CMD17", "torque fr");
-        cmdHashMap.put("CMD18", "torque fl");
-        cmdHashMap.put("CMD19", "torque br");
-        cmdHashMap.put("CMD20", "torque bl");
-        cmdHashMap.put("CMD21", "imu");
-        cmdHashMap.put("CMD22", "proxi front");
-        cmdHashMap.put("CMD23", "proxi rear");
-
-        // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
-        thresHashMap = new HashMap();
-        thresHashMap.put("CMD01", 100);
-        thresHashMap.put("CMD02", 100);
-        thresHashMap.put("CMD03", 100);
-        thresHashMap.put("CMD04", 100);
-        thresHashMap.put("CMD05", 100);
-        thresHashMap.put("CMD06", 100);
-        thresHashMap.put("CMD07", 100);
-//        thresHashMap.put("CMD08", 100); // no threshold for state (?)
-        thresHashMap.put("CMD09", 100);
-        thresHashMap.put("CMD10", 100);
-        thresHashMap.put("CMD11", 100);
-        thresHashMap.put("CMD12", 100);
-        thresHashMap.put("CMD13", 100);
-        thresHashMap.put("CMD14", 100);
-        thresHashMap.put("CMD15", 100);
-        thresHashMap.put("CMD16", 100);
-        thresHashMap.put("CMD17", 100);
-        thresHashMap.put("CMD18", 100);
-        thresHashMap.put("CMD19", 100);
-        thresHashMap.put("CMD20", 100);
-        thresHashMap.put("CMD21", 100);
-        thresHashMap.put("CMD22", 100);
-        thresHashMap.put("CMD23", 100);
     }
 
     public Server(MainController controller) {
@@ -162,17 +108,17 @@ public class Server extends Thread {
         int result = 0;
 
         if (!readingString.matches(DATA_REGEX)) {
-            LOGGER.log(Level.INFO, String.format("%s: nan", cmdHashMap.get(cmdString)));
+            LOGGER.log(Level.INFO, String.format("%s: nan", Util.getNameByCmdCode(cmdString)));
         } else {
             result = (int) Double.parseDouble(readingString);
-            LOGGER.log(Level.INFO, String.format("%s: %d", cmdHashMap.get(cmdString), result));
+            LOGGER.log(Level.INFO, String.format("%s: %d", Util.getNameByCmdCode(cmdString), result));
         }
 
         return result;
     }
 
     private boolean isDanger(String cmdString, int data) {
-        if (data > thresHashMap.get(cmdString)) {
+        if (data > Util.getThresByCmdCode(cmdString)) {
             return true;
         }
 
@@ -184,6 +130,7 @@ public class Server extends Thread {
             @Override
             public void run() {
                 LOGGER.log(Level.INFO, "Timer started.");
+
                 while (isTimerRunning) {
                     mainController.setClock((int) ((System.currentTimeMillis() - startTime) / 1000.0));
                 }
@@ -222,6 +169,7 @@ public class Server extends Thread {
                         mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
                     }
                 }));
+
                 gaugeLag.setCycleCount(Timeline.INDEFINITE);
                 gaugeLag.play();
             }
