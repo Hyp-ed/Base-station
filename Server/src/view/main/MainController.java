@@ -105,6 +105,78 @@ public class MainController {
     private Circle leftBrakeIndicator;
 
     @FXML
+    private Circle imuIndicator;
+
+    @FXML
+    private Circle imuIndicator1;
+
+    @FXML
+    private Circle imuIndicator2;
+
+    @FXML
+    private Circle imuIndicator3;
+
+    @FXML
+    private Circle imuIndicator4;
+
+    @FXML
+    private Circle imuIndicator5;
+
+    @FXML
+    private Circle imuIndicator6;
+
+    @FXML
+    private Circle imuIndicator7;
+
+    @FXML
+    private Circle fproxiIndicator;
+
+    @FXML
+    private Circle fproxiIndicator1;
+
+    @FXML
+    private Circle fproxiIndicator2;
+
+    @FXML
+    private Circle fproxiIndicator3;
+
+    @FXML
+    private Circle fproxiIndicator4;
+
+    @FXML
+    private Circle fproxiIndicator5;
+
+    @FXML
+    private Circle fproxiIndicator6;
+
+    @FXML
+    private Circle fproxiIndicator7;
+
+    @FXML
+    private Circle rproxiIndicator;
+
+    @FXML
+    private Circle rproxiIndicator1;
+
+    @FXML
+    private Circle rproxiIndicator2;
+
+    @FXML
+    private Circle rproxiIndicator3;
+
+    @FXML
+    private Circle rproxiIndicator4;
+
+    @FXML
+    private Circle rproxiIndicator5;
+
+    @FXML
+    private Circle rproxiIndicator6;
+
+    @FXML
+    private Circle rproxiIndicator7;
+
+    @FXML
     private Label stateLabel;
 
     @FXML
@@ -260,6 +332,44 @@ public class MainController {
                 stateLabel.setText(state);
             }
         });
+    }
+
+    public void setImuIndicator(int imu[]) {
+        if (imu[0]==2){
+            imuIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator.setFill(Color.DARKBLUE);
+        }
+        if (imu[1]==2){
+            imuIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator1.setFill(Color.DARKBLUE);
+        }
+        if (imu[2]==2){
+            imuIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator2.setFill(Color.DARKBLUE);
+        }
+        if (imu[3]==2){
+            imuIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator3.setFill(Color.DARKBLUE);
+        }
+        if (imu[4]==2){
+            imuIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator4.setFill(Color.DARKBLUE);
+        }
+        if (imu[5]==2){
+            imuIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator5.setFill(Color.DARKBLUE);
+        }
+        if (imu[6]==2){
+            imuIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator6.setFill(Color.DARKBLUE);
+        }
     }
 
     public void enableBtnLaunch(){

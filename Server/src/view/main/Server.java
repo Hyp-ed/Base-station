@@ -168,6 +168,7 @@ public class Server extends Thread {
                         mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
                         mainController.setGaugeHpBattery(hp_charge, dHp_charge);
                         mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
+                        mainController.setImuIndicator(imu);
                     }
                 }));
 
