@@ -66,7 +66,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                            <Gauge fx:id="lpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                            <Gauge fx:id="gaugeLpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -79,7 +79,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="9.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Gauge fx:id="lpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeLpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -92,7 +92,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="82.0" layoutY="10.0" prefHeight="76.0" prefWidth="76.0">
                                        <children>
-                                          <Gauge fx:id="hpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeHpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
                                           <Label prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -105,7 +105,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="132.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Gauge fx:id="hpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeHpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -253,42 +253,42 @@
                                                       </Label>
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Circle fx:id="imuIndicator1" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="imuIndicator" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="imuIndicator2" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="imuIndicator1" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="imuIndicator3" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="imuIndicator2" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="imuIndicator4" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="imuIndicator3" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
                                                       <HBox alignment="CENTER" layoutX="10.0" layoutY="48.0" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Circle fx:id="imuIndicator5" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="imuIndicator4" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="imuIndicator6" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="imuIndicator5" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="imuIndicator7" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="imuIndicator6" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="imuIndicator8" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="imuIndicator7" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
                                                    </children>
@@ -400,42 +400,42 @@
                                                       </Label>
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Circle fx:id="fproxiIndicator1" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="fproxiIndicator" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="fproxiIndicator2" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="fproxiIndicator1" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="fproxiIndicator3" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="fproxiIndicator2" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="fproxiIndicator4" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="fproxiIndicator3" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Circle fx:id="fproxiIndicator5" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="fproxiIndicator4" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="fproxiIndicator6" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="fproxiIndicator5" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="fproxiIndicator7" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="fproxiIndicator6" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="fproxiIndicator8" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="fproxiIndicator7" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
                                                    </children>
@@ -518,22 +518,22 @@
                                                       </Label>
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Circle fx:id="rproxiIndicator1" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="rproxiIndicator" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="rproxiIndicator2" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="rproxiIndicator1" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="rproxiIndicator3" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="rproxiIndicator2" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="rproxiIndicator4" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rproxiIndicator3" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                          <VBox.margin>
                                                             <Insets bottom="20.0" />
@@ -541,22 +541,22 @@
                                                       </HBox>
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                                          <children>
-                                                            <Circle fx:id="rproxiIndicator5" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="rproxiIndicator4" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="rproxiIndicator6" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="rproxiIndicator5" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="rproxiIndicator7" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
+                                                            <Circle fx:id="rproxiIndicator6" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
                                                                   <Insets right="20.0" />
                                                                </HBox.margin>
                                                             </Circle>
-                                                            <Circle fx:id="rproxiIndicator8" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rproxiIndicator7" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
                                                    </children>

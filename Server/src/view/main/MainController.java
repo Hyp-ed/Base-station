@@ -105,6 +105,78 @@ public class MainController {
     private Circle leftBrakeIndicator;
 
     @FXML
+    private Circle imuIndicator;
+
+    @FXML
+    private Circle imuIndicator1;
+
+    @FXML
+    private Circle imuIndicator2;
+
+    @FXML
+    private Circle imuIndicator3;
+
+    @FXML
+    private Circle imuIndicator4;
+
+    @FXML
+    private Circle imuIndicator5;
+
+    @FXML
+    private Circle imuIndicator6;
+
+    @FXML
+    private Circle imuIndicator7;
+
+    @FXML
+    private Circle fproxiIndicator;
+
+    @FXML
+    private Circle fproxiIndicator1;
+
+    @FXML
+    private Circle fproxiIndicator2;
+
+    @FXML
+    private Circle fproxiIndicator3;
+
+    @FXML
+    private Circle fproxiIndicator4;
+
+    @FXML
+    private Circle fproxiIndicator5;
+
+    @FXML
+    private Circle fproxiIndicator6;
+
+    @FXML
+    private Circle fproxiIndicator7;
+
+    @FXML
+    private Circle rproxiIndicator;
+
+    @FXML
+    private Circle rproxiIndicator1;
+
+    @FXML
+    private Circle rproxiIndicator2;
+
+    @FXML
+    private Circle rproxiIndicator3;
+
+    @FXML
+    private Circle rproxiIndicator4;
+
+    @FXML
+    private Circle rproxiIndicator5;
+
+    @FXML
+    private Circle rproxiIndicator6;
+
+    @FXML
+    private Circle rproxiIndicator7;
+
+    @FXML
     private Label stateLabel;
 
     @FXML
@@ -261,6 +333,122 @@ public class MainController {
             }
         });
     }
+
+    public void setImuIndicator(int imu[]) {
+        if (imu[0]==2){
+            imuIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator.setFill(Color.DARKBLUE);
+        }
+        if (imu[1]==2){
+            imuIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator1.setFill(Color.DARKBLUE);
+        }
+        if (imu[2]==2){
+            imuIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator2.setFill(Color.DARKBLUE);
+        }
+        if (imu[3]==2){
+            imuIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator3.setFill(Color.DARKBLUE);
+        }
+        if (imu[4]==2){
+            imuIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator4.setFill(Color.DARKBLUE);
+        }
+        if (imu[5]==2){
+            imuIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator5.setFill(Color.DARKBLUE);
+        }
+        if (imu[6]==2){
+            imuIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator6.setFill(Color.DARKBLUE);
+        }
+    }
+
+    public void setProxi_FrontIndicator(int imu[]) {
+        if (imu[0]==2){
+            fproxiIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator.setFill(Color.DARKBLUE);
+        }
+        if (imu[1]==2){
+            fproxiIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator1.setFill(Color.DARKBLUE);
+        }
+        if (imu[2]==2){
+            fproxiIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator2.setFill(Color.DARKBLUE);
+        }
+        if (imu[3]==2){
+            fproxiIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator3.setFill(Color.DARKBLUE);
+        }
+        if (imu[4]==2){
+            fproxiIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator4.setFill(Color.DARKBLUE);
+        }
+        if (imu[5]==2){
+            fproxiIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator5.setFill(Color.DARKBLUE);
+        }
+        if (imu[6]==2){
+            fproxiIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator6.setFill(Color.DARKBLUE);
+        }
+    }
+
+
+    public void setProxi_RearIndicator(int imu[]) {
+        if (imu[0]==2){
+            rproxiIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator.setFill(Color.DARKBLUE);
+        }
+        if (imu[1]==2){
+            rproxiIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator1.setFill(Color.DARKBLUE);
+        }
+        if (imu[2]==2){
+            rproxiIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator2.setFill(Color.DARKBLUE);
+        }
+        if (imu[3]==2){
+            rproxiIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator3.setFill(Color.DARKBLUE);
+        }
+        if (imu[4]==2){
+            rproxiIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator4.setFill(Color.DARKBLUE);
+        }
+        if (imu[5]==2){
+            rproxiIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator5.setFill(Color.DARKBLUE);
+        }
+        if (imu[6]==2){
+            rproxiIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator6.setFill(Color.DARKBLUE);
+        }
+    }
+
 
     public void enableBtnLaunch(){
         btnLaunch.setDisable(false);
