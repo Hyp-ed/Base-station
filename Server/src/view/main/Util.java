@@ -43,7 +43,7 @@ public class Util {
         // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
         thresHashMap = new HashMap();
         thresHashMap.put("CMD01", 100);
-        thresHashMap.put("CMD02", -1);
+        thresHashMap.put("CMD02", 100);
         thresHashMap.put("CMD03", 100);
         thresHashMap.put("CMD04", 100);
         thresHashMap.put("CMD05", 100);
