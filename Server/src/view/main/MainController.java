@@ -4,11 +4,16 @@ import com.jfoenix.controls.JFXSlider;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class MainController {
@@ -204,6 +209,23 @@ public class MainController {
         server.sendToPod(2);
     }
 
+//    private void handleBtnLaunch() {
+//        Parent root = null;
+//        try {
+//            root = FXMLLoader.load(getClass().getResource("verification.fxml"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        Stage stage = new Stage();
+//        stage.setTitle("HYPED Mission Control System");
+//        stage.setScene(new Scene(root));
+//        stage.show();
+//    }
+//
+//    public void letsGo() {
+//        server.sendToPod(2);
+//    }
+
     private void handleBtnServicePropulsionGo() {
         server.sendToPod(5);
     }
@@ -335,117 +357,132 @@ public class MainController {
     }
 
     public void setImuIndicator(int imu[]) {
-        if (imu[0]==2){
+        if (imu[0]==1){
             imuIndicator.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator.setFill(Color.DARKBLUE);
+            imuIndicator.setFill(Color.BLACK);
         }
-        if (imu[1]==2){
+        if (imu[1]==1){
             imuIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator1.setFill(Color.DARKBLUE);
+            imuIndicator1.setFill(Color.BLACK);
         }
-        if (imu[2]==2){
+        if (imu[2]==1){
             imuIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator2.setFill(Color.DARKBLUE);
+            imuIndicator2.setFill(Color.BLACK);
         }
-        if (imu[3]==2){
+        if (imu[3]==1){
             imuIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator3.setFill(Color.DARKBLUE);
+            imuIndicator3.setFill(Color.BLACK);
         }
-        if (imu[4]==2){
+        if (imu[4]==1){
             imuIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator4.setFill(Color.DARKBLUE);
+            imuIndicator4.setFill(Color.BLACK);
         }
-        if (imu[5]==2){
+        if (imu[5]==1){
             imuIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator5.setFill(Color.DARKBLUE);
+            imuIndicator5.setFill(Color.BLACK);
         }
-        if (imu[6]==2){
+        if (imu[6]==1){
             imuIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            imuIndicator6.setFill(Color.DARKBLUE);
+            imuIndicator6.setFill(Color.BLACK);
+        }
+        if (imu[7]==1){
+            imuIndicator7.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            imuIndicator7.setFill(Color.BLACK);
         }
     }
 
     public void setProxi_FrontIndicator(int imu[]) {
-        if (imu[0]==2){
+        if (imu[0]==1){
             fproxiIndicator.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator.setFill(Color.DARKBLUE);
+            fproxiIndicator.setFill(Color.BLACK);
         }
-        if (imu[1]==2){
+        if (imu[1]==1){
             fproxiIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator1.setFill(Color.DARKBLUE);
+            fproxiIndicator1.setFill(Color.BLACK);
         }
-        if (imu[2]==2){
+        if (imu[2]==1){
             fproxiIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator2.setFill(Color.DARKBLUE);
+            fproxiIndicator2.setFill(Color.BLACK);
         }
-        if (imu[3]==2){
+        if (imu[3]==1){
             fproxiIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator3.setFill(Color.DARKBLUE);
+            fproxiIndicator3.setFill(Color.BLACK);
         }
-        if (imu[4]==2){
+        if (imu[4]==1){
             fproxiIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator4.setFill(Color.DARKBLUE);
+            fproxiIndicator4.setFill(Color.BLACK);
         }
-        if (imu[5]==2){
+        if (imu[5]==1){
             fproxiIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator5.setFill(Color.DARKBLUE);
+            fproxiIndicator5.setFill(Color.BLACK);
         }
-        if (imu[6]==2){
+        if (imu[6]==1){
             fproxiIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            fproxiIndicator6.setFill(Color.DARKBLUE);
+            fproxiIndicator6.setFill(Color.BLACK);
+        }
+        if (imu[7]==1){
+            fproxiIndicator7.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            fproxiIndicator7.setFill(Color.BLACK);
         }
     }
 
 
     public void setProxi_RearIndicator(int imu[]) {
-        if (imu[0]==2){
+        if (imu[0]==1){
             rproxiIndicator.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator.setFill(Color.DARKBLUE);
+            rproxiIndicator.setFill(Color.BLACK);
         }
-        if (imu[1]==2){
+        if (imu[1]==1){
             rproxiIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator1.setFill(Color.DARKBLUE);
+            rproxiIndicator1.setFill(Color.BLACK);
         }
-        if (imu[2]==2){
+        if (imu[2]==1){
             rproxiIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator2.setFill(Color.DARKBLUE);
+            rproxiIndicator2.setFill(Color.BLACK);
         }
-        if (imu[3]==2){
+        if (imu[3]==1){
             rproxiIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator3.setFill(Color.DARKBLUE);
+            rproxiIndicator3.setFill(Color.BLACK);
         }
-        if (imu[4]==2){
+        if (imu[4]==1){
             rproxiIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator4.setFill(Color.DARKBLUE);
+            rproxiIndicator4.setFill(Color.BLACK);
         }
-        if (imu[5]==2){
+        if (imu[5]==1){
             rproxiIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator5.setFill(Color.DARKBLUE);
+            rproxiIndicator5.setFill(Color.BLACK);
         }
-        if (imu[6]==2){
+        if (imu[6]==1){
             rproxiIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
-            rproxiIndicator6.setFill(Color.DARKBLUE);
+            rproxiIndicator6.setFill(Color.BLACK);
+        }
+        if (imu[7]==1){
+            rproxiIndicator7.setFill(javafx.scene.paint.Color.YELLOW);
+        } else {
+            rproxiIndicator7.setFill(Color.BLACK);
         }
     }
 

@@ -336,9 +336,10 @@ public class Server extends Thread {
                         imu[1] = Integer.parseInt(Integer.toString(imuReceived).substring(1, 2));
                         imu[2] = Integer.parseInt(Integer.toString(imuReceived).substring(2, 3));
                         imu[3] = Integer.parseInt(Integer.toString(imuReceived).substring(3, 4));
-                        imu[4] = Integer.parseInt(Integer.toString(imuReceived).substring(5, 6));
-                        imu[5] = Integer.parseInt(Integer.toString(imuReceived).substring(6, 7));
-                        imu[6] = Integer.parseInt(Integer.toString(imuReceived).substring(7));
+                        imu[4] = Integer.parseInt(Integer.toString(imuReceived).substring(4, 5));
+                        imu[5] = Integer.parseInt(Integer.toString(imuReceived).substring(5, 6));
+                        imu[6] = Integer.parseInt(Integer.toString(imuReceived).substring(6, 7));
+                        imu[7] = Integer.parseInt(Integer.toString(imuReceived).substring(7));
                     }
                     break;
                 case "CMD22":
@@ -348,9 +349,10 @@ public class Server extends Thread {
                         proxi_front[1] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(1, 2));
                         proxi_front[2] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(2, 3));
                         proxi_front[3] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(3, 4));
-                        proxi_front[4] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(5, 6));
-                        proxi_front[5] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(6, 7));
-                        proxi_front[6] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
+                        proxi_front[4] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(4, 5));
+                        proxi_front[5] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(5, 6));
+                        proxi_front[6] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(6, 7));
+                        proxi_front[7] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
                     }
                     break;
                 case "CMD23":
@@ -360,9 +362,10 @@ public class Server extends Thread {
                         proxi_rear[1] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(1, 2));
                         proxi_rear[2] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(2, 3));
                         proxi_rear[3] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(3, 4));
-                        proxi_rear[4] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(5, 6));
-                        proxi_rear[5] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(6, 7));
-                        proxi_rear[6] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
+                        proxi_rear[4] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(4, 5));
+                        proxi_rear[5] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(5, 6));
+                        proxi_rear[6] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(6, 7));
+                        proxi_rear[7] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
                     }
                     break;
                 default:
