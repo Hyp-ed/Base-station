@@ -27,10 +27,11 @@ public class Server extends Thread {
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
             torque_fr, torque_fl, torque_br, torque_bl,
-            imu, imu1, imu2, imu3, imu4, imu5, imu6, imu7, imu8,
-            proxi_front, proxi_front1, proxi_front2, proxi_front3, proxi_front4, proxi_front5, proxi_front6, proxi_front7, proxi_front8,
-            proxi_rear, proxi_rear1, proxi_rear2, proxi_rear3, proxi_rear4, proxi_rear5, proxi_rear6, proxi_rear7, proxi_rear8;
+            imuReceived, proxi_frontReceived, proxi_rearReceived;
     int state = 0;
+    int[] imu = new int[8];
+    int[] proxi_front = new int[8];
+    int[] proxi_rear = new int[8];
 
     // Danger flags, true if value exceeds threshold
     boolean dDistance, dVelocity, dAcceleration,
@@ -326,39 +327,39 @@ public class Server extends Thread {
                     dTorque_bl = isDanger(cmdString, torque_br);
                     break;
                 case "CMD21":
-                    imu = parseData(cmdString, readingString);
-                    if (imu != 0) {
-                        imu1 = Integer.parseInt(Integer.toString(imu).substring(0, 1));
-                        imu2 = Integer.parseInt(Integer.toString(imu).substring(1, 2));
-                        imu3 = Integer.parseInt(Integer.toString(imu).substring(2, 3));
-                        imu4 = Integer.parseInt(Integer.toString(imu).substring(3, 4));
-                        imu5 = Integer.parseInt(Integer.toString(imu).substring(5, 6));
-                        imu6 = Integer.parseInt(Integer.toString(imu).substring(6, 7));
-                        imu7 = Integer.parseInt(Integer.toString(imu).substring(7));
+                    imuReceived = parseData(cmdString, readingString);
+                    if (imuReceived != 0) {
+                        imu[0] = Integer.parseInt(Integer.toString(imuReceived).substring(0, 1));
+                        imu[1] = Integer.parseInt(Integer.toString(imuReceived).substring(1, 2));
+                        imu[2] = Integer.parseInt(Integer.toString(imuReceived).substring(2, 3));
+                        imu[3] = Integer.parseInt(Integer.toString(imuReceived).substring(3, 4));
+                        imu[4] = Integer.parseInt(Integer.toString(imuReceived).substring(5, 6));
+                        imu[5] = Integer.parseInt(Integer.toString(imuReceived).substring(6, 7));
+                        imu[6] = Integer.parseInt(Integer.toString(imuReceived).substring(7));
                     }
                     break;
                 case "CMD22":
-                    proxi_front = parseData(cmdString, readingString);
-                    if (proxi_front != 0) {
-                        proxi_front1 = Integer.parseInt(Integer.toString(proxi_front).substring(0, 1));
-                        proxi_front2 = Integer.parseInt(Integer.toString(proxi_front).substring(1, 2));
-                        proxi_front3 = Integer.parseInt(Integer.toString(proxi_front).substring(2, 3));
-                        proxi_front4 = Integer.parseInt(Integer.toString(proxi_front).substring(3, 4));
-                        proxi_front5 = Integer.parseInt(Integer.toString(proxi_front).substring(5, 6));
-                        proxi_front6 = Integer.parseInt(Integer.toString(proxi_front).substring(6, 7));
-                        proxi_front7 = Integer.parseInt(Integer.toString(proxi_front).substring(7));
+                    proxi_frontReceived = parseData(cmdString, readingString);
+                    if (proxi_frontReceived != 0) {
+                        proxi_front[0] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(0, 1));
+                        proxi_front[1] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(1, 2));
+                        proxi_front[2] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(2, 3));
+                        proxi_front[3] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(3, 4));
+                        proxi_front[4] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(5, 6));
+                        proxi_front[5] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(6, 7));
+                        proxi_front[6] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
                     }
                     break;
                 case "CMD23":
-                    proxi_rear = parseData(cmdString, readingString);
-                    if (proxi_rear != 0) {
-                        proxi_rear1 = Integer.parseInt(Integer.toString(proxi_rear).substring(0, 1));
-                        proxi_rear2 = Integer.parseInt(Integer.toString(proxi_rear).substring(1, 2));
-                        proxi_rear3 = Integer.parseInt(Integer.toString(proxi_rear).substring(2, 3));
-                        proxi_rear4 = Integer.parseInt(Integer.toString(proxi_rear).substring(3, 4));
-                        proxi_rear5 = Integer.parseInt(Integer.toString(proxi_rear).substring(5, 6));
-                        proxi_rear6 = Integer.parseInt(Integer.toString(proxi_rear).substring(6, 7));
-                        proxi_rear7 = Integer.parseInt(Integer.toString(proxi_rear).substring(7));
+                    proxi_rearReceived = parseData(cmdString, readingString);
+                    if (proxi_rearReceived != 0) {
+                        proxi_rear[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
+                        proxi_rear[1] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(1, 2));
+                        proxi_rear[2] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(2, 3));
+                        proxi_rear[3] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(3, 4));
+                        proxi_rear[4] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(5, 6));
+                        proxi_rear[5] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(6, 7));
+                        proxi_rear[6] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
                     }
                     break;
                 default:
