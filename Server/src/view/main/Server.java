@@ -133,7 +133,7 @@ public class Server extends Thread {
                 LOGGER.log(Level.INFO, "Timer started.");
 
                 while (isTimerRunning) {
-                    mainController.setClock((int) ((System.currentTimeMillis() - startTime) / 1000.0));
+                    mainController.setClock(((System.currentTimeMillis() - startTime) / 1000.0));
                 }
             }
         });

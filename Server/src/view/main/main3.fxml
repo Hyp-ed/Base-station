@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import eu.hansolo.enzo.lcd.Lcd?>
 <?import eu.hansolo.medusa.Gauge?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -47,7 +48,7 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                               <Gauge fx:id="clock" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="2" layoutX="40.0" layoutY="17.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="45.0" prefWidth="127.0" skinType="LCD" subTitle="TIMER" threshold="90" titleColor="white" unit="s" value="15.67" valueColor="white" />
+                              <Lcd fx:id="clock" backgroundVisible="false" decimals="2" layoutX="34.0" layoutY="24.0" lcdDesign="FLAT_MIDNIGHT_BLUE" unit="s" valueFont="STANDARD" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">

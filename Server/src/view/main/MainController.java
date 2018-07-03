@@ -1,6 +1,8 @@
 package view.main;
 
 import com.jfoenix.controls.JFXSlider;
+import eu.hansolo.enzo.lcd.Lcd;
+import eu.hansolo.enzo.lcd.LcdClock;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -29,7 +31,7 @@ public class MainController {
     }
 
     @FXML
-    private Gauge clock;
+    private Lcd clock;
 
     @FXML
     private Button btnStop;
@@ -326,7 +328,7 @@ public class MainController {
         gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
     }
 
-    public void setClock(int time) {
+    public void setClock(double time) {
         clock.setValue(time);
     }
 
