@@ -371,6 +371,8 @@ public class Server extends Thread {
 
             //sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
+
+        mainController.connectionIndicator();
     }
 
     public void sendToPod(int message) {

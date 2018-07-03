@@ -470,4 +470,8 @@ public class MainController {
         btnServicePropulsionGo.setDisable(false);
         btnServicePropulsionStop.setDisable(false);
     }
+
+    public void connectionIndicator(){
+        telemetryIndicator.setFill(Color.BLACK);
+    }
 }

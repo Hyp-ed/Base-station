@@ -12,11 +12,11 @@ public class VerificationController {
     @FXML
     private JFXButton confirmBtn;
 
-    @FXML
-    private JFXTextField password;
+//    @FXML
+//    private JFXTextField password;
 
-    @FXML
-    private Label errorLabel;
+//    @FXML
+//    private Label errorLabel;
 
     @FXML
     public void initialize() {
@@ -25,12 +25,12 @@ public class VerificationController {
     }
 
     private void handleBtnConfirm() {
-        String pass = password.getText();
-        if(pass.equals("hyped")) {
-            ((Stage) password.getScene().getWindow()).close();
-        } else {
-            errorLabel.setOpacity(1);
-        }
+//        String pass = password.getText();
+//        if(pass.equals("hyped")) {
+            ((Stage) confirmBtn.getScene().getWindow()).close();
+//        } else {
+//            errorLabel.setOpacity(1);
+//        }
     }
 }
 
