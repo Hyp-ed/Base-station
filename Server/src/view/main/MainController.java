@@ -208,8 +208,9 @@ public class MainController {
         stage.setTitle("HYPED Mission Control System");
         stage.setScene(new Scene(root));
         stage.show();
-        stage.setOnHiding( event -> {letsGo();
-        System.out.println("LETS GOOOOOOOOOOOOO");} );
+        stage.setOnHiding( event -> {
+            letsGo();
+        } );
     }
 
     public void letsGo() {

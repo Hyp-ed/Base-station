@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,5 +16,6 @@
             <Image url="@../lock.png" />
          </image>
       </ImageView>
+      <Label fx:id="errorLabel" layoutX="123.0" layoutY="192.0" opacity="0.0" text="WRONG PASSWORD" textFill="RED" />
    </children>
 </AnchorPane>
