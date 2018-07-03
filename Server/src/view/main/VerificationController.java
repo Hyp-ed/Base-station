@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 
 public class VerificationController {
 
-    private Server server;
 
     @FXML
     private JFXButton confirmBtn;

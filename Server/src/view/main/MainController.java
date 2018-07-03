@@ -193,26 +193,28 @@ public class MainController {
 
     private void handleBtnStop() { server.sendToPod(1); }
 
-    private void handleBtnLaunch() {
-        server.sendToPod(2);
-    }
-
 //    private void handleBtnLaunch() {
-//        Parent root = null;
-//        try {
-//            root = FXMLLoader.load(getClass().getResource("verification.fxml"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        Stage stage = new Stage();
-//        stage.setTitle("HYPED Mission Control System");
-//        stage.setScene(new Scene(root));
-//        stage.show();
-//    }
-//
-//    public void letsGo() {
 //        server.sendToPod(2);
 //    }
+
+    private void handleBtnLaunch() {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("verification.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setTitle("HYPED Mission Control System");
+        stage.setScene(new Scene(root));
+        stage.show();
+        stage.setOnHiding( event -> {letsGo();
+        System.out.println("LETS GOOOOOOOOOOOOO");} );
+    }
+
+    public void letsGo() {
+        server.sendToPod(2);
+    }
 
     private void handleBtnServicePropulsionGo() {
         server.sendToPod(5);
