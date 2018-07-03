@@ -271,26 +271,6 @@
                                                             <Circle fx:id="imuIndicator3" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
-                                                      <HBox alignment="CENTER" layoutX="10.0" layoutY="48.0" prefHeight="100.0" prefWidth="200.0">
-                                                         <children>
-                                                            <Circle fx:id="imuIndicator4" fill="#2a2e37" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="imuIndicator5" fill="#2a2e37" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="imuIndicator6" fill="#2a2e37" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="imuIndicator7" fill="#2a2e37" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
-                                                         </children>
-                                                      </HBox>
                                                    </children>
                                                    <opaqueInsets>
                                                       <Insets />

@@ -29,7 +29,7 @@ public class Server extends Thread {
             torque_fr, torque_fl, torque_br, torque_bl,
             imuReceived, proxi_frontReceived, proxi_rearReceived;
     int state = 0;
-    int[] imu = new int[8];
+    int[] imu = new int[4];
     int[] proxi_front = new int[8];
     int[] proxi_rear = new int[8];
 
@@ -335,11 +335,7 @@ public class Server extends Thread {
                         imu[0] = Integer.parseInt(Integer.toString(imuReceived).substring(0, 1));
                         imu[1] = Integer.parseInt(Integer.toString(imuReceived).substring(1, 2));
                         imu[2] = Integer.parseInt(Integer.toString(imuReceived).substring(2, 3));
-                        imu[3] = Integer.parseInt(Integer.toString(imuReceived).substring(3, 4));
-                        imu[4] = Integer.parseInt(Integer.toString(imuReceived).substring(4, 5));
-                        imu[5] = Integer.parseInt(Integer.toString(imuReceived).substring(5, 6));
-                        imu[6] = Integer.parseInt(Integer.toString(imuReceived).substring(6, 7));
-                        imu[7] = Integer.parseInt(Integer.toString(imuReceived).substring(7));
+                        imu[3] = Integer.parseInt(Integer.toString(imuReceived).substring(3));
                     }
                     break;
                 case "CMD22":

@@ -122,18 +122,6 @@ public class MainController {
     private Circle imuIndicator3;
 
     @FXML
-    private Circle imuIndicator4;
-
-    @FXML
-    private Circle imuIndicator5;
-
-    @FXML
-    private Circle imuIndicator6;
-
-    @FXML
-    private Circle imuIndicator7;
-
-    @FXML
     private Circle fproxiIndicator;
 
     @FXML
@@ -376,26 +364,6 @@ public class MainController {
             imuIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
         } else {
             imuIndicator3.setFill(Color.BLACK);
-        }
-        if (imu[4]==1){
-            imuIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
-        } else {
-            imuIndicator4.setFill(Color.BLACK);
-        }
-        if (imu[5]==1){
-            imuIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
-        } else {
-            imuIndicator5.setFill(Color.BLACK);
-        }
-        if (imu[6]==1){
-            imuIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
-        } else {
-            imuIndicator6.setFill(Color.BLACK);
-        }
-        if (imu[7]==1){
-            imuIndicator7.setFill(javafx.scene.paint.Color.YELLOW);
-        } else {
-            imuIndicator7.setFill(Color.BLACK);
         }
     }
 
