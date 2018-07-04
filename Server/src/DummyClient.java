@@ -18,60 +18,60 @@ public class DummyClient {
         Socket podSocket = new Socket(serverAddress, PORT);
 
         //A: Receive test
-        while (true) {
-            BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
-            String confirmation = input.readLine();
-            PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
-
-            if (confirmation.equals("0")) {
-                System.out.println("Confirmation received.");
-
-                while(true) {
-                    for(int x=0; x<150; x++){
-                        dummydata.println("CMD01"+Integer.toString(x));
-                        dummydata.println("CMD02"+Integer.toString(x));
-                        dummydata.println("CMD03"+Integer.toString(x));
-                        dummydata.println("CMD04"+Integer.toString(x));
-                        dummydata.println("CMD05"+Integer.toString(x));
-                        dummydata.println("CMD06"+Integer.toString(x));
-                        dummydata.println("CMD07"+Integer.toString(x));
-                        dummydata.println("CMD0803");
-                        dummydata.println("CMD0903");
-                        dummydata.println("CMD10"+Integer.toString(x));
-                        dummydata.println("CMD11"+Integer.toString(x));
-                        dummydata.println("CMD12"+Integer.toString(x));
-                        dummydata.println("CMD13"+Integer.toString(x));
-                        dummydata.println("CMD14"+Integer.toString(x));
-                        dummydata.println("CMD15"+Integer.toString(x));
-                        dummydata.println("CMD16"+Integer.toString(x));
-                        dummydata.println("CMD17"+Integer.toString(x));
-                        dummydata.println("CMD18"+Integer.toString(x));
-                        dummydata.println("CMD19"+Integer.toString(x));
-                        dummydata.println("CMD20"+Integer.toString(x));
-                        dummydata.println("CMD211111");
-                        dummydata.println("CMD2211111111");
-                        dummydata.println("CMD2311111111");
-                    }
-                }
-
-            }
-        }
+//        while (true) {
+//            BufferedReader input = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
+//            String confirmation = input.readLine();
+//            PrintStream dummydata = new PrintStream(podSocket.getOutputStream());
+//
+//            if (confirmation.equals("0")) {
+//                System.out.println("Confirmation received.");
+//
+//                while(true) {
+//                    for(int x=0; x<150; x++){
+//                        dummydata.println("CMD01"+Integer.toString(x));
+//                        dummydata.println("CMD02"+Integer.toString(x));
+//                        dummydata.println("CMD03"+Integer.toString(x));
+//                        dummydata.println("CMD04"+Integer.toString(x));
+//                        dummydata.println("CMD05"+Integer.toString(x));
+//                        dummydata.println("CMD06"+Integer.toString(x));
+//                        dummydata.println("CMD07"+Integer.toString(x));
+//                        dummydata.println("CMD0803");
+//                        dummydata.println("CMD0903");
+//                        dummydata.println("CMD10"+Integer.toString(x));
+//                        dummydata.println("CMD11"+Integer.toString(x));
+//                        dummydata.println("CMD12"+Integer.toString(x));
+//                        dummydata.println("CMD13"+Integer.toString(x));
+//                        dummydata.println("CMD14"+Integer.toString(x));
+//                        dummydata.println("CMD15"+Integer.toString(x));
+//                        dummydata.println("CMD16"+Integer.toString(x));
+//                        dummydata.println("CMD17"+Integer.toString(x));
+//                        dummydata.println("CMD18"+Integer.toString(x));
+//                        dummydata.println("CMD19"+Integer.toString(x));
+//                        dummydata.println("CMD20"+Integer.toString(x));
+//                        dummydata.println("CMD211111");
+//                        dummydata.println("CMD2211111111");
+//                        dummydata.println("CMD2311111111");
+//                    }
+//                }
+//
+//            }
+//        }
         //End of A
 
         //B: Send test
-//        BufferedReader serverBuffer = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
-//        while (true) {
-//            String confirmation = serverBuffer.readLine();
-//            if (confirmation.equals("4")) {
-//                System.out.println("Received confirmation from server");
-//                while (true) {
-//                    String serverData = serverBuffer.readLine();
-//                    if (serverData != null) {
-//                        System.out.println(String.format("Received %s from server", serverData));
-//                    }
-//                }
-//            }
-//        }
+        BufferedReader serverBuffer = new BufferedReader(new InputStreamReader(podSocket.getInputStream()));
+        while (true) {
+            String confirmation = serverBuffer.readLine();
+            if (confirmation.equals("0")) {
+                System.out.println("Received confirmation from server");
+                while (true) {
+                    String serverData = serverBuffer.readLine();
+                    if (serverData != null) {
+                        System.out.println(String.format("Received %s from server", serverData));
+                    }
+                }
+            }
+        }
         //End of B
     }
 }
