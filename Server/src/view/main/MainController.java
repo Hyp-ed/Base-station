@@ -2,7 +2,6 @@ package view.main;
 
 import com.jfoenix.controls.JFXSlider;
 import eu.hansolo.enzo.lcd.Lcd;
-import eu.hansolo.enzo.lcd.LcdClock;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -200,6 +198,35 @@ public class MainController {
         serverThread.start();
     }
 
+    private void resetAll() {
+        setDistanceMeter(0);  // TODO: This does not move the pod back to 0 (?)
+        setGaugeVelocity(0, false);
+        setGaugeAcceleration(0, false);
+        setGaugeTemp(0, false);
+        setGaugeVoltage(0, false);
+        setGaugeTemp1(0, false);
+        setGaugeVoltage1(0, false);
+        setGaugeRpmfl(0, false);
+        setGaugeRpmfr(0, false);
+        setGaugeRpmbl(0, false);
+        setGaugeRpmbr(0, false);
+        setGaugeTorquefr(0, false);
+        setGaugeTorquebl(0, false);
+        setGaugeTorquebr(0, false);
+        setGaugeTorquefl(0, false);
+        setGaugeLpbattery(0, false);
+        setGaugeLpbattery1(0, false);
+        setGaugeHpBattery(0, false);
+        setGaugeHpBattery1(0, false);
+        setClock(0);
+        setTelemetryIndicatorOff();
+        setBrakeIndicatorOff();
+        setStateLabel("IDLE");
+        disableBtnLaunch();
+        disableBtnStop();
+        disableServicePropulsion();
+    }
+
     private void handleBtnRestart() {
         if (server.isCommunicating()) {
             System.out.println("NOT ALLOWED TO RESTART WHEN CLIENT IS CONNECTED");
@@ -208,6 +235,7 @@ public class MainController {
         }
 
         serverThread.interrupt();
+        resetAll();
 
         try {
             Thread.sleep(200);
@@ -264,7 +292,6 @@ public class MainController {
         distanceMeter.setValue(distance);
     }
 
-    // TODO(Isa): Refactor
     public void setGaugeVelocity(int velocity, boolean isDanger) {
         gaugeVelocity.setValue(velocity);
         gaugeVelocity.setValueColor(colorHashMap.get(isDanger));
@@ -359,13 +386,22 @@ public class MainController {
         clock.setValue(time);
     }
 
-    public void setTelemetryIndicator() {
-        telemetryIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+    public void setTelemetryIndicatorOn() {
+        telemetryIndicator.setFill(Color.YELLOW);
     }
 
-    public void setBrakeIndicator() {
-        leftBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
-        rightBrakeIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+    public void setTelemetryIndicatorOff(){
+        telemetryIndicator.setFill(Color.BLACK);
+    }
+
+    public void setBrakeIndicatorOn() {
+        leftBrakeIndicator.setFill(Color.YELLOW);
+        rightBrakeIndicator.setFill(Color.YELLOW);
+    }
+
+    public void setBrakeIndicatorOff() {
+        leftBrakeIndicator.setFill(Color.BLACK);
+        rightBrakeIndicator.setFill(Color.BLACK);
     }
 
     public void setStateLabel(String state) {
@@ -378,22 +414,22 @@ public class MainController {
 
     public void setImuIndicator(int imu[]) {
         if (imu[0]==1){
-            imuIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+            imuIndicator.setFill(Color.YELLOW);
         } else {
             imuIndicator.setFill(Color.BLACK);
         }
         if (imu[1]==1){
-            imuIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+            imuIndicator1.setFill(Color.YELLOW);
         } else {
             imuIndicator1.setFill(Color.BLACK);
         }
         if (imu[2]==1){
-            imuIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+            imuIndicator2.setFill(Color.YELLOW);
         } else {
             imuIndicator2.setFill(Color.BLACK);
         }
         if (imu[3]==1){
-            imuIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+            imuIndicator3.setFill(Color.YELLOW);
         } else {
             imuIndicator3.setFill(Color.BLACK);
         }
@@ -401,42 +437,42 @@ public class MainController {
 
     public void setProxi_FrontIndicator(int imu[]) {
         if (imu[0]==1){
-            fproxiIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator.setFill(Color.YELLOW);
         } else {
             fproxiIndicator.setFill(Color.BLACK);
         }
         if (imu[1]==1){
-            fproxiIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator1.setFill(Color.YELLOW);
         } else {
             fproxiIndicator1.setFill(Color.BLACK);
         }
         if (imu[2]==1){
-            fproxiIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator2.setFill(Color.YELLOW);
         } else {
             fproxiIndicator2.setFill(Color.BLACK);
         }
         if (imu[3]==1){
-            fproxiIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator3.setFill(Color.YELLOW);
         } else {
             fproxiIndicator3.setFill(Color.BLACK);
         }
         if (imu[4]==1){
-            fproxiIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator4.setFill(Color.YELLOW);
         } else {
             fproxiIndicator4.setFill(Color.BLACK);
         }
         if (imu[5]==1){
-            fproxiIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator5.setFill(Color.YELLOW);
         } else {
             fproxiIndicator5.setFill(Color.BLACK);
         }
         if (imu[6]==1){
-            fproxiIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator6.setFill(Color.YELLOW);
         } else {
             fproxiIndicator6.setFill(Color.BLACK);
         }
         if (imu[7]==1){
-            fproxiIndicator7.setFill(javafx.scene.paint.Color.YELLOW);
+            fproxiIndicator7.setFill(Color.YELLOW);
         } else {
             fproxiIndicator7.setFill(Color.BLACK);
         }
@@ -445,62 +481,70 @@ public class MainController {
 
     public void setProxi_RearIndicator(int imu[]) {
         if (imu[0]==1){
-            rproxiIndicator.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator.setFill(Color.YELLOW);
         } else {
             rproxiIndicator.setFill(Color.BLACK);
         }
         if (imu[1]==1){
-            rproxiIndicator1.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator1.setFill(Color.YELLOW);
         } else {
             rproxiIndicator1.setFill(Color.BLACK);
         }
         if (imu[2]==1){
-            rproxiIndicator2.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator2.setFill(Color.YELLOW);
         } else {
             rproxiIndicator2.setFill(Color.BLACK);
         }
         if (imu[3]==1){
-            rproxiIndicator3.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator3.setFill(Color.YELLOW);
         } else {
             rproxiIndicator3.setFill(Color.BLACK);
         }
         if (imu[4]==1){
-            rproxiIndicator4.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator4.setFill(Color.YELLOW);
         } else {
             rproxiIndicator4.setFill(Color.BLACK);
         }
         if (imu[5]==1){
-            rproxiIndicator5.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator5.setFill(Color.YELLOW);
         } else {
             rproxiIndicator5.setFill(Color.BLACK);
         }
         if (imu[6]==1){
-            rproxiIndicator6.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator6.setFill(Color.YELLOW);
         } else {
             rproxiIndicator6.setFill(Color.BLACK);
         }
         if (imu[7]==1){
-            rproxiIndicator7.setFill(javafx.scene.paint.Color.YELLOW);
+            rproxiIndicator7.setFill(Color.YELLOW);
         } else {
             rproxiIndicator7.setFill(Color.BLACK);
         }
     }
 
-
-    public void enableBtnLaunch(){
+    public void enableBtnLaunch() {
         btnLaunch.setDisable(false);
     }
 
-    public void enableBtnStop(){
+    public void disableBtnLaunch() {
+        btnLaunch.setDisable(true);
+    }
+
+    public void enableBtnStop() {
         btnStop.setDisable(false);
     }
 
-    public void enableServicePropulsion(){
+    public void disableBtnStop() {
+        btnStop.setDisable(true);
+    }
+
+    public void enableServicePropulsion() {
         btnServicePropulsionGo.setDisable(false);
         btnServicePropulsionStop.setDisable(false);
     }
 
-    public void setConnectionLossIndicator(){
-        telemetryIndicator.setFill(Color.BLACK);
+    public void disableServicePropulsion() {
+        btnServicePropulsionGo.setDisable(true);
+        btnServicePropulsionStop.setDisable(true);
     }
 }

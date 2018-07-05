@@ -65,6 +65,7 @@ public class Server implements Runnable {
             SimpleFormatter simple = new SimpleFormatter();
             loggerHandler.setFormatter(simple);
             LOGGER.addHandler(loggerHandler);
+            LOGGER.setLevel(Level.WARNING);
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Failed to set up logger.");
             e.printStackTrace();
@@ -98,8 +99,13 @@ public class Server implements Runnable {
             LOGGER.log(Level.SEVERE, "run() failed.");
             e.printStackTrace();
         } finally {
-            LOGGER.log(Level.INFO, "Communication terminated. Closing scanner and printwriter.");
+            LOGGER.log(Level.INFO, "Communication terminated. Closing socket, scanner and printwriter.");
             isTimerRunning = false;
+            try {
+                podSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             scanner.close();
             printWriter.close();
         }
@@ -220,7 +226,7 @@ public class Server implements Runnable {
                 mainController.setStateLabel("DECELERATING");
                 break;
             case 5:
-                mainController.setBrakeIndicator();
+                mainController.setBrakeIndicatorOn();
                 mainController.setStateLabel("EMERGENCY BRAKING");
                 break;
             case 6:
@@ -254,7 +260,7 @@ public class Server implements Runnable {
         }
 
         isCommunicating = true;
-        mainController.setTelemetryIndicator();
+        mainController.setTelemetryIndicatorOn();
         updateGauges();
 
         while (scanner.hasNext()) {
@@ -387,7 +393,7 @@ public class Server implements Runnable {
             //sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
 
-        mainController.setConnectionLossIndicator();
+        mainController.setTelemetryIndicatorOff();
         isCommunicating = false;
     }
 
