@@ -46,6 +46,9 @@ public class MainController {
     private Button btnServicePropulsionGo;
 
     @FXML
+    private Button btnRestart;
+
+    @FXML
     private Gauge gaugeAccel;
 
     @FXML
@@ -185,12 +188,17 @@ public class MainController {
         trackLengthBtn.setOnAction(event -> this.handleTrackLengthBtn());
         btnServicePropulsionGo.setOnAction(event -> this.handleBtnServicePropulsionGo());
         btnServicePropulsionStop.setOnAction(event -> this.handleBtnServicePropulsionStop());
+        btnRestart.setOnAction(event -> this.handleBtnRestart());
     }
 
     public MainController() {
         System.out.println("Called MainController.MainController");
         server = new Server(this);
         server.start();
+    }
+
+    private void handleBtnRestart(){
+
     }
 
     private void handleBtnStop() { server.sendToPod(1); }

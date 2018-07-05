@@ -589,22 +589,11 @@
                                        <children>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Button mnemonicParsing="false" text="NAVIGATION">
+                                                <Button fx:id="btnRestart" mnemonicParsing="false" text="RESTART">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="STATE">
-                                                   <HBox.margin>
-                                                      <Insets right="60.0" />
-                                                   </HBox.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" text="MOTOR">
-                                                   <HBox.margin>
-                                                      <Insets right="60.0" />
-                                                   </HBox.margin>
-                                                </Button>
-                                                <Button mnemonicParsing="false" text="EMERGENCY BRAKE" />
                                              </children>
                                           </HBox>
                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
