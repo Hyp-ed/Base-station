@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class MainController {
     private static final Color dangerColor = Color.RED;
     private static HashMap<Boolean, Color> colorHashMap = new HashMap<Boolean, Color>();
     private final Server server;
+    private Thread serverThread;
 
     static {
         colorHashMap.put(true, dangerColor);
@@ -194,11 +196,28 @@ public class MainController {
     public MainController() {
         System.out.println("Called MainController.MainController");
         server = new Server(this);
-        server.start();
+        serverThread = new Thread(server);
+        serverThread.start();
     }
 
-    private void handleBtnRestart(){
+    private void handleBtnRestart() {
+        if (server.isCommunicating()) {
+            System.out.println("NOT ALLOWED TO RESTART WHEN CLIENT IS CONNECTED");
 
+            return;
+        }
+
+        serverThread.interrupt();
+
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("RESTARTING SERVER.");
+        serverThread = new Thread(server);
+        serverThread.start();
     }
 
     private void handleBtnStop() { server.sendToPod(1); }
@@ -481,7 +500,7 @@ public class MainController {
         btnServicePropulsionStop.setDisable(false);
     }
 
-    public void connectionIndicator(){
+    public void setConnectionLossIndicator(){
         telemetryIndicator.setFill(Color.BLACK);
     }
 }

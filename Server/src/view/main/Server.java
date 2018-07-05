@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.logging.*;
 
-public class Server extends Thread {
+public class Server implements Runnable {
 
     private static final int PORT = 5695;
     private static final int SPACE_X_PORT = 4445;
@@ -38,9 +38,6 @@ public class Server extends Thread {
             dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
             dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1,
             dTorque_fr, dTorque_fl, dTorque_br, dTorque_bl;
-//            dImu, dImu1, dImu2, dImu3, dImu4, dImu5, dImu6, dImu7, dImu8,
-//            dProxi_front, dProxi_front1, dProxi_front2, dProxi_front3, dProxi_front4, dProxi_front5, dProxi_front6, dProxi_front7, dProxi_front8,
-//            dProxi_rear, dProxi_rear1, dProxi_rear2, dProxi_rear3, dProxi_rear4, dProxi_rear5, dProxi_rear6, dProxi_rear7, dProxi_rear8;
 //    boolean dState = false;
 
     String data, cmdString, readingString;
@@ -53,6 +50,7 @@ public class Server extends Thread {
     private MainController mainController;
     private byte status = 1, team_id = 2;
     private boolean isTimerRunning = false;
+    private boolean isCommunicating = false;
 
     private static Logger LOGGER;
     private static Handler loggerHandler = null;
@@ -95,14 +93,30 @@ public class Server extends Thread {
             sendToPod(ACK_FROM_SERVER);
             LOGGER.log(Level.INFO, "Accepted connection from client.");
             startCommunication();
+            LOGGER.log(Level.INFO, "Communication finished.");
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "run() failed. Closing scanner and printwriter.");
+            LOGGER.log(Level.SEVERE, "run() failed.");
             e.printStackTrace();
         } finally {
+            LOGGER.log(Level.INFO, "Communication terminated. Closing scanner and printwriter.");
             isTimerRunning = false;
             scanner.close();
             printWriter.close();
         }
+    }
+
+    public boolean isCommunicating() {
+        return isCommunicating;
+    }
+
+    public void sendToPod(int message) {
+        if (podSocket == null) {
+            LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
+        }
+
+        LOGGER.log(Level.INFO, String.format("Sending %s to pod", message));
+        printWriter.println(message);
+        printWriter.flush();
     }
 
     private int parseData(String cmdString, String readingString) {
@@ -239,6 +253,7 @@ public class Server extends Thread {
             LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
         }
 
+        isCommunicating = true;
         mainController.setTelemetryIndicator();
         updateGauges();
 
@@ -372,21 +387,12 @@ public class Server extends Thread {
             //sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
 
-        mainController.connectionIndicator();
+        mainController.setConnectionLossIndicator();
+        isCommunicating = false;
     }
 
-    public void sendToPod(int message) {
-        if (podSocket == null) {
-            LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
-        }
-
-        LOGGER.log(Level.INFO, String.format("Sending %s to pod", message));
-        printWriter.println(message);
-        printWriter.flush();
-    }
-
-    public static void sendToSpaceX(byte status, byte team_id,
-                                    int acceleration, int distance, int velocity) {
+    private void sendToSpaceX(byte status, byte team_id,
+                              int acceleration, int distance, int velocity) {
         try {
             DatagramSocket spaceXSocket = new DatagramSocket();
             ByteBuffer buf = ByteBuffer.allocate(34); // BigEndian by default
