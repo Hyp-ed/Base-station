@@ -79,18 +79,6 @@ public class MainController {
     private Gauge gaugeRpmbr;
 
     @FXML
-    private Gauge gaugeTorquefr;
-
-    @FXML
-    private Gauge gaugeTorquefl;
-
-    @FXML
-    private Gauge gaugeTorquebr;
-
-    @FXML
-    private Gauge gaugeTorquebl;
-
-    @FXML
     private Gauge gaugeLpBattery;
 
     @FXML
@@ -210,10 +198,6 @@ public class MainController {
         setGaugeRpmfr(0, false);
         setGaugeRpmbl(0, false);
         setGaugeRpmbr(0, false);
-        setGaugeTorquefr(0, false);
-        setGaugeTorquebl(0, false);
-        setGaugeTorquebr(0, false);
-        setGaugeTorquefl(0, false);
         setGaugeLpbattery(0, false);
         setGaugeLpbattery1(0, false);
         setGaugeHpBattery(0, false);
@@ -340,26 +324,6 @@ public class MainController {
     public void setGaugeRpmbr(int rpm_br, boolean isDanger) {
         gaugeRpmbr.setValue(rpm_br);
         gaugeRpmbr.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeTorquefr(int torque_fr, boolean isDanger) {
-        gaugeTorquefr.setValue(torque_fr);
-        gaugeTorquefr.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeTorquebl(int torque_bl, boolean isDanger) {
-        gaugeTorquefl.setValue(torque_bl);
-        gaugeTorquefl.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeTorquebr(int torque_br, boolean isDanger) {
-        gaugeTorquebr.setValue(torque_br);
-        gaugeTorquebr.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeTorquefl(int torque_fl, boolean isDanger) {
-        gaugeTorquebl.setValue(torque_fl);
-        gaugeTorquebl.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeLpbattery(int lpCharge, boolean isDanger) {

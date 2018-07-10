@@ -27,7 +27,6 @@ public class Server implements Runnable {
     int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-            torque_fr, torque_fl, torque_br, torque_bl,
             imuReceived, proxi_frontReceived, proxi_rearReceived;
     int state = 0;
     int[] imu = new int[4];
@@ -37,8 +36,7 @@ public class Server implements Runnable {
     // Danger flags, true if value exceeds threshold
     boolean dDistance, dVelocity, dAcceleration,
             dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
-            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1,
-            dTorque_fr, dTorque_fl, dTorque_br, dTorque_bl;
+            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
 //    boolean dState = false;
 
 
@@ -182,10 +180,6 @@ public class Server implements Runnable {
                         mainController.setGaugeTemp(hp_temp, dHp_temp);
                         mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
                         mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
-                        mainController.setGaugeTorquefr(torque_fr, dTorque_fr);
-                        mainController.setGaugeTorquefl(torque_fl, dTorque_fl);
-                        mainController.setGaugeTorquebr(torque_br, dTorque_br);
-                        mainController.setGaugeTorquebl(torque_bl, dTorque_bl);
                         mainController.setGaugeLpbattery(lp_charge, dLp_charge);
                         mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
                         mainController.setGaugeHpBattery(hp_charge, dHp_charge);
@@ -337,22 +331,6 @@ public class Server implements Runnable {
                     dLp_charge1 = isDanger(cmdString, lp_charge1);
                     break;
                 case "CMD17":
-                    torque_fr = parseData(cmdString, readingString);
-                    dTorque_fr = isDanger(cmdString, torque_fr);
-                    break;
-                case "CMD18":
-                    torque_fl = parseData(cmdString, readingString);
-                    dTorque_fl = isDanger(cmdString, torque_fl);
-                    break;
-                case "CMD19":
-                    torque_br = parseData(cmdString, readingString);
-                    dTorque_br = isDanger(cmdString, torque_br);
-                    break;
-                case "CMD20":
-                    torque_bl = parseData(cmdString, readingString);
-                    dTorque_bl = isDanger(cmdString, torque_br);
-                    break;
-                case "CMD21":
                     imuReceived = parseData(cmdString, readingString);
                     if (imuReceived != 0) {
                         imu[0] = Integer.parseInt(Integer.toString(imuReceived).substring(0, 1));
@@ -361,7 +339,7 @@ public class Server implements Runnable {
                         imu[3] = Integer.parseInt(Integer.toString(imuReceived).substring(3));
                     }
                     break;
-                case "CMD22":
+                case "CMD18":
                     proxi_frontReceived = parseData(cmdString, readingString);
                     if (proxi_frontReceived != 0) {
                         proxi_front[0] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(0, 1));
@@ -374,7 +352,7 @@ public class Server implements Runnable {
                         proxi_front[7] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
                     }
                     break;
-                case "CMD23":
+                case "CMD19":
                     proxi_rearReceived = parseData(cmdString, readingString);
                     if (proxi_rearReceived != 0) {
                         proxi_rear[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
