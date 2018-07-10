@@ -41,13 +41,9 @@ public class DummyClient {
                         dummydata.println("CMD14"+Integer.toString(x));
                         dummydata.println("CMD15"+Integer.toString(x));
                         dummydata.println("CMD16"+Integer.toString(x));
-                        dummydata.println("CMD17"+Integer.toString(x));
-                        dummydata.println("CMD18"+Integer.toString(x));
-                        dummydata.println("CMD19"+Integer.toString(x));
-                        dummydata.println("CMD20"+Integer.toString(x));
-                        dummydata.println("CMD211111");
-                        dummydata.println("CMD2211111111");
-                        dummydata.println("CMD2311111111");
+                        dummydata.println("CMD171111");
+                        dummydata.println("CMD1811111111");
+                        dummydata.println("CMD1911111111");
                     }
                 }
 
