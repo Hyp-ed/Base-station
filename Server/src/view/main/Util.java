@@ -42,29 +42,26 @@ public class Util {
 
         // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
         thresHashMap = new HashMap();
-        thresHashMap.put("CMD01", 100);
-        thresHashMap.put("CMD02", 100);
-        thresHashMap.put("CMD03", 100);
-        thresHashMap.put("CMD04", 100);
-        thresHashMap.put("CMD05", 100);
-        thresHashMap.put("CMD06", 100);
-        thresHashMap.put("CMD07", 100);
+        thresHashMap.put("CMD01", 1250);
+        thresHashMap.put("CMD02", 90);
+        thresHashMap.put("CMD03", 20);
+        thresHashMap.put("CMD04", 6400);
+        thresHashMap.put("CMD05", 6400);
+        thresHashMap.put("CMD06", 6400);
+        thresHashMap.put("CMD07", 6400);
 //        thresHashMap.put("CMD08", 100); // no threshold for state (?)
-        thresHashMap.put("CMD09", 100);
-        thresHashMap.put("CMD10", 100);
+        thresHashMap.put("CMD09", 120);
+        thresHashMap.put("CMD10", 70);
         thresHashMap.put("CMD11", 100);
-        thresHashMap.put("CMD12", 100);
-        thresHashMap.put("CMD13", 100);
+        thresHashMap.put("CMD12", 120);
+        thresHashMap.put("CMD13", 70);
         thresHashMap.put("CMD14", 100);
         thresHashMap.put("CMD15", 100);
         thresHashMap.put("CMD16", 100);
-        thresHashMap.put("CMD17", 100);
-        thresHashMap.put("CMD18", 100);
-        thresHashMap.put("CMD19", 100);
-        thresHashMap.put("CMD20", 100);
-        thresHashMap.put("CMD21", 100);
-        thresHashMap.put("CMD22", 100);
-        thresHashMap.put("CMD23", 100);
+        thresHashMap.put("CMD17", 100); //TODO
+        thresHashMap.put("CMD18", 100); //TODO
+        thresHashMap.put("CMD19", 100); //TODO
+        thresHashMap.put("CMD20", 100); //TODO
     }
 
     public static String getNameByCmdCode(String cmdString) {

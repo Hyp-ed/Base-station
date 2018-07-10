@@ -14,6 +14,7 @@ import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.*;
 
 public class Server implements Runnable {
@@ -39,6 +40,7 @@ public class Server implements Runnable {
             dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1,
             dTorque_fr, dTorque_fl, dTorque_br, dTorque_bl;
 //    boolean dState = false;
+
 
     String data, cmdString, readingString;
 
