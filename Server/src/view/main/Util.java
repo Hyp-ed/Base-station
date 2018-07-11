@@ -32,13 +32,9 @@ public class Util {
         cmdHashMap.put("CMD14", "hp charge1");
         cmdHashMap.put("CMD15", "lp charge");
         cmdHashMap.put("CMD16", "lp charge1");
-        cmdHashMap.put("CMD17", "torque fr");
-        cmdHashMap.put("CMD18", "torque fl");
-        cmdHashMap.put("CMD19", "torque br");
-        cmdHashMap.put("CMD20", "torque bl");
-        cmdHashMap.put("CMD21", "imu");
-        cmdHashMap.put("CMD22", "proxi front");
-        cmdHashMap.put("CMD23", "proxi rear");
+        cmdHashMap.put("CMD17", "imu");
+        cmdHashMap.put("CMD18", "proxi front");
+        cmdHashMap.put("CMD19", "proxi rear");
 
         // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
         thresHashMap = new HashMap();
@@ -58,10 +54,6 @@ public class Util {
         thresHashMap.put("CMD14", 100);
         thresHashMap.put("CMD15", 100);
         thresHashMap.put("CMD16", 100);
-        thresHashMap.put("CMD17", 100); //TODO
-        thresHashMap.put("CMD18", 100); //TODO
-        thresHashMap.put("CMD19", 100); //TODO
-        thresHashMap.put("CMD20", 100); //TODO
     }
 
     public static String getNameByCmdCode(String cmdString) {
