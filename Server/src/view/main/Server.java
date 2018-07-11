@@ -20,6 +20,7 @@ import java.util.logging.*;
 public class Server implements Runnable {
 
     private static final int PORT = 5695;
+    private static final String SPACE_X_IP = "localhost";
     private static final int SPACE_X_PORT = 4445;
     public static final int ACK_FROM_SERVER = 0;
     private static final String DATA_REGEX =  "^\\d*\\.?\\d+|\\d+\\.?\\d*$"; // "^[0-9]+$"
@@ -39,11 +40,14 @@ public class Server implements Runnable {
             dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
 //    boolean dState = false;
 
-
     String data, cmdString, readingString;
 
     private ServerSocket serverSocket;
     private Socket podSocket;
+    private InetAddress spaceXAddress;
+    DatagramPacket spaceXPacket;
+    DatagramSocket spaceXSocket;
+    ByteBuffer spaceXBuffer = ByteBuffer.allocate(34); // BigEndian by default
     private PrintWriter printWriter;
     private Scanner scanner;
 
@@ -75,8 +79,15 @@ public class Server implements Runnable {
     public Server(MainController controller) {
         try {
             serverSocket = new ServerSocket(PORT);
+            spaceXSocket = new DatagramSocket();
+            spaceXAddress = InetAddress.getByName(SPACE_X_IP);
             this.mainController = controller;
             LOGGER.log(Level.INFO, "Server initialised; Controller assigned.");
+        } catch (UnknownHostException e) {
+            LOGGER.log(Level.SEVERE, "Connection to SpaceX Server failed.");
+        } catch (SocketException e) {
+            LOGGER.log(Level.SEVERE, "Initialisation of Socket failed.");
+            e.printStackTrace();
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Initialisation of Server failed.");
             e.printStackTrace();
@@ -370,7 +381,7 @@ public class Server implements Runnable {
                     break;
             }
 
-            //sendToSpaceX(status, team_id, acceleration, distance, velocity);
+            sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
 
         mainController.setTelemetryIndicatorOff();
@@ -378,25 +389,24 @@ public class Server implements Runnable {
     }
 
     private void sendToSpaceX(byte status, byte team_id,
-                              int acceleration, int distance, int velocity) {
+                              int acceleration, int position, int velocity) {
         try {
-            DatagramSocket spaceXSocket = new DatagramSocket();
-            ByteBuffer buf = ByteBuffer.allocate(34); // BigEndian by default
-            buf.put(team_id);
-            buf.put(status);
-            buf.putInt(acceleration);
-            buf.putInt(distance);
-            buf.putInt(velocity);
-            buf.putInt(0);
-            buf.putInt(0);
-            buf.putInt(0);
-            buf.putInt(0);
-            buf.putInt(0);
-            InetAddress IP =  InetAddress.getByName(/*_spaceXIP*/"localhost");
-            DatagramPacket packet = new DatagramPacket(buf.array(), buf.limit(), IP, SPACE_X_PORT);
-            spaceXSocket.send(packet);
-        } catch (IOException ex) {
-            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
+            spaceXBuffer.put(team_id);
+            spaceXBuffer.put(status);
+            spaceXBuffer.putInt(acceleration);
+            spaceXBuffer.putInt(position);
+            spaceXBuffer.putInt(velocity);
+            spaceXBuffer.putInt(0);  // battery voltage
+            spaceXBuffer.putInt(0);  // battery current
+            spaceXBuffer.putInt(0);  // battery temperature
+            spaceXBuffer.putInt(0);  // pod temperature
+            spaceXBuffer.putInt(0);  // stripe count
+            spaceXPacket = new DatagramPacket(spaceXBuffer.array(), spaceXBuffer.limit(), spaceXAddress, SPACE_X_PORT);
+            spaceXSocket.send(spaceXPacket);
+            spaceXBuffer.clear();
+        } catch (IOException e) {
+            Logger.getLogger(Server.class.getName()).log(Level.SEVERE, "Cannot send packets to SpaceX.", e);
+            e.printStackTrace();
         }
     }
 
