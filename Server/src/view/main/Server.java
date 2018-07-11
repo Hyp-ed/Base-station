@@ -4,58 +4,56 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.net.*;
 import java.nio.ByteBuffer;
-import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.logging.*;
 
 public class Server implements Runnable {
 
-    private static final int PORT = 5695;
-    private static final String SPACE_X_IP = "localhost";
-    private static final int SPACE_X_PORT = 4445;
-    public static final int ACK_FROM_SERVER = 0;
+    private byte status = 1, team_id = 2;
+
+    // Data parsing
     private static final String DATA_REGEX =  "^\\d*\\.?\\d+|\\d+\\.?\\d*$"; // "^[0-9]+$"
-
-    int distance, velocity, acceleration,
-            rpm_fl, rpm_fr, rpm_br, rpm_bl,
-            hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-            imuReceived, proxi_frontReceived, proxi_rearReceived;
-    int state = 0;
-    int[] imu = new int[4];
-    int[] proxi_front = new int[8];
-    int[] proxi_rear = new int[8];
-
+    private int distance, velocity, acceleration,
+                rpm_fl, rpm_fr, rpm_br, rpm_bl,
+                hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
+                imuReceived, proxi_frontReceived, proxi_rearReceived;
+    private int state = 0;
+    private int[] imu = new int[4];
+    private int[] proxi_front = new int[8];
+    private int[] proxi_rear = new int[8];
     // Danger flags, true if value exceeds threshold
-    boolean dDistance, dVelocity, dAcceleration,
-            dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
-            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
-//    boolean dState = false;
-
+    private boolean dDistance, dVelocity, dAcceleration,
+                    dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
+                    dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
     String data, cmdString, readingString;
 
+    // TCP/IP connection to pod
+    private static final int PORT = 5695;
+    private static final int ACK_FROM_SERVER = 0;
     private ServerSocket serverSocket;
     private Socket podSocket;
-    private InetAddress spaceXAddress;
-    DatagramPacket spaceXPacket;
-    DatagramSocket spaceXSocket;
-    ByteBuffer spaceXBuffer = ByteBuffer.allocate(34); // BigEndian by default
     private PrintWriter printWriter;
     private Scanner scanner;
+    // UDP connection to SpaceX
+    private static final String SPACE_X_IP = "localhost";  // TODO: SpaceX's IP is 192.168.0.1
+    private static final int SPACE_X_PORT = 3000;  // SpaceX's UDP port is 3000
+    private InetAddress spaceXAddress;
+    private DatagramSocket spaceXSocket;
+    private DatagramPacket spaceXPacket;
+    private ByteBuffer spaceXBuffer = ByteBuffer.allocate(34); // BigEndian by default
 
+    // GUI related stuff
     private MainController mainController;
-    private byte status = 1, team_id = 2;
-    private boolean isTimerRunning = false;
+    private boolean isPodRunning = false;
     private boolean isCommunicating = false;
 
+    // For logging
     private static Logger LOGGER;
     private static Handler loggerHandler = null;
 
@@ -69,7 +67,7 @@ public class Server implements Runnable {
             SimpleFormatter simple = new SimpleFormatter();
             loggerHandler.setFormatter(simple);
             LOGGER.addHandler(loggerHandler);
-            LOGGER.setLevel(Level.WARNING);
+            LOGGER.setLevel(Level.INFO);
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Failed to set up logger.");
             e.printStackTrace();
@@ -78,13 +76,13 @@ public class Server implements Runnable {
 
     public Server(MainController controller) {
         try {
-            serverSocket = new ServerSocket(PORT);
-            spaceXSocket = new DatagramSocket();
             spaceXAddress = InetAddress.getByName(SPACE_X_IP);
+            spaceXSocket = new DatagramSocket();
+            serverSocket = new ServerSocket(PORT);
             this.mainController = controller;
             LOGGER.log(Level.INFO, "Server initialised; Controller assigned.");
         } catch (UnknownHostException e) {
-            LOGGER.log(Level.SEVERE, "Connection to SpaceX Server failed.");
+            LOGGER.log(Level.SEVERE, "Connection to SpaceX failed.");
         } catch (SocketException e) {
             LOGGER.log(Level.SEVERE, "Initialisation of Socket failed.");
             e.printStackTrace();
@@ -105,13 +103,12 @@ public class Server implements Runnable {
             sendToPod(ACK_FROM_SERVER);
             LOGGER.log(Level.INFO, "Accepted connection from client.");
             startCommunication();
-            LOGGER.log(Level.INFO, "Communication finished.");
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "run() failed.");
             e.printStackTrace();
         } finally {
             LOGGER.log(Level.INFO, "Communication terminated. Closing socket, scanner and printwriter.");
-            isTimerRunning = false;
+            isPodRunning = false;
             try {
                 podSocket.close();
             } catch (IOException e) {
@@ -163,7 +160,7 @@ public class Server implements Runnable {
             public void run() {
                 LOGGER.log(Level.INFO, "Timer started.");
 
-                while (isTimerRunning) {
+                while (isPodRunning) {
                     mainController.setClock(Math.round(((System.currentTimeMillis() - startTime) / 1000.0)*10)/10.00);
                 }
             }
@@ -223,9 +220,9 @@ public class Server implements Runnable {
                 mainController.setStateLabel("READY");
                 break;
             case 3:
-                if (!isTimerRunning) {
+                if (!isPodRunning) {
                     startTimer(System.currentTimeMillis());
-                    isTimerRunning = true;
+                    isPodRunning = true;
                 }
                 mainController.setStateLabel("ACCELERATING");
                 break;
@@ -237,11 +234,12 @@ public class Server implements Runnable {
                 mainController.setStateLabel("EMERGENCY BRAKING");
                 break;
             case 6:
-                isTimerRunning = false;
+                isPodRunning = false;
                 mainController.enableServicePropulsion();
                 mainController.setStateLabel("RUN COMPLETE");
                 break;
             case 7:
+                isPodRunning = false;
                 mainController.setStateLabel("FAILURE STOPPED");
                 break;
             case 8:
@@ -260,16 +258,24 @@ public class Server implements Runnable {
     }
 
     private void startCommunication() {
-        LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
-
         if (podSocket == null) {
             LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
         }
 
         isCommunicating = true;
         mainController.setTelemetryIndicatorOn();
-        updateGauges();
+        LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
 
+        // actually reads data
+        updateGauges();
+        readDataFromSocket();
+
+        isCommunicating = false;
+        mainController.setTelemetryIndicatorOff();
+        LOGGER.log(Level.INFO, "Communication finished.");
+    }
+
+    private void readDataFromSocket() {
         while (scanner.hasNext()) {
             data = scanner.nextLine();
             cmdString = data.substring(0, 5);
@@ -383,9 +389,6 @@ public class Server implements Runnable {
 
             sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
-
-        mainController.setTelemetryIndicatorOff();
-        isCommunicating = false;
     }
 
     private void sendToSpaceX(byte status, byte team_id,

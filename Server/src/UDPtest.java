@@ -9,7 +9,7 @@ public class UDPtest {
     public static void main(String[] args) throws IOException {
 
         // get a datagram socket
-        DatagramSocket socket = new DatagramSocket(4445);
+        DatagramSocket socket = new DatagramSocket(3000);
         byte[] buf = new byte[34];
         System.out.println("UDP client started");
 
