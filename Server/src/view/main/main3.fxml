@@ -48,7 +48,7 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Lcd fx:id="clock" backgroundVisible="false" decimals="2" layoutX="34.0" layoutY="24.0" lcdDesign="FLAT_MIDNIGHT_BLUE" unit="s" valueFont="STANDARD" />
+                              <Lcd fx:id="clock" backgroundVisible="false" decimals="1" layoutX="34.0" layoutY="24.0" lcdDesign="FLAT_MIDNIGHT_BLUE" unit="s" valueFont="STANDARD" />
                            </children>
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">

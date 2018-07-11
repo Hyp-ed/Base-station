@@ -164,7 +164,7 @@ public class Server implements Runnable {
                 LOGGER.log(Level.INFO, "Timer started.");
 
                 while (isTimerRunning) {
-                    mainController.setClock(((System.currentTimeMillis() - startTime) / 1000.0));
+                    mainController.setClock(Math.round(((System.currentTimeMillis() - startTime) / 1000.0)*10)/10.00);
                 }
             }
         });
