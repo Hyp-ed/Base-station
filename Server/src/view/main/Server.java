@@ -264,7 +264,7 @@ public class Server implements Runnable {
                 mainController.setStateLabel("DECELERATING");
                 break;
             case 5:
-                mainController.setStateLabel("EMERGENCY BRAKING");
+                mainController.setStateLabel("EMERGENCY");
                 break;
             case 6:
                 isPodRunning = false;
