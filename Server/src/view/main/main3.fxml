@@ -451,7 +451,7 @@
                                                                   </Label>
                                                                </children>
                                                             </AnchorPane>
-                                                            <Label fx:id="updatesLabel" layoutX="143.0" layoutY="64.0" prefHeight="22.0" prefWidth="512.0" textFill="#c2c2c2">
+                                                            <Label layoutX="143.0" layoutY="64.0" prefHeight="22.0" prefWidth="512.0" textFill="#c2c2c2">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -624,6 +624,15 @@
                                                 </Button>
                                              </children>
                                            </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="warningLabel" opacity="0.0" text="NOT A TRACK LENGTH" textFill="#ff0808">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children></AnchorPane>

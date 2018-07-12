@@ -171,6 +171,12 @@ public class MainController {
     private Label updatesLabel;
 
     @FXML
+    private Label trackLengthLabel;
+
+    @FXML
+    private Label warningLabel;
+
+    @FXML
     private Button trackLengthBtn;
 
     @FXML
@@ -273,8 +279,13 @@ public class MainController {
 
     private void handleTrackLengthBtn() {
         // TODO(Kofi): get value from text area
-        server.sendToPod(4);
-        server.sendToPod(10000); //change to entered value
+        if(Integer.parseInt(trackLengthLabel.getText())<1250 && Integer.parseInt(trackLengthLabel.getText())<0) {
+            server.sendToPod(4);
+            server.sendToPod(Integer.parseInt(trackLengthLabel.getText())); //change to entered value
+            warningLabel.setOpacity(0);
+        }else{
+            warningLabel.setOpacity(1);
+        }
     }
 
     public void setDistanceMeter(int distance) {
