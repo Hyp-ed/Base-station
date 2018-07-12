@@ -168,6 +168,9 @@ public class MainController {
     private Label stateLabel;
 
     @FXML
+    private Label updatesLabel;
+
+    @FXML
     private Button trackLengthBtn;
 
     @FXML
@@ -521,5 +524,14 @@ public class MainController {
     public void disableServicePropulsion() {
         btnServicePropulsionGo.setDisable(true);
         btnServicePropulsionStop.setDisable(true);
+    }
+
+    public void setUpdatesLabel(String message){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                updatesLabel.setText(message);
+            }
+        });
+
     }
 }

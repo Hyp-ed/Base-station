@@ -436,7 +436,27 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout21" prefHeight="142.0" prefWidth="790.0">
                                                    <children>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="777.0" />
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="777.0">
+                                                         <children>
+                                                            <AnchorPane layoutX="25.0">
+                                                               <children>
+                                                                  <Line startX="760.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                                  <Label layoutY="1.600000023841858" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="UPDATES">
+                                                                     <font>
+                                                                        <Font size="15.0" />
+                                                                     </font>
+                                                                     <padding>
+                                                                        <Insets bottom="15.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                               </children>
+                                                            </AnchorPane>
+                                                            <Label fx:id="updatesLabel" layoutX="143.0" layoutY="64.0" prefHeight="22.0" prefWidth="512.0" textFill="#c2c2c2">
+                                                               <font>
+                                                                  <Font size="15.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children></AnchorPane>
                                                    </children>
                                                    <opaqueInsets>
                                                       <Insets />
