@@ -67,7 +67,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                            <Gauge fx:id="gaugeLpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                            <Gauge fx:id="gaugeLpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="30.0" orientation="VERTICAL" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -80,7 +80,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="9.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Gauge fx:id="gaugeLpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeLpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="30.0" orientation="VERTICAL" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -93,7 +93,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="82.0" layoutY="10.0" prefHeight="76.0" prefWidth="76.0">
                                        <children>
-                                          <Gauge fx:id="gaugeHpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeHpBattery" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="30.0" orientation="VERTICAL" skinType="BATTERY" value="3000" />
                                           <Label prefHeight="15.0" prefWidth="70.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
                                              <font>
                                                 <Font size="10.0" />
@@ -106,7 +106,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="132.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <Gauge fx:id="gaugeHpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="22.0" rotate="-90.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeHpBattery1" barColor="#FFFF8D" maxValue="10000" prefHeight="27.0" prefWidth="30.0" orientation="VERTICAL" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY">
                                              <font>
                                                 <Font size="10.0" />

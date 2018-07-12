@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.*;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.*;
 
@@ -221,30 +222,22 @@ public class Server implements Runnable {
         distance = 0;
         velocity = 0; dVelocity = false;
         acceleration = 0; dAcceleration = false;
-        rpm_fl = 0; dRpm_fl = false;
+        rpm_fl = 0; dRpm_fl = false;        // RPM
         rpm_fr = 0; dRpm_fr = false;
         rpm_bl = 0; dRpm_bl = false;
         rpm_br = 0; dRpm_br = false;
-        hp_volt = 0; dHp_volt = false;
+        hp_volt = 0; dHp_volt = false;      // HP Batteries
         hp_temp = 0; dHp_temp = false;
+        hp_charge = 0; dHp_charge = false;
         hp_volt1 = 0; dHp_volt1 = false;
         hp_temp1 = 0; dHp_temp1 = false;
-        lp_charge = 0; dLp_charge = false;
-        lp_charge1 = 0; dLp_charge1 = false;
-        hp_charge = 0; dHp_charge = false;
         hp_charge1 = 0; dHp_charge1 = false;
-        for (int i = 0; i < imu.length; i++) {
-            imu[i] = 0;
-        }
-        for (int i = 0; i < proxi_front.length; i++) {
-            proxi_front[i] = 0;
-        }
-        for (int i = 0; i < proxi_rear.length; i++) {
-            proxi_rear[i] = 0;
-        }
-        for (int i = 0; i < em_brakes.length; i++) {
-            em_brakes[i] = 0;
-        }
+        lp_charge = 0; dLp_charge = false;  // LP batteries
+        lp_charge1 = 0; dLp_charge1 = false;
+        Arrays.fill(imu, 0);           // Sensors stuff
+        Arrays.fill(proxi_front, 0);
+        Arrays.fill(proxi_rear, 0);
+        Arrays.fill(em_brakes, 0);
     }
 
     private void setState(int state) {
