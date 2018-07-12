@@ -184,6 +184,12 @@ public class MainController {
     private Label warningLabel;
 
     @FXML
+    private Label rightBrakeLabel;
+
+    @FXML
+    private Label leftBrakeLabel;
+
+    @FXML
     private Button trackLengthBtn;
 
     @FXML
@@ -383,11 +389,21 @@ public class MainController {
     public void setBrakeIndicator(int em_brakes[]) {
         if (em_brakes[0] == 1){
             leftBrakeIndicator.setFill(indicatorOnColor);
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    leftBrakeLabel.setText("DEPLOYED");
+                }
+            });
         } else {
             leftBrakeIndicator.setFill(inidcatorOffColor);
         }
         if (em_brakes[1] == 1){
             rightBrakeIndicator.setFill(indicatorOnColor);
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    rightBrakeLabel.setText("DEPLOYED");
+                }
+            });
         } else {
             rightBrakeIndicator.setFill(inidcatorOffColor);
         }
