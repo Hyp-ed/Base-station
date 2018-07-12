@@ -32,7 +32,7 @@
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="86.0" prefWidth="1555.0" style="-fx-background-color: #2A2E37;">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="200.0">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -40,7 +40,7 @@
                               <Insets right="400.0" />
                            </HBox.margin>
                            <children>
-                              <ImageView fitHeight="53.0" fitWidth="173.0" layoutX="14.0" layoutY="16.0">
+                              <ImageView fitHeight="53.0" fitWidth="208.0" layoutX="14.0" layoutY="16.0">
                                  <image>
                                     <Image url="@../logo.png" />
                                  </image>
