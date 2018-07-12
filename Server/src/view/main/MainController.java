@@ -205,30 +205,14 @@ public class MainController {
     }
 
     private void resetAll() {
-        setDistanceMeter(0);  // TODO: This does not move the pod back to 0 (?)
-        setGaugeVelocity(0, false);
-        setGaugeAcceleration(0, false);
-        setGaugeTemp(0, false);
-        setGaugeVoltage(0, false);
-        setGaugeTemp1(0, false);
-        setGaugeVoltage1(0, false);
-        setGaugeRpmfl(0, false);
-        setGaugeRpmfr(0, false);
-        setGaugeRpmbl(0, false);
-        setGaugeRpmbr(0, false);
-        setGaugeLpbattery(0, false);
-        setGaugeLpbattery1(0, false);
-        setGaugeHpBattery(0, false);
-        setGaugeHpBattery1(0, false);
+        server.resetAll();
         setClock(0);
         setTelemetryIndicatorOff();
-        setBrakeIndicatorOff();
-        // TODO: set IMU indicator here
         setStateLabel("IDLE");
         disableBtnLaunch();
         disableBtnStop();
         disableServicePropulsion();
-        warningLabel.setOpacity(0);
+        trackLengthWarningOff();
     }
 
     private void handleBtnRestart() {
@@ -407,11 +391,6 @@ public class MainController {
         } else {
             rightBrakeIndicator.setFill(inidcatorOffColor);
         }
-    }
-
-    public void setBrakeIndicatorOff() {
-        leftBrakeIndicator.setFill(inidcatorOffColor);
-        rightBrakeIndicator.setFill(inidcatorOffColor);
     }
 
     public void setStateLabel(String state) {

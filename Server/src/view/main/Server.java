@@ -196,12 +196,12 @@ public class Server implements Runnable {
                         mainController.setGaugeRpmbr(rpm_br, dRpm_br);
                         mainController.setGaugeVoltage(hp_volt, dHp_volt);
                         mainController.setGaugeTemp(hp_temp, dHp_temp);
+                        mainController.setGaugeHpBattery(hp_charge, dHp_charge);
                         mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
                         mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
+                        mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
                         mainController.setGaugeLpbattery(lp_charge, dLp_charge);
                         mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
-                        mainController.setGaugeHpBattery(hp_charge, dHp_charge);
-                        mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
                         mainController.setImuIndicator(imu);
                         mainController.setProxi_FrontIndicator(proxi_front);
                         mainController.setProxi_RearIndicator(proxi_rear);
@@ -215,6 +215,36 @@ public class Server implements Runnable {
         });
 
         gaugeThread.start();
+    }
+
+    public void resetAll() {
+        distance = 0;
+        velocity = 0; dVelocity = false;
+        acceleration = 0; dAcceleration = false;
+        rpm_fl = 0; dRpm_fl = false;
+        rpm_fr = 0; dRpm_fr = false;
+        rpm_bl = 0; dRpm_bl = false;
+        rpm_br = 0; dRpm_br = false;
+        hp_volt = 0; dHp_volt = false;
+        hp_temp = 0; dHp_temp = false;
+        hp_volt1 = 0; dHp_volt1 = false;
+        hp_temp1 = 0; dHp_temp1 = false;
+        lp_charge = 0; dLp_charge = false;
+        lp_charge1 = 0; dLp_charge1 = false;
+        hp_charge = 0; dHp_charge = false;
+        hp_charge1 = 0; dHp_charge1 = false;
+        for (int i = 0; i < imu.length; i++) {
+            imu[i] = 0;
+        }
+        for (int i = 0; i < proxi_front.length; i++) {
+            proxi_front[i] = 0;
+        }
+        for (int i = 0; i < proxi_rear.length; i++) {
+            proxi_rear[i] = 0;
+        }
+        for (int i = 0; i < em_brakes.length; i++) {
+            em_brakes[i] = 0;
+        }
     }
 
     private void setState(int state) {
