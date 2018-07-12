@@ -361,9 +361,17 @@ public class MainController {
         telemetryIndicator.setFill(inidcatorOffColor);
     }
 
-    public void setBrakeIndicatorOn() {
-        leftBrakeIndicator.setFill(Color.YELLOW);
-        rightBrakeIndicator.setFill(Color.YELLOW);
+    public void setBrakeIndicator(int em_brakes[]) {
+        if (em_brakes[0]==1){
+            leftBrakeIndicator.setFill(Color.YELLOW);
+        } else {
+            leftBrakeIndicator.setFill(inidcatorOffColor);
+        }
+        if (em_brakes[1]==1){
+            rightBrakeIndicator.setFill(Color.YELLOW);
+        } else {
+            rightBrakeIndicator.setFill(inidcatorOffColor);
+        }
     }
 
     public void setBrakeIndicatorOff() {

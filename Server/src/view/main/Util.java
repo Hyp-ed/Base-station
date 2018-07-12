@@ -35,6 +35,7 @@ public class Util {
         cmdHashMap.put("CMD17", "imu");
         cmdHashMap.put("CMD18", "proxi front");
         cmdHashMap.put("CMD19", "proxi rear");
+        cmdHashMap.put("CMD20", "emergency brakes");
 
         // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
         thresHashMap = new HashMap();
