@@ -10,7 +10,7 @@ public class DummyClient {
 
     private static final int PORT = 5695;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         // IP address of a machine that is listening for a TCP connection request on port 5695
         String serverAddress = "localhost";
 
@@ -28,7 +28,7 @@ public class DummyClient {
 
                 while(true) {
                     for(int x=0; x<100; x++){
-                        dummydata.println("CMD01"+Integer.toString(x));
+                        dummydata.println("CMD01"+Integer.toString(x*2));
                         dummydata.println("CMD02"+Integer.toString(x));
                         dummydata.println("CMD04"+Integer.toString(x));
                         dummydata.println("CMD05"+Integer.toString(x));
@@ -44,6 +44,7 @@ public class DummyClient {
                         dummydata.println("CMD171111");
                         dummydata.println("CMD1811111111");
                         dummydata.println("CMD1911111111");
+                        Thread.sleep(200);
                     }
                 }
 
