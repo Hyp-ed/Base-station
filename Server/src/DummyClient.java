@@ -44,6 +44,7 @@ public class DummyClient {
                         dummydata.println("CMD171111");
                         dummydata.println("CMD1811111111");
                         dummydata.println("CMD1911111111");
+                        dummydata.println("CMD2011");
                         Thread.sleep(200);
                     }
                 }

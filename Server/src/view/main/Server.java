@@ -297,7 +297,7 @@ public class Server implements Runnable {
 
         isCommunicating = true;
         mainController.setTelemetryIndicatorOn();
-        mainController.setUpdatesLabel("Communication begins.");
+        mainController.setUpdatesLabel("Telemetry operational");
         LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
 
         // actually reads data
@@ -306,7 +306,7 @@ public class Server implements Runnable {
 
         isCommunicating = false;
         mainController.setTelemetryIndicatorOff();
-        mainController.setUpdatesLabel("Communication ends.");
+        mainController.setUpdatesLabel("Connection lost");
         LOGGER.log(Level.INFO, "Communication finished.");
     }
 
