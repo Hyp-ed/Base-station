@@ -37,7 +37,7 @@
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets right="400.0" />
+                              <Insets left="20.0" right="400.0" />
                            </HBox.margin>
                            <children>
                               <ImageView fitHeight="53.0" fitWidth="208.0" layoutX="14.0" layoutY="16.0">
