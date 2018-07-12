@@ -233,7 +233,6 @@ public class MainController {
             e.printStackTrace();
         }
 
-        System.out.println("RESTARTING SERVER.");
         serverThread = new Thread(server);
         serverThread.start();
     }

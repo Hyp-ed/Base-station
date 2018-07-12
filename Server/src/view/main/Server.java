@@ -77,10 +77,10 @@ public class Server implements Runnable {
 
     public Server(MainController controller) {
         try {
+            this.mainController = controller;
             spaceXAddress = InetAddress.getByName(SPACE_X_IP);
             spaceXSocket = new DatagramSocket();
             serverSocket = new ServerSocket(PORT);
-            this.mainController = controller;
             LOGGER.log(Level.INFO, "Server initialised; Controller assigned.");
         } catch (UnknownHostException e) {
             LOGGER.log(Level.SEVERE, "Connection to SpaceX failed.");
@@ -95,6 +95,7 @@ public class Server implements Runnable {
 
     @Override
     public void run() {
+        mainController.setUpdatesLabel("Awaiting connection from pod...");
         LOGGER.log(Level.INFO, "Awaiting connection from pod...");
 
         try {
@@ -102,6 +103,7 @@ public class Server implements Runnable {
             scanner = new Scanner(podSocket.getInputStream());
             printWriter = new PrintWriter(podSocket.getOutputStream());
             sendToPod(ACK_FROM_SERVER);
+            mainController.setUpdatesLabel("Client connected.");
             LOGGER.log(Level.INFO, "Accepted connection from client.");
             startCommunication();
         } catch (IOException e) {
@@ -265,6 +267,7 @@ public class Server implements Runnable {
 
         isCommunicating = true;
         mainController.setTelemetryIndicatorOn();
+        mainController.setUpdatesLabel("Communication begins.");
         LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
 
         // actually reads data
@@ -273,6 +276,7 @@ public class Server implements Runnable {
 
         isCommunicating = false;
         mainController.setTelemetryIndicatorOff();
+        mainController.setUpdatesLabel("Communication ends.");
         LOGGER.log(Level.INFO, "Communication finished.");
     }
 
