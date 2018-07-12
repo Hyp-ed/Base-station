@@ -349,22 +349,22 @@ public class MainController {
     }
 
     public void setGaugeLpbattery(int lpCharge, boolean isDanger) {
-        gaugeLpBattery.setValue(lpCharge);
+        gaugeLpBattery.setValue(lpCharge * 100);
         gaugeLpBattery.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeLpbattery1(int lpCharge1, boolean isDanger) {
-        gaugeLpBattery1.setValue(lpCharge1);
+        gaugeLpBattery1.setValue(lpCharge1 * 100);
         gaugeLpBattery1.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeHpBattery(int hpCharge, boolean isDanger) {
-        gaugeHpBattery.setValue(hpCharge);
+        gaugeHpBattery.setValue(hpCharge * 100);
         gaugeHpBattery.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeHpBattery1(int hpCharge1, boolean isDanger) {
-        gaugeHpBattery1.setValue(hpCharge1);
+        gaugeHpBattery1.setValue(hpCharge1 * 100);
         gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
     }
 
