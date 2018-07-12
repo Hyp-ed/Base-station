@@ -22,11 +22,12 @@ public class Server implements Runnable {
     private int distance, velocity, acceleration,
                 rpm_fl, rpm_fr, rpm_br, rpm_bl,
                 hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-                imuReceived, proxi_frontReceived, proxi_rearReceived;
+                imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived;
     private int state = 0;
     private int[] imu = new int[4];
     private int[] proxi_front = new int[8];
     private int[] proxi_rear = new int[8];
+    private int[] em_brakes = new int[2];
     // Danger flags, true if value exceeds threshold
     private boolean dDistance, dVelocity, dAcceleration,
                     dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
@@ -195,6 +196,7 @@ public class Server implements Runnable {
                         mainController.setImuIndicator(imu);
                         mainController.setProxi_FrontIndicator(proxi_front);
                         mainController.setProxi_RearIndicator(proxi_rear);
+                        mainController.setBrakeIndicator(em_brakes);
                     }
                 }));
 
@@ -230,7 +232,6 @@ public class Server implements Runnable {
                 mainController.setStateLabel("DECELERATING");
                 break;
             case 5:
-                mainController.setBrakeIndicatorOn();
                 mainController.setStateLabel("EMERGENCY BRAKING");
                 break;
             case 6:
@@ -380,6 +381,13 @@ public class Server implements Runnable {
                         proxi_rear[5] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(5, 6));
                         proxi_rear[6] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(6, 7));
                         proxi_rear[7] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
+                    }
+                    break;
+                case "CMD20":
+                    em_brakesReceived = parseData(cmdString, readingString);
+                    if (em_brakesReceived != 0) {
+                        em_brakes[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
+                        em_brakes[1] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(1));
                     }
                     break;
                 default:
