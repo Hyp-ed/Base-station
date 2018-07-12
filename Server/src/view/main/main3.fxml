@@ -451,7 +451,7 @@
                                                                   </Label>
                                                                </children>
                                                             </AnchorPane>
-                                                            <Label layoutX="143.0" layoutY="64.0" prefHeight="22.0" prefWidth="512.0" textFill="#c2c2c2">
+                                                            <Label fx:id="updatesLabel" layoutX="143.0" layoutY="64.0" prefHeight="22.0" prefWidth="512.0" textFill="#c2c2c2">
                                                                <font>
                                                                   <Font size="15.0" />
                                                                </font>
@@ -616,7 +616,7 @@
                                                       <Font size="15.0" />
                                                    </font>
                                                 </Label>
-                                                <JFXTextField />
+                                                <JFXTextField  fx:id="trackLengthTextField" />
                                                 <Button fx:id="trackLengthBtn" mnemonicParsing="false" text="SEND TRACK LENGTH">
                                                    <HBox.margin>
                                                       <Insets left="10.0" />

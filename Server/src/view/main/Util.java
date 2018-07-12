@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 /**
  * Class for command code and threshold settings.
  *
- * @author: HYPED
+ * @author: Kofi and Isa, HYPED 17/18
  */
 public class Util {
 

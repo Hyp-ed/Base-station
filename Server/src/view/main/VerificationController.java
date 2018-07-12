@@ -1,11 +1,14 @@
 package view.main;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * VerificationController class
+ *
+ * @author Kofi, HYPED 17/18
+ */
 public class VerificationController {
 
 

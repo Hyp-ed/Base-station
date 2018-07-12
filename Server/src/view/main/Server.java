@@ -13,6 +13,11 @@ import java.nio.ByteBuffer;
 import java.util.Scanner;
 import java.util.logging.*;
 
+/**
+ * Server class
+ *
+ * @author Kofi and Isa, HYPED 17/18
+ */
 public class Server implements Runnable {
 
     private byte status = 1, team_id = 2;
@@ -32,7 +37,7 @@ public class Server implements Runnable {
     private boolean dDistance, dVelocity, dAcceleration,
                     dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
                     dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
-    String data, cmdString, readingString;
+    private String data, cmdString, readingString;
 
     // TCP/IP connection to pod
     private static final int PORT = 5695;
@@ -68,7 +73,7 @@ public class Server implements Runnable {
             SimpleFormatter simple = new SimpleFormatter();
             loggerHandler.setFormatter(simple);
             LOGGER.addHandler(loggerHandler);
-            LOGGER.setLevel(Level.INFO);
+            LOGGER.setLevel(Level.WARNING);
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Failed to set up logger.");
             e.printStackTrace();
@@ -129,6 +134,8 @@ public class Server implements Runnable {
     public void sendToPod(int message) {
         if (podSocket == null) {
             LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
+
+            return;
         }
 
         LOGGER.log(Level.INFO, String.format("Sending %s to pod", message));

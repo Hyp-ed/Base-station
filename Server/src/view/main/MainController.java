@@ -1,6 +1,7 @@
 package view.main;
 
 import com.jfoenix.controls.JFXSlider;
+import com.jfoenix.controls.JFXTextField;
 import eu.hansolo.enzo.lcd.Lcd;
 import eu.hansolo.medusa.Gauge;
 import javafx.application.Platform;
@@ -18,10 +19,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * MainController class
+ *
+ * @author Kofi and Isa, HYPED 17/18
+ */
 public class MainController {
 
     private static final Color safeColor = Color.WHITE;
     private static final Color dangerColor = Color.RED;
+    private static final Color indicatorOnColor = Color.YELLOW;
     private static final Paint inidcatorOffColor = Paint.valueOf("#2a2e37");
     private static HashMap<Boolean, Color> colorHashMap = new HashMap<Boolean, Color>();
     private final Server server;
@@ -171,7 +178,7 @@ public class MainController {
     private Label updatesLabel;
 
     @FXML
-    private Label trackLengthLabel;
+    private JFXTextField trackLengthTextField;
 
     @FXML
     private Label warningLabel;
@@ -221,6 +228,7 @@ public class MainController {
         disableBtnLaunch();
         disableBtnStop();
         disableServicePropulsion();
+        warningLabel.setOpacity(0);
     }
 
     private void handleBtnRestart() {
@@ -243,11 +251,10 @@ public class MainController {
         serverThread.start();
     }
 
-    private void handleBtnStop() { server.sendToPod(1); }
-
-//    private void handleBtnLaunch() {
-//        server.sendToPod(2);
-//    }
+    private void handleBtnStop() {
+        server.sendToPod(1);
+        setUpdatesLabel("Send STOP.");
+    }
 
     private void handleBtnLaunch() {
         Parent root = null;
@@ -267,25 +274,40 @@ public class MainController {
 
     public void letsGo() {
         server.sendToPod(2);
+        setUpdatesLabel("Send LAUNCH.");
     }
 
     private void handleBtnServicePropulsionGo() {
         server.sendToPod(5);
+        setUpdatesLabel("Send SERVICE PROPULSION GO.");
     }
 
     private void handleBtnServicePropulsionStop() {
         server.sendToPod(6);
+        setUpdatesLabel("Send SERVICE PROPULSION STOP.");
+    }
+
+    private void trackLengthWarningOn() {
+        warningLabel.setOpacity(1);
+    }
+
+    private void trackLengthWarningOff() {
+        warningLabel.setOpacity(0);
     }
 
     private void handleTrackLengthBtn() {
-        // TODO(Kofi): get value from text area
-        if(Integer.parseInt(trackLengthLabel.getText())<1250 && Integer.parseInt(trackLengthLabel.getText())<0) {
+        int trackLength = Integer.parseInt(trackLengthTextField.getText());
+
+        if (trackLength > 0 && trackLength < 1250) {
             server.sendToPod(4);
-            server.sendToPod(Integer.parseInt(trackLengthLabel.getText())); //change to entered value
-            warningLabel.setOpacity(0);
-        }else{
-            warningLabel.setOpacity(1);
+            server.sendToPod(trackLength);  //change to entered value
+            setUpdatesLabel("Send track length " + trackLength + "m to pod.");
+            trackLengthWarningOff();
+        } else {
+            trackLengthWarningOn();
         }
+
+        trackLengthTextField.setText("");
     }
 
     public void setDistanceMeter(int distance) {
@@ -367,7 +389,7 @@ public class MainController {
     }
 
     public void setTelemetryIndicatorOn() {
-        telemetryIndicator.setFill(Color.YELLOW);
+        telemetryIndicator.setFill(indicatorOnColor);
     }
 
     public void setTelemetryIndicatorOff(){
@@ -375,13 +397,13 @@ public class MainController {
     }
 
     public void setBrakeIndicator(int em_brakes[]) {
-        if (em_brakes[0]==1){
-            leftBrakeIndicator.setFill(Color.YELLOW);
+        if (em_brakes[0] == 1){
+            leftBrakeIndicator.setFill(indicatorOnColor);
         } else {
             leftBrakeIndicator.setFill(inidcatorOffColor);
         }
-        if (em_brakes[1]==1){
-            rightBrakeIndicator.setFill(Color.YELLOW);
+        if (em_brakes[1] == 1){
+            rightBrakeIndicator.setFill(indicatorOnColor);
         } else {
             rightBrakeIndicator.setFill(inidcatorOffColor);
         }
@@ -401,66 +423,66 @@ public class MainController {
     }
 
     public void setImuIndicator(int imu[]) {
-        if (imu[0]==1){
-            imuIndicator.setFill(Color.YELLOW);
+        if (imu[0] == 1){
+            imuIndicator.setFill(indicatorOnColor);
         } else {
             imuIndicator.setFill(inidcatorOffColor);
         }
-        if (imu[1]==1){
-            imuIndicator1.setFill(Color.YELLOW);
+        if (imu[1] == 1){
+            imuIndicator1.setFill(indicatorOnColor);
         } else {
             imuIndicator1.setFill(inidcatorOffColor);
         }
-        if (imu[2]==1){
-            imuIndicator2.setFill(Color.YELLOW);
+        if (imu[2] == 1){
+            imuIndicator2.setFill(indicatorOnColor);
         } else {
             imuIndicator2.setFill(inidcatorOffColor);
         }
-        if (imu[3]==1){
-            imuIndicator3.setFill(Color.YELLOW);
+        if (imu[3] == 1){
+            imuIndicator3.setFill(indicatorOnColor);
         } else {
             imuIndicator3.setFill(inidcatorOffColor);
         }
     }
 
     public void setProxi_FrontIndicator(int proxi_front[]) {
-        if (proxi_front[0]==1){
-            fproxiIndicator.setFill(Color.YELLOW);
+        if (proxi_front[0] == 1){
+            fproxiIndicator.setFill(indicatorOnColor);
         } else {
             fproxiIndicator.setFill(inidcatorOffColor);
         }
-        if (proxi_front[1]==1){
-            fproxiIndicator1.setFill(Color.YELLOW);
+        if (proxi_front[1] == 1){
+            fproxiIndicator1.setFill(indicatorOnColor);
         } else {
             fproxiIndicator1.setFill(inidcatorOffColor);
         }
-        if (proxi_front[2]==1){
-            fproxiIndicator2.setFill(Color.YELLOW);
+        if (proxi_front[2] == 1){
+            fproxiIndicator2.setFill(indicatorOnColor);
         } else {
             fproxiIndicator2.setFill(inidcatorOffColor);
         }
-        if (proxi_front[3]==1){
-            fproxiIndicator3.setFill(Color.YELLOW);
+        if (proxi_front[3] == 1){
+            fproxiIndicator3.setFill(indicatorOnColor);
         } else {
             fproxiIndicator3.setFill(inidcatorOffColor);
         }
-        if (proxi_front[4]==1){
-            fproxiIndicator4.setFill(Color.YELLOW);
+        if (proxi_front[4] == 1){
+            fproxiIndicator4.setFill(indicatorOnColor);
         } else {
             fproxiIndicator4.setFill(inidcatorOffColor);
         }
-        if (proxi_front[5]==1){
-            fproxiIndicator5.setFill(Color.YELLOW);
+        if (proxi_front[5] == 1){
+            fproxiIndicator5.setFill(indicatorOnColor);
         } else {
             fproxiIndicator5.setFill(inidcatorOffColor);
         }
-        if (proxi_front[6]==1){
-            fproxiIndicator6.setFill(Color.YELLOW);
+        if (proxi_front[6] == 1){
+            fproxiIndicator6.setFill(indicatorOnColor);
         } else {
             fproxiIndicator6.setFill(inidcatorOffColor);
         }
-        if (proxi_front[7]==1){
-            fproxiIndicator7.setFill(Color.YELLOW);
+        if (proxi_front[7] == 1){
+            fproxiIndicator7.setFill(indicatorOnColor);
         } else {
             fproxiIndicator7.setFill(inidcatorOffColor);
         }
@@ -468,43 +490,43 @@ public class MainController {
 
 
     public void setProxi_RearIndicator(int proxi_rear[]) {
-        if (proxi_rear[0]==1){
-            rproxiIndicator.setFill(Color.YELLOW);
+        if (proxi_rear[0] == 1){
+            rproxiIndicator.setFill(indicatorOnColor);
         } else {
             rproxiIndicator.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[1]==1){
-            rproxiIndicator1.setFill(Color.YELLOW);
+        if (proxi_rear[1] == 1){
+            rproxiIndicator1.setFill(indicatorOnColor);
         } else {
             rproxiIndicator1.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[2]==1){
-            rproxiIndicator2.setFill(Color.YELLOW);
+        if (proxi_rear[2] == 1){
+            rproxiIndicator2.setFill(indicatorOnColor);
         } else {
             rproxiIndicator2.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[3]==1){
-            rproxiIndicator3.setFill(Color.YELLOW);
+        if (proxi_rear[3] == 1){
+            rproxiIndicator3.setFill(indicatorOnColor);
         } else {
             rproxiIndicator3.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[4]==1){
-            rproxiIndicator4.setFill(Color.YELLOW);
+        if (proxi_rear[4] == 1){
+            rproxiIndicator4.setFill(indicatorOnColor);
         } else {
             rproxiIndicator4.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[5]==1){
-            rproxiIndicator5.setFill(Color.YELLOW);
+        if (proxi_rear[5] == 1){
+            rproxiIndicator5.setFill(indicatorOnColor);
         } else {
             rproxiIndicator5.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[6]==1){
-            rproxiIndicator6.setFill(Color.YELLOW);
+        if (proxi_rear[6] == 1){
+            rproxiIndicator6.setFill(indicatorOnColor);
         } else {
             rproxiIndicator6.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[7]==1){
-            rproxiIndicator7.setFill(Color.YELLOW);
+        if (proxi_rear[7] == 1){
+            rproxiIndicator7.setFill(indicatorOnColor);
         } else {
             rproxiIndicator7.setFill(inidcatorOffColor);
         }
