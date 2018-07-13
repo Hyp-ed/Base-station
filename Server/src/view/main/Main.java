@@ -17,7 +17,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main3.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("main4.fxml"));
         primaryStage.setTitle("HYPED Mission Control System");
         primaryStage.setScene(new Scene(root, 1555, 801));
         primaryStage.show();
