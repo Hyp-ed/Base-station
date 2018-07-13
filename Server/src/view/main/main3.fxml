@@ -32,15 +32,15 @@
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="86.0" prefWidth="1555.0" style="-fx-background-color: #2A2E37;">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                        <AnchorPane prefHeight="200.0">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <HBox.margin>
-                              <Insets right="400.0" />
+                              <Insets left="20.0" right="400.0" />
                            </HBox.margin>
                            <children>
-                              <ImageView fitHeight="53.0" fitWidth="173.0" layoutX="14.0" layoutY="16.0">
+                              <ImageView fitHeight="53.0" fitWidth="208.0" layoutX="14.0" layoutY="16.0">
                                  <image>
                                     <Image url="@../logo.png" />
                                  </image>
@@ -335,12 +335,12 @@
                                                          <children>
                                                             <Circle fx:id="leftBrakeIndicator" fill="#2a2e37" layoutX="94.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
                                                             <Circle fx:id="rightBrakeIndicator" fill="#2a2e37" layoutX="233.0" layoutY="53.0" radius="16.0" stroke="#ffff8d" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Label layoutX="68.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Label fx:id="leftBrakeLabel" layoutX="68.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="207.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Label fx:id="rightBrakeLabel" layoutX="207.0" layoutY="71.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
