@@ -429,6 +429,38 @@ public class Server implements Runnable {
                     break;
             }
 
+            switch (state){
+                case 0:
+                    status = 1;
+                    break;
+                case 1:
+                    status = 1;
+                    break;
+                case 2:
+                    status = 2;
+                    break;
+                case 3:
+                    status = 3;
+                    break;
+                case 4:
+                    status = 3;
+                case 5:
+                    status = 0;
+                    break;
+                case 6:
+                    status = 1;
+                    break;
+                case 7:
+                    status = 0;
+                    break;
+                case 8:
+                    status = 1;
+                    break;
+                case 9:
+                    status = 1;
+                case 10:
+                    status = 0;
+            }
             sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
     }
