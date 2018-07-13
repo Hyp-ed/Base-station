@@ -420,8 +420,8 @@ public class Server implements Runnable {
                 case "CMD20":
                     em_brakesReceived = parseData(cmdString, readingString);
                     if (em_brakesReceived != 0) {
-                        em_brakes[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
-                        em_brakes[1] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(1));
+                        em_brakes[0] = Integer.parseInt(Integer.toString(em_brakesReceived).substring(0, 1));
+                        em_brakes[1] = Integer.parseInt(Integer.toString(em_brakesReceived).substring(1));
                     }
                     break;
                 default:
