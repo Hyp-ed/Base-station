@@ -242,17 +242,20 @@ public class Server implements Runnable {
     }
 
     private void setState(int state) {
-        switch(state){
+        switch(state) {
             case 0:
                 mainController.setStateLabel("IDLE");
+                status = 1;
                 break;
             case 1:
                 mainController.setStateLabel("CALIBRATING");
+                status = 1;
                 break;
             case 2:
                 mainController.enableBtnLaunch();
                 mainController.enableBtnStop();
                 mainController.setStateLabel("READY");
+                status = 2;
                 break;
             case 3:
                 if (!isPodRunning) {
@@ -260,32 +263,41 @@ public class Server implements Runnable {
                     isPodRunning = true;
                 }
                 mainController.setStateLabel("ACCELERATING");
+                status = 3;
                 break;
             case 4:
                 mainController.setStateLabel("DECELERATING");
+                status = 3;
                 break;
             case 5:
                 mainController.setStateLabel("EMERGENCY");
+                status = 0;
                 break;
             case 6:
                 isPodRunning = false;
                 mainController.enableServicePropulsion();
                 mainController.setStateLabel("RUN COMPLETE");
+                status = 1;
                 break;
             case 7:
                 isPodRunning = false;
                 mainController.setStateLabel("FAILURE STOPPED");
+                status = 0;
                 break;
             case 8:
                 mainController.setStateLabel("EXITING");
+                status = 1;
                 break;
             case 9:
                 mainController.setStateLabel("FINISHED");
+                status = 1;
                 break;
             case 10:
                 mainController.setStateLabel("INVALID");
+                status = 0;
                 break;
             default:
+                status = 1; // TODO: Double check this
                 LOGGER.log(Level.WARNING, "Should never reach here.");
                 break;
         }
@@ -430,38 +442,6 @@ public class Server implements Runnable {
                     break;
             }
 
-            switch (state){
-                case 0:
-                    status = 1;
-                    break;
-                case 1:
-                    status = 1;
-                    break;
-                case 2:
-                    status = 2;
-                    break;
-                case 3:
-                    status = 3;
-                    break;
-                case 4:
-                    status = 3;
-                case 5:
-                    status = 0;
-                    break;
-                case 6:
-                    status = 1;
-                    break;
-                case 7:
-                    status = 0;
-                    break;
-                case 8:
-                    status = 1;
-                    break;
-                case 9:
-                    status = 1;
-                case 10:
-                    status = 0;
-            }
             sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
     }
