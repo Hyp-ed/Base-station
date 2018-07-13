@@ -15,7 +15,7 @@ import java.util.Scanner;
 import java.util.logging.*;
 
 /**
- * Server class
+ * Server class. Accepts TCP connection request from client (pod) and communicates data.
  *
  * @author Kofi and Isa, HYPED 17/18
  */
@@ -158,7 +158,8 @@ public class Server implements Runnable {
     }
 
     private boolean isDanger(String cmdString, int data) {
-        if (data > Util.getThresByCmdCode(cmdString)) {
+        if ((Util.isLowerThresKey(cmdString) && (data < Util.getLowerThresByCmdCode(cmdString))) ||
+                data > Util.getUpperThresByCmdCode(cmdString)) {
             return true;
         }
 

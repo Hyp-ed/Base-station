@@ -1,7 +1,6 @@
 package view.main;
 
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 /**
  * Class for command code and threshold settings.
@@ -11,11 +10,11 @@ import java.util.logging.Logger;
 public class Util {
 
     private static HashMap<String, String> cmdHashMap = new HashMap<String, String>();
-    private static HashMap<String, Integer> thresHashMap = new HashMap<String, Integer>();
+    private static HashMap<String, Integer> lowerThresHashMap = new HashMap<>();
+    private static HashMap<String, Integer> upperThresHashMap = new HashMap<String, Integer>();
 
     static {
         // Maps command codes to data names
-        cmdHashMap = new HashMap();
         cmdHashMap.put("CMD01", "distance");
         cmdHashMap.put("CMD02", "velocity");
         cmdHashMap.put("CMD03", "acceleration");
@@ -37,31 +36,42 @@ public class Util {
         cmdHashMap.put("CMD19", "proxi rear");
         cmdHashMap.put("CMD20", "emergency brakes");
 
-        // Map command codes to their corresponding threshold values (considered dangerous to go beyond)
-        thresHashMap = new HashMap();
-        thresHashMap.put("CMD01", 1250);
-        thresHashMap.put("CMD02", 90);
-        thresHashMap.put("CMD03", 20);
-        thresHashMap.put("CMD04", 6400);
-        thresHashMap.put("CMD05", 6400);
-        thresHashMap.put("CMD06", 6400);
-        thresHashMap.put("CMD07", 6400);
-//        thresHashMap.put("CMD08", 100); // no threshold for state (?)
-        thresHashMap.put("CMD09", 120);
-        thresHashMap.put("CMD10", 70);
-        thresHashMap.put("CMD11", 100);
-        thresHashMap.put("CMD12", 120);
-        thresHashMap.put("CMD13", 70);
-        thresHashMap.put("CMD14", 100);
-        thresHashMap.put("CMD15", 100);
-        thresHashMap.put("CMD16", 100);
+        // Map command codes to their corresponding LOWER threshold values (considered dangerous to drop below)
+        lowerThresHashMap.put("CMD09", 72);  // HP voltage
+        lowerThresHashMap.put("CMD12", 72);  // HP voltage 1
+
+        // Map command codes to their corresponding UPPER threshold values (considered dangerous to go beyond)
+        upperThresHashMap.put("CMD01", 1250);
+        upperThresHashMap.put("CMD02", 90);
+        upperThresHashMap.put("CMD03", 20);
+        upperThresHashMap.put("CMD04", 6400);
+        upperThresHashMap.put("CMD05", 6400);
+        upperThresHashMap.put("CMD06", 6400);
+        upperThresHashMap.put("CMD07", 6400);
+//        upperThresHashMap.put("CMD08", 100); // no threshold for state (?)
+        upperThresHashMap.put("CMD09", 120);
+        upperThresHashMap.put("CMD10", 70);
+        upperThresHashMap.put("CMD11", 100);
+        upperThresHashMap.put("CMD12", 120);
+        upperThresHashMap.put("CMD13", 70);
+        upperThresHashMap.put("CMD14", 100);
+        upperThresHashMap.put("CMD15", 100);
+        upperThresHashMap.put("CMD16", 100);
     }
 
     public static String getNameByCmdCode(String cmdString) {
         return cmdHashMap.get(cmdString);
     }
 
-    public static int getThresByCmdCode(String cmdString) {
-        return thresHashMap.get(cmdString);
+    public static boolean isLowerThresKey(String cmdString) {
+        return lowerThresHashMap.containsKey(cmdString);
+    }
+
+    public static int getLowerThresByCmdCode(String cmdString) {
+        return lowerThresHashMap.get(cmdString);
+    }
+
+    public static int getUpperThresByCmdCode(String cmdString) {
+        return upperThresHashMap.get(cmdString);
     }
 }
