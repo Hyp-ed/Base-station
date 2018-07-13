@@ -34,6 +34,7 @@ public class Server implements Runnable {
     private int[] proxi_front = new int[8];
     private int[] proxi_rear = new int[8];
     private int[] em_brakes = new int[2];
+    private double time = 0;
     // Danger flags, true if value exceeds threshold
     private boolean dDistance, dVelocity, dAcceleration,
                     dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
@@ -173,7 +174,9 @@ public class Server implements Runnable {
                 LOGGER.log(Level.INFO, "Timer started.");
 
                 while (isPodRunning) {
-                    mainController.setClock(Math.round(((System.currentTimeMillis() - startTime) / 1000.0)*10)/10.00);
+                    time = (((System.currentTimeMillis() - startTime) / 1000.0)*10)/10.00;
+                    mainController.setClock(time);
+                    System.out.println(time);
                 }
             }
         });

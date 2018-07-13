@@ -40,7 +40,7 @@ public class MainController {
     }
 
     @FXML
-    private Lcd clock;
+    private Label clock;
 
     @FXML
     private Button btnStop;
@@ -375,7 +375,11 @@ public class MainController {
     }
 
     public void setClock(double time) {
-        clock.setValue(time);
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                clock.setText(Double.toString(time) + "s");
+            }
+        });
     }
 
     public void setTelemetryIndicatorOn() {
