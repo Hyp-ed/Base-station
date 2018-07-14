@@ -20,6 +20,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("main4.fxml"));
         primaryStage.setTitle("HYPED Mission Control System");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setResizable(false);
         primaryStage.show();
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
