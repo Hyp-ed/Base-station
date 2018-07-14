@@ -277,11 +277,12 @@ public class Server implements Runnable {
                 isPodRunning = false;
                 mainController.enableServicePropulsion();
                 mainController.setStateLabel("RUN COMPLETE");
+                mainController.setUpdatesLabel("Regenerative Braking = x");
                 status = 1;
                 break;
             case 7:
                 isPodRunning = false;
-                mainController.setStateLabel("FAILURE STOPPED");
+                mainController.setStateLabel("FAILURE STOP");
                 status = 0;
                 break;
             case 8:

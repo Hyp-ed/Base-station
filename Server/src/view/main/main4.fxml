@@ -49,7 +49,7 @@
                         <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="86.0" prefWidth="317.0">
                            <children>
                               <Lcd fx:id="clock" backgroundVisible="false" decimals="1" layoutX="181.0" layoutY="19.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxMeasuredValue="1000.0" maxValue="1000.0" unit="s" valueFont="STANDARD" />
-                              <Label fx:id="updatesLabel" layoutY="32.0" prefHeight="22.0" prefWidth="251.0" textAlignment="RIGHT" textFill="#c2c2c2">
+                              <Label fx:id="updatesLabel" alignment="CENTER_RIGHT" layoutX="-215.0" layoutY="32.0" prefHeight="22.0" prefWidth="403.0" textAlignment="RIGHT" textFill="#c2c2c2">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -129,14 +129,14 @@
                               <Insets top="10.0" />
                            </HBox.margin>
                          </AnchorPane>
-                        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="128.0">
+                        <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="156.0">
                            <children>
-                              <Label fx:id="stateLabel" alignment="CENTER" layoutX="-3.0" layoutY="32.0" prefHeight="22.0" prefWidth="126.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
+                              <Label fx:id="stateLabel" alignment="CENTER" layoutX="-3.0" layoutY="32.0" prefHeight="22.0" prefWidth="160.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="46.0" layoutY="54.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STATE">
+                              <Label layoutX="63.0" layoutY="54.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="STATE">
                                  <font>
                                     <Font size="10.0" />
                                  </font>
