@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,8 +29,8 @@ public class MainController {
 
     private static final Color safeColor = Color.WHITE;
     private static final Color dangerColor = Color.RED;
-    private static final Color indicatorOnColor = Color.YELLOW;
-    private static final Paint inidcatorOffColor = Paint.valueOf("#2a2e37");
+    private static final Paint indicatorOnColor = Paint.valueOf("#199a30");
+    private static final Paint inidcatorOffColor = Paint.valueOf("#bd200c");
     private static HashMap<Boolean, Color> colorHashMap = new HashMap<Boolean, Color>();
     private final Server server;
     private Thread serverThread;
@@ -190,6 +191,9 @@ public class MainController {
     private Label leftBrakeLabel;
 
     @FXML
+    private Label distanceLabel;
+
+    @FXML
     private Button trackLengthBtn;
 
     @FXML
@@ -255,6 +259,7 @@ public class MainController {
         }
         Stage stage = new Stage();
         stage.setTitle("HYPED Mission Control System");
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root));
         stage.show();
         stage.setOnHiding( event -> {
@@ -557,6 +562,15 @@ public class MainController {
         Platform.runLater(new Runnable() {
             @Override public void run() {
                 updatesLabel.setText(message);
+            }
+        });
+
+    }
+
+    public void setDistanceLabel(int distance){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                distanceLabel.setText(Integer.toString(distance));
             }
         });
 

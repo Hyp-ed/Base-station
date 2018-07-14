@@ -1,7 +1,7 @@
 
 {
     -fx-primary : #2A2E37;
-    -fx-secondary : #FFFF8D;
+    -fx-secondary : #bd200c;
     -fx-primarytext : #B2B2B2;
     -fx-blue: #1976D2;
     -fx-red: #FF0000;
@@ -67,7 +67,7 @@
 }
 
 .jfx-slider > .colored-track {
-     -fx-background-color: #FFFF8D;
+     -fx-background-color: #bd200c;
 }
 
 .slider .axis { -fx-tick-label-fill: #B2B2B2; }

@@ -211,6 +211,7 @@ public class Server implements Runnable {
                         mainController.setProxi_FrontIndicator(proxi_front);
                         mainController.setProxi_RearIndicator(proxi_rear);
                         mainController.setBrakeIndicator(em_brakes);
+                        mainController.setDistanceLabel(distance);
                     }
                 }));
 
