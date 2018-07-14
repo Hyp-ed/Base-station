@@ -30,6 +30,7 @@ public class DummyClient {
                     for(int x=0; x<100; x++){
                         dummydata.println("CMD01"+Integer.toString(x*2));
                         dummydata.println("CMD02"+Integer.toString(x));
+                        dummydata.println("CMD03-2");
                         dummydata.println("CMD04"+Integer.toString(x));
                         dummydata.println("CMD05"+Integer.toString(x));
                         dummydata.println("CMD06"+Integer.toString(x));

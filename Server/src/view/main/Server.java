@@ -24,7 +24,7 @@ public class Server implements Runnable {
     private byte status = 1, team_id = 2;
 
     // Data parsing
-    private static final String DATA_REGEX =  "^\\d*\\.?\\d+|\\d+\\.?\\d*$"; // "^[0-9]+$"
+    private static final String DATA_REGEX =  "^-?\\d*\\.?\\d+|\\d+\\.?\\d*$"; // "^[0-9]+$"
     private int distance, velocity, acceleration,
                 rpm_fl, rpm_fr, rpm_br, rpm_bl,
                 hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
