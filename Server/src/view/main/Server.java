@@ -28,8 +28,11 @@ public class Server implements Runnable {
     private int distance, velocity, acceleration,
                 rpm_fl, rpm_fr, rpm_br, rpm_bl,
                 hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-                imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived;
+                imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived,
+                regen, regen1;
     private int state = 0;
+    private int min_charge = 100;
+    private int min_charge1 = 100;
     private int[] imu = new int[4];
     private int[] proxi_front = new int[8];
     private int[] proxi_rear = new int[8];
@@ -241,6 +244,13 @@ public class Server implements Runnable {
         Arrays.fill(em_brakes, 0);
     }
 
+    public String regenBraking(){
+        regen = hp_charge - min_charge;
+        regen1 = hp_charge1 - min_charge1;
+        String braking = "HP = " + regen + "% HP1 = " + regen1 + "%";
+        return braking;
+    }
+
     private void setState(int state) {
         switch(state) {
             case 0:
@@ -277,7 +287,7 @@ public class Server implements Runnable {
                 isPodRunning = false;
                 mainController.enableServicePropulsion();
                 mainController.setStateLabel("RUN COMPLETE");
-                mainController.setUpdatesLabel("Regenerative Braking = x");
+                mainController.setUpdatesLabel("Regenerative Braking: " + regenBraking());
                 status = 1;
                 break;
             case 7:
@@ -375,6 +385,9 @@ public class Server implements Runnable {
                 case "CMD11":
                     hp_charge = parseData(cmdString, readingString);
                     dHp_charge = isDanger(cmdString, hp_charge);
+                    if(hp_charge < min_charge){
+                        min_charge = hp_charge;
+                    }
                     break;
                 case "CMD12":
                     hp_volt1 = parseData(cmdString, readingString);
@@ -387,6 +400,9 @@ public class Server implements Runnable {
                 case "CMD14":
                     hp_charge1 = parseData(cmdString, readingString);
                     dHp_charge1 = isDanger(cmdString, hp_charge1);
+                    if(hp_charge1 < min_charge1){
+                        min_charge1 = hp_charge1;
+                    }
                     break;
                 case "CMD15":
                     lp_charge = parseData(cmdString, readingString);
