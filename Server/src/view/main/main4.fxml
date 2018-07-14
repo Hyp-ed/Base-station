@@ -72,7 +72,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0">
                                        <children>
-                                            <Gauge fx:id="gaugeLpBattery" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" value="3000" />
+                                            <Gauge fx:id="gaugeLpBattery" barColor="#199a30" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" value="3000" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP">
                                              <font>
                                                 <Font size="10.0" />

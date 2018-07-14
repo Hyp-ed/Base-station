@@ -570,7 +570,7 @@ public class MainController {
     public void setDistanceLabel(int distance){
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                distanceLabel.setText(Integer.toString(distance));
+                distanceLabel.setText(Integer.toString(distance) + "m");
             }
         });
 
