@@ -120,7 +120,6 @@ public class Server implements Runnable {
             e.printStackTrace();
         } finally {
             LOGGER.log(Level.INFO, "Communication terminated. Closing socket, scanner and printwriter.");
-            isPodRunning = false;
             try {
                 podSocket.close();
             } catch (IOException e) {
@@ -331,6 +330,7 @@ public class Server implements Runnable {
         readDataFromSocket();
 
         isCommunicating = false;
+        isPodRunning = false;
         mainController.setTelemetryIndicatorOff();
         mainController.setUpdatesLabel("Connection lost");
         LOGGER.log(Level.INFO, "Communication finished.");
@@ -373,7 +373,6 @@ public class Server implements Runnable {
                     break;
                 case "CMD08":
                     state = parseData(cmdString, readingString);
-//                    dState = isDanger(cmdString, state);
                     setState(state);
                     break;
                 case "CMD09":
