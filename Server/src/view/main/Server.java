@@ -242,6 +242,15 @@ public class Server implements Runnable {
         Arrays.fill(proxi_front, 0);
         Arrays.fill(proxi_rear, 0);
         Arrays.fill(em_brakes, 0);
+
+        // GUI stuff
+        mainController.setClock(0);
+        mainController.setTelemetryIndicatorOff();
+        mainController.setStateLabel("IDLE");
+        mainController.disableBtnLaunch();
+        mainController.disableBtnStop();
+        mainController.disableServicePropulsion();
+        mainController.trackLengthWarningOff();
     }
 
     public String regenBraking(){

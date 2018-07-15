@@ -216,13 +216,6 @@ public class MainController {
 
     private void resetAll() {
         server.resetAll();
-        setClock(0);
-        setTelemetryIndicatorOff();
-        setStateLabel("IDLE");
-        disableBtnLaunch();
-        disableBtnStop();
-        disableServicePropulsion();
-        trackLengthWarningOff();
     }
 
     private void handleBtnRestart() {
@@ -286,7 +279,7 @@ public class MainController {
         warningLabel.setOpacity(1);
     }
 
-    private void trackLengthWarningOff() {
+    public void trackLengthWarningOff() {
         warningLabel.setOpacity(0);
     }
 
