@@ -53,7 +53,7 @@
 }
 
 .jfx-tab-pane .tab-selected-line{
-    -fx-background-color: -fx-secondary;
+    -fx-background-color: #798dad;;
 }
 
 /* Slider style*/
@@ -69,7 +69,7 @@
 }
 
 .jfx-slider > .colored-track {
-     -fx-background-color: #bd200c;
+     -fx-background-color: #798dad;;
 }
 
 .slider .axis { -fx-tick-label-fill: #B2B2B2; }
