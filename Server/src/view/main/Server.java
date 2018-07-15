@@ -387,7 +387,7 @@ public class Server implements Runnable {
                 case "CMD11":
                     hp_charge = parseData(cmdString, readingString);
                     dHp_charge = isDanger(cmdString, hp_charge);
-                    if(hp_charge < min_charge){
+                    if(hp_charge < min_charge) {
                         min_charge = hp_charge;
                     }
                     break;
@@ -402,7 +402,7 @@ public class Server implements Runnable {
                 case "CMD14":
                     hp_charge1 = parseData(cmdString, readingString);
                     dHp_charge1 = isDanger(cmdString, hp_charge1);
-                    if(hp_charge1 < min_charge1){
+                    if (hp_charge1 < min_charge1){
                         min_charge1 = hp_charge1;
                     }
                     break;
