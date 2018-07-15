@@ -289,6 +289,7 @@ public class Server implements Runnable {
                 mainController.enableServicePropulsion();
                 mainController.setStateLabel("RUN COMPLETE");
                 mainController.setUpdatesLabel("Regenerative Braking: " + regenBraking());
+                LOGGER.log(Level.INFO, "Regenerative Braking: " + regenBraking());
                 status = 1;
                 break;
             case 7:
