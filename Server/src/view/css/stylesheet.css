@@ -13,8 +13,8 @@
 }
 
 .button{
-    -fx-text-fill: -fx-primarytext;
-    -fx-background-color: -fx-primary;
+    -fx-text-fill: white;
+    -fx-background-color: -fx-secondary;
     -fx-border-color: -fx-secondary;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
@@ -22,9 +22,9 @@
 }
 
 .button:hover{
-    -fx-border-color: -fx-secondary;
-    -fx-background-color: -fx-secondary;
-    -fx-text-fill: -fx-primary;
+    -fx-border-color: white;
+    -fx-background-color: white;
+    -fx-text-fill: -fx-secondary;
 }
 
 .text-field
