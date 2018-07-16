@@ -107,26 +107,29 @@ public class Server implements Runnable {
         mainController.setUpdatesLabel("Awaiting connection from pod...");
         LOGGER.log(Level.INFO, "Awaiting connection from pod...");
 
-        try {
-            podSocket = serverSocket.accept();
-            scanner = new Scanner(podSocket.getInputStream());
-            printWriter = new PrintWriter(podSocket.getOutputStream());
-            sendToPod(ACK_FROM_SERVER);
-            mainController.setUpdatesLabel("Client connected.");
-            LOGGER.log(Level.INFO, "Accepted connection from client.");
-            startCommunication();
-        } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "run() failed.");
-            e.printStackTrace();
-        } finally {
-            LOGGER.log(Level.INFO, "Communication terminated. Closing socket, scanner and printwriter.");
+        while (true) {
             try {
-                podSocket.close();
+                podSocket = serverSocket.accept();
+                scanner = new Scanner(podSocket.getInputStream());
+                printWriter = new PrintWriter(podSocket.getOutputStream());
+                sendToPod(ACK_FROM_SERVER);
+                resetAll();
+                mainController.setUpdatesLabel("Client connected.");
+                LOGGER.log(Level.INFO, "Accepted connection from client.");
+                startCommunication();
             } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, "run() failed.");
                 e.printStackTrace();
+            } finally {
+                LOGGER.log(Level.INFO, "Communication terminated. Closing socket, scanner and printwriter.");
+                try {
+                    podSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                scanner.close();
+                printWriter.close();
             }
-            scanner.close();
-            printWriter.close();
         }
     }
 
