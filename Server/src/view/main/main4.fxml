@@ -397,7 +397,7 @@
                                                             <Circle fx:id="rproxiIndicator3" fill="#bd200c" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                          <VBox.margin>
-                                                            <Insets bottom="20.0" />
+                                                            <Insets />
                                                          </VBox.margin>
                                                       </HBox>
                                                       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
