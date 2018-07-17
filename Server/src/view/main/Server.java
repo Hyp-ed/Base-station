@@ -191,7 +191,7 @@ public class Server implements Runnable {
         Thread gaugeThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                Timeline gaugeLag = new Timeline(new KeyFrame(Duration.seconds(0.2), new EventHandler<ActionEvent>() {
+                Timeline gaugeLag = new Timeline(new KeyFrame(Duration.seconds(0.3), new EventHandler<ActionEvent>() {
 
                     @Override
                     public void handle(ActionEvent event) {
