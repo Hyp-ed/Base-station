@@ -77,7 +77,7 @@ public class Server implements Runnable {
             SimpleFormatter simple = new SimpleFormatter();
             loggerHandler.setFormatter(simple);
             LOGGER.addHandler(loggerHandler);
-            LOGGER.setLevel(Level.WARNING);
+            LOGGER.setLevel(Level.INFO);
         } catch (IOException e) {
             LOGGER.log(Level.WARNING, "Failed to set up logger.");
             e.printStackTrace();
@@ -106,6 +106,7 @@ public class Server implements Runnable {
     public void run() {
         mainController.setUpdatesLabel("Awaiting connection from pod...");
         LOGGER.log(Level.INFO, "Awaiting connection from pod...");
+        updateGauges();  // Run the thread which constantly update gauges
 
         while (true) {
             try {
@@ -338,7 +339,6 @@ public class Server implements Runnable {
         LOGGER.log(Level.INFO, "Communication between pod and base-station started.");
 
         // actually reads data
-        updateGauges();
         readDataFromSocket();
 
         isCommunicating = false;

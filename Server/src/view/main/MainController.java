@@ -221,7 +221,6 @@ public class MainController {
     private void handleBtnRestart() {
         if (server.isCommunicating()) {
             System.out.println("NOT ALLOWED TO RESTART WHEN CLIENT IS CONNECTED");
-
             return;
         }
 
