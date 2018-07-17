@@ -252,7 +252,6 @@ public class Server implements Runnable {
         mainController.setTelemetryIndicatorOff();
         mainController.setStateLabel("IDLE");
         mainController.disableBtnLaunch();
-        mainController.disableBtnStop();
         mainController.disableServicePropulsion();
         mainController.trackLengthWarningOff();
     }
@@ -276,7 +275,6 @@ public class Server implements Runnable {
                 break;
             case 2:
                 mainController.enableBtnLaunch();
-                mainController.enableBtnStop();
                 mainController.setStateLabel("READY");
                 status = 2;
                 break;
@@ -482,9 +480,9 @@ public class Server implements Runnable {
         try {
             spaceXBuffer.put(team_id);
             spaceXBuffer.put(status);
-            spaceXBuffer.putInt(acceleration);
-            spaceXBuffer.putInt(position);
-            spaceXBuffer.putInt(velocity);
+            spaceXBuffer.putInt(acceleration*100);
+            spaceXBuffer.putInt(position*100);
+            spaceXBuffer.putInt(velocity*100);
             spaceXBuffer.putInt(0);  // battery voltage
             spaceXBuffer.putInt(0);  // battery current
             spaceXBuffer.putInt(0);  // battery temperature

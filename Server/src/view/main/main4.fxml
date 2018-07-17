@@ -538,7 +538,7 @@
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
                                                 </Button>
-                                                <Button fx:id="btnStop" disable="true" mnemonicParsing="false" text="STOP">
+                                                <Button fx:id="btnStop" mnemonicParsing="false" text="STOP">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
