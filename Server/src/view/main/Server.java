@@ -286,6 +286,7 @@ public class Server implements Runnable {
                     isPodRunning = true;
                 }
                 mainController.setStateLabel("ACCELERATING");
+                mainController.disableBtnLaunch();
                 status = 3;
                 break;
             case 4:
