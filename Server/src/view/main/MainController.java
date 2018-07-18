@@ -107,10 +107,10 @@ public class MainController {
     private Circle telemetryIndicator;
 
     @FXML
-    private Circle rightBrakeIndicator;
+    private Circle frontBrakeIndicator;
 
     @FXML
-    private Circle leftBrakeIndicator;
+    private Circle rearBrakeIndicator;
 
     @FXML
     private Circle imuIndicator;
@@ -185,10 +185,10 @@ public class MainController {
     private Label warningLabel;
 
     @FXML
-    private Label rightBrakeLabel;
+    private Label frontBrakeLabel;
 
     @FXML
-    private Label leftBrakeLabel;
+    private Label rearBrakeLabel;
 
     @FXML
     private Label distanceLabel;
@@ -385,24 +385,24 @@ public class MainController {
 
     public void setBrakeIndicator(int em_brakes[]) {
         if (em_brakes[0] == 1){
-            leftBrakeIndicator.setFill(indicatorOnColor);
+            frontBrakeIndicator.setFill(indicatorOnColor);
             Platform.runLater(new Runnable() {
                 @Override public void run() {
-                    leftBrakeLabel.setText("DEPLOYED");
+                    frontBrakeLabel.setText("DEPLOYED");
                 }
             });
         } else {
-            leftBrakeIndicator.setFill(inidcatorOffColor);
+            frontBrakeIndicator.setFill(inidcatorOffColor);
         }
         if (em_brakes[1] == 1){
-            rightBrakeIndicator.setFill(indicatorOnColor);
+            rearBrakeIndicator.setFill(indicatorOnColor);
             Platform.runLater(new Runnable() {
                 @Override public void run() {
-                    rightBrakeLabel.setText("DEPLOYED");
+                    rearBrakeLabel.setText("DEPLOYED");
                 }
             });
         } else {
-            rightBrakeIndicator.setFill(inidcatorOffColor);
+            rearBrakeIndicator.setFill(inidcatorOffColor);
         }
     }
 

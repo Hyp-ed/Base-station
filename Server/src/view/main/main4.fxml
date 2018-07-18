@@ -296,24 +296,24 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="410.0">
                                                          <children>
-                                                            <Circle fx:id="leftBrakeIndicator" fill="#bd200c" layoutX="98.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="rightBrakeIndicator" fill="#bd200c" layoutX="269.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Label fx:id="leftBrakeLabel" layoutX="72.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="98.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="269.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label fx:id="frontBrakeLabel" layoutX="72.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="rightBrakeLabel" layoutX="243.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Label fx:id="rearBrakeLabel" layoutX="243.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="87.0" layoutY="87.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LEFT" textAlignment="CENTER">
+                                                            <Label layoutX="87.0" layoutY="87.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="254.0" layoutY="88.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RIGHT" textAlignment="CENTER">
+                                                            <Label layoutX="254.0" layoutY="88.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
