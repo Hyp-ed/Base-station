@@ -171,8 +171,8 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
                                                          <children>
-                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
-                                                              <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="110.0" prefWidth="146.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
+                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
+                                                              <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="110.0" prefWidth="146.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
                                                          </children>
                                                       </AnchorPane>
       
@@ -203,8 +203,8 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
-                                                            <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="148.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
+                                                            <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="148.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -231,7 +231,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
+                                                            <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="145.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
@@ -266,10 +266,10 @@
                                                       </AnchorPane>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="780.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="232.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
-                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="51.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="140.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="393.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="554.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="232.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="51.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="140.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="393.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="554.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
