@@ -356,10 +356,12 @@ public class Server implements Runnable {
             switch (cmdString) {
                 case "CMD01":
                     distance = parseData(cmdString, readingString);
+                    if (distance < 0) distance = 0;
                     dDistance = isDanger(cmdString, distance);
                     break;
                 case "CMD02":
                     velocity = parseData(cmdString, readingString);
+                    if (velocity < 0) velocity = 0;
                     dVelocity = isDanger(cmdString, velocity);
                     break;
                 case "CMD03":
