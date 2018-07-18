@@ -232,7 +232,7 @@
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
                                                          <children>
                                                             <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
-                                                            <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" animated="true" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="145.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="145.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
