@@ -262,23 +262,23 @@ public class Server implements Runnable {
                             mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
                             old_lp_charge1 = lp_charge1;
                         }
-                        if (old_imu != imu) {
+                        if (Arrays.equals(old_imu, imu)) {
                             mainController.setImuIndicator(imu);
                             old_imu = imu;
                         }
-                        if (old_proxi_front != proxi_front) {
+                        if (Arrays.equals(old_proxi_front, proxi_front)) {
                             mainController.setProxi_FrontIndicator(proxi_front);
                             old_proxi_front = proxi_front;
                         }
-                        if (old_proxi_rear != proxi_rear) {
+                        if (Arrays.equals(old_proxi_rear, proxi_rear)) {
                             mainController.setProxi_RearIndicator(proxi_rear);
-                            old_proxi_front = proxi_rear;
+                            old_proxi_rear = proxi_rear;
                         }
-                        if (old_em_brakes != em_brakes) {
+                        if (Arrays.equals(old_em_brakes, em_brakes)) {
                             mainController.setBrakeIndicator(em_brakes);
                             old_em_brakes = em_brakes;
                         }
-                        if(old_distance != distance) {
+                        if (old_distance != distance) {
                             mainController.setDistanceLabel(distance);
                             old_distance = distance;
                         }
