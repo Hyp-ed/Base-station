@@ -402,7 +402,7 @@ public class Server implements Runnable {
                 status = 0;
                 break;
             default:
-                status = 1; // TODO: Double check this
+                status = 0; // TODO: Double check this
                 LOGGER.log(Level.WARNING, "Should never reach here.");
                 break;
         }
