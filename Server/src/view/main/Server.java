@@ -12,6 +12,9 @@ import java.net.*;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.*;
 
 /**
@@ -113,7 +116,17 @@ public class Server implements Runnable {
     public void run() {
         mainController.setUpdatesLabel("Awaiting connection from pod...");
         LOGGER.log(Level.INFO, "Awaiting connection from pod...");
-        updateGauges();  // Run the thread which constantly update gauges
+        // Run the thread which constantly update gauges
+        updateGauges();
+        // Run the thread which constantly sends to SpaceX
+        Runnable udpRunnable = new Runnable() {
+            public void run() {
+                if (isCommunicating) sendToSpaceX();
+            }
+        };
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.scheduleAtFixedRate(udpRunnable, 0, 200, TimeUnit.MILLISECONDS);
+
 
         while (true) {
             try {
@@ -540,24 +553,21 @@ public class Server implements Runnable {
                     LOGGER.log(Level.WARNING, "Should never reach here.");
                     break;
             }
-
-            sendToSpaceX(status, team_id, acceleration, distance, velocity);
         }
     }
 
-    private void sendToSpaceX(byte status, byte team_id,
-                              int acceleration, int position, int velocity) {
+    private void sendToSpaceX() {
         try {
             spaceXBuffer.put(team_id);
             spaceXBuffer.put(status);
-            spaceXBuffer.putInt(acceleration * 100);
-            spaceXBuffer.putInt(position * 100);
-            spaceXBuffer.putInt(velocity * 100);
-            spaceXBuffer.putInt(0);  // battery voltage
-            spaceXBuffer.putInt(0);  // battery current
-            spaceXBuffer.putInt(0);  // battery temperature
-            spaceXBuffer.putInt(0);  // pod temperature
-            spaceXBuffer.putInt(0);  // stripe count
+            spaceXBuffer.putInt(acceleration * 100);  // acceleration (cm/s2)
+            spaceXBuffer.putInt(distance * 100);      // position (cm)
+            spaceXBuffer.putInt(velocity * 100);      // velocity (cm/s)
+            spaceXBuffer.putInt(0);                   // battery voltage
+            spaceXBuffer.putInt(0);                   // battery current
+            spaceXBuffer.putInt(0);                   // battery temperature
+            spaceXBuffer.putInt(0);                   // pod temperature
+            spaceXBuffer.putInt(0);                   // stripe count
             spaceXPacket = new DatagramPacket(spaceXBuffer.array(), spaceXBuffer.limit(), spaceXAddress, SPACE_X_PORT);
             spaceXSocket.send(spaceXPacket);
             spaceXBuffer.clear();
