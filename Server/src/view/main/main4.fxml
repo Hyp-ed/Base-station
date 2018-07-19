@@ -48,7 +48,7 @@
                            </children></AnchorPane>
                         <AnchorPane layoutX="652.0" layoutY="10.0" prefHeight="86.0" prefWidth="317.0">
                            <children>
-                              <Lcd fx:id="clock" animated="false" backgroundVisible="false" decimals="1" layoutX="181.0" layoutY="19.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxMeasuredValue="1000.0" maxValue="1000.0" unit="s" valueFont="STANDARD" />
+                              <Lcd fx:id="clock" animated="false" backgroundVisible="false" decimals="1" layoutX="181.0" layoutY="19.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxMeasuredValue="1000.0" maxValue="1000.0" threshold="100.0" unit="s" valueFont="STANDARD" />
                               <Label fx:id="updatesLabel" alignment="CENTER_RIGHT" layoutX="-215.0" layoutY="32.0" prefHeight="22.0" prefWidth="403.0" textAlignment="RIGHT" textFill="#c2c2c2">
                                  <font>
                                     <Font size="15.0" />

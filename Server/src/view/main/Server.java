@@ -30,6 +30,9 @@ public class Server implements Runnable {
                 hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
                 imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived,
                 regen, regen1;
+    private int old_distance, old_velocity, old_acceleration,
+            old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
+            old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1, old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1;
     private int state = 0;
     private int min_charge = 100;
     private int min_charge1 = 100;
@@ -37,6 +40,10 @@ public class Server implements Runnable {
     private int[] proxi_front = new int[8];
     private int[] proxi_rear = new int[8];
     private int[] em_brakes = new int[2];
+    private int[] old_imu = new int[4];
+    private int[] old_proxi_front = new int[8];
+    private int[] old_proxi_rear = new int[8];
+    private int[] old_em_brakes = new int[2];
     // Danger flags, true if value exceeds threshold
     private boolean dDistance, dVelocity, dAcceleration,
                     dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
@@ -195,26 +202,86 @@ public class Server implements Runnable {
 
                     @Override
                     public void handle(ActionEvent event) {
-                        mainController.setDistanceMeter(distance);
-                        mainController.setGaugeVelocity(velocity, dVelocity);
-                        mainController.setGaugeAcceleration(acceleration, dAcceleration);
-                        mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
-                        mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
-                        mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
-                        mainController.setGaugeRpmbr(rpm_br, dRpm_br);
-                        mainController.setGaugeVoltage(hp_volt, dHp_volt);
-                        mainController.setGaugeTemp(hp_temp, dHp_temp);
-                        mainController.setGaugeHpBattery(hp_charge, dHp_charge);
-                        mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
-                        mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
-                        mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
-                        mainController.setGaugeLpbattery(lp_charge, dLp_charge);
-                        mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
-                        mainController.setImuIndicator(imu);
-                        mainController.setProxi_FrontIndicator(proxi_front);
-                        mainController.setProxi_RearIndicator(proxi_rear);
-                        mainController.setBrakeIndicator(em_brakes);
-                        mainController.setDistanceLabel(distance);
+                        if (old_distance != distance) {
+                            mainController.setDistanceMeter(distance);
+                            old_distance = distance;
+                        }
+                        if (old_velocity != velocity) {
+                            mainController.setGaugeVelocity(velocity, dVelocity);
+                            old_velocity = velocity;
+                        }
+                        if (old_acceleration != acceleration) {
+                            mainController.setGaugeAcceleration(acceleration, dAcceleration);
+                            old_acceleration = acceleration;
+                        }
+                        if (old_rpm_fl != rpm_fl) {
+                            mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
+                            old_rpm_fl = rpm_fl;
+                        }
+                        if (old_rpm_fr != rpm_fr) {
+                            mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
+                            old_rpm_fr = rpm_fr;
+                        }
+                        if (old_rpm_bl != rpm_bl) {
+                            mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
+                            old_rpm_bl = rpm_bl;
+                        }
+                        if (old_rpm_br != rpm_br) {
+                            mainController.setGaugeRpmbr(rpm_br, dRpm_br);
+                            old_rpm_br = rpm_br;
+                        }
+                        if (old_hp_volt != hp_volt) {
+                            mainController.setGaugeVoltage(hp_volt, dHp_volt);
+                            old_hp_volt = hp_volt;
+                        }
+                        if (old_hp_temp != hp_temp) {
+                            mainController.setGaugeTemp(hp_temp, dHp_temp);
+                            old_hp_temp = hp_temp;
+                        }
+                        if (old_hp_charge != hp_charge) {
+                            mainController.setGaugeHpBattery(hp_charge, dHp_charge);
+                            old_hp_charge = hp_charge;
+                        }
+                        if (old_hp_volt1 != hp_volt1) {
+                            mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
+                            old_hp_volt1 = hp_volt1;
+                        }
+                        if (old_hp_temp1 != hp_temp1) {
+                            mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
+                            old_hp_temp1 = hp_temp1;
+                        }
+                        if (old_hp_charge1 != hp_charge1) {
+                            mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
+                            old_hp_charge1 = hp_charge1;
+                        }
+                        if (old_lp_charge != lp_charge) {
+                            mainController.setGaugeLpbattery(lp_charge, dLp_charge);
+                            old_lp_charge = lp_charge;
+                        }
+                        if (old_lp_charge1 != lp_charge1) {
+                            mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
+                            old_lp_charge1 = lp_charge1;
+                        }
+                        if (Arrays.equals(old_imu, imu)) {
+                            mainController.setImuIndicator(imu);
+                            old_imu = imu;
+                        }
+                        if (Arrays.equals(old_proxi_front, proxi_front)) {
+                            mainController.setProxi_FrontIndicator(proxi_front);
+                            old_proxi_front = proxi_front;
+                        }
+                        if (Arrays.equals(old_proxi_rear, proxi_rear)) {
+                            mainController.setProxi_RearIndicator(proxi_rear);
+                            old_proxi_rear = proxi_rear;
+                        }
+                        if (Arrays.equals(old_em_brakes, em_brakes)) {
+                            mainController.setBrakeIndicator(em_brakes);
+                            old_em_brakes = em_brakes;
+                        }
+                        if (old_distance != distance) {
+                            mainController.setDistanceLabel(distance);
+                            old_distance = distance;
+                        }
                     }
                 }));
 
