@@ -384,7 +384,7 @@ public class MainController {
     }
 
     public void setBrakeIndicator(int em_brakes[]) {
-        if (em_brakes[0] == 1){
+        if (em_brakes[0] == 1) {
             frontBrakeIndicator.setFill(indicatorOnColor);
             Platform.runLater(new Runnable() {
                 @Override public void run() {
@@ -394,7 +394,7 @@ public class MainController {
         } else {
             frontBrakeIndicator.setFill(inidcatorOffColor);
         }
-        if (em_brakes[1] == 1){
+        if (em_brakes[1] == 1) {
             rearBrakeIndicator.setFill(indicatorOnColor);
             Platform.runLater(new Runnable() {
                 @Override public void run() {
@@ -415,22 +415,22 @@ public class MainController {
     }
 
     public void setImuIndicator(int imu[]) {
-        if (imu[0] == 1){
+        if (imu[0] == 1) {
             imuIndicator.setFill(indicatorOnColor);
         } else {
             imuIndicator.setFill(inidcatorOffColor);
         }
-        if (imu[1] == 1){
+        if (imu[1] == 1) {
             imuIndicator1.setFill(indicatorOnColor);
         } else {
             imuIndicator1.setFill(inidcatorOffColor);
         }
-        if (imu[2] == 1){
+        if (imu[2] == 1) {
             imuIndicator2.setFill(indicatorOnColor);
         } else {
             imuIndicator2.setFill(inidcatorOffColor);
         }
-        if (imu[3] == 1){
+        if (imu[3] == 1) {
             imuIndicator3.setFill(indicatorOnColor);
         } else {
             imuIndicator3.setFill(inidcatorOffColor);
@@ -438,42 +438,42 @@ public class MainController {
     }
 
     public void setProxi_FrontIndicator(int proxi_front[]) {
-        if (proxi_front[0] == 1){
+        if (proxi_front[0] == 1) {
             fproxiIndicator.setFill(indicatorOnColor);
         } else {
             fproxiIndicator.setFill(inidcatorOffColor);
         }
-        if (proxi_front[1] == 1){
+        if (proxi_front[1] == 1) {
             fproxiIndicator1.setFill(indicatorOnColor);
         } else {
             fproxiIndicator1.setFill(inidcatorOffColor);
         }
-        if (proxi_front[2] == 1){
+        if (proxi_front[2] == 1) {
             fproxiIndicator2.setFill(indicatorOnColor);
         } else {
             fproxiIndicator2.setFill(inidcatorOffColor);
         }
-        if (proxi_front[3] == 1){
+        if (proxi_front[3] == 1) {
             fproxiIndicator3.setFill(indicatorOnColor);
         } else {
             fproxiIndicator3.setFill(inidcatorOffColor);
         }
-        if (proxi_front[4] == 1){
+        if (proxi_front[4] == 1) {
             fproxiIndicator4.setFill(indicatorOnColor);
         } else {
             fproxiIndicator4.setFill(inidcatorOffColor);
         }
-        if (proxi_front[5] == 1){
+        if (proxi_front[5] == 1) {
             fproxiIndicator5.setFill(indicatorOnColor);
         } else {
             fproxiIndicator5.setFill(inidcatorOffColor);
         }
-        if (proxi_front[6] == 1){
+        if (proxi_front[6] == 1) {
             fproxiIndicator6.setFill(indicatorOnColor);
         } else {
             fproxiIndicator6.setFill(inidcatorOffColor);
         }
-        if (proxi_front[7] == 1){
+        if (proxi_front[7] == 1) {
             fproxiIndicator7.setFill(indicatorOnColor);
         } else {
             fproxiIndicator7.setFill(inidcatorOffColor);
@@ -482,42 +482,42 @@ public class MainController {
 
 
     public void setProxi_RearIndicator(int proxi_rear[]) {
-        if (proxi_rear[0] == 1){
+        if (proxi_rear[0] == 1) {
             rproxiIndicator.setFill(indicatorOnColor);
         } else {
             rproxiIndicator.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[1] == 1){
+        if (proxi_rear[1] == 1) {
             rproxiIndicator1.setFill(indicatorOnColor);
         } else {
             rproxiIndicator1.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[2] == 1){
+        if (proxi_rear[2] == 1) {
             rproxiIndicator2.setFill(indicatorOnColor);
         } else {
             rproxiIndicator2.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[3] == 1){
+        if (proxi_rear[3] == 1) {
             rproxiIndicator3.setFill(indicatorOnColor);
         } else {
             rproxiIndicator3.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[4] == 1){
+        if (proxi_rear[4] == 1) {
             rproxiIndicator4.setFill(indicatorOnColor);
         } else {
             rproxiIndicator4.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[5] == 1){
+        if (proxi_rear[5] == 1) {
             rproxiIndicator5.setFill(indicatorOnColor);
         } else {
             rproxiIndicator5.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[6] == 1){
+        if (proxi_rear[6] == 1) {
             rproxiIndicator6.setFill(indicatorOnColor);
         } else {
             rproxiIndicator6.setFill(inidcatorOffColor);
         }
-        if (proxi_rear[7] == 1){
+        if (proxi_rear[7] == 1) {
             rproxiIndicator7.setFill(indicatorOnColor);
         } else {
             rproxiIndicator7.setFill(inidcatorOffColor);

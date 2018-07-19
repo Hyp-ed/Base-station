@@ -24,12 +24,12 @@ public class Server implements Runnable {
     private byte status = 1, team_id = 2;
 
     // Data parsing
-    private static final String DATA_REGEX =  "^-?\\d*\\.?\\d+|\\d+\\.?\\d*$"; // "^[0-9]+$"
+    private static final String DATA_REGEX = "^-?\\d*\\.?\\d+|\\d+\\.?\\d*$";  // "^[0-9]+$"
     private int distance, velocity, acceleration,
-                rpm_fl, rpm_fr, rpm_br, rpm_bl,
-                hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-                imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived,
-                regen, regen1;
+            rpm_fl, rpm_fr, rpm_br, rpm_bl,
+            hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
+            imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived,
+            regen, regen1;
     private int old_distance, old_velocity, old_acceleration,
             old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
             old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1, old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1;
@@ -46,8 +46,8 @@ public class Server implements Runnable {
     private int[] old_em_brakes = new int[2];
     // Danger flags, true if value exceeds threshold
     private boolean dDistance, dVelocity, dAcceleration,
-                    dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
-                    dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
+            dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
+            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
     private String data, cmdString, readingString;
 
     // TCP/IP connection to pod
@@ -63,7 +63,7 @@ public class Server implements Runnable {
     private InetAddress spaceXAddress;
     private DatagramSocket spaceXSocket;
     private DatagramPacket spaceXPacket;
-    private ByteBuffer spaceXBuffer = ByteBuffer.allocate(34); // BigEndian by default
+    private ByteBuffer spaceXBuffer = ByteBuffer.allocate(34);  // BigEndian by default
 
     // GUI related stuff
     private MainController mainController;
@@ -186,7 +186,7 @@ public class Server implements Runnable {
                 LOGGER.log(Level.INFO, "Timer started.");
 
                 while (isPodRunning) {
-                    mainController.setClock(Math.round(((System.currentTimeMillis() - startTime) / 1000.0)*10)/10.00);
+                    mainController.setClock(Math.round((System.currentTimeMillis() - startTime) / 100.0) / 10.00);
                 }
             }
         });
@@ -204,6 +204,10 @@ public class Server implements Runnable {
                     public void handle(ActionEvent event) {
                         if (old_distance != distance) {
                             mainController.setDistanceMeter(distance);
+                            old_distance = distance;
+                        }
+                        if (old_distance != distance) {
+                            mainController.setDistanceLabel(distance);
                             old_distance = distance;
                         }
                         if (old_velocity != velocity) {
@@ -278,10 +282,6 @@ public class Server implements Runnable {
                             mainController.setBrakeIndicator(em_brakes);
                             old_em_brakes = em_brakes;
                         }
-                        if (old_distance != distance) {
-                            mainController.setDistanceLabel(distance);
-                            old_distance = distance;
-                        }
                     }
                 }));
 
@@ -323,7 +323,7 @@ public class Server implements Runnable {
         mainController.trackLengthWarningOff();
     }
 
-    public String regenBraking(){
+    public String regenBraking() {
         regen = hp_charge - min_charge;
         regen1 = hp_charge1 - min_charge1;
         String braking = "HP = " + regen + "% HP1 = " + regen1 + "%";
@@ -331,7 +331,7 @@ public class Server implements Runnable {
     }
 
     private void setState(int state) {
-        switch(state) {
+        switch (state) {
             case 0:
                 mainController.setStateLabel("IDLE");
                 status = 1;
@@ -466,7 +466,7 @@ public class Server implements Runnable {
                 case "CMD11":
                     hp_charge = parseData(cmdString, readingString);
                     dHp_charge = isDanger(cmdString, hp_charge);
-                    if(hp_charge < min_charge) {
+                    if (hp_charge < min_charge) {
                         min_charge = hp_charge;
                     }
                     break;
@@ -481,7 +481,7 @@ public class Server implements Runnable {
                 case "CMD14":
                     hp_charge1 = parseData(cmdString, readingString);
                     dHp_charge1 = isDanger(cmdString, hp_charge1);
-                    if (hp_charge1 < min_charge1){
+                    if (hp_charge1 < min_charge1) {
                         min_charge1 = hp_charge1;
                     }
                     break;
@@ -549,9 +549,9 @@ public class Server implements Runnable {
         try {
             spaceXBuffer.put(team_id);
             spaceXBuffer.put(status);
-            spaceXBuffer.putInt(acceleration*100);
-            spaceXBuffer.putInt(position*100);
-            spaceXBuffer.putInt(velocity*100);
+            spaceXBuffer.putInt(acceleration * 100);
+            spaceXBuffer.putInt(position * 100);
+            spaceXBuffer.putInt(velocity * 100);
             spaceXBuffer.putInt(0);  // battery voltage
             spaceXBuffer.putInt(0);  // battery current
             spaceXBuffer.putInt(0);  // battery temperature
