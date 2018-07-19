@@ -294,6 +294,7 @@ public class Server implements Runnable {
     }
 
     public void resetAll() {
+        status = 1;
         distance = 0;
         velocity = 0; dVelocity = false;
         acceleration = 0; dAcceleration = false;
