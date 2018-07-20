@@ -49,8 +49,8 @@ public class Util {
         // Map command codes to their corresponding LOWER threshold values (considered dangerous to drop below)
         lowerThresHashMap.put("CMD13", 72);  // HP voltage
         lowerThresHashMap.put("CMD19", 72);  // HP voltage 1
-        lowerThresHashMap.put("CMD25", 15);  // LP voltage
-        lowerThresHashMap.put("CMD28", 15);  // LP voltage 1
+        lowerThresHashMap.put("CMD25", 13);  // LP voltage
+        lowerThresHashMap.put("CMD28", 13);  // LP voltage 1
 
         // Map command codes to their corresponding UPPER threshold values (considered dangerous to go beyond)
         upperThresHashMap.put("CMD01", 1250);
