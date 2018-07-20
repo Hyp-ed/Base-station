@@ -544,7 +544,6 @@ public class Server implements Runnable {
                     dHighest_cell1 = isDanger(cmdString, highest_cell1);
                     break;
                 case "CMD25":
-                    System.out.println("lp volt : " + lp_voltage);
                     lp_voltage = parseData(cmdString, readingString);
                     dLp_voltage = isDanger(cmdString, lp_voltage);
                     break;
