@@ -361,12 +361,12 @@ public class Server implements Runnable {
                         }
 
                         if (old_lp_current != lp_current) {
-                            mainController.setLpVoltageGauge(lp_current, dLp_current);
+                            mainController.setLpCurrentGauge(lp_current, dLp_current);
                             old_lp_current = lp_current;
                         }
 
                         if (old_lp_current1 != lp_current1) {
-                            mainController.setLpVoltageGauge1(lp_current1, dLp_current1);
+                            mainController.setLpCurrentGauge1(lp_current1, dLp_current1);
                             old_lp_current1 = lp_current1;
                         }
                     }
