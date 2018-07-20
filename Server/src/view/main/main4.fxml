@@ -205,7 +205,7 @@
                                                          <children>
                                                             <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="148.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="26.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="121.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
-                                                            <Gauge fx:id="hpGaugeCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="258.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="hpGaugeCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="258.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -234,7 +234,7 @@
                                                          <children>
                                                             <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="143.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
-                                                            <Gauge fx:id="hpGaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="253.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="hpGaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="253.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -349,7 +349,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
                                                          <children>
-                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" minValue="-40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
                                                             <Gauge fx:id="lpVoltageGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
@@ -377,7 +377,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
                                                          <children>
-                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" minValue="-40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
                                                             <Gauge fx:id="lpVoltageGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
