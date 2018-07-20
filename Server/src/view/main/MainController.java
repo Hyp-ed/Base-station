@@ -44,188 +44,44 @@ public class MainController {
     @FXML
     private Lcd clock;
 
-    @FXML
-    private Button btnStop;
-
-    @FXML
-    private Button btnLaunch;
-
-    @FXML
-    private Button btnServicePropulsionStop;
-
-    @FXML
-    private Button btnServicePropulsionGo;
-
-    @FXML
-    private Button btnRestart;
-
-    @FXML
-    private Gauge gaugeAccel;
-
-    @FXML
-    private Gauge gaugeVelocity;
-
-    @FXML
-    private Gauge gaugeTemp;
-
-    @FXML
-    private Gauge gaugeVoltage;
-
-    @FXML
-    private Gauge gaugeTemp1;
-
-    @FXML
-    private Gauge gaugeVoltage1;
-
-    @FXML
-    private Gauge gaugeRpmfl;
-
-    @FXML
-    private Gauge gaugeRpmfr;
-
-    @FXML
-    private Gauge gaugeRpmbl;
-
-    @FXML
-    private Gauge gaugeRpmbr;
-
-    @FXML
-    private Gauge gaugeLpBattery;
-
-    @FXML
-    private Gauge gaugeLpBattery1;
-
-    @FXML
-    private Gauge gaugeHpBattery;
-
-    @FXML
-    private Gauge gaugeHpBattery1;
-
-    @FXML
-    private JFXSlider distanceMeter;
-
-    @FXML
-    private Circle telemetryIndicator;
-
-    @FXML
-    private Circle frontBrakeIndicator;
-
-    @FXML
-    private Circle rearBrakeIndicator;
-
-    @FXML
-    private Circle imuIndicator;
-
-    @FXML
-    private Circle imuIndicator1;
-
-    @FXML
-    private Circle imuIndicator2;
-
-    @FXML
-    private Circle imuIndicator3;
-
-    @FXML
-    private Circle fproxiIndicator;
-
-    @FXML
-    private Circle fproxiIndicator1;
-
-    @FXML
-    private Circle fproxiIndicator2;
-
-    @FXML
-    private Circle fproxiIndicator3;
-
-    @FXML
-    private Circle fproxiIndicator4;
-
-    @FXML
-    private Circle fproxiIndicator5;
-
-    @FXML
-    private Circle fproxiIndicator6;
-
-    @FXML
-    private Circle fproxiIndicator7;
-
-    @FXML
-    private Circle rproxiIndicator;
-
-    @FXML
-    private Circle rproxiIndicator1;
-
-    @FXML
-    private Circle rproxiIndicator2;
-
-    @FXML
-    private Circle rproxiIndicator3;
-
-    @FXML
-    private Circle rproxiIndicator4;
-
-    @FXML
-    private Circle rproxiIndicator5;
-
-    @FXML
-    private Circle rproxiIndicator6;
-
-    @FXML
-    private Circle rproxiIndicator7;
-
-    @FXML
-    private Label stateLabel;
-
-    @FXML
-    private Label updatesLabel;
-
-    @FXML
-    private JFXTextField trackLengthTextField;
-
-    @FXML
-    private Label warningLabel;
-
-    @FXML
-    private Label frontBrakeLabel;
-
-    @FXML
-    private Label rearBrakeLabel;
-
-    @FXML
-    private Label distanceLabel;
-
-    @FXML
-    private Button trackLengthBtn;
-
-    @FXML
-    private Gauge hpGaugeCurrent;
-
-    @FXML
-    private Gauge hpGaugeCurrent1;
-
-    @FXML
-    private Gauge lpVoltageGauge;
-
-    @FXML
-    private Gauge lpCurrentGauge;
-
-    @FXML
-    private Gauge lpVoltageGauge1;
-
-    @FXML
-    private Gauge lpCurrentGauge1;
-
-    @FXML
-    private Label lowestCellLabel;
-
-    @FXML
-    private Label highestCellLabel;
-
-    @FXML
-    private Label lowestCellLabel1;
-
-    @FXML
-    private Label highestCellLabel1;
+    @FXML private Button btnStop, btnLaunch, btnRestart;
+    @FXML private Button btnServicePropulsionStop, btnServicePropulsionGo;
+    // Navigation stuff
+    @FXML private JFXSlider distanceMeter;
+    @FXML private Gauge gaugeAccel, gaugeVelocity;
+    // RPM
+    @FXML private Gauge gaugeRpmfl, gaugeRpmfr, gaugeRpmbl, gaugeRpmbr;
+    // State
+    @FXML private Label stateLabel;
+    // Sensor stuff
+    @FXML private Circle imuIndicator, imuIndicator1, imuIndicator2, imuIndicator3;
+    @FXML private Circle fproxiIndicator, fproxiIndicator1, fproxiIndicator2, fproxiIndicator3,
+            fproxiIndicator4, fproxiIndicator5, fproxiIndicator6, fproxiIndicator7;
+    @FXML private Circle rproxiIndicator, rproxiIndicator1, rproxiIndicator2, rproxiIndicator3,
+            rproxiIndicator4, rproxiIndicator5, rproxiIndicator6, rproxiIndicator7;
+    @FXML private Circle frontBrakeIndicator, rearBrakeIndicator;
+    @FXML private Label frontBrakeLabel, rearBrakeLabel;
+    // HP battery
+    @FXML private Gauge gaugeHpBattery;
+    @FXML private Gauge gaugeVoltage, hpGaugeCurrent, gaugeTemp;
+    @FXML private Label lowestCellLabel, highestCellLabel;
+    // HP battery 1
+    @FXML private Gauge gaugeHpBattery1;
+    @FXML private Gauge gaugeVoltage1, hpGaugeCurrent1, gaugeTemp1;
+    @FXML private Label lowestCellLabel1, highestCellLabel1;
+    // LP battery
+    @FXML private Gauge gaugeLpBattery;
+    @FXML private Gauge lpVoltageGauge, lpCurrentGauge;
+    // LP battery 1
+    @FXML private Gauge gaugeLpBattery1;
+    @FXML private Gauge lpVoltageGauge1, lpCurrentGauge1;
+    // Telemetry stuff
+    @FXML private Circle telemetryIndicator;
+    @FXML private Label updatesLabel;
+    @FXML private JFXTextField trackLengthTextField;
+    @FXML private Label warningLabel;
+    @FXML private Label distanceLabel;
+    @FXML private Button trackLengthBtn;
 
     @FXML
     public void initialize() {
@@ -412,22 +268,22 @@ public class MainController {
         hpGaugeCurrent1.setValueColor(colorHashMap.get(isDanger));
     }
 
-    public void setLpVoltageGauge(int lpVoltage, boolean isDanger) {
+    public void setGaugeLpVoltage(int lpVoltage, boolean isDanger) {
         lpVoltageGauge.setValue(lpVoltage);
         lpVoltageGauge.setValueColor(colorHashMap.get(isDanger));
     }
 
-    public void setLpVoltageGauge1(int lpVoltage1, boolean isDanger) {
+    public void setGaugeLpVoltage1(int lpVoltage1, boolean isDanger) {
         lpVoltageGauge1.setValue(lpVoltage1);
         lpVoltageGauge1.setValueColor(colorHashMap.get(isDanger));
     }
 
-    public void setLpCurrentGauge(int lpCurrent, boolean isDanger) {
+    public void setGaugeLpCurrent(int lpCurrent, boolean isDanger) {
         lpCurrentGauge.setValue(lpCurrent);
         lpCurrentGauge.setValueColor(colorHashMap.get(isDanger));
     }
 
-    public void setLpCurrentGauge1(int lpCurrent1, boolean isDanger) {
+    public void setGagueLpCurrent1(int lpCurrent1, boolean isDanger) {
         lpCurrentGauge1.setValue(lpCurrent1);
         lpCurrentGauge1.setValueColor(colorHashMap.get(isDanger));
     }
@@ -541,7 +397,6 @@ public class MainController {
         }
     }
 
-
     public void setProxi_RearIndicator(int proxi_rear[]) {
         if (proxi_rear[0] == 1) {
             rproxiIndicator.setFill(indicatorOnColor);
@@ -626,7 +481,6 @@ public class MainController {
                 distanceLabel.setText(Integer.toString(distance) + "m");
             }
         });
-
     }
 
     public void setLowCell(int lowestVoltage){
@@ -635,7 +489,6 @@ public class MainController {
                 lowestCellLabel.setText("Lowest voltage: " + Integer.toString(lowestVoltage) + "mV");
             }
         });
-
     }
 
     public void setHighCell(int highestVoltage){
@@ -644,7 +497,6 @@ public class MainController {
                 highestCellLabel.setText("Highest Voltage: " + Integer.toString(highestVoltage) + "mV");
             }
         });
-
     }
 
     public void setLowCell1(int lowestVoltage1){
@@ -653,7 +505,6 @@ public class MainController {
                 lowestCellLabel1.setText("Lowest voltage1: " + Integer.toString(lowestVoltage1) + "mV");
             }
         });
-
     }
 
     public void setHighCell1(int highestVoltage1){
@@ -662,6 +513,5 @@ public class MainController {
                 highestCellLabel1.setText("Highest Voltage1: " + Integer.toString(highestVoltage1) + "mV");
             }
         });
-
     }
 }
