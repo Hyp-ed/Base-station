@@ -597,10 +597,10 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="182.0">
                                                          <children>
-                                                            <Label fx:id="lowestCellLabel" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="161.0" text="Label" textFill="WHITE" />
-                                                            <Label fx:id="highestCellLabel" layoutX="15.0" layoutY="23.0" prefHeight="18.0" prefWidth="160.0" text="Label" textFill="WHITE" />
-                                                            <Label fx:id="lowestCellLabel1" layoutX="15.0" layoutY="41.0" prefHeight="18.0" prefWidth="160.0" text="Label" textFill="WHITE" />
-                                                            <Label fx:id="highestCellLabel1" layoutX="16.0" layoutY="59.0" prefHeight="18.0" prefWidth="159.0" text="Label" textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="161.0" textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel" layoutX="15.0" layoutY="23.0" prefHeight="18.0" prefWidth="160.0" textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel1" layoutX="15.0" layoutY="41.0" prefHeight="18.0" prefWidth="160.0" textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel1" layoutX="16.0" layoutY="59.0" prefHeight="18.0" prefWidth="159.0" textFill="WHITE" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
