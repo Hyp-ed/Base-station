@@ -189,7 +189,6 @@ public class Server implements Runnable {
 
     private int parseData(String cmdString, String readingString) {
         int result = 0;
-
         if (!readingString.matches(DATA_REGEX)) {
             LOGGER.log(Level.INFO, String.format("%s: nan", Util.getNameByCmdCode(cmdString)));
         } else {
@@ -326,7 +325,7 @@ public class Server implements Runnable {
                             old_hp_current = hp_current;
                         }
                         if (old_hp_current1 != hp_current1) {
-                            mainController.setGaugeHpCurrent(hp_current1, dHp_current1);
+                            mainController.setGaugeHpCurrent1(hp_current1, dHp_current1);
                             old_hp_current1 = hp_current1;
                         }
 
@@ -562,44 +561,6 @@ public class Server implements Runnable {
                     setState(state);
                     break;
                 case "CMD09":
-                    hp_volt = parseData(cmdString, readingString);
-                    dHp_volt = isDanger(cmdString, hp_volt);
-                    break;
-                case "CMD10":
-                    hp_temp = parseData(cmdString, readingString);
-                    dHp_temp = isDanger(cmdString, hp_temp);
-                    break;
-                case "CMD11":
-                    hp_charge = parseData(cmdString, readingString);
-                    dHp_charge = isDanger(cmdString, hp_charge);
-                    if (hp_charge < min_charge) {
-                        min_charge = hp_charge;
-                    }
-                    break;
-                case "CMD12":
-                    hp_volt1 = parseData(cmdString, readingString);
-                    dHp_volt1 = isDanger(cmdString, hp_volt1);
-                    break;
-                case "CMD13":
-                    hp_temp1 = parseData(cmdString, readingString);
-                    dHp_temp1 = isDanger(cmdString, hp_temp1);
-                    break;
-                case "CMD14":
-                    hp_charge1 = parseData(cmdString, readingString);
-                    dHp_charge1 = isDanger(cmdString, hp_charge1);
-                    if (hp_charge1 < min_charge1) {
-                        min_charge1 = hp_charge1;
-                    }
-                    break;
-                case "CMD15":
-                    lp_charge = parseData(cmdString, readingString);
-                    dLp_charge = isDanger(cmdString, lp_charge);
-                    break;
-                case "CMD16":
-                    lp_charge1 = parseData(cmdString, readingString);
-                    dLp_charge1 = isDanger(cmdString, lp_charge1);
-                    break;
-                case "CMD17":
                     imuReceived = parseData(cmdString, readingString);
                     if (imuReceived != 0) {
                         imu[0] = Integer.parseInt(Integer.toString(imuReceived).substring(0, 1));
@@ -608,7 +569,7 @@ public class Server implements Runnable {
                         imu[3] = Integer.parseInt(Integer.toString(imuReceived).substring(3));
                     }
                     break;
-                case "CMD18":
+                case "CMD10":
                     proxi_frontReceived = parseData(cmdString, readingString);
                     if (proxi_frontReceived != 0) {
                         proxi_front[0] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(0, 1));
@@ -621,7 +582,7 @@ public class Server implements Runnable {
                         proxi_front[7] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
                     }
                     break;
-                case "CMD19":
+                case "CMD11":
                     proxi_rearReceived = parseData(cmdString, readingString);
                     if (proxi_rearReceived != 0) {
                         proxi_rear[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
@@ -634,54 +595,88 @@ public class Server implements Runnable {
                         proxi_rear[7] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
                     }
                     break;
-                case "CMD20":
+                case "CMD12":
                     em_brakesReceived = parseData(cmdString, readingString);
                     if (em_brakesReceived != 0) {
                         em_brakes[0] = Integer.parseInt(Integer.toString(em_brakesReceived).substring(0, 1));
                         em_brakes[1] = Integer.parseInt(Integer.toString(em_brakesReceived).substring(1));
                     }
                     break;
-                case "CMD21":
+                case "CMD13":
+                    hp_volt = parseData(cmdString, readingString);
+                    dHp_volt = isDanger(cmdString, hp_volt);
+                    break;
+                case "CMD14":
                     hp_current = parseData(cmdString, readingString);
                     dHp_current = isDanger(cmdString, hp_current);
                     break;
-                case "CMD22":
-                    hp_current1 = parseData(cmdString, readingString);
-                    dHp_current1 = isDanger(cmdString, hp_current1);
+                case "CMD15":
+                    hp_charge = parseData(cmdString, readingString);
+                    dHp_charge = isDanger(cmdString, hp_charge);
                     break;
-                case "CMD23":
+                case "CMD16":
+                    hp_temp = parseData(cmdString, readingString);
+                    dHp_temp = isDanger(cmdString, hp_temp);
+                    break;
+                case "CMD17":
                     lowest_cell = parseData(cmdString, readingString);
                     dLowest_cell = isDanger(cmdString, lowest_cell);
                     break;
-                case "CMD24":
+                case "CMD18":
                     highest_cell = parseData(cmdString, readingString);
                     dHighest_cell = isDanger(cmdString, highest_cell);
                     break;
-                case "CMD25":
-                    lowest_cell1 = parseData(cmdString, readingString);
-                    dLowest_cell = isDanger(cmdString, lowest_cell1);
+                case "CMD19":
+                    hp_volt1 = parseData(cmdString, readingString);
+                    dHp_volt1 = isDanger(cmdString, hp_volt1);
                     break;
-                case "CMD26":
+                case "CMD20":
+                    hp_current1 = parseData(cmdString, readingString);
+                    dHp_current1 = isDanger(cmdString, hp_current1);
+                    break;
+                case "CMD21":
+                    hp_charge1 = parseData(cmdString, readingString);
+                    dHp_charge1 = isDanger(cmdString, hp_charge1);
+                    break;
+                case "CMD22":
+                    hp_temp1 = parseData(cmdString, readingString);
+                    dHp_temp1 = isDanger(cmdString, hp_temp1);
+                    break;
+                case "CMD23":
+                    lowest_cell1 = parseData(cmdString, readingString);
+                    dLowest_cell1 = isDanger(cmdString, lowest_cell1);
+                    break;
+                case "CMD24":
                     highest_cell1 = parseData(cmdString, readingString);
                     dHighest_cell1 = isDanger(cmdString, highest_cell1);
                     break;
-                case "CMD27":
+                case "CMD25":
+                    System.out.println("lp volt : " + lp_voltage);
                     lp_voltage = parseData(cmdString, readingString);
                     dLp_voltage = isDanger(cmdString, lp_voltage);
+                    break;
+                case "CMD26":
+                    lp_current = parseData(cmdString, readingString);
+                    dLp_current = isDanger(cmdString, lp_current);
+                    break;
+                case "CMD27":
+                    lp_charge = parseData(cmdString, readingString);
+                    dLp_charge = isDanger(cmdString, lp_charge);
+                    break;
                 case "CMD28":
                     lp_voltage1 = parseData(cmdString, readingString);
                     dLp_voltage1 = isDanger(cmdString, lp_voltage1);
                     break;
                 case "CMD29":
-                    lp_current = parseData(cmdString, readingString);
-                    dLp_current = isDanger(cmdString, lp_current);
-                    break;
-                case "CMD30":
                     lp_current1 = parseData(cmdString, readingString);
                     dLp_current1 = isDanger(cmdString, lp_current1);
                     break;
+                case "CMD30":
+                    lp_charge1 = parseData(cmdString, readingString);
+                    dLp_charge1 = isDanger(cmdString, lp_charge1);
+                    break;
                 default:
-                    LOGGER.log(Level.WARNING, "Should never reach here.");
+                    LOGGER.log(Level.WARNING, "Should never reach here. Data: " + data);
                     break;
             }
         }

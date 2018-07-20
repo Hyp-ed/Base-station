@@ -632,7 +632,7 @@ public class MainController {
     public void setLowCell(int lowestVoltage){
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                lowestCellLabel.setText("Lowest voltage:" + Integer.toString(lowestVoltage) + "V");
+                lowestCellLabel.setText("Lowest voltage: " + Integer.toString(lowestVoltage) + "V");
             }
         });
 
@@ -641,7 +641,7 @@ public class MainController {
     public void setHighCell(int highestVoltage){
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                highestCellLabel.setText("Highest Voltage:" + Integer.toString(highestVoltage) + "V");
+                highestCellLabel.setText("Highest Voltage: " + Integer.toString(highestVoltage) + "V");
             }
         });
 
@@ -650,7 +650,7 @@ public class MainController {
     public void setLowCell1(int lowestVoltage1){
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                lowestCellLabel1.setText("Lowest voltage1:" + Integer.toString(lowestVoltage1) + "V");
+                lowestCellLabel1.setText("Lowest voltage1: " + Integer.toString(lowestVoltage1) + "V");
             }
         });
 
@@ -659,7 +659,7 @@ public class MainController {
     public void setHighCell1(int highestVoltage1){
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                highestCellLabel1.setText("Highest Voltage1:" + Integer.toString(highestVoltage1) + "V");
+                highestCellLabel1.setText("Highest Voltage1: " + Integer.toString(highestVoltage1) + "V");
             }
         });
 

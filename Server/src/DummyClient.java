@@ -36,22 +36,16 @@ public class DummyClient {
                         dummydata.println("CMD06"+Integer.toString(x));
                         dummydata.println("CMD07"+Integer.toString(x));
                         dummydata.println("CMD0803");
-                        dummydata.println("CMD09"+Integer.toString(x));
-                        dummydata.println("CMD11"+Integer.toString(x));
-                        dummydata.println("CMD12"+Integer.toString(x));
+                        dummydata.println("CMD091111");
+                        dummydata.println("CMD1011111111");
+                        dummydata.println("CMD1111111111");
+                        dummydata.println("CMD1211");
+                        dummydata.println("CMD13"+Integer.toString(x));
                         dummydata.println("CMD14"+Integer.toString(x));
                         dummydata.println("CMD15"+Integer.toString(x));
                         dummydata.println("CMD16"+Integer.toString(x));
-                        dummydata.println("CMD171111");
-                        dummydata.println("CMD1811111111");
-                        dummydata.println("CMD1911111111");
-                        dummydata.println("CMD2011");
-                        dummydata.println("CMD21-5");
-                        dummydata.println("CMD225");
-                        dummydata.println("CMD23100");
-                        dummydata.println("CMD2450");
-                        dummydata.println("CMD25100");
-                        dummydata.println("CMD2650");
+                        dummydata.println("CMD17"+Integer.toString(x));
+                        dummydata.println("CMD18"+Integer.toString(x));
                         Thread.sleep(200);
                     }
                 }
