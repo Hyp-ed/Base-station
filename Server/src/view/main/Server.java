@@ -397,6 +397,14 @@ public class Server implements Runnable {
         hp_charge1 = 0; dHp_charge1 = false;
         lp_charge = 0; dLp_charge = false;  // LP batteries
         lp_charge1 = 0; dLp_charge1 = false;
+        lp_current = 0; dLp_current = false;
+        lp_current1 = 0; dLp_current1 = false;
+        lp_voltage = 0; dLp_voltage = false;
+        lp_voltage1 = 0; dLp_voltage1 = false;
+        lowest_cell = 0; dLowest_cell = false;
+        lowest_cell1 = 0; dLowest_cell1 = false;
+        highest_cell1 = 0; dHighest_cell1 = false;
+        highest_cell = 0; dHighest_cell = false;
         Arrays.fill(imu, 0);           // Sensors stuff
         Arrays.fill(proxi_front, 0);
         Arrays.fill(proxi_rear, 0);
