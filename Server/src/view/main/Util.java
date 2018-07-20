@@ -24,10 +24,10 @@ public class Util {
         cmdHashMap.put("CMD07", "rpm br");
         cmdHashMap.put("CMD08", "state");
         cmdHashMap.put("CMD09", "hp volt");
-        cmdHashMap.put("CMD10", "hp temp");
+        cmdHashMap.put("CMD10", "max temp");
         cmdHashMap.put("CMD11", "hp charge");
         cmdHashMap.put("CMD12", "hp volt1");
-        cmdHashMap.put("CMD13", "hp temp1");
+        cmdHashMap.put("CMD13", "max temp1");
         cmdHashMap.put("CMD14", "hp charge1");
         cmdHashMap.put("CMD15", "lp charge");
         cmdHashMap.put("CMD16", "lp charge1");
@@ -35,6 +35,16 @@ public class Util {
         cmdHashMap.put("CMD18", "proxi front");
         cmdHashMap.put("CMD19", "proxi rear");
         cmdHashMap.put("CMD20", "emergency brakes");
+        cmdHashMap.put("CMD21", "hp current");
+        cmdHashMap.put("CMD22", "hp current1");
+        cmdHashMap.put("CMD23", "lowest cell");
+        cmdHashMap.put("CMD24", "highest cell");
+        cmdHashMap.put("CMD25", "lowest cell1");
+        cmdHashMap.put("CMD26", "highest cell1");
+        cmdHashMap.put("CMD27", "lp voltage");
+        cmdHashMap.put("CMD28", "lp voltage1");
+        cmdHashMap.put("CMD29", "lp current");
+        cmdHashMap.put("CMD30", "lp current1");
 
         // Map command codes to their corresponding LOWER threshold values (considered dangerous to drop below)
         lowerThresHashMap.put("CMD09", 72);  // HP voltage
@@ -57,6 +67,21 @@ public class Util {
         upperThresHashMap.put("CMD14", 100);
         upperThresHashMap.put("CMD15", 100);
         upperThresHashMap.put("CMD16", 100);
+//        upperThresHashMap.put("CMD17", 100);
+//        upperThresHashMap.put("CMD18", 100); sensors
+//        upperThresHashMap.put("CMD19", 100);
+//        upperThresHashMap.put("CMD20", 100);
+        upperThresHashMap.put("CMD21", 1500);
+        upperThresHashMap.put("CMD22", 1500);
+        upperThresHashMap.put("CMD23", 5);
+        upperThresHashMap.put("CMD24", 5);
+        upperThresHashMap.put("CMD25", 5);
+        upperThresHashMap.put("CMD26", 5);
+        upperThresHashMap.put("CMD27", 30);
+        upperThresHashMap.put("CMD28", 30);
+        upperThresHashMap.put("CMD29", 30);
+        upperThresHashMap.put("CMD30", 30);
+
     }
 
     public static String getNameByCmdCode(String cmdString) {

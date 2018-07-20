@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -197,6 +198,36 @@ public class MainController {
     private Button trackLengthBtn;
 
     @FXML
+    private Gauge hpGaugeCurrent;
+
+    @FXML
+    private Gauge hpGaugeCurrent1;
+
+    @FXML
+    private Gauge lpVoltageGauge;
+
+    @FXML
+    private Gauge lpCurrentGauge;
+
+    @FXML
+    private Gauge lpVoltageGauge1;
+
+    @FXML
+    private Gauge lpCurrentGauge1;
+
+    @FXML
+    private Label lowestCellLabel;
+
+    @FXML
+    private Label highestCellLabel;
+
+    @FXML
+    private Cell lowestCellLabel1;
+
+    @FXML
+    private Label highestCellLabel1;
+
+    @FXML
     public void initialize() {
         System.out.println("Called MainController.initialize");
         btnStop.setOnAction(event -> this.handleBtnStop());
@@ -369,6 +400,36 @@ public class MainController {
     public void setGaugeHpBattery1(int hpCharge1, boolean isDanger) {
         gaugeHpBattery1.setValue(hpCharge1 * 100);
         gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setGaugeHpCurrent(int hpCurrent, boolean isDanger) {
+        hpGaugeCurrent.setValue(hpCurrent);
+        hpGaugeCurrent.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setGaugeHpCurrent1(int hpCurrent1, boolean isDanger) {
+        hpGaugeCurrent1.setValue(hpCurrent1);
+        hpGaugeCurrent1.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setLpVoltageGauge(int lpVoltage, boolean isDanger) {
+        lpVoltageGauge.setValue(lpVoltage);
+        lpVoltageGauge.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setLpVoltageGauge1(int lpVoltage1, boolean isDanger) {
+        lpVoltageGauge1.setValue(lpVoltage1);
+        lpVoltageGauge1.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setLpCurrentGauge(int lpCurrent, boolean isDanger) {
+        lpCurrentGauge.setValue(lpCurrent);
+        lpCurrentGauge.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setLpCurrentGauge1(int lpCurrent1, boolean isDanger) {
+        lpCurrentGauge1.setValue(lpCurrent1);
+        lpCurrentGauge1.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setClock(double time) {
@@ -563,6 +624,42 @@ public class MainController {
         Platform.runLater(new Runnable() {
             @Override public void run() {
                 distanceLabel.setText(Integer.toString(distance) + "m");
+            }
+        });
+
+    }
+
+    public void setLowCell(int lowestVoltage){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                lowestCellLabel.setText(Integer.toString(lowestVoltage) + "V");
+            }
+        });
+
+    }
+
+    public void setHighCell(int highestVoltage){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                highestCellLabel.setText(Integer.toString(highestVoltage) + "V");
+            }
+        });
+
+    }
+
+    public void setLowCell1(int lowestVoltage1){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                lowestCellLabel1.setText(Integer.toString(lowestVoltage1) + "V");
+            }
+        });
+
+    }
+
+    public void setHighCell1(int highestVoltage1){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                highestCellLabel1.setText(Integer.toString(highestVoltage1) + "V");
             }
         });
 

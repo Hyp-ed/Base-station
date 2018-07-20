@@ -31,11 +31,15 @@ public class Server implements Runnable {
     private int distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-            imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived,
-            regen, regen1;
+            imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived, regen, regen1,
+            hp_current, hp_current1, lowest_cell, highest_cell, lowest_cell1, highest_cell1,
+            lp_voltage, lp_voltage1, lp_current, lp_current1;
     private int old_distance, old_velocity, old_acceleration,
             old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
-            old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1, old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1;
+            old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1,
+            old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1,
+            old_hp_current, old_hp_current1, old_lowest_cell, old_highest_cell, old_lowest_cell1, old_highest_cell1,
+            old_lp_voltage, old_lp_voltage1, old_lp_current, old_lp_current1;
     private int state = 0;
     private int min_charge = 100;
     private int min_charge1 = 100;
@@ -50,7 +54,9 @@ public class Server implements Runnable {
     // Danger flags, true if value exceeds threshold
     private boolean dDistance, dVelocity, dAcceleration,
             dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
-            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1;
+            dHp_volt, dHp_temp, dHp_charge, dHp_volt1, dHp_temp1, dHp_charge1, dLp_charge, dLp_charge1,
+            dHp_current, dHp_current1, dLowest_cell, dHighest_cell, dLowest_cell1, dHighest_cell1,
+            dLp_voltage, dLp_voltage1, dLp_current, dLp_current1;
     private String data, cmdString, readingString;
 
     // TCP/IP connection to pod
@@ -77,8 +83,11 @@ public class Server implements Runnable {
     private static Logger LOGGER;
     private static Handler loggerHandler = null;
 
+// -------------------------------------------------------------------------------------------------
+// Set Logger
+// -------------------------------------------------------------------------------------------------
+
     static {
-        // Set up Logger
         System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
         LOGGER = Logger.getLogger(Server.class.getName());
 
@@ -93,6 +102,10 @@ public class Server implements Runnable {
             e.printStackTrace();
         }
     }
+
+// -------------------------------------------------------------------------------------------------
+// Server class
+// -------------------------------------------------------------------------------------------------
 
     public Server(MainController controller) {
         try {
@@ -158,6 +171,10 @@ public class Server implements Runnable {
         return isCommunicating;
     }
 
+// -------------------------------------------------------------------------------------------------
+// Send data, Parse incoming data
+// -------------------------------------------------------------------------------------------------
+
     public void sendToPod(int message) {
         if (podSocket == null) {
             LOGGER.log(Level.SEVERE, "NO POD SOCKET. Should never reach here.");
@@ -192,6 +209,10 @@ public class Server implements Runnable {
         return false;
     }
 
+// -------------------------------------------------------------------------------------------------
+// Timer
+// -------------------------------------------------------------------------------------------------
+
     private void startTimer(long startTime) {
         Thread timerThread = new Thread(new Runnable() {
             @Override
@@ -206,6 +227,11 @@ public class Server implements Runnable {
 
         timerThread.start();
     }
+
+
+// -------------------------------------------------------------------------------------------------
+// Manipulate GUI
+// -------------------------------------------------------------------------------------------------
 
     private void updateGauges() {
         Thread gaugeThread = new Thread(new Runnable() {
@@ -344,6 +370,11 @@ public class Server implements Runnable {
         return braking;
     }
 
+
+// -------------------------------------------------------------------------------------------------
+// State Machine
+// -------------------------------------------------------------------------------------------------
+
     private void setState(int state) {
         switch (state) {
             case 0:
@@ -407,6 +438,11 @@ public class Server implements Runnable {
                 break;
         }
     }
+
+
+// -------------------------------------------------------------------------------------------------
+// Start communication. Read incoming data.
+// -------------------------------------------------------------------------------------------------
 
     private void startCommunication() {
         if (podSocket == null) {
@@ -549,12 +585,56 @@ public class Server implements Runnable {
                         em_brakes[1] = Integer.parseInt(Integer.toString(em_brakesReceived).substring(1));
                     }
                     break;
+                case "CMD21":
+                    hp_current = parseData(cmdString, readingString);
+                    dHp_current = isDanger(cmdString, hp_current);
+                    break;
+                case "CMD22":
+                    hp_current1 = parseData(cmdString, readingString);
+                    dHp_current1 = isDanger(cmdString, hp_current1);
+                    break;
+                case "CMD23":
+                    lowest_cell = parseData(cmdString, readingString);
+                    dLowest_cell = isDanger(cmdString, lowest_cell);
+                    break;
+                case "CMD24":
+                    highest_cell = parseData(cmdString, readingString);
+                    dHighest_cell = isDanger(cmdString, highest_cell);
+                    break;
+                case "CMD25":
+                    lowest_cell1 = parseData(cmdString, readingString);
+                    dLowest_cell = isDanger(cmdString, lowest_cell1);
+                    break;
+                case "CMD26":
+                    highest_cell1 = parseData(cmdString, readingString);
+                    dHighest_cell1 = isDanger(cmdString, highest_cell1);
+                    break;
+                case "CMD27":
+                    lp_voltage = parseData(cmdString, readingString);
+                    dLp_voltage = isDanger(cmdString, lp_voltage);
+                case "CMD28":
+                    lp_voltage1 = parseData(cmdString, readingString);
+                    dLp_voltage1 = isDanger(cmdString, lp_voltage1);
+                    break;
+                case "CMD29":
+                    lp_current = parseData(cmdString, readingString);
+                    dLp_current = isDanger(cmdString, lp_current);
+                    break;
+                case "CMD30":
+                    lp_current1 = parseData(cmdString, readingString);
+                    dLp_current1 = isDanger(cmdString, lp_current1);
+                    break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");
                     break;
             }
         }
     }
+
+
+// -------------------------------------------------------------------------------------------------
+// UDP
+// -------------------------------------------------------------------------------------------------
 
     private void sendToSpaceX() {
         try {

@@ -21,16 +21,16 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="801.0" prefWidth="1330.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
+<StackPane prefHeight="802.0" prefWidth="1358.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1330.0">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1358.0">
           <stylesheets>
               <URL value="@/view/css/stylesheet.css" />
           </stylesheets>
           <left>
-            <AnchorPane prefHeight="767.0" prefWidth="1330.0">
+            <AnchorPane prefHeight="802.0" prefWidth="1358.0">
                <children>
-                  <HBox alignment="TOP_RIGHT" prefHeight="86.0" prefWidth="1330.0" style="-fx-background-color: #2A2E37;">
+                  <HBox alignment="TOP_RIGHT" prefHeight="86.0" prefWidth="1358.0" style="-fx-background-color: #2A2E37;">
                      <children>
                         <AnchorPane prefHeight="70.0" prefWidth="181.0">
                            <opaqueInsets>
@@ -72,7 +72,7 @@
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0">
                                        <children>
-                                            <Gauge fx:id="gaugeLpBattery" barColor="#199a30" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" value="3000" />
+                                            <Gauge fx:id="gaugeLpBattery" barColor="#199a30" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP">
                                              <font>
                                                 <Font size="10.0" />
@@ -85,7 +85,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="9.0" layoutY="10.0" prefHeight="200.0" prefWidth="50.0">
                                        <children>
-                                          <Gauge fx:id="gaugeLpBattery1" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeLpBattery1" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP">
                                              <font>
                                                 <Font size="10.0" />
@@ -98,7 +98,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="82.0" layoutY="10.0" prefHeight="200.0" prefWidth="50.0">
                                        <children>
-                                          <Gauge fx:id="gaugeHpBattery" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeHpBattery" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP">
                                              <font>
                                                 <Font size="10.0" />
@@ -111,7 +111,7 @@
                                     </VBox>
                                     <VBox alignment="CENTER" layoutX="132.0" layoutY="10.0" prefHeight="200.0" prefWidth="50.0">
                                        <children>
-                                          <Gauge fx:id="gaugeHpBattery1" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" value="3000" />
+                                          <Gauge fx:id="gaugeHpBattery1" barColor="#FFFF8D" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP">
                                              <font>
                                                 <Font size="10.0" />
@@ -157,7 +157,7 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
                                                     <children>
-                                                      <Line endX="20.0" startX="-370.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-240.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="POD">
                                                          <font>
                                                             <Font size="15.0" />
@@ -169,10 +169,10 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="263.0">
                                                          <children>
-                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
-                                                              <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="110.0" prefWidth="146.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
+                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="146.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
+                                                              <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
                                                          </children>
                                                       </AnchorPane>
       
@@ -187,10 +187,10 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox fx:id="vgaugeLayout1" layoutX="270.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
+                                                <VBox fx:id="vgaugeLayout1" layoutX="270.0" layoutY="10.0" prefHeight="138.0" prefWidth="290.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-370.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="BATTERY 1">
+                                                      <Line endX="20.0" startX="-330.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY 1">
                                                          <font>
                                                             <Font size="14.0" />
                                                          </font>
@@ -201,10 +201,11 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="366.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
-                                                            <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="148.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="148.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
+                                                            <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="26.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="121.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="hpGaugeCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="258.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -217,8 +218,8 @@
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout11" layoutX="632.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-380.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="BATTERY 2">
+                                                      <Line endX="20.0" startX="-330.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY 2">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -229,10 +230,11 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="364.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="213.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
-                                                            <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="32.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="145.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="143.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
+                                                            <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="hpGaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="253.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -249,11 +251,11 @@
                                              </VBox.margin></HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="100.0" prefWidth="1555.0">
                                              <children>
-                                                <VBox fx:id="vgaugeLayout2" prefHeight="149.0" prefWidth="518.0">
+                                                <VBox fx:id="vgaugeLayout2" prefHeight="139.0" prefWidth="490.0">
                                                    <children>
-                                                      <AnchorPane>
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="483.0">
                                                          <children>
-                                                            <Line startX="780.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                            <Line startX="480.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                             <Label layoutY="1.600000023841858" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MOTORS">
                                                                <font>
                                                                   <Font size="15.0" />
@@ -264,12 +266,12 @@
                                                             </Label>
                                                          </children>
                                                       </AnchorPane>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="780.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="481.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="232.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
-                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="51.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="140.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="393.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="554.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="147.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="110.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="33.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="114.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="257.0" layoutY="6.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="367.0" layoutY="6.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="108.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -277,12 +279,15 @@
                                                       <Insets />
                                                    </opaqueInsets>
                                                    <HBox.margin>
-                                                      <Insets right="20.0" />
+                                                      <Insets />
                                                    </HBox.margin>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout3" layoutX="641.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-390.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-160.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="EMERGENCY BRAKES">
                                                          <font>
                                                             <Font size="15.0" />
@@ -294,30 +299,86 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="410.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="184.0">
                                                          <children>
-                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="98.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="269.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Label fx:id="frontBrakeLabel" layoutX="72.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="62.0" layoutY="43.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="141.0" layoutY="44.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label fx:id="frontBrakeLabel" layoutX="36.0" layoutY="61.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="rearBrakeLabel" layoutX="243.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Label fx:id="rearBrakeLabel" layoutX="115.0" layoutY="62.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="87.0" layoutY="87.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
+                                                            <Label layoutX="51.0" layoutY="72.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="254.0" layoutY="88.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
+                                                            <Label layoutX="126.0" layoutY="74.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout112" prefHeight="139.0" prefWidth="299.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-250.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY 1">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
+                                                         <children>
+                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="lpVoltageGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout1121" layoutX="992.0" layoutY="10.0" prefHeight="139.0" prefWidth="299.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-250.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY 2">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
+                                                         <children>
+                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="lpVoltageGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -337,7 +398,7 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout31" layoutX="641.0" layoutY="10.0" prefHeight="100.0" prefWidth="113.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-200.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-180.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="SERVICE PROPULSION">
                                                          <font>
                                                             <Font size="15.0" />
@@ -349,7 +410,7 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="222.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="196.0">
                                                          <children>
                                                             <Button fx:id="btnServicePropulsionGo" disable="true" layoutX="39.0" layoutY="29.0" mnemonicParsing="false" text="GO" />
                                                             <Button fx:id="btnServicePropulsionStop" disable="true" layoutX="126.0" layoutY="29.0" mnemonicParsing="false" text="STOP" />
@@ -363,9 +424,9 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox fx:id="vgaugeLayout11111" minWidth="-Infinity" prefHeight="122.0" prefWidth="380.0">
+                                                <VBox fx:id="vgaugeLayout11111" minWidth="-Infinity" prefHeight="119.0" prefWidth="265.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-330.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-220.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR PROXI">
                                                          <font>
                                                             <Font size="15.0" />
@@ -377,7 +438,7 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="42.0" prefWidth="265.0">
                                                          <children>
                                                             <Circle fx:id="rproxiIndicator" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
@@ -400,7 +461,7 @@
                                                             <Insets />
                                                          </VBox.margin>
                                                       </HBox>
-                                                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="271.0">
                                                          <children>
                                                             <Circle fx:id="rproxiIndicator4" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
@@ -428,9 +489,9 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox fx:id="vgaugeLayout1111" minWidth="-Infinity" prefHeight="100.0" prefWidth="380.0">
+                                                <VBox fx:id="vgaugeLayout1111" minWidth="-Infinity" prefHeight="119.0" prefWidth="265.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-340.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-220.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT PROXI">
                                                          <font>
                                                             <Font size="15.0" />
@@ -442,7 +503,7 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="42.0" prefWidth="270.0">
                                                          <children>
                                                             <Circle fx:id="fproxiIndicator" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
@@ -462,7 +523,7 @@
                                                             <Circle fx:id="fproxiIndicator3" fill="#bd200c" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0" />
                                                          </children>
                                                       </HBox>
-                                                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="269.0">
                                                          <children>
                                                             <Circle fx:id="fproxiIndicator4" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
                                                                <HBox.margin>
@@ -492,7 +553,7 @@
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout111" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-190.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-160.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IMU">
                                                          <font>
                                                             <Font size="15.0" />
@@ -510,6 +571,36 @@
                                                             <Circle fx:id="imuIndicator1" fill="#bd200c" layoutX="71.0" layoutY="65.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
                                                             <Circle fx:id="imuIndicator2" fill="#bd200c" layoutX="120.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
                                                             <Circle fx:id="imuIndicator3" fill="#bd200c" layoutX="71.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout1112" layoutX="1064.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-160.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="BORDER CELLS">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="182.0">
+                                                         <children>
+                                                            <Label fx:id="lowestCellLabel" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="161.0" text="Label" textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel" layoutX="15.0" layoutY="23.0" prefHeight="18.0" prefWidth="160.0" text="Label" textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel1" layoutX="15.0" layoutY="41.0" prefHeight="18.0" prefWidth="160.0" text="Label" textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel1" layoutX="16.0" layoutY="59.0" prefHeight="18.0" prefWidth="159.0" text="Label" textFill="WHITE" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
