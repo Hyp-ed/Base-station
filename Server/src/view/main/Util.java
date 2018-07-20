@@ -35,6 +35,9 @@ public class Util {
         cmdHashMap.put("CMD18", "proxi front");
         cmdHashMap.put("CMD19", "proxi rear");
         cmdHashMap.put("CMD20", "emergency brakes");
+        cmdHashMap.put("CMD21", "hp current");
+        cmdHashMap.put("CMD22", "hp current 1");
+
 
         // Map command codes to their corresponding LOWER threshold values (considered dangerous to drop below)
         lowerThresHashMap.put("CMD09", 72);  // HP voltage

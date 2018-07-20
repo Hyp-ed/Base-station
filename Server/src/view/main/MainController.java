@@ -377,12 +377,12 @@ public class MainController {
         gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
     }
 
-    public void setGaugeHpCurrent() {
-        gaugeLpBattery.setValue()
+    public void setGaugeHpCurrent(int hpCurrent) {
+        gaugeLpBattery.setValue(hpCurrent)
     }
 
-    public void setGaugeLpCurrent1() {
-        gaugeLpBattery.setValue()
+    public void setGaugeHpCurrent1(int hpCurrent1) {
+        gaugeLpBattery.setValue(hpCurrent1)
     }
 
     public void setClock(double time) {
