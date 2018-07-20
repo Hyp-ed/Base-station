@@ -297,7 +297,8 @@ public class Server implements Runnable {
                         }
                         mainController.setGaugeHpCurrent(hp_current);
                         mainController.setGaugeHpCurrent1(hp_current1);
-
+                        mainController.setGaugeLpCurrent(lp_current);
+                        mainController.setGaugeLpCurrent1(lp_current1);
                     }
                 }));
 

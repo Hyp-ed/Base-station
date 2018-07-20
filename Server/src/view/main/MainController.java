@@ -107,6 +107,12 @@ public class MainController {
     private Gauge gaugeHpCurrent1;
 
     @FXML
+    private Gauge gaugeLpCurrent;
+
+    @FXML
+    private Gauge gaugeLpCurrent1;
+
+    @FXML
     private JFXSlider distanceMeter;
 
     @FXML
@@ -378,11 +384,19 @@ public class MainController {
     }
 
     public void setGaugeHpCurrent(int hpCurrent) {
-        gaugeHpBattery.setValue(hpCurrent);
+        gaugeHpCurrent.setValue(hpCurrent);
     }
 
     public void setGaugeHpCurrent1(int hpCurrent1) {
-        gaugeHpBattery1.setValue(hpCurrent1);
+        gaugeHpCurrent1.setValue(hpCurrent1);
+    }
+
+    public void setGaugeLpCurrent(int lpCurrent) {
+        gaugeLpCurrent.setValue(lpCurrent);
+    }
+
+    public void setGaugeLpCurrent1(int lpCurrent1) {
+        gaugeLpCurrent1.setValue(lpCurrent1);
     }
 
     public void setClock(double time) {

@@ -203,7 +203,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="247.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="CURRENT" unit="'C" />
+                                                            <Gauge fx:id="gaugeHpCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="247.0" lcdFont="ELEKTRA" maxValue="1500.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="148.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
                                                             <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="128.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                          </children>
@@ -234,7 +234,7 @@
                                                          <children>
                                                             <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="128.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="145.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
-                                                            <Gauge fx:id="gaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="255.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="CURRENT" unit="'C" />
+                                                            <Gauge fx:id="gaugeHpCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="255.0" lcdFont="ELEKTRA" maxValue="1500.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="'C" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -298,28 +298,30 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="410.0">
                                                          <children>
-                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="98.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="269.0" layoutY="58.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Label fx:id="frontBrakeLabel" layoutX="72.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="26.0" layoutY="61.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="87.0" layoutY="61.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label fx:id="frontBrakeLabel" layoutY="79.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="rearBrakeLabel" layoutX="243.0" layoutY="76.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                            <Label fx:id="rearBrakeLabel" layoutX="60.0" layoutY="79.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="87.0" layoutY="87.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
+                                                            <Label layoutX="15.0" layoutY="90.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label layoutX="254.0" layoutY="88.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
+                                                            <Label layoutX="72.0" layoutY="91.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
                                                                <font>
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
+                                                            <Gauge fx:id="gaugeLpCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="124.0" lcdFont="ELEKTRA" maxValue="30.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="30.0" title="LP CURRENT" unit="'C" />
+                                                            <Gauge fx:id="gaugeLpCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="261.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="30.0" title=" LP CURRENT1" unit="'C" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
