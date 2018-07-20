@@ -101,6 +101,12 @@ public class MainController {
     private Gauge gaugeHpBattery1;
 
     @FXML
+    private Gauge gaugeHpCurrent;
+
+    @FXML
+    private Gauge gaugeHpCurrent1;
+
+    @FXML
     private JFXSlider distanceMeter;
 
     @FXML
@@ -352,23 +358,31 @@ public class MainController {
     }
 
     public void setGaugeLpbattery(int lpCharge, boolean isDanger) {
-        gaugeLpBattery.setValue(lpCharge * 100);
+        gaugeLpBattery.setValue(lpCharge * 10);
         gaugeLpBattery.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeLpbattery1(int lpCharge1, boolean isDanger) {
-        gaugeLpBattery1.setValue(lpCharge1 * 100);
+        gaugeLpBattery1.setValue(lpCharge1 * 10);
         gaugeLpBattery1.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeHpBattery(int hpCharge, boolean isDanger) {
-        gaugeHpBattery.setValue(hpCharge * 100);
+        gaugeHpBattery.setValue(hpCharge * 10);
         gaugeHpBattery.setValueColor(colorHashMap.get(isDanger));
     }
 
     public void setGaugeHpBattery1(int hpCharge1, boolean isDanger) {
-        gaugeHpBattery1.setValue(hpCharge1 * 100);
+        gaugeHpBattery1.setValue(hpCharge1 * 10);
         gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
+    }
+
+    public void setGaugeHpCurrent() {
+        gaugeLpBattery.setValue()
+    }
+
+    public void setGaugeLpCurrent1() {
+        gaugeLpBattery.setValue()
     }
 
     public void setClock(double time) {
