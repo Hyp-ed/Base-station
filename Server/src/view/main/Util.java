@@ -69,19 +69,19 @@ public class Util {
         upperThresHashMap.put("CMD14", 1500);   // current
         upperThresHashMap.put("CMD15", 100);    // charge
         upperThresHashMap.put("CMD16", 70);     // temperature
-        upperThresHashMap.put("CMD17", 5);      // low cell
-        upperThresHashMap.put("CMD18", 5);      // high cell
+        upperThresHashMap.put("CMD17", 3600);      // low cell
+        upperThresHashMap.put("CMD18", 3600);      // high cell
         upperThresHashMap.put("CMD19", 120);    // HIGH POWER voltage 1
         upperThresHashMap.put("CMD20", 1500);   // current 1
         upperThresHashMap.put("CMD21", 100);    // charge 1
         upperThresHashMap.put("CMD22", 70);     // temperature 1
-        upperThresHashMap.put("CMD23", 5);      // low cell 1
-        upperThresHashMap.put("CMD24", 5);      // high cell 1
+        upperThresHashMap.put("CMD23", 3600);      // low cell 1
+        upperThresHashMap.put("CMD24", 3600);      // high cell 1
         upperThresHashMap.put("CMD25", 30);     // LOW POWER voltage
-        upperThresHashMap.put("CMD26", 30);     // current
+        upperThresHashMap.put("CMD26", 30000);     // current
         upperThresHashMap.put("CMD27", 100);    // charge
         upperThresHashMap.put("CMD28", 30);     // LOW POWER voltage 1
-        upperThresHashMap.put("CMD29", 30);     // current 1
+        upperThresHashMap.put("CMD29", 30000);     // current 1
         upperThresHashMap.put("CMD30", 100);    // charge 1
     }
 

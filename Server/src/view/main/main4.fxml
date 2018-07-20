@@ -349,7 +349,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
                                                          <children>
-                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" minValue="-40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30000.0" minValue="-30000.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30000.0" title="CURRENT" unit="mA" />
                                                             <Gauge fx:id="lpVoltageGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
@@ -377,7 +377,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
                                                          <children>
-                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" minValue="-40.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30000.0" minValue="-30000.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30000.0" title="CURRENT" unit="mA" />
                                                             <Gauge fx:id="lpVoltageGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
@@ -597,10 +597,10 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="182.0">
                                                          <children>
-                                                            <Label fx:id="lowestCellLabel" text="Lowest voltage: 0V" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="161.0" textFill="WHITE" />
-                                                            <Label fx:id="highestCellLabel" text="Highest voltage: 0V" layoutX="15.0" layoutY="23.0" prefHeight="18.0" prefWidth="160.0" textFill="WHITE" />
-                                                            <Label fx:id="lowestCellLabel1" text="Lowest voltage 1: 0V" layoutX="15.0" layoutY="41.0" prefHeight="18.0" prefWidth="160.0" textFill="WHITE" />
-                                                            <Label fx:id="highestCellLabel1" text="Highest voltage 1: 0V" layoutX="16.0" layoutY="59.0" prefHeight="18.0" prefWidth="159.0" textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="161.0" text="Lowest voltage: 0mV" textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel" layoutX="15.0" layoutY="23.0" prefHeight="18.0" prefWidth="160.0" text="Highest voltage: 0mV" textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel1" layoutX="15.0" layoutY="41.0" prefHeight="18.0" prefWidth="160.0" text="Lowest voltage 1: 0mV" textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel1" layoutX="16.0" layoutY="59.0" prefHeight="18.0" prefWidth="159.0" text="Highest voltage 1: 0mV" textFill="WHITE" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
