@@ -32,7 +32,7 @@ public class Server implements Runnable {
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
             imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived,
-            regen, regen1, hp_current, hp_current1;
+            regen, regen1, hp_current, hp_current1, lp_current, lp_current1;
     private int old_distance, old_velocity, old_acceleration,
             old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
             old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1, old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1;
@@ -557,6 +557,12 @@ public class Server implements Runnable {
                     break;
                 case "CMD22":
                     hp_current1 = parseData(cmdString, readingString);
+                    break;
+                case "CMD23":
+                    lp_current = parseData(cmdString, readingString);
+                    break;
+                case "CMD24":
+                    lp_current1 = parseData(cmdString, readingString);
                     break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here.");

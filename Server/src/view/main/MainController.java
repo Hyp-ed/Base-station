@@ -378,11 +378,11 @@ public class MainController {
     }
 
     public void setGaugeHpCurrent(int hpCurrent) {
-        gaugeLpBattery.setValue(hpCurrent)
+        gaugeHpBattery.setValue(hpCurrent);
     }
 
     public void setGaugeHpCurrent1(int hpCurrent1) {
-        gaugeLpBattery.setValue(hpCurrent1)
+        gaugeHpBattery1.setValue(hpCurrent1);
     }
 
     public void setClock(double time) {

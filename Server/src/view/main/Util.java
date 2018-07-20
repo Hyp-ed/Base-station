@@ -36,7 +36,9 @@ public class Util {
         cmdHashMap.put("CMD19", "proxi rear");
         cmdHashMap.put("CMD20", "emergency brakes");
         cmdHashMap.put("CMD21", "hp current");
-        cmdHashMap.put("CMD22", "hp current 1");
+        cmdHashMap.put("CMD22", "hp current1");
+        cmdHashMap.put("CMD23", "lp current");
+        cmdHashMap.put("CMD24", "lp current1");
 
 
         // Map command codes to their corresponding LOWER threshold values (considered dangerous to drop below)
