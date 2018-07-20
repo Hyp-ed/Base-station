@@ -222,7 +222,7 @@ public class MainController {
     private Label highestCellLabel;
 
     @FXML
-    private Cell lowestCellLabel1;
+    private Label lowestCellLabel1;
 
     @FXML
     private Label highestCellLabel1;
