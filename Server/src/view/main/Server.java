@@ -321,6 +321,54 @@ public class Server implements Runnable {
                             mainController.setBrakeIndicator(em_brakes);
                             old_em_brakes = em_brakes;
                         }
+                        if (old_hp_current != hp_current) {
+                            mainController.setGaugeHpCurrent(hp_current, dHp_current);
+                            old_hp_current = hp_current;
+                        }
+                        if (old_hp_current1 != hp_current1) {
+                            mainController.setGaugeHpCurrent(hp_current1, dHp_current1);
+                            old_hp_current1 = hp_current1;
+                        }
+
+                        if (old_lowest_cell != lowest_cell) {
+                            mainController.setLowCell(lowest_cell);
+                            old_lowest_cell = lowest_cell;
+                        }
+
+                        if (old_lowest_cell1 != lowest_cell1) {
+                            mainController.setLowCell1(lowest_cell1);
+                            old_lowest_cell1 = lowest_cell1;
+                        }
+
+                        if (old_highest_cell != highest_cell) {
+                            mainController.setHighCell(highest_cell);
+                            old_highest_cell = highest_cell;
+                        }
+
+                        if (old_highest_cell1 != highest_cell1) {
+                            mainController.setHighCell1(highest_cell1);
+                            old_highest_cell1 = highest_cell1;
+                        }
+
+                        if (old_lp_voltage != lp_voltage) {
+                            mainController.setLpVoltageGauge(lp_voltage, dLp_voltage);
+                            old_lp_voltage = lp_voltage;
+                        }
+
+                        if (old_lp_voltage1 != lp_voltage1) {
+                            mainController.setLpVoltageGauge1(lp_voltage1, dLp_voltage1);
+                            old_lp_voltage1 = lp_voltage1;
+                        }
+
+                        if (old_lp_current != lp_current) {
+                            mainController.setLpVoltageGauge(lp_current, dLp_current);
+                            old_lp_current = lp_current;
+                        }
+
+                        if (old_lp_current1 != lp_current1) {
+                            mainController.setLpVoltageGauge1(lp_current1, dLp_current1);
+                            old_lp_current1 = lp_current1;
+                        }
                     }
                 }));
 
