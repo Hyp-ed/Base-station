@@ -46,6 +46,12 @@ public class DummyClient {
                         dummydata.println("CMD1811111111");
                         dummydata.println("CMD1911111111");
                         dummydata.println("CMD2011");
+                        dummydata.println("CMD21-5");
+                        dummydata.println("CMD225");
+                        dummydata.println("CMD23100");
+                        dummydata.println("CMD2450");
+                        dummydata.println("CMD25100");
+                        dummydata.println("CMD2650");
                         Thread.sleep(200);
                     }
                 }
