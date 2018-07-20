@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
@@ -18,7 +19,9 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -83,6 +86,17 @@ public class MainController {
     @FXML private Label distanceLabel;
     @FXML private Button trackLengthBtn;
 
+    private int old_distance, old_velocity, old_acceleration,
+            old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
+            old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1,
+            old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1,
+            old_hp_current, old_hp_current1, old_lowest_cell, old_highest_cell, old_lowest_cell1, old_highest_cell1,
+            old_lp_voltage, old_lp_voltage1, old_lp_current, old_lp_current1;
+    private int[] old_imu = new int[4];
+    private int[] old_proxi_front = new int[8];
+    private int[] old_proxi_rear = new int[8];
+    private int[] old_em_brakes = new int[2];
+
     @FXML
     public void initialize() {
         System.out.println("Called MainController.initialize");
@@ -101,6 +115,17 @@ public class MainController {
         serverThread.start();
     }
 
+    // ----------------------------------------------------------------------------------
+    // Telemetry stuff
+    // ----------------------------------------------------------------------------------
+    public void setUpdatesLabel(String message){
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                updatesLabel.setText(message);
+            }
+        });
+    }
+
     private void resetAll() {
         server.resetAll();
     }
@@ -110,16 +135,13 @@ public class MainController {
             System.out.println("NOT ALLOWED TO RESTART WHEN CLIENT IS CONNECTED");
             return;
         }
-
         serverThread.interrupt();
         resetAll();
-
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         serverThread = new Thread(server);
         serverThread.start();
     }
@@ -161,6 +183,32 @@ public class MainController {
         setUpdatesLabel("Send SERVICE PROPULSION STOP.");
     }
 
+    public void enableBtnLaunch() {
+        btnLaunch.setDisable(false);
+    }
+
+    public void disableBtnLaunch() {
+        btnLaunch.setDisable(true);
+    }
+
+//    public void enableBtnStop() {
+//        btnStop.setDisable(false);
+//    }
+//
+//    public void disableBtnStop() {
+//        btnStop.setDisable(true);
+//    }
+
+    public void enableServicePropulsion() {
+        btnServicePropulsionGo.setDisable(false);
+        btnServicePropulsionStop.setDisable(false);
+    }
+
+    public void disableServicePropulsion() {
+        btnServicePropulsionGo.setDisable(true);
+        btnServicePropulsionStop.setDisable(true);
+    }
+
     private void trackLengthWarningOn() {
         warningLabel.setOpacity(1);
     }
@@ -184,110 +232,6 @@ public class MainController {
         trackLengthTextField.setText("");
     }
 
-    public void setDistanceMeter(int distance) {
-        distanceMeter.setValue(distance);
-    }
-
-    public void setGaugeVelocity(int velocity, boolean isDanger) {
-        gaugeVelocity.setValue(velocity);
-        gaugeVelocity.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeAcceleration(int accel, boolean isDanger) {
-        gaugeAccel.setValue(accel);
-        gaugeAccel.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeTemp(int temp, boolean isDanger) {
-        gaugeTemp.setValue(temp);
-        gaugeTemp.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeVoltage(int voltage, boolean isDanger) {
-        gaugeVoltage.setValue(voltage);
-        gaugeVoltage.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeTemp1(int temp1, boolean isDanger) {
-        gaugeTemp1.setValue(temp1);
-        gaugeTemp1.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeVoltage1(int voltage1, boolean isDanger) {
-        gaugeVoltage1.setValue(voltage1);
-        gaugeVoltage1.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeRpmfl(int rpm_fl, boolean isDanger) {
-        gaugeRpmfl.setValue(rpm_fl);
-        gaugeRpmfl.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeRpmfr(int rpm_fr, boolean isDanger) {
-        gaugeRpmfr.setValue(rpm_fr);
-        gaugeRpmfr.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeRpmbl(int rpm_bl, boolean isDanger) {
-        gaugeRpmbl.setValue(rpm_bl);
-        gaugeRpmbl.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeRpmbr(int rpm_br, boolean isDanger) {
-        gaugeRpmbr.setValue(rpm_br);
-        gaugeRpmbr.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeLpbattery(int lpCharge, boolean isDanger) {
-        gaugeLpBattery.setValue(lpCharge * 100);
-        gaugeLpBattery.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeLpbattery1(int lpCharge1, boolean isDanger) {
-        gaugeLpBattery1.setValue(lpCharge1 * 100);
-        gaugeLpBattery1.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeHpBattery(int hpCharge, boolean isDanger) {
-        gaugeHpBattery.setValue(hpCharge * 100);
-        gaugeHpBattery.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeHpBattery1(int hpCharge1, boolean isDanger) {
-        gaugeHpBattery1.setValue(hpCharge1 * 100);
-        gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeHpCurrent(int hpCurrent, boolean isDanger) {
-        hpGaugeCurrent.setValue(hpCurrent);
-        hpGaugeCurrent.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeHpCurrent1(int hpCurrent1, boolean isDanger) {
-        hpGaugeCurrent1.setValue(hpCurrent1);
-        hpGaugeCurrent1.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeLpVoltage(int lpVoltage, boolean isDanger) {
-        lpVoltageGauge.setValue(lpVoltage);
-        lpVoltageGauge.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeLpVoltage1(int lpVoltage1, boolean isDanger) {
-        lpVoltageGauge1.setValue(lpVoltage1);
-        lpVoltageGauge1.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGaugeLpCurrent(int lpCurrent, boolean isDanger) {
-        lpCurrentGauge.setValue(lpCurrent);
-        lpCurrentGauge.setValueColor(colorHashMap.get(isDanger));
-    }
-
-    public void setGagueLpCurrent1(int lpCurrent1, boolean isDanger) {
-        lpCurrentGauge1.setValue(lpCurrent1);
-        lpCurrentGauge1.setValueColor(colorHashMap.get(isDanger));
-    }
-
     public void setClock(double time) {
         clock.setValue(time);
     }
@@ -300,27 +244,32 @@ public class MainController {
         telemetryIndicator.setFill(inidcatorOffColor);
     }
 
-    public void setBrakeIndicator(int em_brakes[]) {
-        if (em_brakes[0] == 1) {
-            frontBrakeIndicator.setFill(indicatorOnColor);
-            Platform.runLater(new Runnable() {
-                @Override public void run() {
-                    frontBrakeLabel.setText("DEPLOYED");
-                }
-            });
-        } else {
-            frontBrakeIndicator.setFill(inidcatorOffColor);
-        }
-        if (em_brakes[1] == 1) {
-            rearBrakeIndicator.setFill(indicatorOnColor);
-            Platform.runLater(new Runnable() {
-                @Override public void run() {
-                    rearBrakeLabel.setText("DEPLOYED");
-                }
-            });
-        } else {
-            rearBrakeIndicator.setFill(inidcatorOffColor);
-        }
+    // ----------------------------------------------------------------------------------
+    // Comms data stuff
+    // ----------------------------------------------------------------------------------
+    public void setDistanceMeter(int distance) {
+        if (old_distance == distance) return;
+        distanceMeter.setValue(distance);
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                distanceLabel.setText(Integer.toString(distance) + "m");
+            }
+        });
+        old_distance = distance;
+    }
+
+    public void setGaugeVelocity(int velocity, boolean isDanger) {
+        if (old_velocity == velocity) return;
+        gaugeVelocity.setValue(velocity);
+        gaugeVelocity.setValueColor(colorHashMap.get(isDanger));
+        old_velocity = velocity;
+    }
+
+    public void setGaugeAcceleration(int accel, boolean isDanger) {
+        if (old_acceleration == accel) return;
+        gaugeAccel.setValue(accel);
+        gaugeAccel.setValueColor(colorHashMap.get(isDanger));
+        old_acceleration = accel;
     }
 
     public void setStateLabel(String state) {
@@ -331,7 +280,36 @@ public class MainController {
         });
     }
 
-    public void setImuIndicator(int imu[]) {
+    public void setGaugeRpmfl(int rpm_fl, boolean isDanger) {
+        if (old_rpm_fl == rpm_fl) return;
+        gaugeRpmfl.setValue(rpm_fl);
+        gaugeRpmfl.setValueColor(colorHashMap.get(isDanger));
+        old_rpm_fl = rpm_fl;
+    }
+
+    public void setGaugeRpmfr(int rpm_fr, boolean isDanger) {
+        if (old_rpm_fr == rpm_fr) return;
+        gaugeRpmfr.setValue(rpm_fr);
+        gaugeRpmfr.setValueColor(colorHashMap.get(isDanger));
+        old_rpm_fr = rpm_fr;
+    }
+
+    public void setGaugeRpmbl(int rpm_bl, boolean isDanger) {
+        if (old_rpm_bl == rpm_bl) return;
+        gaugeRpmbl.setValue(rpm_bl);
+        gaugeRpmbl.setValueColor(colorHashMap.get(isDanger));
+        old_rpm_bl = rpm_bl;
+    }
+
+    public void setGaugeRpmbr(int rpm_br, boolean isDanger) {
+        if (old_rpm_br == rpm_br) return;
+        gaugeRpmbr.setValue(rpm_br);
+        gaugeRpmbr.setValueColor(colorHashMap.get(isDanger));
+        old_rpm_br = rpm_br;
+    }
+
+    public void setImuIndicator(int[] imu) {
+//        if (Arrays.equals(old_imu, imu)) return;
         if (imu[0] == 1) {
             imuIndicator.setFill(indicatorOnColor);
         } else {
@@ -352,9 +330,11 @@ public class MainController {
         } else {
             imuIndicator3.setFill(inidcatorOffColor);
         }
+//        old_imu = imu;
     }
 
-    public void setProxi_FrontIndicator(int proxi_front[]) {
+    public void setProxi_FrontIndicator(int[] proxi_front) {
+//        if (Arrays.equals(old_proxi_front, proxi_front)) return;
         if (proxi_front[0] == 1) {
             fproxiIndicator.setFill(indicatorOnColor);
         } else {
@@ -395,9 +375,11 @@ public class MainController {
         } else {
             fproxiIndicator7.setFill(inidcatorOffColor);
         }
+//        old_proxi_front = proxi_front;
     }
 
-    public void setProxi_RearIndicator(int proxi_rear[]) {
+    public void setProxi_RearIndicator(int[] proxi_rear) {
+//        if (Arrays.equals(old_proxi_rear, proxi_rear)) return;
         if (proxi_rear[0] == 1) {
             rproxiIndicator.setFill(indicatorOnColor);
         } else {
@@ -438,80 +420,169 @@ public class MainController {
         } else {
             rproxiIndicator7.setFill(inidcatorOffColor);
         }
+//        old_proxi_rear = proxi_rear;
     }
 
-    public void enableBtnLaunch() {
-        btnLaunch.setDisable(false);
+    public void setBrakeIndicator(int[] em_brakes) {
+//        if (Arrays.equals(old_em_brakes, em_brakes)) return;
+        if (em_brakes[0] == 1) {
+            frontBrakeIndicator.setFill(indicatorOnColor);
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    frontBrakeLabel.setText("DEPLOYED");
+                }
+            });
+        } else {
+            frontBrakeIndicator.setFill(inidcatorOffColor);
+        }
+        if (em_brakes[1] == 1) {
+            rearBrakeIndicator.setFill(indicatorOnColor);
+            Platform.runLater(new Runnable() {
+                @Override public void run() {
+                    rearBrakeLabel.setText("DEPLOYED");
+                }
+            });
+        } else {
+            rearBrakeIndicator.setFill(inidcatorOffColor);
+        }
+//        old_em_brakes = em_brakes;
     }
 
-    public void disableBtnLaunch() {
-        btnLaunch.setDisable(true);
+    public void setGaugeVoltage(int hpVoltage, boolean isDanger) {
+        if (old_hp_volt == hpVoltage) return;
+        gaugeVoltage.setValue(hpVoltage);
+        gaugeVoltage.setValueColor(colorHashMap.get(isDanger));
+        old_hp_volt = hpVoltage;
     }
 
-    public void enableBtnStop() {
-        btnStop.setDisable(false);
+    public void setGaugeHpCurrent(int hpCurrent, boolean isDanger) {
+        if (old_hp_current == hpCurrent) return;
+        hpGaugeCurrent.setValue(hpCurrent);
+        hpGaugeCurrent.setValueColor(colorHashMap.get(isDanger));
+        old_hp_current = hpCurrent;
     }
 
-    public void disableBtnStop() {
-        btnStop.setDisable(true);
+    public void setGaugeHpBattery(int hpCharge, boolean isDanger) {
+        if (old_hp_charge == hpCharge) return;
+        gaugeHpBattery.setValue(hpCharge * 100);
+        gaugeHpBattery.setValueColor(colorHashMap.get(isDanger));
+        old_hp_charge = hpCharge;
     }
 
-    public void enableServicePropulsion() {
-        btnServicePropulsionGo.setDisable(false);
-        btnServicePropulsionStop.setDisable(false);
+    public void setGaugeTemp(int hpTemp, boolean isDanger) {
+        if (old_hp_temp == hpTemp) return;
+        gaugeTemp.setValue(hpTemp);
+        gaugeTemp.setValueColor(colorHashMap.get(isDanger));
+        old_hp_temp = hpTemp;
     }
 
-    public void disableServicePropulsion() {
-        btnServicePropulsionGo.setDisable(true);
-        btnServicePropulsionStop.setDisable(true);
-    }
-
-    public void setUpdatesLabel(String message){
+    public void setLowCell(int hpLowCell){
+        if (old_lowest_cell == hpLowCell) return;
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                updatesLabel.setText(message);
+                lowestCellLabel.setText("Lowest voltage: " + Integer.toString(hpLowCell) + "mV");
             }
         });
-
+        old_lowest_cell = hpLowCell;
     }
 
-    public void setDistanceLabel(int distance){
+    public void setHighCell(int hpHighCell){
+        if (old_highest_cell == hpHighCell) return;
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                distanceLabel.setText(Integer.toString(distance) + "m");
+                highestCellLabel.setText("Highest Voltage: " + Integer.toString(hpHighCell) + "mV");
             }
         });
+        old_highest_cell = hpHighCell;
     }
 
-    public void setLowCell(int lowestVoltage){
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                lowestCellLabel.setText("Lowest voltage: " + Integer.toString(lowestVoltage) + "mV");
-            }
-        });
+    public void setGaugeVoltage1(int hpVoltage1, boolean isDanger) {
+        if (old_hp_volt1 == hpVoltage1)
+        gaugeVoltage1.setValue(hpVoltage1);
+        gaugeVoltage1.setValueColor(colorHashMap.get(isDanger));
+        old_hp_volt1 = hpVoltage1;
     }
 
-    public void setHighCell(int highestVoltage){
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                highestCellLabel.setText("Highest Voltage: " + Integer.toString(highestVoltage) + "mV");
-            }
-        });
+    public void setGaugeHpCurrent1(int hpCurrent1, boolean isDanger) {
+        if (old_hp_current1 == hpCurrent1)
+        hpGaugeCurrent1.setValue(hpCurrent1);
+        hpGaugeCurrent1.setValueColor(colorHashMap.get(isDanger));
+        old_hp_current1 = hpCurrent1;
     }
 
-    public void setLowCell1(int lowestVoltage1){
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                lowestCellLabel1.setText("Lowest voltage1: " + Integer.toString(lowestVoltage1) + "mV");
-            }
-        });
+    public void setGaugeHpBattery1(int hpCharge1, boolean isDanger) {
+        if (old_hp_charge1 == hpCharge1) return;
+        gaugeHpBattery1.setValue(hpCharge1 * 100);
+        gaugeHpBattery1.setValueColor(colorHashMap.get(isDanger));
+        old_hp_charge1 = hpCharge1;
     }
 
-    public void setHighCell1(int highestVoltage1){
+    public void setGaugeTemp1(int hpTemp1, boolean isDanger) {
+        if (old_hp_temp1 == hpTemp1) return;
+        gaugeTemp1.setValue(hpTemp1);
+        gaugeTemp1.setValueColor(colorHashMap.get(isDanger));
+        old_hp_temp1 = hpTemp1;
+    }
+
+    public void setLowCell1(int lowCell1){
+        if (old_lowest_cell1 == lowCell1) return;
         Platform.runLater(new Runnable() {
             @Override public void run() {
-                highestCellLabel1.setText("Highest Voltage1: " + Integer.toString(highestVoltage1) + "mV");
+                lowestCellLabel1.setText("Lowest voltage1: " + Integer.toString(lowCell1) + "mV");
             }
         });
+        old_lowest_cell1 = lowCell1;
+    }
+
+    public void setHighCell1(int highCell1){
+        if (old_highest_cell1 == highCell1) return;
+        Platform.runLater(new Runnable() {
+            @Override public void run() {
+                highestCellLabel1.setText("Highest Voltage1: " + Integer.toString(highCell1) + "mV");
+            }
+        });
+        old_highest_cell1 = highCell1;
+    }
+
+    public void setGaugeLpVoltage(int lpVoltage, boolean isDanger) {
+        if (old_lp_voltage == lpVoltage) return;
+        lpVoltageGauge.setValue(lpVoltage);
+        lpVoltageGauge.setValueColor(colorHashMap.get(isDanger));
+        old_lp_voltage = lpVoltage;
+    }
+
+    public void setGaugeLpCurrent(int lpCurrent, boolean isDanger) {
+        if (old_lp_current == lpCurrent) return;
+        lpCurrentGauge.setValue(lpCurrent);
+        lpCurrentGauge.setValueColor(colorHashMap.get(isDanger));
+        old_lp_current = lpCurrent;
+    }
+
+    public void setGaugeLpBattery(int lpCharge, boolean isDanger) {
+        if (old_lp_charge == lpCharge) return;
+        gaugeLpBattery.setValue(lpCharge * 100);
+        gaugeLpBattery.setValueColor(colorHashMap.get(isDanger));
+        old_lp_charge = lpCharge;
+    }
+
+    public void setGaugeLpVoltage1(int lpVoltage1, boolean isDanger) {
+        if (old_lp_voltage1 == lpVoltage1) return;
+        lpVoltageGauge1.setValue(lpVoltage1);
+        lpVoltageGauge1.setValueColor(colorHashMap.get(isDanger));
+        old_lp_voltage1 = lpVoltage1;
+    }
+
+    public void setGaugeLpCurrent1(int lpCurrent1, boolean isDanger) {
+        if (old_lp_current1 == lpCurrent1) return;
+        lpCurrentGauge1.setValue(lpCurrent1);
+        lpCurrentGauge1.setValueColor(colorHashMap.get(isDanger));
+        old_lp_current1 = lpCurrent1;
+    }
+
+    public void setGaugeLpBattery1(int lpCharge1, boolean isDanger) {
+        if (old_lp_charge1 == lpCharge1) return;
+        gaugeLpBattery1.setValue(lpCharge1 * 100);
+        gaugeLpBattery1.setValueColor(colorHashMap.get(isDanger));
+        old_lp_charge1 = lpCharge1;
     }
 }

@@ -34,12 +34,6 @@ public class Server implements Runnable {
             imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived, regen, regen1,
             hp_current, hp_current1, lowest_cell, highest_cell, lowest_cell1, highest_cell1,
             lp_voltage, lp_voltage1, lp_current, lp_current1;
-    private int old_distance, old_velocity, old_acceleration,
-            old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
-            old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1,
-            old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1,
-            old_hp_current, old_hp_current1, old_lowest_cell, old_highest_cell, old_lowest_cell1, old_highest_cell1,
-            old_lp_voltage, old_lp_voltage1, old_lp_current, old_lp_current1;
     private int state = 0;
     private int min_charge = 100;
     private int min_charge1 = 100;
@@ -47,10 +41,6 @@ public class Server implements Runnable {
     private int[] proxi_front = new int[8];
     private int[] proxi_rear = new int[8];
     private int[] em_brakes = new int[2];
-    private int[] old_imu = new int[4];
-    private int[] old_proxi_front = new int[8];
-    private int[] old_proxi_rear = new int[8];
-    private int[] old_em_brakes = new int[2];
     // Danger flags, true if value exceeds threshold
     private boolean dDistance, dVelocity, dAcceleration,
             dRpm_fl, dRpm_fr, dRpm_br, dRpm_bl,
@@ -240,134 +230,35 @@ public class Server implements Runnable {
 
                     @Override
                     public void handle(ActionEvent event) {
-                        if (old_distance != distance) {
-                            mainController.setDistanceMeter(distance);
-                            old_distance = distance;
-                        }
-                        if (old_distance != distance) {
-                            mainController.setDistanceLabel(distance);
-                            old_distance = distance;
-                        }
-                        if (old_velocity != velocity) {
-                            mainController.setGaugeVelocity(velocity, dVelocity);
-                            old_velocity = velocity;
-                        }
-                        if (old_acceleration != acceleration) {
-                            mainController.setGaugeAcceleration(acceleration, dAcceleration);
-                            old_acceleration = acceleration;
-                        }
-                        if (old_rpm_fl != rpm_fl) {
-                            mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
-                            old_rpm_fl = rpm_fl;
-                        }
-                        if (old_rpm_fr != rpm_fr) {
-                            mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
-                            old_rpm_fr = rpm_fr;
-                        }
-                        if (old_rpm_bl != rpm_bl) {
-                            mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
-                            old_rpm_bl = rpm_bl;
-                        }
-                        if (old_rpm_br != rpm_br) {
-                            mainController.setGaugeRpmbr(rpm_br, dRpm_br);
-                            old_rpm_br = rpm_br;
-                        }
-                        if (old_hp_volt != hp_volt) {
-                            mainController.setGaugeVoltage(hp_volt, dHp_volt);
-                            old_hp_volt = hp_volt;
-                        }
-                        if (old_hp_temp != hp_temp) {
-                            mainController.setGaugeTemp(hp_temp, dHp_temp);
-                            old_hp_temp = hp_temp;
-                        }
-                        if (old_hp_charge != hp_charge) {
-                            mainController.setGaugeHpBattery(hp_charge, dHp_charge);
-                            old_hp_charge = hp_charge;
-                        }
-                        if (old_hp_volt1 != hp_volt1) {
-                            mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
-                            old_hp_volt1 = hp_volt1;
-                        }
-                        if (old_hp_temp1 != hp_temp1) {
-                            mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
-                            old_hp_temp1 = hp_temp1;
-                        }
-                        if (old_hp_charge1 != hp_charge1) {
-                            mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
-                            old_hp_charge1 = hp_charge1;
-                        }
-                        if (old_lp_charge != lp_charge) {
-                            mainController.setGaugeLpbattery(lp_charge, dLp_charge);
-                            old_lp_charge = lp_charge;
-                        }
-                        if (old_lp_charge1 != lp_charge1) {
-                            mainController.setGaugeLpbattery1(lp_charge1, dLp_charge1);
-                            old_lp_charge1 = lp_charge1;
-                        }
-                        if (Arrays.equals(old_imu, imu)) {
-                            mainController.setImuIndicator(imu);
-                            old_imu = imu;
-                        }
-                        if (Arrays.equals(old_proxi_front, proxi_front)) {
-                            mainController.setProxi_FrontIndicator(proxi_front);
-                            old_proxi_front = proxi_front;
-                        }
-                        if (Arrays.equals(old_proxi_rear, proxi_rear)) {
-                            mainController.setProxi_RearIndicator(proxi_rear);
-                            old_proxi_rear = proxi_rear;
-                        }
-                        if (Arrays.equals(old_em_brakes, em_brakes)) {
-                            mainController.setBrakeIndicator(em_brakes);
-                            old_em_brakes = em_brakes;
-                        }
-                        if (old_hp_current != hp_current) {
-                            mainController.setGaugeHpCurrent(hp_current, dHp_current);
-                            old_hp_current = hp_current;
-                        }
-                        if (old_hp_current1 != hp_current1) {
-                            mainController.setGaugeHpCurrent1(hp_current1, dHp_current1);
-                            old_hp_current1 = hp_current1;
-                        }
-
-                        if (old_lowest_cell != lowest_cell) {
-                            mainController.setLowCell(lowest_cell);
-                            old_lowest_cell = lowest_cell;
-                        }
-
-                        if (old_lowest_cell1 != lowest_cell1) {
-                            mainController.setLowCell1(lowest_cell1);
-                            old_lowest_cell1 = lowest_cell1;
-                        }
-
-                        if (old_highest_cell != highest_cell) {
-                            mainController.setHighCell(highest_cell);
-                            old_highest_cell = highest_cell;
-                        }
-
-                        if (old_highest_cell1 != highest_cell1) {
-                            mainController.setHighCell1(highest_cell1);
-                            old_highest_cell1 = highest_cell1;
-                        }
-
-                        if (old_lp_voltage != lp_voltage) {
-                            mainController.setGaugeLpVoltage(lp_voltage, dLp_voltage);
-                            old_lp_voltage = lp_voltage;
-                        }
-
-                        if (old_lp_voltage1 != lp_voltage1) {
-                            mainController.setGaugeLpVoltage1(lp_voltage1, dLp_voltage1);
-                            old_lp_voltage1 = lp_voltage1;
-                        }
-
-                        if (old_lp_current != lp_current) {
-                            mainController.setGaugeLpCurrent(lp_current, dLp_current);
-                            old_lp_current = lp_current;
-                        }
-
-                        if (old_lp_current1 != lp_current1) {
-                            mainController.setGagueLpCurrent1(lp_current1, dLp_current1);
-                            old_lp_current1 = lp_current1;
-                        }
+                        mainController.setDistanceMeter(distance);
+                        mainController.setGaugeVelocity(velocity, dVelocity);
+                        mainController.setGaugeAcceleration(acceleration, dAcceleration);
+                        mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
+                        mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
+                        mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
+                        mainController.setGaugeRpmbr(rpm_br, dRpm_br);
+                        mainController.setImuIndicator(imu);
+                        mainController.setProxi_FrontIndicator(proxi_front);
+                        mainController.setProxi_RearIndicator(proxi_rear);
+                        mainController.setBrakeIndicator(em_brakes);
+                        mainController.setGaugeVoltage(hp_volt, dHp_volt);
+                        mainController.setGaugeHpCurrent(hp_current, dHp_current);
+                        mainController.setGaugeHpBattery(hp_charge, dHp_charge);
+                        mainController.setGaugeTemp(hp_temp, dHp_temp);
+                        mainController.setLowCell(lowest_cell);
+                        mainController.setHighCell(highest_cell);
+                        mainController.setGaugeVoltage1(hp_volt1, dHp_volt1);
+                        mainController.setGaugeHpCurrent1(hp_current1, dHp_current1);
+                        mainController.setGaugeHpBattery1(hp_charge1, dHp_charge1);
+                        mainController.setGaugeTemp1(hp_temp1, dHp_temp1);
+                        mainController.setLowCell1(lowest_cell1);
+                        mainController.setHighCell1(highest_cell1);
+                        mainController.setGaugeLpVoltage(lp_voltage, dLp_voltage);
+                        mainController.setGaugeLpCurrent(lp_current, dLp_current);
+                        mainController.setGaugeLpBattery(lp_charge, dLp_charge);
+                        mainController.setGaugeLpVoltage1(lp_voltage1, dLp_voltage1);
+                        mainController.setGaugeLpCurrent1(lp_current1, dLp_current1);
+                        mainController.setGaugeLpBattery1(lp_charge1, dLp_charge1);
                     }
                 }));
 
@@ -391,19 +282,21 @@ public class Server implements Runnable {
         hp_volt = 0; dHp_volt = false;      // HP Batteries
         hp_temp = 0; dHp_temp = false;
         hp_charge = 0; dHp_charge = false;
+        hp_current = 0; dHp_current = false;
+        lowest_cell = 0; dLowest_cell = false;
+        highest_cell = 0; dHighest_cell = false;
         hp_volt1 = 0; dHp_volt1 = false;
         hp_temp1 = 0; dHp_temp1 = false;
         hp_charge1 = 0; dHp_charge1 = false;
-        lp_charge = 0; dLp_charge = false;  // LP batteries
-        lp_charge1 = 0; dLp_charge1 = false;
-        lp_current = 0; dLp_current = false;
-        lp_current1 = 0; dLp_current1 = false;
-        lp_voltage = 0; dLp_voltage = false;
-        lp_voltage1 = 0; dLp_voltage1 = false;
-        lowest_cell = 0; dLowest_cell = false;
+        hp_current1 = 0; dHp_current1 = false;
         lowest_cell1 = 0; dLowest_cell1 = false;
         highest_cell1 = 0; dHighest_cell1 = false;
-        highest_cell = 0; dHighest_cell = false;
+        lp_voltage = 0; dLp_voltage = false;
+        lp_current = 0; dLp_current = false;
+        lp_charge = 0; dLp_charge = false;  // LP batteries
+        lp_voltage1 = 0; dLp_voltage1 = false;
+        lp_current1 = 0; dLp_current1 = false;
+        lp_charge1 = 0; dLp_charge1 = false;
         Arrays.fill(imu, 0);           // Sensors stuff
         Arrays.fill(proxi_front, 0);
         Arrays.fill(proxi_rear, 0);
