@@ -203,7 +203,7 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="110.0" prefWidth="390.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeHpCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="247.0" lcdFont="ELEKTRA" maxValue="1500.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="gaugeHpCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="247.0" lcdFont="ELEKTRA" maxValue="1500.0" minMeasuredValue="-1500.0" minValue="-1500.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                             <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="148.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
                                                             <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="128.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                          </children>
@@ -234,7 +234,7 @@
                                                          <children>
                                                             <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="128.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" lcdFont="ELEKTRA" maxValue="140" prefHeight="110.0" prefWidth="145.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
-                                                            <Gauge fx:id="gaugeHpCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="255.0" lcdFont="ELEKTRA" maxValue="1500.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="gaugeHpCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="255.0" lcdFont="ELEKTRA" maxValue="1500.0" minMeasuredValue="-1500.0" minValue="-1500.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -320,8 +320,8 @@
                                                                   <Font size="10.0" />
                                                                </font>
                                                             </Label>
-                                                            <Gauge fx:id="gaugeLpCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="124.0" lcdFont="ELEKTRA" maxValue="30.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="30.0" title="LP CURRENT" unit="'C" />
-                                                            <Gauge fx:id="gaugeLpCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="261.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="30.0" title=" LP CURRENT1" unit="'C" />
+                                                            <Gauge fx:id="gaugeLpCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="124.0" lcdFont="ELEKTRA" maxValue="30.0" minMeasuredValue="-30.0" minValue="-30.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="30.0" title="LP CURRENT" unit="'C" />
+                                                            <Gauge fx:id="gaugeLpCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="261.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30.0" minMeasuredValue="-30.0" minValue="-30.0" prefHeight="110.0" prefWidth="134.0" skinType="SPACE_X" threshold="30.0" title=" LP CURRENT1" unit="'C" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
