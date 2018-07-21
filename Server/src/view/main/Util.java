@@ -15,74 +15,82 @@ public class Util {
 
     static {
         // Maps command codes to data names
-        cmdHashMap.put("CMD01", "distance");
-        cmdHashMap.put("CMD02", "velocity");
-        cmdHashMap.put("CMD03", "acceleration");
-        cmdHashMap.put("CMD04", "rpm fl");
-        cmdHashMap.put("CMD05", "rpm fr");
-        cmdHashMap.put("CMD06", "rpm bl");
-        cmdHashMap.put("CMD07", "rpm br");
-        cmdHashMap.put("CMD08", "state");
-        cmdHashMap.put("CMD09", "imu");             // sensors
-        cmdHashMap.put("CMD10", "proxi front");
-        cmdHashMap.put("CMD11", "proxi rear");
-        cmdHashMap.put("CMD12", "emergency brakes");
-        cmdHashMap.put("CMD13", "hp volt");         // High power battery
-        cmdHashMap.put("CMD14", "hp current");
-        cmdHashMap.put("CMD15", "hp charge");
-        cmdHashMap.put("CMD16", "hp temp");
-        cmdHashMap.put("CMD17", "hp low cell");
-        cmdHashMap.put("CMD18", "hp high cell");
-        cmdHashMap.put("CMD19", "hp volt1");        // High power battery 1
-        cmdHashMap.put("CMD20", "hp current1");
-        cmdHashMap.put("CMD21", "hp charge1");
-        cmdHashMap.put("CMD22", "hp temp1");
-        cmdHashMap.put("CMD23", "hp low cell1");
-        cmdHashMap.put("CMD24", "hp high cell1");
-        cmdHashMap.put("CMD25", "lp voltage");      // Low power battery
-        cmdHashMap.put("CMD26", "lp current");
-        cmdHashMap.put("CMD27", "lp charge");
-        cmdHashMap.put("CMD28", "lp voltage1");     // Low power battery 1
-        cmdHashMap.put("CMD29", "lp current1");
-        cmdHashMap.put("CMD30", "lp charge1");
+        cmdHashMap.put("CMD01", "state");                     //State stuff
+        cmdHashMap.put("CMD02", "bat module status");
+        cmdHashMap.put("CMD03", "nav module status");
+        cmdHashMap.put("CMD04", "sen module status");
+        cmdHashMap.put("CMD05", "motor module status");
+        cmdHashMap.put("CMD06", "distance");                  //Nav stuff
+        cmdHashMap.put("CMD07", "velocity");
+        cmdHashMap.put("CMD08", "acceleration");
+        cmdHashMap.put("CMD09", "hp voltage");                //HP Battery stuff
+        cmdHashMap.put("CMD10", "hp current");
+        cmdHashMap.put("CMD11", "hp charge");
+        cmdHashMap.put("CMD12", "hp temp");
+        cmdHashMap.put("CMD13", "hp low cell");
+        cmdHashMap.put("CMD14", "hp high cell");
+        cmdHashMap.put("CMD15", "hp voltage1");               //HP Battery1 stuff
+        cmdHashMap.put("CMD16", "hp current1");
+        cmdHashMap.put("CMD17", "hp charge1");
+        cmdHashMap.put("CMD18", "hp temp1");
+        cmdHashMap.put("CMD19", "hp low cell1");
+        cmdHashMap.put("CMD20", "hp high cell1");
+        cmdHashMap.put("CMD21", "lp voltage");                //LP Battery stuff
+        cmdHashMap.put("CMD22", "lp current");
+        cmdHashMap.put("CMD23", "lp charge");
+        cmdHashMap.put("CMD24", "lp voltage1");
+        cmdHashMap.put("CMD25", "lp current1");
+        cmdHashMap.put("CMD26", "lp charge1");
+        cmdHashMap.put("CMD27", "rpm fl");                    //Motor stuff
+        cmdHashMap.put("CMD28", "rpm fr");
+        cmdHashMap.put("CMD29", "rpm bl");
+        cmdHashMap.put("CMD30", "rpm br");
+        cmdHashMap.put("CMD31", "imu");                       //Sensor stuff
+        cmdHashMap.put("CMD32", "embrakes");
+        cmdHashMap.put("CMD33", "proxi front");
+        cmdHashMap.put("CMD34", "proxi rear");
 
         // Map command codes to their corresponding LOWER threshold values (considered dangerous to drop below)
-        lowerThresHashMap.put("CMD13", 72);  // HP voltage
-        lowerThresHashMap.put("CMD19", 72);  // HP voltage 1
-        lowerThresHashMap.put("CMD25", 13);  // LP voltage
-        lowerThresHashMap.put("CMD28", 13);  // LP voltage 1
+        lowerThresHashMap.put("CMD09", 72);  // HP voltage
+        lowerThresHashMap.put("CMD15", 72);  // HP voltage 1
+        lowerThresHashMap.put("CMD21", 13);  // LP voltage
+        lowerThresHashMap.put("CMD24", 13);  // LP voltage 1
 
         // Map command codes to their corresponding UPPER threshold values (considered dangerous to go beyond)
-        upperThresHashMap.put("CMD01", 1250);
-        upperThresHashMap.put("CMD02", 90);
-        upperThresHashMap.put("CMD03", 20);
-        upperThresHashMap.put("CMD04", 6400);
-        upperThresHashMap.put("CMD05", 6400);
-        upperThresHashMap.put("CMD06", 6400);
-        upperThresHashMap.put("CMD07", 6400);
-//        upperThresHashMap.put("CMD08", 100); // no threshold for state
-//        upperThresHashMap.put("CMD09", 0);   // no threshold for sensors
-//        upperThresHashMap.put("CMD10", 0);
-//        upperThresHashMap.put("CMD11", 0);
-//        upperThresHashMap.put("CMD12", 0);
-        upperThresHashMap.put("CMD13", 120);    // HIGH POWER voltage
-        upperThresHashMap.put("CMD14", 1500);   // current
-        upperThresHashMap.put("CMD15", 100);    // charge
-        upperThresHashMap.put("CMD16", 70);     // temperature
-        upperThresHashMap.put("CMD17", 3600);      // low cell
-        upperThresHashMap.put("CMD18", 3600);      // high cell
-        upperThresHashMap.put("CMD19", 120);    // HIGH POWER voltage 1
-        upperThresHashMap.put("CMD20", 1500);   // current 1
-        upperThresHashMap.put("CMD21", 100);    // charge 1
-        upperThresHashMap.put("CMD22", 70);     // temperature 1
-        upperThresHashMap.put("CMD23", 3600);      // low cell 1
-        upperThresHashMap.put("CMD24", 3600);      // high cell 1
-        upperThresHashMap.put("CMD25", 30);     // LOW POWER voltage
-        upperThresHashMap.put("CMD26", 30000);     // current
-        upperThresHashMap.put("CMD27", 100);    // charge
-        upperThresHashMap.put("CMD28", 30);     // LOW POWER voltage 1
-        upperThresHashMap.put("CMD29", 30000);     // current 1
-        upperThresHashMap.put("CMD30", 100);    // charge 1
+        //upperThresHashMap.put("CMD01", 100); no threshold for state
+        //upperThresHashMap.put("CMD02", 100); no threshold for module status
+        //upperThresHashMap.put("CMD03", 100); no threshold for module status
+        //upperThresHashMap.put("CMD04", 100); no threshold for module status
+        //upperThresHashMap.put("CMD05", 100); no threshold for module status
+        upperThresHashMap.put("CMD06", 1250);
+        upperThresHashMap.put("CMD07", 90);
+        upperThresHashMap.put("CMD08", 20);
+        upperThresHashMap.put("CMD09", 120);
+        upperThresHashMap.put("CMD10", 1500);
+        upperThresHashMap.put("CMD11", 100);
+        upperThresHashMap.put("CMD12", 70);
+        upperThresHashMap.put("CMD13", 3600);
+        upperThresHashMap.put("CMD14", 3600);
+        upperThresHashMap.put("CMD15", 120);
+        upperThresHashMap.put("CMD16", 1500);
+        upperThresHashMap.put("CMD17", 100);
+        upperThresHashMap.put("CMD18", 70);
+        upperThresHashMap.put("CMD19", 3600);
+        upperThresHashMap.put("CMD20", 3600);
+        upperThresHashMap.put("CMD21", 30);
+        upperThresHashMap.put("CMD22", 30000);
+        upperThresHashMap.put("CMD23", 100);
+        upperThresHashMap.put("CMD24", 30);
+        upperThresHashMap.put("CMD25", 30000);
+        upperThresHashMap.put("CMD26", 100);
+        upperThresHashMap.put("CMD27", 6400);
+        upperThresHashMap.put("CMD28", 6400);
+        upperThresHashMap.put("CMD29", 6400);
+        upperThresHashMap.put("CMD30", 6400);
+        //upperThresHashMap.put("CMD31", 100); no threshold for sensors
+        //upperThresHashMap.put("CMD32", 100); no threshold for sensors
+        //upperThresHashMap.put("CMD33", 100); no threshold for sensors
+        //upperThresHashMap.put("CMD34", 100); no threshold for sensors
     }
 
     public static String getNameByCmdCode(String cmdString) {

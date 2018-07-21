@@ -9,9 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SubScene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Cell;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -19,9 +17,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -34,7 +30,8 @@ public class MainController {
     private static final Color safeColor = Color.WHITE;
     private static final Color dangerColor = Color.RED;
     private static final Paint indicatorOnColor = Paint.valueOf("#199a30");
-    private static final Paint inidcatorOffColor = Paint.valueOf("#bd200c");
+    private static final Paint indicatorOffColor = Paint.valueOf("#bd200c");
+    private static final Paint indicatorInitColor = Paint.valueOf("#798dad");
     private static HashMap<Boolean, Color> colorHashMap = new HashMap<Boolean, Color>();
     private final Server server;
     private Thread serverThread;
@@ -46,7 +43,8 @@ public class MainController {
 
     @FXML
     private Lcd clock;
-
+    // Module stuff
+    @FXML private Circle batIndicator, navIndicator, senIndicator, mtrIndicator;
     @FXML private Button btnStop, btnLaunch, btnRestart;
     @FXML private Button btnServicePropulsionStop, btnServicePropulsionGo;
     // Navigation stuff
@@ -86,7 +84,8 @@ public class MainController {
     @FXML private Label distanceLabel;
     @FXML private Button trackLengthBtn;
 
-    private int old_distance, old_velocity, old_acceleration,
+    private int old_batModStatus, old_navModStatus, old_senModStatus, old_mtrModStatus,
+            old_distance, old_velocity, old_acceleration,
             old_rpm_fl, old_rpm_fr, old_rpm_br, old_rpm_bl,
             old_hp_volt, old_hp_temp, old_hp_charge, old_hp_volt1,
             old_hp_temp1, old_hp_charge1, old_lp_charge, old_lp_charge1,
@@ -241,12 +240,57 @@ public class MainController {
     }
 
     public void setTelemetryIndicatorOff(){
-        telemetryIndicator.setFill(inidcatorOffColor);
+        telemetryIndicator.setFill(indicatorOffColor);
     }
 
     // ----------------------------------------------------------------------------------
     // Comms data stuff
     // ----------------------------------------------------------------------------------
+
+    public void setBatIndicator(int bat) {
+        if (old_batModStatus == bat) return;
+        switch (bat) {
+            case 0: batIndicator.setFill(indicatorInitColor); break;
+            case 1: batIndicator.setFill(indicatorOnColor); break;
+            case 2: batIndicator.setFill(dangerColor); break;
+            default: break;
+        }
+        old_batModStatus = bat;
+    }
+
+    public void setNavIndicator(int nav) {
+        if (old_navModStatus == nav) return;
+        switch (nav) {
+            case 0: navIndicator.setFill(indicatorInitColor); break;
+            case 1: navIndicator.setFill(indicatorOnColor); break;
+            case 2: navIndicator.setFill(dangerColor); break;
+            default: break;
+        }
+        old_navModStatus = nav;
+    }
+
+    public void setSenIndicator(int sen) {
+        if (old_senModStatus == sen) return;
+        switch (sen) {
+            case 0: senIndicator.setFill(indicatorInitColor); break;
+            case 1: senIndicator.setFill(indicatorOnColor); break;
+            case 2: senIndicator.setFill(dangerColor); break;
+            default: break;
+        }
+        old_senModStatus = sen;
+    }
+
+    public void setMtrIndicator(int mtr) {
+        if (old_mtrModStatus == mtr) return;
+        switch (mtr) {
+            case 0: mtrIndicator.setFill(indicatorInitColor); break;
+            case 1: mtrIndicator.setFill(indicatorOnColor); break;
+            case 2: mtrIndicator.setFill(dangerColor); break;
+            default: break;
+        }
+        old_mtrModStatus = mtr;
+    }
+
     public void setDistanceMeter(int distance) {
         if (old_distance == distance) return;
         distanceMeter.setValue(distance);
@@ -313,22 +357,22 @@ public class MainController {
         if (imu[0] == 1) {
             imuIndicator.setFill(indicatorOnColor);
         } else {
-            imuIndicator.setFill(inidcatorOffColor);
+            imuIndicator.setFill(indicatorOffColor);
         }
         if (imu[1] == 1) {
             imuIndicator1.setFill(indicatorOnColor);
         } else {
-            imuIndicator1.setFill(inidcatorOffColor);
+            imuIndicator1.setFill(indicatorOffColor);
         }
         if (imu[2] == 1) {
             imuIndicator2.setFill(indicatorOnColor);
         } else {
-            imuIndicator2.setFill(inidcatorOffColor);
+            imuIndicator2.setFill(indicatorOffColor);
         }
         if (imu[3] == 1) {
             imuIndicator3.setFill(indicatorOnColor);
         } else {
-            imuIndicator3.setFill(inidcatorOffColor);
+            imuIndicator3.setFill(indicatorOffColor);
         }
 //        old_imu = imu;
     }
@@ -338,42 +382,42 @@ public class MainController {
         if (proxi_front[0] == 1) {
             fproxiIndicator.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator.setFill(inidcatorOffColor);
+            fproxiIndicator.setFill(indicatorOffColor);
         }
         if (proxi_front[1] == 1) {
             fproxiIndicator1.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator1.setFill(inidcatorOffColor);
+            fproxiIndicator1.setFill(indicatorOffColor);
         }
         if (proxi_front[2] == 1) {
             fproxiIndicator2.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator2.setFill(inidcatorOffColor);
+            fproxiIndicator2.setFill(indicatorOffColor);
         }
         if (proxi_front[3] == 1) {
             fproxiIndicator3.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator3.setFill(inidcatorOffColor);
+            fproxiIndicator3.setFill(indicatorOffColor);
         }
         if (proxi_front[4] == 1) {
             fproxiIndicator4.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator4.setFill(inidcatorOffColor);
+            fproxiIndicator4.setFill(indicatorOffColor);
         }
         if (proxi_front[5] == 1) {
             fproxiIndicator5.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator5.setFill(inidcatorOffColor);
+            fproxiIndicator5.setFill(indicatorOffColor);
         }
         if (proxi_front[6] == 1) {
             fproxiIndicator6.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator6.setFill(inidcatorOffColor);
+            fproxiIndicator6.setFill(indicatorOffColor);
         }
         if (proxi_front[7] == 1) {
             fproxiIndicator7.setFill(indicatorOnColor);
         } else {
-            fproxiIndicator7.setFill(inidcatorOffColor);
+            fproxiIndicator7.setFill(indicatorOffColor);
         }
 //        old_proxi_front = proxi_front;
     }
@@ -383,42 +427,42 @@ public class MainController {
         if (proxi_rear[0] == 1) {
             rproxiIndicator.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator.setFill(inidcatorOffColor);
+            rproxiIndicator.setFill(indicatorOffColor);
         }
         if (proxi_rear[1] == 1) {
             rproxiIndicator1.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator1.setFill(inidcatorOffColor);
+            rproxiIndicator1.setFill(indicatorOffColor);
         }
         if (proxi_rear[2] == 1) {
             rproxiIndicator2.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator2.setFill(inidcatorOffColor);
+            rproxiIndicator2.setFill(indicatorOffColor);
         }
         if (proxi_rear[3] == 1) {
             rproxiIndicator3.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator3.setFill(inidcatorOffColor);
+            rproxiIndicator3.setFill(indicatorOffColor);
         }
         if (proxi_rear[4] == 1) {
             rproxiIndicator4.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator4.setFill(inidcatorOffColor);
+            rproxiIndicator4.setFill(indicatorOffColor);
         }
         if (proxi_rear[5] == 1) {
             rproxiIndicator5.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator5.setFill(inidcatorOffColor);
+            rproxiIndicator5.setFill(indicatorOffColor);
         }
         if (proxi_rear[6] == 1) {
             rproxiIndicator6.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator6.setFill(inidcatorOffColor);
+            rproxiIndicator6.setFill(indicatorOffColor);
         }
         if (proxi_rear[7] == 1) {
             rproxiIndicator7.setFill(indicatorOnColor);
         } else {
-            rproxiIndicator7.setFill(inidcatorOffColor);
+            rproxiIndicator7.setFill(indicatorOffColor);
         }
 //        old_proxi_rear = proxi_rear;
     }
@@ -433,7 +477,7 @@ public class MainController {
                 }
             });
         } else {
-            frontBrakeIndicator.setFill(inidcatorOffColor);
+            frontBrakeIndicator.setFill(indicatorOffColor);
         }
         if (em_brakes[1] == 1) {
             rearBrakeIndicator.setFill(indicatorOnColor);
@@ -443,7 +487,7 @@ public class MainController {
                 }
             });
         } else {
-            rearBrakeIndicator.setFill(inidcatorOffColor);
+            rearBrakeIndicator.setFill(indicatorOffColor);
         }
 //        old_em_brakes = em_brakes;
     }

@@ -24,10 +24,10 @@
 <StackPane prefHeight="802.0" prefWidth="1358.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.main.MainController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="802.0" prefWidth="1358.0">
-          <stylesheets>
-              <URL value="@/view/css/stylesheet.css" />
-          </stylesheets>
-          <left>
+         <stylesheets>
+            <URL value="@/view/css/stylesheet.css" />
+         </stylesheets>
+         <left>
             <AnchorPane prefHeight="802.0" prefWidth="1358.0">
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="86.0" prefWidth="1358.0" style="-fx-background-color: #2A2E37;">
@@ -67,12 +67,12 @@
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="batteryPane" minWidth="-Infinity" prefHeight="76.0" prefWidth="228.0">
-                            <children>
+                           <children>
                               <HBox alignment="CENTER" layoutX="42.0" prefHeight="76.0" prefWidth="238.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="42.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="50.0">
                                        <children>
-                                            <Gauge fx:id="gaugeLpBattery" barColor="#199a30" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" />
+                                          <Gauge fx:id="gaugeLpBattery" barColor="#199a30" maxValue="10000" orientation="VERTICAL" prefHeight="27.0" prefWidth="20.0" skinType="BATTERY" />
                                           <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP">
                                              <font>
                                                 <Font size="10.0" />
@@ -124,11 +124,11 @@
                                     </VBox>
                                  </children>
                               </HBox>
-                            </children>
+                           </children>
                            <HBox.margin>
                               <Insets top="10.0" />
                            </HBox.margin>
-                         </AnchorPane>
+                        </AnchorPane>
                         <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="156.0">
                            <children>
                               <Label fx:id="stateLabel" alignment="CENTER" layoutX="-3.0" layoutY="32.0" prefHeight="22.0" prefWidth="160.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
@@ -148,15 +148,15 @@
                   <JFXTabPane layoutY="85.0" prefHeight="683.0" prefWidth="1330.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
                      <tabs>
                         <Tab text="DASHBOARD">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="-Infinity" prefHeight="180.0" prefWidth="1555.0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="-Infinity" prefHeight="180.0" prefWidth="1555.0">
                                  <children>
-                                      <VBox alignment="CENTER_LEFT" layoutX="-2.0" prefHeight="396.0" prefWidth="1555.0" spacing="4.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
-                                          <children>
+                                    <VBox alignment="CENTER_LEFT" layoutX="-2.0" prefHeight="396.0" prefWidth="1555.0" spacing="4.0" style="-fx-background-color: #2A2E37;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
+                                       <children>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
                                                 <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
-                                                    <children>
+                                                   <children>
                                                       <Line endX="20.0" startX="-240.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="POD">
                                                          <font>
@@ -171,13 +171,13 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="263.0">
                                                          <children>
-                                                              <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="146.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
-                                                              <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
+                                                            <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="146.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
+                                                            <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
                                                          </children>
                                                       </AnchorPane>
-      
-                                                    </children>
-                                                    <opaqueInsets>
+
+                                                   </children>
+                                                   <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
                                                    <HBox.margin>
@@ -235,6 +235,40 @@
                                                             <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="143.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
                                                             <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
                                                             <Gauge fx:id="hpGaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="253.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout1113" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-200.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MODULES">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="222.0">
+                                                         <children>
+                                                            <Circle fx:id="mtrIndicator" fill="#798dad" layoutX="129.0" layoutY="72.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="senIndicator" fill="#798dad" layoutX="55.0" layoutY="72.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="navIndicator" fill="#798dad" layoutX="129.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="batIndicator" fill="#798dad" layoutX="55.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label layoutX="83.0" layoutY="14.0" text="BAT" textFill="WHITE" />
+                                                            <Label layoutX="83.0" layoutY="63.0" text="SEN" textFill="WHITE" />
+                                                            <Label layoutX="155.0" layoutY="14.0" text="NAV" textFill="WHITE" />
+                                                            <Label layoutX="155.0" layoutY="63.0" text="MTR" textFill="WHITE" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -624,7 +658,7 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                    <Button fx:id="btnLaunch" disable="true" maxWidth="120.0" mnemonicParsing="false" text="LAUNCH">
+                                                <Button fx:id="btnLaunch" disable="true" maxWidth="120.0" mnemonicParsing="false" text="LAUNCH">
                                                    <HBox.margin>
                                                       <Insets right="60.0" />
                                                    </HBox.margin>
@@ -639,15 +673,15 @@
                                                 <Insets bottom="20.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          </children>
-                                      </VBox>
+                                       </children>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
-                          </content>
+                           </content>
                         </Tab>
                         <Tab text="TEST">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #2A2E37;">
                                  <children>
                                     <VBox prefHeight="529.6" prefWidth="1242.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
@@ -660,7 +694,7 @@
                                                 </Button>
                                              </children>
                                           </HBox>
-                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
                                                 <Label text="Enter test track length:" textFill="WHITE">
                                                    <font>
@@ -674,7 +708,7 @@
                                                    </HBox.margin>
                                                 </Button>
                                              </children>
-                                           </HBox>
+                                          </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                              <children>
                                                 <Label fx:id="warningLabel" opacity="0.0" text="NOT A TRACK LENGTH" textFill="#ff0808">
@@ -687,15 +721,15 @@
                                        </children>
                                     </VBox>
                                  </children></AnchorPane>
-                          </content>
+                           </content>
                         </Tab>
                      </tabs>
                   </JFXTabPane>
                </children>
             </AnchorPane>
-          </left>
-          <right>
-    </right>
+         </left>
+         <right>
+         </right>
       </BorderPane>
    </children>
 </StackPane>
