@@ -546,7 +546,6 @@ public class Server implements Runnable {
                     break;
                 case "CMD31":
                     imuReceived = parseData(cmdString, readingString);
-                    System.out.println("imu received " + imuReceived);
                     if (imuReceived != 0) {
                         imu[0] = Integer.parseInt(Integer.toString(imuReceived).substring(0, 1));
                         imu[1] = Integer.parseInt(Integer.toString(imuReceived).substring(1, 2));
