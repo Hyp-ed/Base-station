@@ -245,45 +245,11 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox fx:id="vgaugeLayout1113" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
-                                                   <children>
-                                                      <Line endX="20.0" startX="-200.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MODULES">
-                                                         <font>
-                                                            <Font size="15.0" />
-                                                         </font>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                         <padding>
-                                                            <Insets bottom="15.0" />
-                                                         </padding>
-                                                      </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="222.0">
-                                                         <children>
-                                                            <Circle fx:id="mtrIndicator" fill="#798dad" layoutX="129.0" layoutY="72.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="senIndicator" fill="#798dad" layoutX="55.0" layoutY="72.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="navIndicator" fill="#798dad" layoutX="129.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="batIndicator" fill="#798dad" layoutX="55.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Label layoutX="83.0" layoutY="14.0" text="BAT" textFill="WHITE" />
-                                                            <Label layoutX="83.0" layoutY="63.0" text="SEN" textFill="WHITE" />
-                                                            <Label layoutX="155.0" layoutY="14.0" text="NAV" textFill="WHITE" />
-                                                            <Label layoutX="155.0" layoutY="63.0" text="MTR" textFill="WHITE" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
-                                                   <padding>
-                                                      <Insets right="20.0" />
-                                                   </padding>
-                                                </VBox>
                                              </children>
                                              <VBox.margin>
                                                 <Insets top="40.0" />
                                              </VBox.margin></HBox>
-                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="100.0" prefWidth="1555.0">
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="100.0" prefWidth="1358.0">
                                              <children>
                                                 <VBox fx:id="vgaugeLayout2" prefHeight="139.0" prefWidth="490.0">
                                                    <children>
@@ -315,54 +281,6 @@
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
-                                                   <padding>
-                                                      <Insets right="20.0" />
-                                                   </padding>
-                                                </VBox>
-                                                <VBox fx:id="vgaugeLayout3" layoutX="641.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
-                                                   <children>
-                                                      <Line endX="20.0" startX="-160.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="EMERGENCY BRAKES">
-                                                         <font>
-                                                            <Font size="15.0" />
-                                                         </font>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                         <padding>
-                                                            <Insets bottom="15.0" />
-                                                         </padding>
-                                                      </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="184.0">
-                                                         <children>
-                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="62.0" layoutY="43.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="141.0" layoutY="44.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
-                                                            <Label fx:id="frontBrakeLabel" layoutX="36.0" layoutY="61.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
-                                                               <font>
-                                                                  <Font size="10.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="rearBrakeLabel" layoutX="115.0" layoutY="62.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
-                                                               <font>
-                                                                  <Font size="10.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="51.0" layoutY="72.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
-                                                               <font>
-                                                                  <Font size="10.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label layoutX="126.0" layoutY="74.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
-                                                               <font>
-                                                                  <Font size="10.0" />
-                                                               </font>
-                                                            </Label>
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
                                                    <padding>
                                                       <Insets right="20.0" />
                                                    </padding>
@@ -458,10 +376,10 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox fx:id="vgaugeLayout11111" minWidth="-Infinity" prefHeight="119.0" prefWidth="265.0">
+                                                <VBox fx:id="vgaugeLayout1113" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-220.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR PROXI">
+                                                      <Line endX="20.0" startX="-200.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MODULES">
                                                          <font>
                                                             <Font size="15.0" />
                                                          </font>
@@ -472,111 +390,18 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="42.0" prefWidth="265.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="222.0">
                                                          <children>
-                                                            <Circle fx:id="rproxiIndicator" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="rproxiIndicator1" fill="#bd200c" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="rproxiIndicator2" fill="#bd200c" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="rproxiIndicator3" fill="#bd200c" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="mtrIndicator" fill="#798dad" layoutX="129.0" layoutY="72.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="senIndicator" fill="#798dad" layoutX="55.0" layoutY="72.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="navIndicator" fill="#798dad" layoutX="129.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="batIndicator" fill="#798dad" layoutX="55.0" layoutY="23.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label layoutX="83.0" layoutY="14.0" text="BAT" textFill="WHITE" />
+                                                            <Label layoutX="83.0" layoutY="63.0" text="SEN" textFill="WHITE" />
+                                                            <Label layoutX="155.0" layoutY="14.0" text="NAV" textFill="WHITE" />
+                                                            <Label layoutX="155.0" layoutY="63.0" text="MTR" textFill="WHITE" />
                                                          </children>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="271.0">
-                                                         <children>
-                                                            <Circle fx:id="rproxiIndicator4" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="rproxiIndicator5" fill="#bd200c" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="rproxiIndicator6" fill="#bd200c" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="rproxiIndicator7" fill="#bd200c" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0" />
-                                                         </children>
-                                                      </HBox>
-                                                   </children>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
-                                                   <padding>
-                                                      <Insets right="20.0" />
-                                                   </padding>
-                                                </VBox>
-                                                <VBox fx:id="vgaugeLayout1111" minWidth="-Infinity" prefHeight="119.0" prefWidth="265.0">
-                                                   <children>
-                                                      <Line endX="20.0" startX="-220.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
-                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT PROXI">
-                                                         <font>
-                                                            <Font size="15.0" />
-                                                         </font>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                         <padding>
-                                                            <Insets bottom="15.0" />
-                                                         </padding>
-                                                      </Label>
-                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="42.0" prefWidth="270.0">
-                                                         <children>
-                                                            <Circle fx:id="fproxiIndicator" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="fproxiIndicator1" fill="#bd200c" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="fproxiIndicator2" fill="#bd200c" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="fproxiIndicator3" fill="#bd200c" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0" />
-                                                         </children>
-                                                      </HBox>
-                                                      <HBox alignment="CENTER" maxWidth="-Infinity" prefHeight="45.0" prefWidth="269.0">
-                                                         <children>
-                                                            <Circle fx:id="fproxiIndicator4" fill="#bd200c" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="fproxiIndicator5" fill="#bd200c" layoutX="26.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="fproxiIndicator6" fill="#bd200c" layoutX="58.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0">
-                                                               <HBox.margin>
-                                                                  <Insets right="20.0" />
-                                                               </HBox.margin>
-                                                            </Circle>
-                                                            <Circle fx:id="fproxiIndicator7" fill="#bd200c" layoutX="90.0" layoutY="26.0" radius="16.0" stroke="#ffff9100" strokeType="INSIDE" strokeWidth="3.0" />
-                                                         </children>
-                                                      </HBox>
+                                                      </AnchorPane>
                                                    </children>
                                                    <opaqueInsets>
                                                       <Insets />
@@ -615,9 +440,57 @@
                                                       <Insets right="20.0" />
                                                    </padding>
                                                 </VBox>
-                                                <VBox fx:id="vgaugeLayout1112" layoutX="1064.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
+                                                <VBox fx:id="vgaugeLayout3" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
                                                       <Line endX="20.0" startX="-160.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="EMERGENCY BRAKES">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="15.0" />
+                                                         </padding>
+                                                      </Label>
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="184.0">
+                                                         <children>
+                                                            <Circle fx:id="frontBrakeIndicator" fill="#bd200c" layoutX="62.0" layoutY="43.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Circle fx:id="rearBrakeIndicator" fill="#bd200c" layoutX="141.0" layoutY="44.0" radius="16.0" stroke="#ffff8f00" strokeType="INSIDE" strokeWidth="3.0" />
+                                                            <Label fx:id="frontBrakeLabel" layoutX="36.0" layoutY="61.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                               <font>
+                                                                  <Font size="10.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label fx:id="rearBrakeLabel" layoutX="115.0" layoutY="62.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="RETRACTED">
+                                                               <font>
+                                                                  <Font size="10.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="51.0" layoutY="72.0" prefHeight="15.0" prefWidth="37.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="FRONT" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="10.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Label layoutX="126.0" layoutY="74.0" prefHeight="15.0" prefWidth="39.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="REAR" textAlignment="CENTER">
+                                                               <font>
+                                                                  <Font size="10.0" />
+                                                               </font>
+                                                            </Label>
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </children>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets right="20.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <VBox fx:id="vgaugeLayout1112" layoutX="1064.0" layoutY="10.0" maxWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Line endX="20.0" startX="-240.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="BORDER CELLS">
                                                          <font>
                                                             <Font size="15.0" />

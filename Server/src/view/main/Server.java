@@ -32,15 +32,16 @@ public class Server implements Runnable {
             distance, velocity, acceleration,
             rpm_fl, rpm_fr, rpm_br, rpm_bl,
             hp_volt, hp_temp, hp_charge, hp_volt1, hp_temp1, hp_charge1, lp_charge, lp_charge1,
-            imuReceived, proxi_frontReceived, proxi_rearReceived, em_brakesReceived, regen, regen1,
+            imuReceived, em_brakesReceived, regen, regen1,
             hp_current, hp_current1, lowest_cell, highest_cell, lowest_cell1, highest_cell1,
             lp_voltage, lp_voltage1, lp_current, lp_current1;
+            //    proxi_frontReceived, proxi_rearReceived,
     private int state = 0;
     private int min_charge = 100;
     private int min_charge1 = 100;
     private int[] imu = new int[4];
-    private int[] proxi_front = new int[8];
-    private int[] proxi_rear = new int[8];
+//    private int[] proxi_front = new int[8];
+//    private int[] proxi_rear = new int[8];
     private int[] em_brakes = new int[2];
     // Danger flags, true if value exceeds threshold
     private boolean dVelocity, dAcceleration,
@@ -243,8 +244,8 @@ public class Server implements Runnable {
                         mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
                         mainController.setGaugeRpmbr(rpm_br, dRpm_br);
                         mainController.setImuIndicator(imu);
-                        mainController.setProxi_FrontIndicator(proxi_front);
-                        mainController.setProxi_RearIndicator(proxi_rear);
+//                        mainController.setProxi_FrontIndicator(proxi_front);
+//                        mainController.setProxi_RearIndicator(proxi_rear);
                         mainController.setBrakeIndicator(em_brakes);
                         mainController.setGaugeVoltage(hp_volt, dHp_volt);
                         mainController.setGaugeHpCurrent(hp_current, dHp_current);
@@ -304,8 +305,8 @@ public class Server implements Runnable {
         lp_current1 = 0; dLp_current1 = false;
         lp_charge1 = 0; dLp_charge1 = false;
         Arrays.fill(imu, 0);           // Sensors stuff
-        Arrays.fill(proxi_front, 0);
-        Arrays.fill(proxi_rear, 0);
+//        Arrays.fill(proxi_front, 0);
+//        Arrays.fill(proxi_rear, 0);
         Arrays.fill(em_brakes, 0);
 
         // GUI stuff
@@ -424,7 +425,6 @@ public class Server implements Runnable {
             data = scanner.nextLine();
             cmdString = data.substring(0, 5);
             readingString = data.substring(5);
-            System.out.println("data: "+data+" cmdString: "+cmdString+" readingString: "+readingString);
 
             switch (cmdString) {
                 case "CMD01":
@@ -561,32 +561,32 @@ public class Server implements Runnable {
                         em_brakes[1] = Integer.parseInt(Integer.toString(em_brakesReceived).substring(1));
                     }
                     break;
-                case "CMD33":
-                    proxi_frontReceived = parseData(cmdString, readingString);
-                    if (proxi_frontReceived != 0) {
-                        proxi_front[0] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(0, 1));
-                        proxi_front[1] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(1, 2));
-                        proxi_front[2] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(2, 3));
-                        proxi_front[3] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(3, 4));
-                        proxi_front[4] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(4, 5));
-                        proxi_front[5] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(5, 6));
-                        proxi_front[6] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(6, 7));
-                        proxi_front[7] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
-                    }
-                    break;
-                case "CMD34":
-                    proxi_rearReceived = parseData(cmdString, readingString);
-                    if (proxi_rearReceived != 0) {
-                        proxi_rear[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
-                        proxi_rear[1] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(1, 2));
-                        proxi_rear[2] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(2, 3));
-                        proxi_rear[3] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(3, 4));
-                        proxi_rear[4] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(4, 5));
-                        proxi_rear[5] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(5, 6));
-                        proxi_rear[6] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(6, 7));
-                        proxi_rear[7] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
-                    }
-                    break;
+//                case "CMD33":
+//                    proxi_frontReceived = parseData(cmdString, readingString);
+//                    if (proxi_frontReceived != 0) {
+//                        proxi_front[0] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(0, 1));
+//                        proxi_front[1] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(1, 2));
+//                        proxi_front[2] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(2, 3));
+//                        proxi_front[3] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(3, 4));
+//                        proxi_front[4] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(4, 5));
+//                        proxi_front[5] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(5, 6));
+//                        proxi_front[6] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(6, 7));
+//                        proxi_front[7] = Integer.parseInt(Integer.toString(proxi_frontReceived).substring(7));
+//                    }
+//                    break;
+//                case "CMD34":
+//                    proxi_rearReceived = parseData(cmdString, readingString);
+//                    if (proxi_rearReceived != 0) {
+//                        proxi_rear[0] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(0, 1));
+//                        proxi_rear[1] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(1, 2));
+//                        proxi_rear[2] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(2, 3));
+//                        proxi_rear[3] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(3, 4));
+//                        proxi_rear[4] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(4, 5));
+//                        proxi_rear[5] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(5, 6));
+//                        proxi_rear[6] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(6, 7));
+//                        proxi_rear[7] = Integer.parseInt(Integer.toString(proxi_rearReceived).substring(7));
+//                    }
+//                    break;
                 default:
                     LOGGER.log(Level.WARNING, "Should never reach here. Data: " + data);
                     break;

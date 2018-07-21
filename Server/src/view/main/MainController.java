@@ -56,10 +56,10 @@ public class MainController {
     @FXML private Label stateLabel;
     // Sensor stuff
     @FXML private Circle imuIndicator, imuIndicator1, imuIndicator2, imuIndicator3;
-    @FXML private Circle fproxiIndicator, fproxiIndicator1, fproxiIndicator2, fproxiIndicator3,
-            fproxiIndicator4, fproxiIndicator5, fproxiIndicator6, fproxiIndicator7;
-    @FXML private Circle rproxiIndicator, rproxiIndicator1, rproxiIndicator2, rproxiIndicator3,
-            rproxiIndicator4, rproxiIndicator5, rproxiIndicator6, rproxiIndicator7;
+//    @FXML private Circle fproxiIndicator, fproxiIndicator1, fproxiIndicator2, fproxiIndicator3,
+//            fproxiIndicator4, fproxiIndicator5, fproxiIndicator6, fproxiIndicator7;
+//    @FXML private Circle rproxiIndicator, rproxiIndicator1, rproxiIndicator2, rproxiIndicator3,
+//            rproxiIndicator4, rproxiIndicator5, rproxiIndicator6, rproxiIndicator7;
     @FXML private Circle frontBrakeIndicator, rearBrakeIndicator;
     @FXML private Label frontBrakeLabel, rearBrakeLabel;
     // HP battery
@@ -92,8 +92,8 @@ public class MainController {
             old_hp_current, old_hp_current1, old_lowest_cell, old_highest_cell, old_lowest_cell1, old_highest_cell1,
             old_lp_voltage, old_lp_voltage1, old_lp_current, old_lp_current1;
     private int[] old_imu = new int[4];
-    private int[] old_proxi_front = new int[8];
-    private int[] old_proxi_rear = new int[8];
+//    private int[] old_proxi_front = new int[8];
+//    private int[] old_proxi_rear = new int[8];
     private int[] old_em_brakes = new int[2];
 
     @FXML
@@ -377,6 +377,7 @@ public class MainController {
 //        old_imu = imu;
     }
 
+    /*
     public void setProxi_FrontIndicator(int[] proxi_front) {
 //        if (Arrays.equals(old_proxi_front, proxi_front)) return;
         if (proxi_front[0] == 1) {
@@ -465,7 +466,7 @@ public class MainController {
             rproxiIndicator7.setFill(indicatorOffColor);
         }
 //        old_proxi_rear = proxi_rear;
-    }
+    }*/
 
     public void setBrakeIndicator(int[] em_brakes) {
 //        if (Arrays.equals(old_em_brakes, em_brakes)) return;

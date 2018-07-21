@@ -59,8 +59,8 @@ public class UdpSpacexTest {
                     dummydata.println("CMD30"+Integer.toString(x)); // RPM BR
                     dummydata.println("CMD311111"); // imu
                     dummydata.println("CMD321111"); // em brakes
-                    dummydata.println("CMD3311111111"); // proxi front
-                    dummydata.println("CMD3411111111"); // proxi rear
+//                    dummydata.println("CMD3311111111"); // proxi front
+//                    dummydata.println("CMD3411111111"); // proxi rear
                 }
             }
         }
