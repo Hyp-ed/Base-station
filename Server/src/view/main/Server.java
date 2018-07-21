@@ -411,6 +411,7 @@ public class Server implements Runnable {
         // actually reads data
         readDataFromSocket();
 
+
         isCommunicating = false;
         isPodRunning = false;
         mainController.setTelemetryIndicatorOff();
@@ -423,6 +424,7 @@ public class Server implements Runnable {
             data = scanner.nextLine();
             cmdString = data.substring(0, 5);
             readingString = data.substring(5);
+            System.out.println("data: "+data+" cmdString: "+cmdString+" readingString: "+readingString);
 
             switch (cmdString) {
                 case "CMD01":
@@ -541,8 +543,10 @@ public class Server implements Runnable {
                 case "CMD30":
                     rpm_br = parseData(cmdString, readingString);
                     dRpm_br = isDanger(cmdString, rpm_br);
+                    break;
                 case "CMD31":
                     imuReceived = parseData(cmdString, readingString);
+                    System.out.println("imu received " + imuReceived);
                     if (imuReceived != 0) {
                         imu[0] = Integer.parseInt(Integer.toString(imuReceived).substring(0, 1));
                         imu[1] = Integer.parseInt(Integer.toString(imuReceived).substring(1, 2));
