@@ -519,13 +519,13 @@ public class MainController {
 
     public void setLowCell(int hpLowCell){
         if (old_lowest_cell == hpLowCell) return;
-        lowestVoltageGauge.setValue(hpLowCell / 1000.0);
+        lowestVoltageGauge.setValue(hpLowCell / 100);
         old_lowest_cell = hpLowCell;
     }
 
     public void setHighCell(int hpHighCell){
         if (old_highest_cell == hpHighCell) return;
-        highestVoltageGauge.setValue(hpHighCell / 1000.0);
+        highestVoltageGauge.setValue(hpHighCell / 100);
         old_highest_cell = hpHighCell;
     }
 
@@ -559,13 +559,13 @@ public class MainController {
 
     public void setLowCell1(int lowCell1){
         if (old_lowest_cell1 == lowCell1) return;
-        lowestVoltageGauge1.setValue(lowCell1 / 1000.0);
+        lowestVoltageGauge1.setValue(lowCell1 / 100);
         old_lowest_cell1 = lowCell1;
     }
 
     public void setHighCell1(int highCell1){
         if (old_highest_cell1 == highCell1) return;
-        highestVoltageGauge1.setValue(highCell1 / 1000.0);
+        highestVoltageGauge1.setValue(highCell1 / 100);
         old_highest_cell1 = highCell1;
     }
 
