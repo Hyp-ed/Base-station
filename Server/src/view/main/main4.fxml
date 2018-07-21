@@ -157,7 +157,7 @@
                                              <children>
                                                 <VBox fx:id="vgaugeLayout" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-240.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="30.0" startX="-260.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="POD">
                                                          <font>
                                                             <Font size="15.0" />
@@ -171,8 +171,8 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="263.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="146.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
-                                                            <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
+                                                            <Gauge fx:id="gaugeAccel" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="146.0" lcdFont="ELEKTRA" maxValue="25" minValue="-25" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="20" title="ACCELERATION" unit="m/s^2" />
+                                                            <Gauge fx:id="gaugeVelocity" alert="true" alertMessage="Almost full" areaTextVisible="true" barColor="#FFFF8D" decimals="0" layoutX="22.0" lcdFont="ELEKTRA" maxValue="100" prefHeight="100.0" prefWidth="131.0" skinType="SPACE_X" threshold="90" thresholdVisible="true" title="VELOCITY" unit="m/s" />
                                                          </children>
                                                       </AnchorPane>
 
@@ -189,7 +189,7 @@
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout1" layoutX="270.0" layoutY="10.0" prefHeight="138.0" prefWidth="290.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-330.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-382.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY 1">
                                                          <font>
                                                             <Font size="14.0" />
@@ -203,9 +203,9 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="366.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="148.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
-                                                            <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="26.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="121.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
-                                                            <Gauge fx:id="hpGaugeCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="258.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="gaugeTemp" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="148.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
+                                                            <Gauge fx:id="gaugeVoltage" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="26.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="100.0" prefWidth="135.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="hpGaugeCurrent" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="258.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -218,7 +218,7 @@
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout11" layoutX="632.0" layoutY="10.0" prefHeight="100.0" prefWidth="133.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-330.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-382.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="HP BATTERY 2">
                                                          <font>
                                                             <Font size="15.0" />
@@ -232,9 +232,9 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="364.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="143.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
-                                                            <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
-                                                            <Gauge fx:id="hpGaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="253.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
+                                                            <Gauge fx:id="gaugeTemp1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="143.0" layoutY="-5.0" lcdFont="ELEKTRA" maxValue="90" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="70" title="TEMPERATURE" unit="'C" />
+                                                            <Gauge fx:id="gaugeVoltage1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="-5.0" lcdFont="ELEKTRA" maxValue="140" prefHeight="100.0" prefWidth="131.0" skinType="SPACE_X" threshold="120" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="hpGaugeCurrent1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="253.0" layoutY="-5.0" lcdFont="ELEKTRA" maxValue="1600.0" minValue="-1600.0" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="1500.0" title="CURRENT" unit="A" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -251,11 +251,11 @@
                                              </VBox.margin></HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="100.0" prefWidth="1358.0">
                                              <children>
-                                                <VBox fx:id="vgaugeLayout2" prefHeight="139.0" prefWidth="490.0">
+                                                <VBox fx:id="vgaugeLayout2" prefHeight="138.0" prefWidth="538.0">
                                                    <children>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="483.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="501.0">
                                                          <children>
-                                                            <Line startX="480.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                            <Line startX="510.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                             <Label layoutY="1.600000023841858" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MOTORS">
                                                                <font>
                                                                   <Font size="15.0" />
@@ -265,14 +265,20 @@
                                                                </padding>
                                                             </Label>
                                                          </children>
+                                                         <VBox.margin>
+                                                            <Insets right="20.0" />
+                                                         </VBox.margin>
                                                       </AnchorPane>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="481.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="504.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="147.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="110.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
-                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="33.0" layoutY="10.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="114.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="257.0" layoutY="6.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="367.0" layoutY="6.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="90.0" prefWidth="108.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="141.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="122.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="14.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="127.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="263.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="385.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="119.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
                                                          </children>
+                                                         <VBox.margin>
+                                                            <Insets right="20.0" />
+                                                         </VBox.margin>
                                                       </AnchorPane>
                                                    </children>
                                                    <opaqueInsets>
@@ -281,13 +287,10 @@
                                                    <HBox.margin>
                                                       <Insets />
                                                    </HBox.margin>
-                                                   <padding>
-                                                      <Insets right="20.0" />
-                                                   </padding>
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout112" prefHeight="139.0" prefWidth="299.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-250.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-270.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY 1">
                                                          <font>
                                                             <Font size="15.0" />
@@ -301,8 +304,8 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
                                                          <children>
-                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30000.0" minValue="-30000.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30000.0" title="CURRENT" unit="mA" />
-                                                            <Gauge fx:id="lpVoltageGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="lpCurrentGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="-5.0" lcdFont="ELEKTRA" maxValue="30000.0" minValue="-30000.0" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="30000.0" title="CURRENT" unit="mA" />
+                                                            <Gauge fx:id="lpVoltageGauge" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="-5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="100.0" prefWidth="131.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
@@ -315,7 +318,7 @@
                                                 </VBox>
                                                 <VBox fx:id="vgaugeLayout1121" layoutX="992.0" layoutY="10.0" prefHeight="139.0" prefWidth="299.0">
                                                    <children>
-                                                      <Line endX="20.0" startX="-250.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                      <Line endX="20.0" startX="-270.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                       <Label style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="LP BATTERY 2">
                                                          <font>
                                                             <Font size="15.0" />
@@ -329,8 +332,8 @@
                                                       </Label>
                                                       <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="273.0">
                                                          <children>
-                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="30000.0" minValue="-30000.0" prefHeight="90.0" prefWidth="109.0" skinType="SPACE_X" threshold="30000.0" title="CURRENT" unit="mA" />
-                                                            <Gauge fx:id="lpVoltageGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="5.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="90.0" prefWidth="118.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
+                                                            <Gauge fx:id="lpCurrentGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="152.0" layoutY="-5.0" lcdFont="ELEKTRA" maxValue="30000.0" minValue="-30000.0" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="30000.0" title="CURRENT" unit="mA" />
+                                                            <Gauge fx:id="lpVoltageGauge1" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="25.0" layoutY="-4.0" lcdFont="ELEKTRA" maxValue="40.0" prefHeight="99.0" prefWidth="130.0" skinType="SPACE_X" threshold="30.0" title="VOLTAGE" unit="V" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
