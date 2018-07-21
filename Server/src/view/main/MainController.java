@@ -65,11 +65,11 @@ public class MainController {
     // HP battery
     @FXML private Gauge gaugeHpBattery;
     @FXML private Gauge gaugeVoltage, hpGaugeCurrent, gaugeTemp;
-    @FXML private Label lowestCellLabel, highestCellLabel;
+    @FXML private Lcd lowestVoltageGauge, highestVoltageGauge;
     // HP battery 1
     @FXML private Gauge gaugeHpBattery1;
     @FXML private Gauge gaugeVoltage1, hpGaugeCurrent1, gaugeTemp1;
-    @FXML private Label lowestCellLabel1, highestCellLabel1;
+    @FXML private Lcd lowestVoltageGauge1, highestVoltageGauge1;
     // LP battery
     @FXML private Gauge gaugeLpBattery;
     @FXML private Gauge lpVoltageGauge, lpCurrentGauge;
@@ -523,21 +523,13 @@ public class MainController {
 
     public void setLowCell(int hpLowCell){
         if (old_lowest_cell == hpLowCell) return;
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                lowestCellLabel.setText("Lowest voltage: " + Integer.toString(hpLowCell) + "mV");
-            }
-        });
+        lowestVoltageGauge.setValue(hpLowCell);
         old_lowest_cell = hpLowCell;
     }
 
     public void setHighCell(int hpHighCell){
         if (old_highest_cell == hpHighCell) return;
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                highestCellLabel.setText("Highest Voltage: " + Integer.toString(hpHighCell) + "mV");
-            }
-        });
+        highestVoltageGauge.setValue(hpHighCell);
         old_highest_cell = hpHighCell;
     }
 
@@ -571,21 +563,13 @@ public class MainController {
 
     public void setLowCell1(int lowCell1){
         if (old_lowest_cell1 == lowCell1) return;
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                lowestCellLabel1.setText("Lowest voltage1: " + Integer.toString(lowCell1) + "mV");
-            }
-        });
+        lowestVoltageGauge1.setValue(lowCell1);
         old_lowest_cell1 = lowCell1;
     }
 
     public void setHighCell1(int highCell1){
         if (old_highest_cell1 == highCell1) return;
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                highestCellLabel1.setText("Highest Voltage1: " + Integer.toString(highCell1) + "mV");
-            }
-        });
+        highestVoltageGauge1.setValue(highCell1);
         old_highest_cell1 = highCell1;
     }
 

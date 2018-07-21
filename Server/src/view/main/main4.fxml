@@ -502,12 +502,16 @@
                                                             <Insets bottom="15.0" />
                                                          </padding>
                                                       </Label>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="82.0" prefWidth="267.0">
+                                                      <AnchorPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="267.0">
                                                          <children>
-                                                            <Label fx:id="lowestCellLabel" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="238.0" text="Lowest voltage: 0mV" textFill="WHITE" />
-                                                            <Label fx:id="highestCellLabel" layoutX="15.0" layoutY="23.0" prefHeight="18.0" prefWidth="247.0" text="Highest voltage: 0mV" textFill="WHITE" />
-                                                            <Label fx:id="lowestCellLabel1" layoutX="15.0" layoutY="41.0" prefHeight="18.0" prefWidth="241.0" text="Lowest voltage 1: 0mV" textFill="WHITE" />
-                                                            <Label fx:id="highestCellLabel1" layoutX="16.0" layoutY="59.0" prefHeight="18.0" prefWidth="240.0" text="Highest voltage 1: 0mV" textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel" layoutX="15.0" layoutY="5.0" prefHeight="18.0" prefWidth="88.0" text="Lowest voltage: " textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel" layoutX="14.0" layoutY="28.0" prefHeight="18.0" prefWidth="90.0" text="Highest voltage: " textFill="WHITE" />
+                                                            <Label fx:id="lowestCellLabel1" layoutX="13.0" layoutY="51.0" prefHeight="18.0" prefWidth="97.0" text="Lowest voltage 1: " textFill="WHITE" />
+                                                            <Label fx:id="highestCellLabel1" layoutX="14.0" layoutY="76.0" prefHeight="18.0" prefWidth="100.0" text="Highest voltage 1: " textFill="WHITE" />
+                                                            <Lcd fx:id="lowestVoltageGauge" animated="false" backgroundVisible="false" layoutX="134.0" layoutY="1.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxValue="30000.0" prefHeight="26.0" prefWidth="70.0" unit="mV" valueFont="STANDARD" />
+                                                            <Lcd fx:id="highestVoltageGauge" animated="false" backgroundVisible="false" layoutX="134.0" layoutY="23.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxValue="30000.0" prefHeight="26.0" prefWidth="70.0" unit="mV" valueFont="STANDARD" />
+                                                            <Lcd fx:id="lowestVoltageGauge1" animated="false" backgroundVisible="false" layoutX="136.0" layoutY="46.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxValue="30000.0" prefHeight="26.0" prefWidth="70.0" unit="mV" valueFont="STANDARD" />
+                                                            <Lcd fx:id="highestVoltageGauge1" animated="false" backgroundVisible="false" layoutX="136.0" layoutY="73.0" lcdDesign="FLAT_MIDNIGHT_BLUE" maxValue="30000.0" prefHeight="26.0" prefWidth="70.0" unit="mV" valueFont="STANDARD" />
                                                          </children>
                                                       </AnchorPane>
                                                    </children>
