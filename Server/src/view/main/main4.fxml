@@ -131,7 +131,7 @@
                         </AnchorPane>
                         <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="86.0" prefWidth="156.0">
                            <children>
-                              <Label fx:id="stateLabel" alignment="CENTER" layoutX="-3.0" layoutY="32.0" prefHeight="22.0" prefWidth="160.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
+                              <Label fx:id="stateLabel" alignment="CENTER" layoutX="-3.0" layoutY="32.0" prefHeight="22.0" prefWidth="155.0" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="IDLE">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -532,8 +532,8 @@
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="140.0" prefWidth="1242.0">
                                              <children>
-                                                <JFXSlider fx:id="distanceMeter" disable="true" max="1250.0" prefHeight="24.0" prefWidth="1198.0" showTickMarks="true" value="0" />
-                                                <Label fx:id="distanceLabel" prefHeight="18.0" prefWidth="62.0" textFill="WHITE" />
+                                                <JFXSlider fx:id="distanceMeter" disable="true" max="1250.0" prefHeight="24.0" prefWidth="1151.0" showTickMarks="true" value="0" />
+                                                <Lcd fx:id="distanceLabel" animated="false" backgroundVisible="false" lcdDesign="FLAT_MIDNIGHT_BLUE" maxValue="1250.0" prefHeight="27.0" prefWidth="43.0" valueFont="STANDARD" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">

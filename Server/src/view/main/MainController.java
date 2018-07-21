@@ -81,7 +81,7 @@ public class MainController {
     @FXML private Label updatesLabel;
     @FXML private JFXTextField trackLengthTextField;
     @FXML private Label warningLabel;
-    @FXML private Label distanceLabel;
+    @FXML private Lcd distanceLabel;
     @FXML private Button trackLengthBtn;
 
     private int old_batModStatus, old_navModStatus, old_senModStatus, old_mtrModStatus,
@@ -294,11 +294,7 @@ public class MainController {
     public void setDistanceMeter(int distance) {
         if (old_distance == distance) return;
         distanceMeter.setValue(distance);
-        Platform.runLater(new Runnable() {
-            @Override public void run() {
-                distanceLabel.setText(Integer.toString(distance) + "m");
-            }
-        });
+        distanceLabel.setValue(distance);
         old_distance = distance;
     }
 
