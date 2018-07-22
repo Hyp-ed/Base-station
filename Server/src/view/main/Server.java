@@ -352,6 +352,7 @@ public class Server implements Runnable {
                 }
                 mainController.setStateLabel("ACCELERATING");
                 mainController.disableBtnLaunch();
+                mainController.disableTrackLengthBtn();
                 status = 3;
                 break;
             case 4:

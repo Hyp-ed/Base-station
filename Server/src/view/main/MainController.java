@@ -231,6 +231,10 @@ public class MainController {
         trackLengthTextField.setText("");
     }
 
+    public void disableTrackLengthBtn() {
+        trackLengthBtn.setDisable(true);
+    }
+
     public void setClock(double time) {
         clock.setValue(time);
     }
