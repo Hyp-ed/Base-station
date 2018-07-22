@@ -231,6 +231,10 @@ public class MainController {
         trackLengthTextField.setText("");
     }
 
+    public void enableTrackLengthBtn() {
+        trackLengthBtn.setDisable(false);
+    }
+
     public void disableTrackLengthBtn() {
         trackLengthBtn.setDisable(true);
     }

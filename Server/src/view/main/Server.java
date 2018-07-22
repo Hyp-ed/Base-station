@@ -315,6 +315,7 @@ public class Server implements Runnable {
         mainController.setStateLabel("IDLE");
         mainController.disableBtnLaunch();
         mainController.disableServicePropulsion();
+        mainController.enableTrackLengthBtn();
         mainController.trackLengthWarningOff();
     }
 
