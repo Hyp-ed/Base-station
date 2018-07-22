@@ -251,11 +251,11 @@
                                              </VBox.margin></HBox>
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="93.0" prefHeight="100.0" prefWidth="1358.0">
                                              <children>
-                                                <VBox fx:id="vgaugeLayout2" prefHeight="138.0" prefWidth="538.0">
+                                                <VBox fx:id="vgaugeLayout2" prefHeight="138.0" prefWidth="308.0">
                                                    <children>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="501.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="301.0">
                                                          <children>
-                                                            <Line startX="510.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
+                                                            <Line startX="300.0" stroke="WHITE" style="-fx-background-color: #2A2E37; -fx-border-color: #B2B2B2;" />
                                                             <Label layoutY="1.600000023841858" style="-fx-background-color: #2A2E37; -fx-text-fill: #B2B2B2;" text="MOTORS">
                                                                <font>
                                                                   <Font size="15.0" />
@@ -269,12 +269,10 @@
                                                             <Insets right="20.0" />
                                                          </VBox.margin>
                                                       </AnchorPane>
-                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="504.0">
+                                                      <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="298.0">
                                                          <children>
-                                                            <Gauge fx:id="gaugeRpmfr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="141.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="122.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT RIGHT" />
-                                                            <Gauge fx:id="gaugeRpmfl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="14.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="127.0" skinType="SPACE_X" threshold="6400" title="RPM FRONT LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="263.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
-                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="385.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="119.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
+                                                            <Gauge fx:id="gaugeRpmbl" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="39.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="121.0" skinType="SPACE_X" threshold="6400" title="RPM REAR LEFT" />
+                                                            <Gauge fx:id="gaugeRpmbr" alert="true" alertMessage="Almost full" areaTextVisible="true" decimals="0" layoutX="168.0" lcdFont="ELEKTRA" maxValue="6500" prefHeight="100.0" prefWidth="119.0" skinType="SPACE_X" threshold="6400" title="RPM REAR RIGHT" />
                                                          </children>
                                                          <VBox.margin>
                                                             <Insets right="20.0" />

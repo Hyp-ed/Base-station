@@ -324,19 +324,19 @@ public class MainController {
         });
     }
 
-    public void setGaugeRpmfl(int rpm_fl, boolean isDanger) {
-        if (old_rpm_fl == rpm_fl) return;
-        gaugeRpmfl.setValue(rpm_fl);
-        gaugeRpmfl.setValueColor(colorHashMap.get(isDanger));
-        old_rpm_fl = rpm_fl;
-    }
-
-    public void setGaugeRpmfr(int rpm_fr, boolean isDanger) {
-        if (old_rpm_fr == rpm_fr) return;
-        gaugeRpmfr.setValue(rpm_fr);
-        gaugeRpmfr.setValueColor(colorHashMap.get(isDanger));
-        old_rpm_fr = rpm_fr;
-    }
+//    public void setGaugeRpmfl(int rpm_fl, boolean isDanger) {
+//        if (old_rpm_fl == rpm_fl) return;
+//        gaugeRpmfl.setValue(rpm_fl);
+//        gaugeRpmfl.setValueColor(colorHashMap.get(isDanger));
+//        old_rpm_fl = rpm_fl;
+//    }
+//
+//    public void setGaugeRpmfr(int rpm_fr, boolean isDanger) {
+//        if (old_rpm_fr == rpm_fr) return;
+//        gaugeRpmfr.setValue(rpm_fr);
+//        gaugeRpmfr.setValueColor(colorHashMap.get(isDanger));
+//        old_rpm_fr = rpm_fr;
+//    }
 
     public void setGaugeRpmbl(int rpm_bl, boolean isDanger) {
         if (old_rpm_bl == rpm_bl) return;

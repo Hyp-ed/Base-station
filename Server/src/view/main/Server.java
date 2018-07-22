@@ -239,8 +239,8 @@ public class Server implements Runnable {
                         mainController.setDistanceMeter(distance);
                         mainController.setGaugeVelocity(velocity, dVelocity);
                         mainController.setGaugeAcceleration(acceleration, dAcceleration);
-                        mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
-                        mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
+//                        mainController.setGaugeRpmfl(rpm_fl, dRpm_fl);
+//                        mainController.setGaugeRpmfr(rpm_fr, dRpm_fr);
                         mainController.setGaugeRpmbl(rpm_bl, dRpm_bl);
                         mainController.setGaugeRpmbr(rpm_br, dRpm_br);
                         mainController.setImuIndicator(imu);
